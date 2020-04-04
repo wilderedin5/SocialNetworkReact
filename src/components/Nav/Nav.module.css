@@ -1,0 +1,15 @@
+.sidebar {
+    background: rgb(0, 255, 128);
+    grid-area: n;
+}
+
+.list {
+    list-style-type: none;
+    color: #fff;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.activeLink{
+    color: #fff;
+}

@@ -1,0 +1,18 @@
+.dialogItem{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.avatar{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+.name{
+    text-decoration: none;
+    color: #fff;
+}
+.activeDialogName{
+    color: red;
+}

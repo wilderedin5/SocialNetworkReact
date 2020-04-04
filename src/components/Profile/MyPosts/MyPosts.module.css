@@ -1,0 +1,28 @@
+.MyPosts {
+    padding: 20px 15px;
+}
+
+.MyPosts textarea {
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    resize: none;
+}
+
+.MyPosts button {
+    display: block;
+    background: rgb(0, 255, 128);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+}
+
+.contentNewPosts {
+    margin-top: 20px;
+}
