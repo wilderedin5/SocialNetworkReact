@@ -2,3 +2,7 @@
     background: rgb(0, 255, 128);
     grid-area: h;
 }
+.auth{
+    display: flex; 
+    justify-content: flex-end;
+}

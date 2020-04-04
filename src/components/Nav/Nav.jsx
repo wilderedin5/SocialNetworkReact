@@ -22,6 +22,9 @@ const Nav = (props) => {
         <li>
           <NavLink to="/settings" activeClassName={style.activeLink}>Settings</NavLink>
         </li>
+        <li>
+          <NavLink to="/users" activeClassName={style.activeLink}>Users</NavLink>
+        </li>
       </ul>
       <Friend state={props.state.friends} />
     </div>
