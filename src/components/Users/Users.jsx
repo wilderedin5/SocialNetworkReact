@@ -31,7 +31,7 @@ const Users = (props) => {
                                     <img src={u.photos.small != null ? u.photos.small : userPhoto} alt="" />
                                 </NavLink>
                                 {u.followed ? <button onClick={() => {
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0//follow/${u.id}`, {
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                                         withCredentials: true,
                                         headers: { "API-KEY": "214badae-3b19-4362-9fbb-9abb5bfbc019" }
                                     })
@@ -41,7 +41,7 @@ const Users = (props) => {
                                             }
                                         });
                                 }}>unfollow</button> : <button onClick={() => {
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0//follow/${u.id}`, {}, {
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                         withCredentials: true,
                                         headers: { "API-KEY": "214badae-3b19-4362-9fbb-9abb5bfbc019" }
                                     })
