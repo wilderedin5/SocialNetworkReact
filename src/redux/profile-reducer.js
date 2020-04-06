@@ -1,24 +1,25 @@
+import { usersAPI } from '../api/api';
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
 
 let initialState = {
-    posts : [
-        {id: 1, message: "Привет, как дела?", likeCount: 144},
-        {id: 2, message: "Привет, сейчас на паре.", likeCount: 24},
-        {id: 3, message: "Автобус в 8-15", likeCount: 31},
-        {id: 4, message: "Обратно хз когда", likeCount: 2},
-        {id: 5, message: "GHost division", likeCount: 7},
-        {id: 6, message: "Below", likeCount: 17},
-        {id: 7, message: "Above", likeCount: 31},
-        {id: 8, message: "Below", likeCount: 19}
+    posts: [
+        { id: 1, message: "Привет, как дела?", likeCount: 144 },
+        { id: 2, message: "Привет, сейчас на паре.", likeCount: 24 },
+        { id: 3, message: "Автобус в 8-15", likeCount: 31 },
+        { id: 4, message: "Обратно хз когда", likeCount: 2 },
+        { id: 5, message: "GHost division", likeCount: 7 },
+        { id: 6, message: "Below", likeCount: 17 },
+        { id: 7, message: "Above", likeCount: 31 },
+        { id: 8, message: "Below", likeCount: 19 }
     ],
     profile: null,
     newPostText: "",
 };
 
-const profileReducer = (state = initialState,action) => {
-    switch(action.type){
+const profileReducer = (state = initialState, action) => {
+    switch (action.type) {
         case ADD_POST:
             let newPost = {
                 id: 5,
@@ -30,7 +31,7 @@ const profileReducer = (state = initialState,action) => {
                 posts: [...state.posts, newPost],
                 newPostText: ""
             };
-        case UPDATE_NEW_POST_TEXT: 
+        case UPDATE_NEW_POST_TEXT:
             return {
                 ...state,
                 newPostText: action.newText
@@ -42,19 +43,19 @@ const profileReducer = (state = initialState,action) => {
                     profile: action.profile
                 }
             }
-        default: 
+        default:
             return state;
     }
 }
 
 export const addPostActionCreator = () => {
-    return({
+    return ({
         type: ADD_POST
     });
 };
 
 export const updateNewPostTextActionCreator = (text) => {
-    return({
+    return ({
         type: UPDATE_NEW_POST_TEXT,
         newText: text
     });
@@ -65,6 +66,13 @@ export const setUsersProfile = (profile) => {
         type: SET_USERS_PROFILE,
         profile
     });
+};
+
+export const getUsersProfile = (userId) => (dispatch) => {
+    usersAPI.getProfile(userId)
+        .then(response => {
+            dispatch(setUsersProfile(response.data));
+        });
 }
 
 export default profileReducer;

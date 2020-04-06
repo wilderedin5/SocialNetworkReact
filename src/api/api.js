@@ -15,6 +15,21 @@ export const usersAPI = {
         ).then(response => {
             return response.data
         });
+    },
+    unfollow(userId) {
+        return axiosClone.delete(`follow/${userId}`);
+    },
+    follow(userId){
+        return axiosClone.post(`follow/${userId}`);
+    },
+    getProfile(userId){
+        return axiosClone.get(`profile/${userId}`);
+    }
+}
+
+export const authAPI = {
+    me(){
+        return axiosClone.get(`auth/me`);
     }
 }
 
