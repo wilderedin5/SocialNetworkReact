@@ -18,7 +18,7 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={style.profileInfo}>
                     <div className={style.profileInfoName}>{props.profile.fullName}</div>
-                    <div className={style.profileInfoStatus}><ProfileStatus status="Hello, my drug!" /></div>
+                    <div className={style.profileInfoStatus}><ProfileStatus status={props.status} updateStatus={props.updateStatus} /></div>
                     <ul>
                         <li>Обо мне: {props.profile.aboutMe}</li>
                         <li>Twitter: {props.profile.contacts.twitter}</li>

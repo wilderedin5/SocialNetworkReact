@@ -23,7 +23,19 @@ export const usersAPI = {
         return axiosClone.post(`follow/${userId}`);
     },
     getProfile(userId){
+        return profileAPI.getProfile(userId);
+    }
+}
+
+export const profileAPI = {
+    getProfile(userId){
         return axiosClone.get(`profile/${userId}`);
+    },
+    getStatus(userId){
+        return axiosClone.get(`profile/status/${userId}`);
+    },
+    updateStatus(status){
+        return axiosClone.put(`profile/status/`, {status: status});
     }
 }
 
