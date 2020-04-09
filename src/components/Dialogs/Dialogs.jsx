@@ -3,21 +3,16 @@ import style from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 import { Redirect } from 'react-router-dom';
+import DialogsForm from './DialogsForm/DialogsForm';
 
 
 const Dialogs = (props) => {
     let dialogsElements = props.dialogsData.map(d => <DialogItem name={d.name} id={d.id} />);
     let messageElements = props.messageData.map(m => <MessageItem message={m.message} />);
 
-    let newMessageElement = React.createRef();
 
-    let onAddMessage = () => {
-        props.addMessage();
-    };
-
-    let onChangeMessage = () => {
-        let text = newMessageElement.current.value;
-        props.updateNewMessageText(text);
+    let AddMessage = (formData) => {
+        props.addMessage(formData.dialogsMessageText);
     };
 
     if(!props.isAuth) return <Redirect to="/login" />
@@ -29,8 +24,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {messageElements}
-                <textarea onChange={onChangeMessage} ref={newMessageElement} value={props.newMessageText}></textarea>
-                <button onClick={ onAddMessage }>Send</button>
+                <DialogsForm onSubmit={AddMessage} />
             </div>
         </div>
     );
