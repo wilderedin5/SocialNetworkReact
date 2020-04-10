@@ -24,6 +24,9 @@ const LoginForm = (props) => {
             <div>
                 <button className={style.loginBtn} >LOGIN</button>
             </div>
+            <div>
+                {props.error ? props.error : null}
+            </div>
         </form>
     )
 }
