@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.loginForm input[type="text"]{
+.loginForm input[type="text"],.loginForm input[type="password"]{
     width: 250px;
     padding: 5px 10px;
     margin-bottom: 5px;

@@ -14,8 +14,7 @@ const authReducer = (state = initialState, action) => {
             {
                 return {
                     ...state,
-                    ...action.userData,
-                    isAuth: true
+                    ...action.userData
                 }
             }
         default:
@@ -23,19 +22,38 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (userId, email, login) => {
+export const setAuthUserData = (userId, email, login, isAuth) => {
     return ({
         type: SET_AUTH_USER_DATA,
-        userData: { userId, email, login }
+        userData: { userId, email, login, isAuth }
     });
 };
+
 
 export const getAuthUserData = () => (dispatch) => {
     authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let { id, email, login } = response.data.data;
-                dispatch(setAuthUserData(id, email, login));
+                dispatch(setAuthUserData(id, email, login, true));
+            }
+        });
+}
+
+export const loginIntoSocialNetwork = (email,password,rememberMe) => (dispatch) => {
+    authAPI.login(email,password,rememberMe)
+        .then(response => {
+            if(response.data.resultCode === 0){
+                dispatch(getAuthUserData());
+            }
+        });
+}
+
+export const logoutFromSocialNetwork = () => (dispatch) => {
+    authAPI.logout()
+        .then(response => {
+            if(response.data.resultCode === 0){
+                dispatch(setAuthUserData(null, null, null, false));
             }
         });
 }

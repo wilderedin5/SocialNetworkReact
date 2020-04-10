@@ -2,7 +2,7 @@ import React from 'react';
 import * as axios from 'axios';
 import Header from './Header';
 import { connect } from 'react-redux';
-import {getAuthUserData} from '../../redux/auth-reducer';
+import {getAuthUserData,logoutFromSocialNetwork} from '../../redux/auth-reducer';
 import { authAPI } from '../../api/api';
 
 
@@ -22,4 +22,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{getAuthUserData})(HeaderContainer);
+export default connect(mapStateToProps,{getAuthUserData,logoutFromSocialNetwork})(HeaderContainer);

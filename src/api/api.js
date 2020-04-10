@@ -4,7 +4,7 @@ const axiosClone = axios.create({
     withCredentials: true,
     baseURL: "https://social-network.samuraijs.com/api/1.0/",
     headers: {
-        "API-KEY": "214badae-3b19-4362-9fbb-9abb5bfbc019"
+        "API-KEY": "384b8ba6-d625-4976-9412-858366c0e544"
     }
 });
 
@@ -42,6 +42,12 @@ export const profileAPI = {
 export const authAPI = {
     me(){
         return axiosClone.get(`auth/me`);
+    },
+    login(email,password,rememberMe = false){
+        return axiosClone.post(`auth/login`, {email,password,rememberMe});
+    },
+    logout(){
+        return axiosClone.delete(`auth/login`);
     }
 }
 
