@@ -10,9 +10,6 @@
     padding: 10px 20px;
     margin-bottom: 20px;
 }
-.selectedPage{
-    font-weight: 700;
-}
 .avatar{
     display: flex;
     flex-direction: column;
