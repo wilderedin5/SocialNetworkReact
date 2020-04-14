@@ -11,7 +11,8 @@ const MyPosts = (props) => {
         props.addPost(formData.postText);
     }
 
-
+    console.log("render");
+    
     return (
             <div className={style.MyPosts}>
                 <h2>My posts</h2>
