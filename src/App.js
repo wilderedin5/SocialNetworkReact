@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { Route, withRouter } from 'react-router-dom';
-import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login';
 import { connect } from 'react-redux';
-import {initiliazeApp} from './redux/app-reducer';
+import { initiliazeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { compose } from 'redux';
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
   componentDidMount() {
     this.props.initiliazeApp();
   }
   render() {
-    if(!this.props.initiliazed){
+    if (!this.props.initiliazed) {
       return <Preloader />
     }
     return (
@@ -30,13 +30,15 @@ class App extends React.Component {
             <HeaderContainer />
             <Nav state={this.props.state.sidebar} />
             <div className="app-wrapper-content">
-              <Route path="/dialogs" render={() => <DialogsContainer />} />
-              <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-              <Route path="/users" render={() => <UsersContainer />} />
-              <Route path="/login" render={() => <Login />} />
-              <Route path="/news" component={News} />
-              <Route path="/music" component={Music} />
-              <Route path="/settings" component={Settings} />
+              <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
+                <Route path="/dialogs" render={() => <DialogsContainer />} />
+                <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+                <Route path="/users" render={() => <UsersContainer />} />
+                <Route path="/login" render={() => <Login />} />
+                <Route path="/news" component={News} />
+                <Route path="/music" component={Music} />
+                <Route path="/settings" component={Settings} />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -53,4 +55,4 @@ const mapStateToProps = (state) => {
 
 export default compose(
   withRouter,
-  connect(mapStateToProps,{initiliazeApp}))(App);
+  connect(mapStateToProps, { initiliazeApp }))(App);
