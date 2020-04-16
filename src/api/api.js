@@ -36,6 +36,15 @@ export const profileAPI = {
     },
     updateStatus(status){
         return axiosClone.put(`profile/status/`, {status: status});
+    },
+    uploadPhoto(photo){
+        const formData = new FormData();
+        formData.append("image", photo);
+        return axiosClone.put(`profile/photo`,formData, {
+            headers: {
+                'Content-type': 'multipart/form-data'
+            }
+        });
     }
 }
 
