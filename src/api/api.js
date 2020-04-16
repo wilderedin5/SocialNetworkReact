@@ -45,7 +45,10 @@ export const profileAPI = {
                 'Content-type': 'multipart/form-data'
             }
         });
-    }
+    },
+    updateProfile(profile){
+        return axiosClone.put(`profile`, profile);
+    },
 }
 
 export const authAPI = {

@@ -3,39 +3,53 @@ import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHook from './ProfileStatus/ProfileStatusWithHook';
 import Contact from './Contact/Contact';
+import ProfileInfoForm from './ProfileInfoForm/ProfileInfoForm';
+import { useState } from 'react';
 
 const ProfileInfo = (props) => {
-    if(!props.profile){
+    let [editMode,setEditMode] = useState(false);
+    if (!props.profile) {
         return <Preloader />
     }
+    const onSubmit = (formData) => {
+        props.updateProfile(formData).then(
+            () => {
+                setEditMode(false);
+            }
+        )
+    }
     const onChangePhoto = (e) => {
-        if(e.target.files.length){
+        if (e.target.files.length) {
             props.updatePhoto(e.target.files[0]);
         }
     }
     return (
         <div>
-            <div className={style.profileImg}>
-                <img src="https://icocnews.ru/wp-content/uploads/2015/09/priroda.jpg" />
-            </div>
             <div className={style.profileDesc}>
                 <div className={style.profileAvatar}>
                     <img src={props.profile.photos.large} />
-                    {props.isOwner ? <input type="file" onChange={onChangePhoto} /> : ''}
+                    {props.isOwner ? <input type="file" onChange={onChangePhoto} className={style.uploadPhoto} /> : ''}
                 </div>
+                { editMode ?
+                <ProfileInfoForm initialValues={props.profile} onSubmit={onSubmit} profile={props.profile} />
+                :
                 <div className={style.profileInfo}>
                     <div className={style.profileInfoName}>{props.profile.fullName}</div>
                     <div className={style.profileInfoStatus}><ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} /></div>
-                    <div>Ищу ли работу: {props.profile.lookingForAJobDescription}</div>
+                    <div>Ищу работу: {props.profile.lookingForAJob ? "Да" : "Нет"} </div>
+                    <div>Мои навыки: {props.profile.lookingForAJobDescription} </div>
                     <div>Обо мне: {props.profile.aboutMe}</div>
                     <ul>
                         {Object.keys(props.profile.contacts).map(key => {
-                            return <Contact key={key} contactName={ key } contactValue={ props.profile.contacts[key] } />
-                            })}
+                            return <Contact key={key} contactName={key} contactValue={props.profile.contacts[key]} />
+                        })}
                     </ul>
                 </div>
+                }
+                { (props.isOwner && !editMode) &&
+                <button className={style.editMode} onClick={() => setEditMode(true)}>Редактировать страницу</button>
+                }
             </div>
-
         </div>
     );
 }
