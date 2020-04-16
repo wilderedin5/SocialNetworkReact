@@ -3,6 +3,19 @@
     grid-area: h;
 }
 .auth{
-    display: flex; 
+    display: flex;
     justify-content: flex-end;
+}
+.header button {
+    text-transform: uppercase;
+    display: block;
+    background: rgb(71, 61, 128);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
 }

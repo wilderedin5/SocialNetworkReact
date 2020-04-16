@@ -7,8 +7,11 @@ const Header = (props) => {
         <div className={style.header}>
             <div className={style.auth}>
                 {props.isAuth 
-                ? <div>{props.login} <button onClick={props.logoutFromSocialNetwork}>LOGOUT</button></div> 
-                : <div><NavLink to="/login">Login</NavLink></div>}
+                ? <div>
+                    <div>{props.login}</div>
+                    <button onClick={props.logoutFromSocialNetwork}>Logout</button>
+                  </div> 
+                : <div><NavLink to="/login"><button>Login</button></NavLink></div>}
             </div>
         </div>
     );
