@@ -2,6 +2,7 @@ import React from 'react';
 import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHook from './ProfileStatus/ProfileStatusWithHook';
+import Contact from './Contact/Contact';
 
 const ProfileInfo = (props) => {
     if(!props.profile){
@@ -25,12 +26,12 @@ const ProfileInfo = (props) => {
                 <div className={style.profileInfo}>
                     <div className={style.profileInfoName}>{props.profile.fullName}</div>
                     <div className={style.profileInfoStatus}><ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} /></div>
+                    <div>Ищу ли работу: {props.profile.lookingForAJobDescription}</div>
+                    <div>Обо мне: {props.profile.aboutMe}</div>
                     <ul>
-                        <li>Обо мне: {props.profile.aboutMe}</li>
-                        <li>Twitter: {props.profile.contacts.twitter}</li>
-                        <li>GIT: {props.profile.contacts.github}</li>
-                        <li>VK: {props.profile.contacts.vk}</li>
-                        <li>Ищу ли работу: {props.profile.lookingForAJobDescription}</li>
+                        {Object.keys(props.profile.contacts).map(key => {
+                            return <Contact key={key} contactName={ key } contactValue={ props.profile.contacts[key] } />
+                            })}
                     </ul>
                 </div>
             </div>
