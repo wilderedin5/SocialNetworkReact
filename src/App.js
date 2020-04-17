@@ -5,7 +5,7 @@ import Nav from './components/Nav/Nav';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import Login from './components/Login/Login';
 import { connect } from 'react-redux';
 import { initiliazeApp } from './redux/app-reducer';
@@ -31,13 +31,16 @@ class App extends React.Component {
             <Nav state={this.props.state.sidebar} />
             <div className="app-wrapper-content">
               <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
-                <Route path="/dialogs" render={() => <DialogsContainer />} />
-                <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-                <Route path="/users" render={() => <UsersContainer />} />
-                <Route path="/login" render={() => <Login />} />
-                <Route path="/news" component={News} />
-                <Route path="/music" component={Music} />
-                <Route path="/settings" component={Settings} />
+                <Switch>
+                  <Route path="/dialogs" render={() => <DialogsContainer />} />
+                  <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+                  <Route path="/users" render={() => <UsersContainer />} />
+                  <Route path="/login" render={() => <Login />} />
+                  <Route path="/news" component={News} />
+                  <Route path="/music" component={Music} />
+                  <Route path="/settings" component={Settings} />
+                  <Redirect from="/" to="/profile" />
+                </Switch>
               </Suspense>
             </div>
           </div>
