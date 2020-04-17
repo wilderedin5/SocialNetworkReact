@@ -1,14 +1,20 @@
 .header {
     background: rgb(0, 255, 128);
     grid-area: h;
+    padding: 20px 10px;
 }
-.auth{
+.authorized{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.noAuthorized{
     display: flex;
     justify-content: flex-end;
 }
 .header button {
+    align-self: center;
     text-transform: uppercase;
-    display: block;
     background: rgb(71, 61, 128);
     border: none;
     border-radius: 10px;
@@ -18,4 +24,18 @@
     outline: none;
     cursor: pointer;
     color: #fff;
+}
+.avatar{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.profileInfo{
+    display: flex;
+    align-items: center;
+}
+.name{
+    font-size: 22px;
+    font-weight: 700;
 }
