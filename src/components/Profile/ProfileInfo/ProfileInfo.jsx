@@ -7,7 +7,7 @@ import ProfileInfoForm from './ProfileInfoForm/ProfileInfoForm';
 import { useState } from 'react';
 
 const ProfileInfo = (props) => {
-    let [editMode,setEditMode] = useState(false);
+    let [editMode, setEditMode] = useState(false);
     if (!props.profile) {
         return <Preloader />
     }
@@ -28,26 +28,29 @@ const ProfileInfo = (props) => {
             <div className={style.profileDesc}>
                 <div className={style.profileAvatar}>
                     <img src={props.profile.photos.large} />
-                    {props.isOwner ? <input type="file" onChange={onChangePhoto} className={style.uploadPhoto} /> : ''}
+                    {props.isOwner ? <div>
+                        <input type="file" id="photoFile" onChange={onChangePhoto} className={style.uploadPhoto} />
+                        <label for="photoFile">Изменить аватарку</label>
+                    </div> : ''}
                 </div>
-                { editMode ?
-                <ProfileInfoForm initialValues={props.profile} onSubmit={onSubmit} profile={props.profile} />
-                :
-                <div className={style.profileInfo}>
-                    <div className={style.profileInfoName}>{props.profile.fullName}</div>
-                    <div className={style.profileInfoStatus}><ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} /></div>
-                    <div>Ищу работу: {props.profile.lookingForAJob ? "Да" : "Нет"} </div>
-                    <div>Мои навыки: {props.profile.lookingForAJobDescription} </div>
-                    <div>Обо мне: {props.profile.aboutMe}</div>
-                    <ul>
-                        {Object.keys(props.profile.contacts).map(key => {
-                            return <Contact key={key} contactName={key} contactValue={props.profile.contacts[key]} />
-                        })}
-                    </ul>
-                </div>
+                {editMode ?
+                    <ProfileInfoForm initialValues={props.profile} onSubmit={onSubmit} profile={props.profile} />
+                    :
+                    <div className={style.profileInfo}>
+                        <div className={style.profileInfoName}>{props.profile.fullName}</div>
+                        <div className={style.profileInfoStatus}><ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} /></div>
+                        <div>Ищу работу: {props.profile.lookingForAJob ? "Да" : "Нет"} </div>
+                        <div>Мои навыки: {props.profile.lookingForAJobDescription} </div>
+                        <div>Обо мне: {props.profile.aboutMe}</div>
+                        <ul>
+                            {Object.keys(props.profile.contacts).map(key => {
+                                return <Contact key={key} contactName={key} contactValue={props.profile.contacts[key]} />
+                            })}
+                        </ul>
+                    </div>
                 }
-                { (props.isOwner && !editMode) &&
-                <button className={style.editMode} onClick={() => setEditMode(true)}>Редактировать страницу</button>
+                {(props.isOwner && !editMode) &&
+                    <button className={style.editMode} onClick={() => setEditMode(true)}>Редактировать страницу</button>
                 }
             </div>
         </div>
