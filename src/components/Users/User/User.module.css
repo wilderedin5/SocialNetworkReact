@@ -1,12 +1,10 @@
 
 .userItem{
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid #000;
-    border-radius: 30px;
-    width: 50%;
-    padding: 10px 20px;
-    margin-bottom: 20px;
 }
 .avatar{
     display: flex;
@@ -19,7 +17,7 @@
     border-radius: 50%;
     margin-bottom: 5px;
 }
-.avatar button {
+.userBtn {
     display: block;
     background: rgb(0, 255, 128);
     border: none;

@@ -11,11 +11,11 @@ const User = ({isFollowingProgress,unfollow,follow,user}) => {
                     <NavLink to={"/profile/" + user.id}>
                         <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="" />
                     </NavLink>
-                    {user.followed ? <button disabled={isFollowingProgress.some(key => key === user.id)} onClick={() => {
+                    {user.followed ? <button className={style.userBtn} disabled={isFollowingProgress.some(key => key === user.id)} onClick={() => {
                         unfollow(user.id);
-                    }}>unfollow</button> : <button disabled={isFollowingProgress.some(key => key === user.id)} onClick={() => {
+                    }}>Подписаться</button> : <button className={style.userBtn} disabled={isFollowingProgress.some(key => key === user.id)} onClick={() => {
                         follow(user.id);
-                    }}>follow</button>}
+                    }}>Отписаться</button>}
                 </div>
                 <div className={style.mainInfo}>
                     <div className={style.fullname}>{user.name}</div>
