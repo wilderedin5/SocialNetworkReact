@@ -24,7 +24,6 @@ const ProfileInfo = (props) => {
         }
     }
     return (
-        <div>
             <div className={style.profileDesc}>
                 <div className={style.profileAvatar}>
                     <img src={props.profile.photos.large} />
@@ -53,7 +52,6 @@ const ProfileInfo = (props) => {
                     <button className={style.editMode} onClick={() => setEditMode(true)}>Редактировать страницу</button>
                 }
             </div>
-        </div>
     );
 }
 
