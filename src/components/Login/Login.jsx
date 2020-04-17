@@ -7,21 +7,22 @@ import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.loginIntoSocialNetwork(formData.email,formData.password,formData.rememberMe);
+        props.loginIntoSocialNetwork(formData.email,formData.password,formData.rememberMe,formData.captcha);
     }
     if(props.isAuth){
         return <Redirect to="/profile" />
     }
     return (
         <div className={style.loginPage} >
-            <LoginForm onSubmit={onSubmit} />
+            <LoginForm captchaUrl={props.captchaUrl} onSubmit={onSubmit} />
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 

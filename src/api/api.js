@@ -55,11 +55,17 @@ export const authAPI = {
     me(){
         return axiosClone.get(`auth/me`);
     },
-    login(email,password,rememberMe = false){
-        return axiosClone.post(`auth/login`, {email,password,rememberMe});
+    login(email,password,rememberMe = false,captcha = null){
+        return axiosClone.post(`auth/login`, {email,password,rememberMe,captcha});
     },
     logout(){
         return axiosClone.delete(`auth/login`);
+    }
+}
+
+export const securityAPI = {
+    getCaptchaUrl(){
+        return axiosClone.get(`security/get-captcha-url`);
     }
 }
 
