@@ -1,10 +1,10 @@
 import { usersAPI, profileAPI } from '../api/api';
 import { stopSubmit } from 'redux-form';
-const ADD_POST = "ADD-POST";
-const DELETE_POST = "DELETE_POST";
-const SET_USERS_PROFILE = "SET_USERS_PROFILE";
-const SET_STATUS = 'SET_STATUS';
-const UPDATE_PHOTO = 'UPDATE_PHOTO';
+const ADD_POST = "profile-reducer/ADD-POST";
+const DELETE_POST = "profile-reducer/DELETE_POST";
+const SET_USERS_PROFILE = "profile-reducer/SET_USERS_PROFILE";
+const SET_STATUS = 'profile-reducer/SET_STATUS';
+const UPDATE_PHOTO = 'profile-reducer/UPDATE_PHOTO';
 
 let initialState = {
     posts: [

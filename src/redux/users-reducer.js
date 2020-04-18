@@ -1,11 +1,11 @@
 import { usersAPI } from '../api/api';
-const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
-const SET_USERS = "SET_USERS";
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const FOLLOWING_IS_PROGRESS = 'FOLLOWING_IS_PROGRESS';
+const FOLLOW = "users-reducer/FOLLOW";
+const UNFOLLOW = "users-reducer/UNFOLLOW";
+const SET_USERS = "users-reducer/SET_USERS";
+const SET_CURRENT_PAGE = 'users-reducer/SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'users-reducer/SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'users-reducer/TOGGLE_IS_FETCHING';
+const FOLLOWING_IS_PROGRESS = 'users-reducer/FOLLOWING_IS_PROGRESS';
 
 
 let initialState = {
