@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Nav from './components/Nav/Nav';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
@@ -11,6 +10,7 @@ import { connect } from 'react-redux';
 import { initiliazeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { compose } from 'redux';
+import NavContainer from './components/Nav/NavContainer';
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
@@ -28,7 +28,7 @@ class App extends React.Component {
         <div className="container">
           <div className="app-wrapper">
             <HeaderContainer />
-            <Nav state={this.props.state.sidebar} />
+            <NavContainer />
             <div className="app-wrapper-content">
               <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
                 <Switch>

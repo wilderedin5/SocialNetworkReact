@@ -1,0 +1,20 @@
+.selectFriend .friendName{
+    color: red;
+}
+.friend{
+    width: 30%;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.friendAvatar{
+    width: 100%;
+    border-radius: 50%;
+}
+.friendName{
+    font-weight: 700;
+    font-size: 8px;
+}

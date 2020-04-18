@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Nav.module.css'
 import { NavLink } from 'react-router-dom';
-import Friend from './Friend/Friend';
+import Friends from './Friends/Friends';
 
 const Nav = (props) => {
   return (
@@ -26,7 +26,7 @@ const Nav = (props) => {
           <NavLink to="/users" activeClassName={style.activeLink}>Users</NavLink>
         </li>
       </ul>
-      <Friend state={props.state.friends} />
+      <Friends friends={props.friends} />
     </div>
   );
 }

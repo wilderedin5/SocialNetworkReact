@@ -1,0 +1,14 @@
+.friendBar{
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.friendTitle{
+    font-weight: 700;
+    font-size: 28px;
+    padding: 0 10px;
+}
+
+
+
