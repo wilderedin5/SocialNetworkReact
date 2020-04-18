@@ -1,13 +1,17 @@
 .post{
     display: flex;
     align-items: center;
-    position: relative;
     margin-top: 10px;
+    position: relative;
+    border: 1px solid grey;
+    padding: 5px;
 }
 .message{
     font-size: 20px;
     color: purple;
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
 .avatar img{
     border-radius: 50%;
@@ -19,8 +23,10 @@
     font-weight: bold;
     font-size: 12px;
     color: #fff;
+}
+.deleteBtn{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
+    right: 5px;
 }

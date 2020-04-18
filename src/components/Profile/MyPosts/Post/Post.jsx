@@ -5,14 +5,15 @@ const Post = (props) => {
     return (
         <div className={style.post}>
             <div className={style.avatar}>
-                <img src="https://www.kino-teatr.ru/movie/kadr/36398/pv_82319.jpg" alt=""/>
+                <img src="https://www.kino-teatr.ru/movie/kadr/36398/pv_82319.jpg" alt="" />
             </div>
             <div className={style.message}>
                 {props.message}
+                <div className={style.like}>
+                    {props.likeCount} like
+                </div>
             </div>
-            <div className={style.like}>
-                {props.likeCount} like
-            </div>
+            <button className={style.deleteBtn} onClick={() => props.deletePost(props.postId)}>удалить пост</button>
         </div>
     );
 }

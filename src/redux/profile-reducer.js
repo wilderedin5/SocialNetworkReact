@@ -1,6 +1,7 @@
 import { usersAPI, profileAPI } from '../api/api';
 import { stopSubmit } from 'redux-form';
 const ADD_POST = "ADD-POST";
+const DELETE_POST = "DELETE_POST";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
 const SET_STATUS = 'SET_STATUS';
 const UPDATE_PHOTO = 'UPDATE_PHOTO';
@@ -24,7 +25,7 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                id: 5,
+                id: 9,
                 message: action.newPostText,
                 likeCount: 0
             };
@@ -52,15 +53,29 @@ const profileReducer = (state = initialState, action) => {
                     ...state, profile: {...state.profile, photos: action.photo}
                 }
             }
+        case DELETE_POST:
+            {
+                return {
+                    ...state,
+                    posts: state.posts.filter(post => post.id !== action.postId)
+                }
+            }
         default:
             return state;
     }
 }
 
-export const addPostActionCreator = (newPostText) => {
+export const addPost = (newPostText) => {
     return ({
         type: ADD_POST,
         newPostText
+    });
+};
+
+export const deletePost = (postId) => {
+    return ({
+        type: DELETE_POST,
+        postId
     });
 };
 
