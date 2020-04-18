@@ -7,23 +7,24 @@ import DialogsForm from './DialogsForm/DialogsForm';
 
 
 const Dialogs = (props) => {
-    let dialogsElements = props.dialogsData.map(d => <DialogItem name={d.name} id={d.id} />);
-    let messageElements = props.messageData.map(m => <MessageItem message={m.message} />);
-
 
     let AddMessage = (formData) => {
         props.addMessage(formData.dialogsMessageText);
     };
 
-    if(!props.isAuth) return <Redirect to="/login" />
+    if (!props.isAuth) return <Redirect to="/login" />
 
     return (
         <div className={style.dialogs}>
             <div className={style.dialog}>
-                {dialogsElements}
+                {
+                    props.dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id} />)
+                }
             </div>
             <div className={style.messages}>
-                {messageElements}
+                {
+                    props.messageData.map(m => <MessageItem key={m.id} message={m.message} />)
+                }
                 <DialogsForm onSubmit={AddMessage} />
             </div>
         </div>
