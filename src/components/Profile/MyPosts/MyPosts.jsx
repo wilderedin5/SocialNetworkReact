@@ -15,7 +15,8 @@ const MyPosts = (props) => {
             <MyPostsForm onSubmit={addPost} />
             <div className={style.contentNewPosts}>
                     {
-                        props.posts.map(p => <Post postId={p.id} deletePost={props.deletePost} key={p.id} message={p.message} likeCount={p.likeCount} />)
+                        props.posts.map(p => <Post liked={p.liked} toggleLikePost={props.toggleLikePost} postId={p.id} 
+                            deletePost={props.deletePost} key={p.id} message={p.message} likeCount={p.likeCount} />)
                     }
                 </div>
         </div>

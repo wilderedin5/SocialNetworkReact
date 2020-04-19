@@ -5,21 +5,23 @@ const DELETE_POST = "profile-reducer/DELETE_POST";
 const SET_USERS_PROFILE = "profile-reducer/SET_USERS_PROFILE";
 const SET_STATUS = 'profile-reducer/SET_STATUS';
 const UPDATE_PHOTO = 'profile-reducer/UPDATE_PHOTO';
+const TOGGLE_LIKE_POST = 'profile-reducer/TOGGLE_LIKE_POST';
 
 let initialState = {
     posts: [
-        { id: 1, message: "Привет, как дела?", likeCount: 144 },
-        { id: 2, message: "Привет, сейчас на паре.", likeCount: 24 },
-        { id: 3, message: "Автобус в 8-15", likeCount: 31 },
-        { id: 4, message: "Обратно хз когда", likeCount: 2 },
-        { id: 5, message: "GHost division", likeCount: 7 },
-        { id: 6, message: "Below", likeCount: 17 },
-        { id: 7, message: "Above", likeCount: 31 },
-        { id: 8, message: "Below", likeCount: 19 }
+        { id: 1, message: "Привет, как дела?", likeCount: 144, liked: null },
+        { id: 2, message: "Привет, сейчас на паре.", likeCount: 24, liked: null },
+        { id: 3, message: "Автобус в 8-15", likeCount: 31, liked: null },
+        { id: 4, message: "Обратно хз когда", likeCount: 2, liked: null },
+        { id: 5, message: "GHost division", likeCount: 7, liked: null },
+        { id: 6, message: "Below", likeCount: 17, liked: null },
+        { id: 7, message: "Above", likeCount: 31, liked: null },
+        { id: 8, message: "Below", likeCount: 19, liked: null }
     ],
     profile: null,
     status: ""
 };
+
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -34,31 +36,37 @@ const profileReducer = (state = initialState, action) => {
                 posts: [...state.posts, newPost]
             };
         case SET_USERS_PROFILE:
-            {
-                return {
-                    ...state,
-                    profile: action.profile
-                }
+            return {
+                ...state,
+                profile: action.profile
             }
         case SET_STATUS:
-            {
-                return {
-                    ...state,
-                    status: action.status
-                }
+            return {
+                ...state,
+                status: action.status
             }
         case UPDATE_PHOTO:
-            {
-                return {
-                    ...state, profile: {...state.profile, photos: action.photo}
-                }
+            return {
+                ...state, profile: { ...state.profile, photos: action.photo }
             }
         case DELETE_POST:
-            {
-                return {
-                    ...state,
-                    posts: state.posts.filter(post => post.id !== action.postId)
-                }
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== action.postId)
+            }
+        case TOGGLE_LIKE_POST:
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                    if (post.id === action.postId) {
+                        if(post.liked === true){
+                            return { ...post, liked: false, likeCount: --post.likeCount }
+                        } else if(post.liked === false || post.liked === null) {
+                            return { ...post, liked: true, likeCount: ++post.likeCount }
+                        }
+                    }
+                    return post;
+                })
             }
         default:
             return state;
@@ -100,6 +108,13 @@ export const updatePhotoSuccess = (photo) => {
     });
 }
 
+export const toggleLikePost = (postId) => {
+    return ({
+        type: TOGGLE_LIKE_POST,
+        postId
+    });
+}
+
 export const getUsersProfile = (userId) => async (dispatch) => {
     let response = await usersAPI.getProfile(userId);
     dispatch(setUsersProfile(response.data));
@@ -124,7 +139,7 @@ export const updatePhoto = (photo) => async (dispatch) => {
     }
 }
 
-export const updateProfile = (profile) => async (dispatch,getState) => {
+export const updateProfile = (profile) => async (dispatch, getState) => {
     let userId = getState().auth.userId;
     let response = await profileAPI.updateProfile(profile);
     if (response.data.resultCode === 0) {

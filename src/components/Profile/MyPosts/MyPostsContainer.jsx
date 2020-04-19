@@ -1,5 +1,5 @@
 import MyPosts from './MyPosts';
-import {addPost,deletePost} from './../../../redux/profile-reducer';
+import {addPost,deletePost,toggleLikePost} from './../../../redux/profile-reducer';
 import {connect} from 'react-redux';
 
 let mapStateToProps = (state) => {
@@ -8,4 +8,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{addPost,deletePost})(MyPosts);
+export default connect(mapStateToProps,{addPost,deletePost,toggleLikePost})(MyPosts);
