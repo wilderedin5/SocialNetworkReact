@@ -41,3 +41,18 @@
   background: rgb(150, 154, 212);
   grid-area: c;
 }
+
+.header {
+  background: rgb(0, 255, 128);
+  grid-area: h;
+  padding: 20px 10px;
+}
+
+.sidebar {
+  background: rgb(0, 255, 128);
+  grid-area: n;
+}
+
+.app-wrapper-content,.sidebar,.header{
+  border-radius: 10px;
+}

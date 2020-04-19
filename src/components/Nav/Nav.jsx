@@ -5,7 +5,7 @@ import Friends from './Friends/Friends';
 
 const Nav = (props) => {
   return (
-    <div className={style.sidebar}>
+    <div>
       <ul className={style.list}>
         <li>
           <NavLink to="/profile" activeClassName={style.activeLink}>Profile</NavLink>

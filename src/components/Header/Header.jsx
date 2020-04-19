@@ -6,7 +6,7 @@ const Header = (props) => {
 
 
     return (
-        <div className={style.header}>
+        <div>
             {props.isAuth
                 ? <div className={style.authorized}>
                     <div className={style.profileInfo}>

@@ -27,8 +27,12 @@ class App extends React.Component {
       <div className="app">
         <div className="container">
           <div className="app-wrapper">
+            <div className="header">
             <HeaderContainer />
+            </div>
+            <div className="sidebar">
             <NavContainer />
+            </div>
             <div className="app-wrapper-content">
               <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
                 <Switch>
