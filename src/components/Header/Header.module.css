@@ -7,7 +7,7 @@
     display: flex;
     justify-content: flex-end;
 }
-.authorized button {
+.authorized button,.noAuthorized button {
     align-self: center;
     text-transform: uppercase;
     background: rgb(71, 61, 128);
