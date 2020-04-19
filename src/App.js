@@ -10,10 +10,10 @@ import { initiliazeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { compose } from 'redux';
 import NavContainer from './components/Nav/NavContainer';
-import NewsContainer from './components/News/NewsContainer';
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
+const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
 
 class App extends React.Component {
   componentDidMount() {
