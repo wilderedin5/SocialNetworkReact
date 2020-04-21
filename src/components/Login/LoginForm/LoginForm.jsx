@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import style from './LoginForm.module.css';
+import style from './LoginForm.module.scss';
 import {maxLength,requiredField} from '../../../utils/validate/validateForm';
 import createFormElement from '../../../hoc/createFormElement/createFormElement';
 

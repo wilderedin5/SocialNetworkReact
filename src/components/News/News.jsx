@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './News.module.css';
+import style from './News.module.scss';
 import OneNews from './OneNews/OneNews';
 import NewsForm from './NewsForm/NewsForm';
  

@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './createFormElement.module.css';
+import style from './createFormElement.module.scss';
 
 const createFormElement = (Element) => ({ input, meta, ...props }) => {
     const hasError = meta.error && meta.touched;

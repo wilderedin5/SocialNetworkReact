@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './OneNews.module.css';
+import style from './OneNews.module.scss';
 
 const OneNews = (props) => {
     return (

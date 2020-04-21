@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { maxLength, requiredField } from '../../../utils/validate/validateForm';
 import createFormElement from '../../../hoc/createFormElement/createFormElement';
-import style from './NewsForm.module.css';
+import style from './NewsForm.module.scss';
 
 const maxLength1000 = maxLength(1000);
 const maxLength100 = maxLength(100);

@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm/LoginForm';
-import style from './Login.module.css';
+import style from './Login.module.scss';
 import { connect } from 'react-redux';
 import { loginIntoSocialNetwork } from '../../redux/auth-reducer';
 import { Redirect } from 'react-router-dom';

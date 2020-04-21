@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import createFormElement from '../../../../hoc/createFormElement/createFormElement';
 import { maxLength } from '../../../../utils/validate/validateForm';
-import style from './../ProfileInfo.module.css';
+import style from './../ProfileInfo.module.scss';
 
 const maxLength200 = maxLength(200);
 const Input = createFormElement("input");
