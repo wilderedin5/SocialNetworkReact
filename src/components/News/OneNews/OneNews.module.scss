@@ -1,21 +1,28 @@
-.oneNews{
+.oneNews {
     display: flex;
     flex-direction: column;
     border: 1px solid grey;
     padding: 10px 5px;
     margin-bottom: 10px;
     position: relative;
-}
-.oneNewsBtn{
-    display: block;
-    background: rgb(0, 255, 128);
-    border: none;
-    border-radius: 10px;
-    padding: 5px 15px;
-    font-size: 16px;
-    font-weight: 700;
-    outline: none;
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
+    .btnLine {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        .oneNewsBtn {
+            display: block;
+            background: rgb(0, 255, 128);
+            border: none;
+            border-radius: 10px;
+            padding: 5px 15px;
+            font-size: 16px;
+            font-weight: 700;
+            outline: none;
+            &:first-child{
+                margin-right: 15px;
+            }
+        }
+    }
 }

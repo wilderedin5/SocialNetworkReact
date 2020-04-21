@@ -19,6 +19,9 @@ const NewsForm = (props) => {
                 <Field placeholder="Автор" name="author" component={Input} type="text" validate={[maxLength100,requiredField]} />
             </div>
             <div>
+                <Field placeholder="Тема" name="theme" component={Input} type="text" validate={[maxLength100,requiredField]} />
+            </div>
+            <div>
                 <Field placeholder="Категория" name="category" component={Input} type="text" validate={[maxLength100,requiredField]} />
             </div>
             <div>

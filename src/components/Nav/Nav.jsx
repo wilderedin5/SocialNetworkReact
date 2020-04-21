@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Nav.module.scss'
 import { NavLink } from 'react-router-dom';
 import Friends from './Friends/Friends';
+import Bookmarks from './Bookmarks/Bookmarks';
 
 const Nav = (props) => {
   return (
@@ -27,6 +28,7 @@ const Nav = (props) => {
         </li>
       </ul>
       <Friends friends={props.friends} />
+      <Bookmarks bookMarks={props.bookMarks} />
     </div>
   );
 }
