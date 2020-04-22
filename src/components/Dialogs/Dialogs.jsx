@@ -23,7 +23,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {
-                    props.messageData.map(m => <MessageItem key={m.id} message={m.message} />)
+                    props.messageData.map(m => <MessageItem key={m.id} id={m.id} message={m.message} deleteMessage={props.deleteMessage} />)
                 }
                 <DialogsForm onSubmit={AddMessage} />
             </div>

@@ -1,5 +1,6 @@
 import {v4} from 'uuid';
 const ADD_MESSAGE = "dialogs-reducer/ADD-MESSAGE";
+const DELETE_MESSAGE = "dialogs-reducer/DELETE_MESSAGE";
 
 let initialState = {
     dialogsData: [
@@ -40,16 +41,28 @@ const dialogsReducer = (state = initialState,action) => {
                 ...state,
                 messageData: [...state.messageData, newMessage]
             };
+        case DELETE_MESSAGE:
+            return {
+                ...state,
+                messageData: state.messageData.filter(message => message.id !== action.messageId)
+            }
         default: 
             return state;
     }
 }
 
-export const addMessageActionCreator = (newMessageText) => {
+export const addMessage = (newMessageText) => {
     return({
         type: ADD_MESSAGE,
         newMessageText
     });
 };
+
+export const deleteMessage = (messageId) => {
+    return({
+        type: DELETE_MESSAGE,
+        messageId
+    })
+}
 
 export default dialogsReducer;

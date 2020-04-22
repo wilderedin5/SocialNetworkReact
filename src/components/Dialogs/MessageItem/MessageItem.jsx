@@ -3,7 +3,10 @@ import style from './MessageItem.module.scss';
 
 const MessageItem = (props) => {
     return(
-    <div className={style.message}>{props.message}</div>
+        <div className={style.message}>
+            <div>{props.message}</div>
+            <button onClick={() => props.deleteMessage(props.id)} className={style.messageDeleteBtn}>Удалить сообщение</button>
+        </div>
     );
 }
 

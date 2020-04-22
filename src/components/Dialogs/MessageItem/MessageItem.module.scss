@@ -1,4 +1,14 @@
 .message{
     margin-bottom: 25px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px 15px;
     font-weight: 700;
+    position: relative;
+    .messageDeleteBtn{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 5px;
+    }
 }
