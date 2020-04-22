@@ -10,8 +10,8 @@ const News = (props) => {
     return(
         <div className={style.news}>
             {
-                props.news.map(news => <OneNews key={news.id} deleteNews={props.deleteNews} newsText={news.newsText} author={news.author} 
-                    newsId={news.id} date={news.date} category={news.category} addToBookmarks={props.addToBookmarks} theme={news.theme} />)
+                props.news.map(news => <OneNews key={news.id} deleteNews={props.deleteNews} newsText={news.newsText} author={news.author} deleteFromBookmarks={props.deleteFromBookmarks}
+                    newsId={news.id} date={news.date} category={news.category} addToBookmarks={props.addToBookmarks} theme={news.theme} inBookmarks={news.inBookmarks} />)
             }
             <NewsForm onSubmit={onSubmit} />
         </div>

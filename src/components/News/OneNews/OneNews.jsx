@@ -10,7 +10,11 @@ const OneNews = (props) => {
             <div><b>Дата:</b> {props.date}</div>
             <div><b>Категория:</b> {props.category}</div>
             <div className={style.btnLine}>
-                <button onClick={() => props.addToBookmarks(props.newsId)} className={style.oneNewsBtn}>Добавить в закладки</button>
+                { props.inBookmarks ?
+                    <button onClick={() => props.deleteFromBookmarks(props.newsId)} className={style.oneNewsBtn}>Убрать из закладок</button>
+                    :
+                    <button onClick={() => props.addToBookmarks(props.newsId)} className={style.oneNewsBtn}>Добавить в закладки</button>
+                }
                 <button onClick={() => props.deleteNews(props.newsId)} className={style.oneNewsBtn}>Удалить новость</button>
             </div>
         </div>
