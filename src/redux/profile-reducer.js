@@ -1,5 +1,6 @@
 import { usersAPI, profileAPI } from '../api/api';
 import { stopSubmit } from 'redux-form';
+import {v4} from 'uuid';
 const ADD_POST = "profile-reducer/ADD-POST";
 const DELETE_POST = "profile-reducer/DELETE_POST";
 const SET_USERS_PROFILE = "profile-reducer/SET_USERS_PROFILE";
@@ -27,7 +28,7 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                id: 9,
+                id: v4(),
                 message: action.newPostText,
                 likeCount: 0,
                 liked: null

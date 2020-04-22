@@ -1,3 +1,4 @@
+import {v4} from 'uuid';
 const ADD_MESSAGE = "dialogs-reducer/ADD-MESSAGE";
 
 let initialState = {
@@ -32,7 +33,7 @@ const dialogsReducer = (state = initialState,action) => {
     switch(action.type){
         case ADD_MESSAGE:
             let newMessage = {
-                id: 11,
+                id: v4(),
                 message: action.newMessageText
             };
             return {

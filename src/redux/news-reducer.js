@@ -1,3 +1,4 @@
+import {v4} from 'uuid';
 const DELETE_NEWS = 'news-reducer/DELETE_NEWS';
 const ADD_NEW_NEWS = 'news-reducer/ADD_NEW_NEWS';
 const ADD_TO_BOOKMARKS = 'news-reducer/ADD_TO_BOOKMARKS';
@@ -62,7 +63,7 @@ export const deleteNews = (newsId) => ({
 
 export const addNewNews = (newsText, theme, author, category) => ({
     type: ADD_NEW_NEWS,
-    newNews: {newsText, theme, author, category}
+    newNews: {id: v4(), newsText, theme, author, category}
 });
 
 export const addToBookmarks = (newsId) => {
