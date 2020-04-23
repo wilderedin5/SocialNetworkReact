@@ -37,7 +37,7 @@ class App extends React.Component {
             <div className={style.appWrapperContent}>
               <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
                 <Switch>
-                  <Route path="/dialogs" render={() => <DialogsContainer />} />
+                  <Route path="/dialogs/:userId?" render={() => <DialogsContainer />} />
                   <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
                   <Route path="/users" render={() => <UsersContainer />} />
                   <Route path="/login" render={() => <Login />} />

@@ -5,7 +5,7 @@ const MessageItem = (props) => {
     return(
         <div className={style.message}>
             <div>{props.message}</div>
-            <button onClick={() => props.deleteMessage(props.id)} className={style.messageDeleteBtn}>Удалить сообщение</button>
+            <button onClick={() => props.deleteMessage(props.id,props.userId)} className={style.messageDeleteBtn}>Удалить сообщение</button>
         </div>
     );
 }

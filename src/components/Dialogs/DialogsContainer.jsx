@@ -3,6 +3,7 @@ import { addMessage, deleteMessage} from './../../redux/dialogs-reducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { withRouter } from 'react-router-dom';
 
 let mapStateToProps = (state) => {
     return {
@@ -13,5 +14,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {deleteMessage,addMessage}),
-    withAuthRedirect
+    withAuthRedirect,
+    withRouter
 )(Dialogs);

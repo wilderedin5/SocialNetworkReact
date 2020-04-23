@@ -7,11 +7,15 @@ import DialogsForm from './DialogsForm/DialogsForm';
 
 
 const Dialogs = (props) => {
+    let userId = Number(props.match.params.userId);
+    if (!userId) {
+        userId = 1;
+    }
 
     let AddMessage = (formData) => {
-        props.addMessage(formData.dialogsMessageText);
+        props.addMessage(formData.dialogsMessageText,userId);
     };
-
+    
     if (!props.isAuth) return <Redirect to="/login" />
 
     return (
@@ -23,7 +27,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {
-                    props.messageData.map(m => <MessageItem key={m.id} id={m.id} message={m.message} deleteMessage={props.deleteMessage} />)
+                    props.dialogsData[userId - 1].messages.map(m => <MessageItem key={m.id} userId={userId} id={m.id} message={m.message} deleteMessage={props.deleteMessage} />)
                 }
                 <DialogsForm onSubmit={AddMessage} />
             </div>
