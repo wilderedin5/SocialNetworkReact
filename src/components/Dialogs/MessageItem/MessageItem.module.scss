@@ -11,4 +11,8 @@
         transform: translateY(-50%);
         right: 5px;
     }
+    &.messageToMe{
+        border: 1px solid rgb(20, 199, 35);
+        color: rgb(20, 199, 35);
+    }
 }

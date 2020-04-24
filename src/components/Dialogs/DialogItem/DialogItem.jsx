@@ -3,12 +3,13 @@ import style from './DialogItem.module.scss';
 import { NavLink } from 'react-router-dom';
 
 const DialogItem = (props) => {
-    let path = "/dialogs/" + props.id;
     return (
-        <div className={style.dialogItem}>
-            <img src={props.photo} alt="" className={style.avatar} />
-            <NavLink to={path} className={style.name} activeClassName={style.activeDialogName}>{props.name}</NavLink>
-        </div>
+        <NavLink to={`/dialogs/${props.id}`} className={style.name} activeClassName={style.activeDialogName}>
+            <div className={style.dialogItem}>
+                <img src={props.photo} alt="" className={style.avatar} />
+                {props.name}
+            </div>
+        </NavLink>
     );
 }
 
