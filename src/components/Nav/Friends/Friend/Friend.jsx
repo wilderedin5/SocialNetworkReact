@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import style from './Friend.module.css';
+import style from './Friend.module.scss';
 
 const Friend = ({name}) => {
     return (

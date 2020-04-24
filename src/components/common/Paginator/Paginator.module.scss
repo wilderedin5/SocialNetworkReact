@@ -1,22 +1,39 @@
-.selectedPage{
-    font-weight: 700;
-}
-.pageNumber{
-    border: 1px solid #000;
-    padding: 0 5px;
-    margin-right: 5px;
-}
-.paginator{
+
+.paginator {
     margin-bottom: 10px;
+    .pageButton {
+        display: inline-block;
+        background: transparent;
+        border: 1px solid rgb(45, 80, 165);
+        color: rgb(45, 80, 165);
+        border-radius: 5px;
+        padding: 5px 15px;
+        font-size: 16px;
+        font-weight: 700;
+        outline: none;
+        cursor: pointer;
+        &:hover {
+            background: rgb(45, 80, 165);
+            color: #fff;
+        }
+    }
+    .pageNumber {
+        border: 1px solid rgb(45, 80, 165);
+        color: rgb(45, 80, 165);
+        padding: 0 5px;
+        margin-right: 5px;
+        cursor: pointer;
+        &:hover{
+            color: #fff;
+            background: rgb(45, 80, 165);
+        }
+    }
+    .selectedPage {
+        font-weight: 700;
+        background: rgb(45, 80, 165);
+        &.pageNumber{
+            color: #fff;
+        }
+    }
 }
-.pageButton{
-    display: inline-block;
-    background: rgb(0, 255, 128);
-    border: none;
-    border-radius: 10px;
-    padding: 5px 15px;
-    font-size: 16px;
-    font-weight: 700;
-    outline: none;
-    margin: 0 5px;
-}
+

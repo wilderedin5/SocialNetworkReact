@@ -2,8 +2,15 @@
 * {
   box-sizing: border-box;
 }
+ul,li{
+  padding: 0;
+}
+body{
+  color: #fff;
+}
 
 .app {
+  background: rgb(170, 170, 170);
   .container {
     width: 1200px;
     margin: 0 auto;
@@ -29,22 +36,22 @@
       grid-template-rows: auto 1fr;
       grid-gap: 20px;
       .header {
-        background: rgb(0, 255, 128);
+        background: rgb(45, 80, 165);
         grid-area: h;
-        padding: 20px 10px;
       }
       .sidebar {
-        background: rgb(0, 255, 128);
+        background: rgb(45, 80, 165);
         grid-area: n;
       }
       .appWrapperContent {
-        background: rgb(150, 154, 212);
+        background: rgb(255, 255, 255);
         grid-area: c;
       }
       .appWrapperContent,
       .sidebar,
       .header {
         border-radius: 10px;
+        padding: 20px 10px;
       }
     }
   }

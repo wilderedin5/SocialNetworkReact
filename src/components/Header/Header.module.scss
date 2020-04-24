@@ -1,36 +1,41 @@
-.authorized{
+.authorized {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.noAuthorized{
+.noAuthorized {
     display: flex;
     justify-content: flex-end;
 }
-.authorized button,.noAuthorized button {
+.authorized button,
+.noAuthorized button {
     align-self: center;
-    text-transform: uppercase;
-    background: rgb(71, 61, 128);
-    border: none;
-    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 5px;
     padding: 5px 15px;
     font-size: 16px;
     font-weight: 700;
     outline: none;
     cursor: pointer;
-    color: #fff;
+    &:hover {
+        background: #fff;
+        color: rgb(45, 80, 165);
+    }
 }
-.avatar{
+.avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    border: 1px solid #fff;
     margin-right: 10px;
 }
-.profileInfo{
+.profileInfo {
     display: flex;
     align-items: center;
 }
-.name{
+.name {
     font-size: 22px;
     font-weight: 700;
 }

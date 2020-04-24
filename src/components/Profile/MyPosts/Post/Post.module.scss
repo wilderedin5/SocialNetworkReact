@@ -1,32 +1,37 @@
-.post{
+.post {
     display: flex;
     align-items: center;
     margin-top: 10px;
     position: relative;
-    border: 1px solid grey;
+    border: 1px solid rgb(45, 80, 165);
     padding: 5px;
+    .postBtnLine {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 5px;
+        display: flex;
+        align-items: center;
+        & button:first-child{
+            margin-right: 5px;
+        }
+    }
 }
-.message{
+.message {
     font-size: 20px;
-    color: purple;
+    color: rgb(45, 80, 165);
     margin-left: 20px;
     display: flex;
     flex-direction: column;
 }
-.avatar img{
+.avatar img {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    border: 2px solid black;
+    border: 2px solid rgb(45, 80, 165);
 }
-.like{
+.like {
     font-weight: bold;
     font-size: 12px;
-    color: #fff;
-}
-.deleteBtn{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 5px;
+    color: #000;
 }

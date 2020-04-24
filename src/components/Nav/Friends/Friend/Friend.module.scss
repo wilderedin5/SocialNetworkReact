@@ -1,0 +1,25 @@
+
+.friend{
+    width: 30%;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #fff;
+    &.selectFriend .friendName{
+        color: red;
+    }
+    .friendAvatar{
+        width: 100%;
+        border-radius: 50%;
+        border: 1px solid #fff;
+    }
+    .friendName{
+        font-weight: 700;
+        font-size: 8px;
+    }
+}
+
+

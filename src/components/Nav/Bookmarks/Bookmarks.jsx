@@ -1,10 +1,11 @@
 import React from 'react';
 import Bookmark from './Bookmark/Bookmark';
+import style from './Bookmarks.module.scss';
 
 const Bookmarks = (props) => {
     return (
-        <div>
-            <h1>Закладки</h1>
+        <div className={style.bookmarks}>
+            <h1 className={style.title}>Закладки</h1>
             { props.bookMarks.length > 0 ?
                 props.bookMarks.map(item => <Bookmark theme={item.theme} />)
             :

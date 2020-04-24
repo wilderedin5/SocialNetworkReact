@@ -21,7 +21,7 @@ const ProfileInfoForm = (props) => {
                         })}
                     </ul>
                 </div>
-                <button className={style.editMode}>Сохранить страницу</button> 
+                <button className={style.editModeBtn}>Сохранить страницу</button> 
             <div>
                 {props.error ? props.error : null}
             </div>

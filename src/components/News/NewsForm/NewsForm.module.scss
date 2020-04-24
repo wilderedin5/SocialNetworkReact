@@ -3,24 +3,32 @@
     height: 100px;
     margin: 0 auto;
     border-radius: 10px;
+    border: 1px solid rgb(45, 80, 165);
     padding: 10px;
     outline: none;
     resize: none;
 }
-.newsForm input{
+.newsForm input {
     width: 300px;
     padding: 5px 10px;
-    border-radius: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(45, 80, 165);
     margin-bottom: 5px;
     outline: none;
 }
-.NewsFormBtn{
+.NewsFormBtn {
     display: block;
-    background: rgb(0, 255, 128);
-    border: none;
-    border-radius: 10px;
+    background: transparent;
+    border: 1px solid rgb(45, 80, 165);
+    color: rgb(45, 80, 165);
+    border-radius: 5px;
     padding: 5px 15px;
     font-size: 16px;
     font-weight: 700;
     outline: none;
+    cursor: pointer;
+    &:hover {
+        background: rgb(45, 80, 165);
+        color: #fff;
+    }
 }

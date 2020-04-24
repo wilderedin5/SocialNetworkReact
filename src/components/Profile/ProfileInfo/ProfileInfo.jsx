@@ -49,7 +49,7 @@ const ProfileInfo = (props) => {
                     </div>
                 }
                 {(props.isOwner && !editMode) &&
-                    <button className={style.editMode} onClick={() => setEditMode(true)}>Редактировать страницу</button>
+                    <button className={style.editModeBtn} onClick={() => setEditMode(true)}>Редактировать страницу</button>
                 }
             </div>
     );

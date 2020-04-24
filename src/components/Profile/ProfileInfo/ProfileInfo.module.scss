@@ -1,75 +1,93 @@
-.profileImg {
-    & img {
-        height: 200px;
-        width: 100%;
-    }
-}
-
 .profileDesc {
     display: flex;
     align-items: flex-start;
-    padding: 20px 15px;
     position: relative;
     border-bottom: 1px dashed #fff;
-}
-
-.profileInfoName {
-    font-size: 28px;
-    line-height: 1;
-}
-
-.profileInfo {
-    display: flex;
-    flex-direction: column;
-    padding-left: 30px;
-    & ul {
-        list-style-type: none;
-        font-size: 24px;
-        padding-left: 0;
-    }
-}
-
-.profileAvatar {
-    display: flex;
-    flex-direction: column;
-    & img {
-        width: 224px;
-        height: 224px;
-        margin-bottom: 10px;
-    }
-}
-
-.editMode {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: block;
-    background: rgb(0, 255, 128);
-    border: none;
-    border-radius: 10px;
-    padding: 5px 15px;
-    font-size: 16px;
-    font-weight: 700;
-    outline: none;
-}
-
-.uploadPhoto {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    position: absolute;
-    z-index: -2;
-    & + label {
-        font-weight: 700;
+    color: #000;
+    .profileAvatar {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid grey;
-        &::after {
-            content: "";
-            background: url("https://img.icons8.com/carbon-copy/2x/download.png") center center/cover;
-            width: 56px;
-            height: 56px;
+        flex-direction: column;
+        & img {
+            width: 224px;
+            height: 224px;
+            margin-bottom: 10px;
+        }
+        .uploadPhoto {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            position: absolute;
+            z-index: -2;
+            & + label {
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid grey;
+                padding: 10px;
+                &::after {
+                    content: "";
+                    background: url("../../../assets/image/blackDownload.png") center center/cover;
+                    width: 32px;
+                    height: 32px;
+                    margin-left: 10px;
+                }
+                &:hover{
+                    border: 1px solid rgb(45, 80, 165);
+                    color: #fff;
+                    background: rgb(45, 80, 165);
+                    &::after {
+                        background: url("../../../assets/image/whiteDownload.png") center center/cover;
+                    }
+                }
+            }
+        }
+        
+    }
+    .editModeBtn {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        display: block;
+        background: transparent;
+        border: 1px solid rgb(45, 80, 165);
+        color: rgb(45, 80, 165);
+        border-radius: 5px;
+        padding: 5px 15px;
+        font-size: 16px;
+        font-weight: 700;
+        outline: none;
+        cursor: pointer;
+        &:hover{
+            background: rgb(45, 80, 165);
+            color: #fff;
+        }
+    }
+    .profileInfo {
+        display: flex;
+        flex-direction: column;
+        padding-left: 30px;
+        & ul {
+            list-style-type: none;
+            font-size: 24px;
+        }
+        .profileInfoName {
+            font-size: 28px;
+            line-height: 1;
+        }
+        & input {
+            border-radius: 5px;
+            border: 1px solid rgb(45, 80, 165);
+            padding: 5px 10px;
         }
     }
 }
+
+
+
+
+
+
+
+
+

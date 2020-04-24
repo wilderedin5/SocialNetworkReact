@@ -8,24 +8,31 @@ const Nav = (props) => {
   return (
     <div>
       <ul className={style.list}>
-        <li>
-          <NavLink to="/profile" activeClassName={style.activeLink}>Profile</NavLink>
-        </li>
-        <li>
-          <NavLink to="/dialogs" activeClassName={style.activeLink}>Messages</NavLink>
-        </li>
-        <li>
-          <NavLink to="/news" activeClassName={style.activeLink}>News</NavLink>
-        </li>
-        <li>
-          <NavLink to="/music" activeClassName={style.activeLink}>Music</NavLink>
-        </li>
-        <li>
-          <NavLink to="/settings" activeClassName={style.activeLink}>Settings</NavLink>
-        </li>
-        <li>
-          <NavLink to="/users" activeClassName={style.activeLink}>Users</NavLink>
-        </li>
+        <NavLink to="/profile" activeClassName={style.activeLink}>
+          <li>
+            Profile
+            </li>
+        </NavLink>
+        <NavLink to="/dialogs" activeClassName={style.activeLink}>
+          <li>
+            Messages
+            </li>
+        </NavLink>
+        <NavLink to="/news" activeClassName={style.activeLink}>
+          <li>
+            News
+            </li>
+        </NavLink>
+        <NavLink to="/settings" activeClassName={style.activeLink}>
+          <li>
+            Settings
+            </li>
+        </NavLink>
+        <NavLink to="/users" activeClassName={style.activeLink}>
+          <li>
+            Users
+            </li>
+        </NavLink>
       </ul>
       <Friends friends={props.friends} />
       <Bookmarks bookMarks={props.bookMarks} />

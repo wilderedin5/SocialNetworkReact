@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import style from './App.module.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Music from './components/Music/Music';
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import Login from './components/Login/Login';
 import { connect } from 'react-redux';
@@ -42,7 +41,6 @@ class App extends React.Component {
                   <Route path="/users" render={() => <UsersContainer />} />
                   <Route path="/login" render={() => <Login />} />
                   <Route path="/news" render={() => <NewsContainer />} />
-                  <Route path="/music" component={Music} />
                   <Route path="/settings" render={() => <SettingsContainer />} />
                   <Redirect from="/" to="/profile" />
                 </Switch>

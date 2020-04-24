@@ -13,9 +13,10 @@ const Post = (props) => {
                     {props.likeCount} like
                 </div>
             </div>
-            
-            <button className={style.deleteBtn} onClick={() => props.deletePost(props.postId)}>удалить пост</button>
-            <button  onClick={() => props.toggleLikePost(props.postId)}> { (props.liked === false || props.liked === null) ? "поставить лайк" : "отменить лайк" } </button>
+            <div className={style.postBtnLine}>
+                <button onClick={() => props.toggleLikePost(props.postId)}> {(props.liked === false || props.liked === null) ? "поставить лайк" : "отменить лайк"} </button>
+                <button onClick={() => props.deletePost(props.postId)}>удалить пост</button>
+            </div>
         </div>
     );
 }

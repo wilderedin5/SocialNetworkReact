@@ -10,7 +10,7 @@ const MyPostsForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={Textarea} name={"postText"} validate={[requiredField,maxLength250]} />
+                <Field component={Textarea} name={"postText"} placeholder="Эта стена ждет твоего поста!" validate={[requiredField,maxLength250]} />
             </div>
             <div>
                 <button>Send</button>

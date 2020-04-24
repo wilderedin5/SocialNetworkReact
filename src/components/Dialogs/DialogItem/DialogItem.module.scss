@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid grey;
+    border: 1px solid rgb(45, 80, 165);
     padding: 5px 10px;
 }
 .avatar{
@@ -10,11 +10,19 @@
     width: 40px;
     height: 40px;
     margin-right: 5px;
+    border: 1px solid rgb(45, 80, 165);
 }
 .name{
     text-decoration: none;
-    color: #fff;
+    color: #000;
+    font-weight: 700;
 }
 .activeDialogName{
-    color: red;
+    color: #fff;
+    .dialogItem{
+        background: rgb(45, 80, 165);
+        .avatar{
+            border: 1px solid #fff;
+        }
+    }
 }

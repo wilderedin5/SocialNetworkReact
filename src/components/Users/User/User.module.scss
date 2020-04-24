@@ -1,35 +1,51 @@
-
-.userItem{
-    border: 1px solid #000;
+.userItem {
+    border: 1px solid rgb(45, 80, 165);
     margin-bottom: 10px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    color: #000;
 }
-.avatar{
+.avatar {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.avatar img{
+.avatar img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-bottom: 5px;
+    border: 1px solid rgb(45, 80, 165);
 }
 .userBtn {
     display: block;
-    background: rgb(0, 255, 128);
-    border: none;
-    border-radius: 10px;
+    background: transparent;
+    border: 1px solid rgb(45, 80, 165);
+    color: rgb(45, 80, 165);
+    border-radius: 5px;
     padding: 5px 15px;
     font-size: 16px;
     font-weight: 700;
     outline: none;
+    cursor: pointer;
+    &:hover {
+        background: rgb(45, 80, 165);
+        color: #fff;
+    }
+    &:disabled{
+        background: rgb(128, 128, 128);
+        color: #000;
+    }
 }
-.mainInfo,.location{
+.mainInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    font-size: 14px;
+    & span{
+        font-weight: 700;
+        font-size: 22px;
+    }
 }

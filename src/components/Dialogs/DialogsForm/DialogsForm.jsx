@@ -10,7 +10,7 @@ const DialogsForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={ Textarea } name={"dialogsMessageText"} type="text" validate={[maxLength250,requiredField]} />
+                <Field component={ Textarea } name={"dialogsMessageText"} placeholder="Йо, по ту сторону монитора заждались твоего сообщения!!!" type="text" validate={[maxLength250,requiredField]} />
             </div>
             <div>
                 <button>Send</button>

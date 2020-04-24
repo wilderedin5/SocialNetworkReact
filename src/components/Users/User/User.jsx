@@ -1,9 +1,10 @@
 import React from 'react';
 import style from './User.module.scss';
 import { NavLink } from 'react-router-dom';
-import userPhoto from '../../../assets/image/avatar.png';
+import userPhoto from '../../../assets/image/defaultAVA.jpg';
 
 const User = ({isFollowingProgress,unfollow,follow,user}) => {
+    debugger;
     return (
         <div>
             <div className={style.userItem}>
@@ -18,12 +19,8 @@ const User = ({isFollowingProgress,unfollow,follow,user}) => {
                     }}>Отписаться</button>}
                 </div>
                 <div className={style.mainInfo}>
-                    <div className={style.fullname}>{user.name}</div>
-                    <div className={style.status}>{user.status}</div>
-                </div>
-                <div className={style.location}>
-                    <div className={style.country}>{"user.location.country"}</div>
-                    <div className={style.city}>{"user.location.city"}</div>
+                    <div className={style.fullname}><span>Имя:</span> {user.name}</div>
+                    <div className={style.status}><span>Статус:</span> {user.status ? user.status : "Не заполнено!"}</div>
                 </div>
             </div>
         </div>
