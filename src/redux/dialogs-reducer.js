@@ -4,24 +4,24 @@ const DELETE_MESSAGE = "dialogs-reducer/DELETE_MESSAGE";
 
 let initialState = {
     dialogsData: [
-        {name: "Андрей", id: 1, messages: [
+        {name: "Андрей", id: 1, photoUrl: "https://www.meme-arsenal.com/memes/7bdea6754f999b50e9577596f09197fb.jpg", messages: [
             {id:1,message: "Сообщение от Андрея"},
             {id:2,message: "Переписка с Андреем ё"},
             {id:3,message: "МОжно чтот pltcm написать"}
         ]},
-        {name: "Виктор", id: 2, messages: [
+        {name: "Виктор", id: 2, photoUrl: "https://lh3.googleusercontent.com/proxy/kzMrRIwV9haJySm2_Vv_kyTCD_QsHJ3zQHfcTGPZ_IZRxjPWA5z10AXwj6hrDhFe3Oi2p4pJyc_2DcHnwWEqzZA20mgcthTJYBEX3S372xqQh2g", messages: [
             {id:1,message: "Сообщение от Виктора"},
-            {id:3,message: "МОжно чтот написать"}
+            {id:2,message: "МОжно чтот написать"}
         ]},
-        {name: "Иван", id: 3, messages: [
+        {name: "Иван", id: 3, photoUrl: "https://www.meme-arsenal.com/memes/ae1d44253a861f53d95864dd37c55a78.jpg", messages: [
             {id:1,message: "Сообщение от Ивана"},
-            {id:3,message: "МОжно чтот тута написать"}
+            {id:2,message: "МОжно чтот тута написать"}
         ]},
-        {name: "Светлана", id: 4, messages: [
+        {name: "Светлана", id: 4, photoUrl: "https://whatsism.com/uploads/posts/2018-07/1530545833_il2zmvzx9py.jpg", messages: [
             {id:1,message: "Сообщение от Светланы"},
-            {id:3,message: "24.04.20 1:52"}
+            {id:2,message: "24.04.20 1:52"}
         ]},
-        {name: "Илья", id: 5, messages: [
+        {name: "Илья", id: 5, photoUrl: "https://sun9-65.userapi.com/c845418/v845418867/a090a/5dIarTfS9B8.jpg", messages: [
             {id:1,message: "Сообщение от Ильи"},
             {id:2,message: "Переписка с 24.04.20 1:53"}
         ]}

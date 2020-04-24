@@ -22,7 +22,7 @@ const Dialogs = (props) => {
         <div className={style.dialogs}>
             <div className={style.dialog}>
                 {
-                    props.dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id} />)
+                    props.dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id} photo={d.photoUrl} />)
                 }
             </div>
             <div className={style.messages}>
