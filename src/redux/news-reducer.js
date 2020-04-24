@@ -1,8 +1,7 @@
 import {v4} from 'uuid';
 const DELETE_NEWS = 'news-reducer/DELETE_NEWS';
 const ADD_NEW_NEWS = 'news-reducer/ADD_NEW_NEWS';
-const ADD_TO_BOOKMARKS = 'news-reducer/ADD_TO_BOOKMARKS';
-const DELETE_FROM_BOOKMARKS = 'news-reducer/DELETE_FROM_BOOKMARKS';
+const TOGGLE_SET_TO_BOOKMARKS = 'news-reducer/TOGGLE_SET_TO_BOOKMARKS';
 
 let initialState = {
     news: [
@@ -31,22 +30,12 @@ const newsReducer = (state = initialState, action) => {
                 ...state,
                 news: [...state.news, action.newNews]
             }
-        case ADD_TO_BOOKMARKS:
+        case TOGGLE_SET_TO_BOOKMARKS:
             return {
                 ...state,
                 news: state.news.map(news => {
                     if (news.id === action.newsId) {
-                        return { ...news, inBookmarks: true }
-                    }
-                    return news;
-                })
-            }
-        case DELETE_FROM_BOOKMARKS:
-            return {
-                ...state,
-                news: state.news.map(news => {
-                    if (news.id === action.newsId) {
-                        return { ...news, inBookmarks: false }
+                        return { ...news, inBookmarks: action.bookmarked }
                     }
                     return news;
                 })
@@ -66,17 +55,11 @@ export const addNewNews = (newsText, theme, author, category) => ({
     newNews: {id: v4(), newsText, theme, author, category}
 });
 
-export const addToBookmarks = (newsId) => {
+export const toggleSetToBookmarks = (newsId,bookmarked) => {
     return ({
-        type: ADD_TO_BOOKMARKS,
-        newsId
-    });
-}
-
-export const deleteFromBookmarks = (newsId) => {
-    return ({
-        type: DELETE_FROM_BOOKMARKS,
-        newsId
+        type: TOGGLE_SET_TO_BOOKMARKS,
+        newsId,
+        bookmarked
     });
 }
 
