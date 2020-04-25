@@ -24,28 +24,26 @@ class App extends React.Component {
       return <Preloader />
     }
     return (
-      <div className={cn(style.app, {[style.darkMode] : this.props.darkTheme})}>
-        <div className={style.container}>
-          <div className={style.appWrapper}>
-            <div className={style.header}>
+      <div className={cn(style.app, style.container, { [style.darkMode]: this.props.darkTheme })}>
+        <div className={style.appWrapper}>
+          <div className={style.header}>
             <HeaderContainer />
-            </div>
-            <div className={style.sidebar}>
+          </div>
+          <div className={style.sidebar}>
             <NavContainer />
-            </div>
-            <div className={style.appWrapperContent}>
-              <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
-                <Switch>
-                  <Route path="/dialogs/:userId?" render={() => <DialogsContainer />} />
-                  <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-                  <Route path="/users" render={() => <UsersContainer />} />
-                  <Route path="/login" render={() => <Login />} />
-                  <Route path="/news" render={() => <NewsContainer />} />
-                  <Route path="/settings" render={() => <SettingsContainer />} />
-                  <Redirect from="/" to="/profile" />
-                </Switch>
-              </Suspense>
-            </div>
+          </div>
+          <div className={style.appWrapperContent}>
+            <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
+              <Switch>
+                <Route path="/dialogs/:userId?" render={() => <DialogsContainer />} />
+                <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+                <Route path="/users" render={() => <UsersContainer />} />
+                <Route path="/login" render={() => <Login />} />
+                <Route path="/news" render={() => <NewsContainer />} />
+                <Route path="/settings" render={() => <SettingsContainer />} />
+                <Redirect from="/" to="/profile" />
+              </Switch>
+            </Suspense>
           </div>
         </div>
       </div>

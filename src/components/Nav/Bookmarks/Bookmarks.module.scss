@@ -1,5 +1,12 @@
 .bookmarks{
     .title{
         margin-bottom: 10px;
+        @media (max-width: 576px){
+            font-size: 28px;
+            margin-bottom: 0;
+        }
+    }
+    @media (max-width: 576px){
+        font-size: 12px;
     }
 }

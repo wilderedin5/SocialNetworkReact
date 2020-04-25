@@ -7,8 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 let mapStateToProps = (state) => {
     return {
-        dialogsData: state.dialogsPage.dialogsData,
-        messageData: state.dialogsPage.messageData
+        dialogsData: state.dialogsPage.dialogsData
     }
 }
 

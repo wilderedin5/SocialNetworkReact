@@ -2,31 +2,20 @@
 * {
   box-sizing: border-box;
 }
-ul,li{
+ul,
+li {
   padding: 0;
 }
-body{
+body {
   color: #fff;
+  background: rgb(170, 170, 170);
 }
 
 .app {
-  background: rgb(170, 170, 170);
-  .container {
+  &.container {
     width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
-    @media (max-width: 576px) {
-      max-width: 540px;
-    }
-
-    @media (max-width: 768px) {
-      max-width: 720px;
-    }
-
-    @media (max-width: 992px) {
-      max-width: 960px;
-    }
-
     .appWrapper {
       display: grid;
       grid-template-areas:
@@ -54,17 +43,44 @@ body{
         padding: 20px 10px;
       }
     }
+    @media (max-width: 992px) {
+      max-width: 960px;
+    }
+
+    @media (max-width: 576px) {
+      .appWrapper {
+        display: grid;
+        grid-template-areas:
+          "h h h"
+          "n n n"
+          "c c c";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        grid-gap: 10px;
+        .header {
+          background: rgb(45, 80, 165);
+          grid-area: h;
+        }
+        .sidebar {
+          background: rgb(45, 80, 165);
+          grid-area: n;
+        }
+        .appWrapperContent {
+          background: rgb(255, 255, 255);
+          grid-area: c;
+        }
+      }
+    }
   }
-  &.darkMode{
-    background: rgb(49, 49, 49);
-    .appWrapper{
-      .header{
+  &.darkMode {
+    .appWrapper {
+      .header {
         background: rgb(105, 36, 36);
       }
-      .sidebar{
+      .sidebar {
         background: rgb(105, 36, 36);
       }
-      .appWrapperContent{
+      .appWrapperContent {
         background: rgb(0, 16, 160);
       }
     }

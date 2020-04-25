@@ -5,7 +5,7 @@ import Friend from './Friend/Friend';
 const Friends = (props) => {
 
     return (
-        <div>
+        <div className={style.friends}>
             <div className={style.friendTitle}>My Friends</div>
             <div className={style.friendBar}>
                 {

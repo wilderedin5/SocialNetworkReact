@@ -9,6 +9,9 @@ button {
     font-weight: 700;
     outline: none;
     cursor: pointer;
+    &:focus{
+        outline: none;
+    }
     &:hover {
         background: rgb(45, 80, 165);
         color: #fff;

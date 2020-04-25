@@ -1,3 +1,4 @@
+import './bootstrap-reboot.min.css';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/redux-store';
 import React from 'react';
