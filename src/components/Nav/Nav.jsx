@@ -35,7 +35,7 @@ const Nav = (props) => {
         </NavLink>
       </ul>
       <Friends friends={props.friends} />
-      <Bookmarks bookMarks={props.bookMarks} />
+      <Bookmarks toggleSetToBookmarks={props.toggleSetToBookmarks} bookMarks={props.bookMarks} />
     </div>
   );
 }
