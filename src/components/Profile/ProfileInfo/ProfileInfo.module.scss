@@ -7,6 +7,9 @@
     .profileAvatar {
         display: flex;
         flex-direction: column;
+        .avatarImage{
+            border: 1px solid rgb(45, 80, 165);
+        }
         & img {
             width: 224px;
             height: 224px;

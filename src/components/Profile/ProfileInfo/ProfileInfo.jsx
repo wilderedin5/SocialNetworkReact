@@ -5,6 +5,7 @@ import ProfileStatusWithHook from './ProfileStatus/ProfileStatusWithHook';
 import Contact from './Contact/Contact';
 import ProfileInfoForm from './ProfileInfoForm/ProfileInfoForm';
 import { useState } from 'react';
+import noAvatar from '../../../assets/image/noAvatar.jpg';
 
 const ProfileInfo = (props) => {
     let [editMode, setEditMode] = useState(false);
@@ -26,7 +27,7 @@ const ProfileInfo = (props) => {
     return (
             <div className={style.profileDesc}>
                 <div className={style.profileAvatar}>
-                    <img src={props.profile.photos.large} />
+                    <img src={props.profile.photos.large ? props.profile.photos.large : noAvatar} className={style.avatarImage} />
                     {props.isOwner ? <div>
                         <input type="file" id="photoFile" onChange={onChangePhoto} className={style.uploadPhoto} />
                         <label for="photoFile">Изменить аватарку</label>
