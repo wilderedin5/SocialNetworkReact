@@ -11,7 +11,7 @@ let initialState = {
             {id:4,message: "Мое сообщение не подсвечивается", outMe: true},
             {id:5,message: "Мое сообщение можно удалить", outMe: true}
         ]},
-        {name: "Виктор", id: 2, photoUrl: "https://lh3.googleusercontent.com/proxy/kzMrRIwV9haJySm2_Vv_kyTCD_QsHJ3zQHfcTGPZ_IZRxjPWA5z10AXwj6hrDhFe3Oi2p4pJyc_2DcHnwWEqzZA20mgcthTJYBEX3S372xqQh2g", messages: [
+        {name: "Виктор", id: 2, photoUrl: "https://avatars.mds.yandex.net/get-zen_doc/1874839/pub_5cca08b4ac1ad900b3c67e5f_5cca0aaad31aa100b344e8bf/scale_1200", messages: [
             {id:1,message: "Сообщение от Виктора", outMe: false},
             {id:2,message: "Мое смс не подсвечивается", outMe: true}
         ]},
