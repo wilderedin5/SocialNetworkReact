@@ -4,6 +4,7 @@ import style from './Login.module.scss';
 import { connect } from 'react-redux';
 import { loginIntoSocialNetwork } from '../../redux/auth-reducer';
 import { Redirect } from 'react-router-dom';
+import LoginInfo from './LoginInfo/LoginInfo';
 
 const Login = (props) => {
     const onSubmit = (formData) => {
@@ -15,6 +16,7 @@ const Login = (props) => {
     return (
         <div className={style.loginPage} >
             <LoginForm captchaUrl={props.captchaUrl} onSubmit={onSubmit} />
+            <LoginInfo />
         </div>
     )
 }
