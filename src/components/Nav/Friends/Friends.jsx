@@ -9,7 +9,7 @@ const Friends = (props) => {
             <div className={style.friendTitle}>My Friends</div>
             <div className={style.friendBar}>
                 {
-                    props.friends.map(friend => <Friend key={friend.id} name={friend.name} /> )
+                    props.friends.map(friend => <Friend id={friend.id} key={friend.id} name={friend.name} /> )
                 }
             </div>
         </div>

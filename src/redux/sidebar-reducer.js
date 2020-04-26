@@ -1,21 +1,31 @@
+import { usersAPI } from '../api/api';
+const SET_LAST_FRIEND = 'sidebar-reducer/SET_LAST_FRIEND';
+
 let initialState = {
-    friends: [
-        {id: 1, name: "Андрей"},
-        {id: 2, name: "Виктор"},
-        {id: 3, name: "Ваня"},
-        {id: 4, name: "Света"},
-        {id: 5, name: "Илюша"},
-        {id: 6, name: "Сеня"},
-        {id: 7, name: "Ибрагим"},
-        {id: 8, name: "Кондратий"},
-        {id: 9, name: "Евгений"},
-        {id: 10, name: "Сандр"}
-    ]
+    friends: []
 };
 
 const sidebarReducer = (state = initialState,action) => {
-    
-    return state;
+    switch(action.type){
+        case SET_LAST_FRIEND:
+            return {
+                ...state,
+                friends: [...action.friends]
+            }
+        default:
+            return state
+    }
+}
+
+export const setLastFriend = (friends) => ({
+    type: SET_LAST_FRIEND,
+    friends
+});
+
+export const requestForLastFriends = (currentPage, pageSize) => async (dispatch) => {
+    let data = await usersAPI.getUsers(currentPage, pageSize);
+    dispatch(setLastFriend(data.items));
 }
 
 export default sidebarReducer;
+

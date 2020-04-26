@@ -11,6 +11,9 @@
     &.selectFriend .friendName{
         color: red;
     }
+    &.selectFriend .friendAvatar{
+        border: 1px solid red;
+    }
     .friendAvatar{
         width: 100%;
         border-radius: 50%;
