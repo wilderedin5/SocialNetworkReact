@@ -6,14 +6,15 @@ import { getBookmarks } from '../../redux/Selectors/news-selectors';
 
 const NavContainer = (props) => {
     return (
-        <Nav friends={props.friends} bookMarks={props.bookMarks} toggleSetToBookmarks={props.toggleSetToBookmarks} />
+        <Nav isAuth={props.isAuth} friends={props.friends} bookMarks={props.bookMarks} toggleSetToBookmarks={props.toggleSetToBookmarks} />
     )
 }
 
 const mapStateToProps = (state) => {
     return {
         friends: state.sidebar.friends,
-        bookMarks: getBookmarks(state)
+        bookMarks: getBookmarks(state),
+        isAuth: state.auth.isAuth
     }
 }
 

@@ -34,7 +34,9 @@ const Nav = (props) => {
             </li>
         </NavLink>
       </ul>
+      {props.isAuth &&
       <Friends friends={props.friends} />
+      }
       <Bookmarks toggleSetToBookmarks={props.toggleSetToBookmarks} bookMarks={props.bookMarks} />
     </div>
   );
