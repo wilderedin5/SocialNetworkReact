@@ -3,8 +3,6 @@ import style from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
-
-
     return (
         <div>
             {props.isAuth
