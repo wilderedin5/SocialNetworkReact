@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import userPhoto from '../../../assets/image/defaultAVA.jpg';
 
 const User = ({isFollowingProgress,unfollow,follow,user}) => {
-    debugger;
     return (
         <div>
             <div className={style.userItem}>

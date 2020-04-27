@@ -20,12 +20,10 @@ const ProfileContainer = (props) => {
     
     useEffect(() => {
         updateProfile()
-        console.log("Компонента вмонтирована!")
     }, []);
 
     useEffect(() => {
         updateProfile()
-        console.log("Компонента обновилась!")
     }, [props.match.params.userId]);
 
     return (

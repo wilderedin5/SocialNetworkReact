@@ -6,9 +6,9 @@ const Settings = (props) => {
         <div>
             <div>
                 { props.darkTheme ?
-                <button onClick={() => props.changeTheme(false)}>Светлая тема</button>
+                <button onClick={() => props.setChangeTheme(false)}>Светлая тема</button>
                 :
-                <button onClick={() => props.changeTheme(true)}>Темная тема</button>
+                <button onClick={() => props.setChangeTheme(true)}>Темная тема</button>
                 }
             </div>
         </div>

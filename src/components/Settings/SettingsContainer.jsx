@@ -1,13 +1,6 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { setChangeTheme } from '../../redux/app-reducer';
 import Settings from './Settings';
-
-const SettingsContainer = (props) => {
-    return (
-        <Settings darkTheme={props.darkTheme} changeTheme={props.setChangeTheme} />
-    )
-}
 
 const mapStateToProps = (state) => {
     return {
@@ -15,4 +8,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{setChangeTheme})(SettingsContainer);
+export default connect(mapStateToProps,{setChangeTheme})(Settings);
