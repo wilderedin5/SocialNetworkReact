@@ -5,31 +5,33 @@ import { getUsersProfile, updateStatus, getStatus, updatePhoto, updateProfile } 
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { useEffect } from 'react';
 
-class ProfileContainer extends React.Component {
-    updateProfile(){
-        let userId = this.props.match.params.userId;
+const ProfileContainer = (props) => {
+    const updateProfile = () => {
+        let userId = props.match.params.userId;
 
         if (!userId) {
-            userId = this.props.authorizedUserId;
+            userId = props.authorizedUserId;
         }
-        this.props.getUsersProfile(userId);
-        this.props.getStatus(userId);
+        props.getUsersProfile(userId);
+        props.getStatus(userId);
     }
-    componentDidMount() {
-        this.updateProfile();
-    }
-    componentDidUpdate(prevProps,prevState){
-        if(this.props.match.params.userId != prevProps.match.params.userId){
-            this.updateProfile();
-        }
-    }
-    render() {
-        return (
-            <Profile {...this.props} updatePhoto={this.props.updatePhoto} owner={!this.props.match.params.userId}
-            profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} updateProfile={this.props.updateProfile} />
-        )
-    }
+    
+    useEffect(() => {
+        updateProfile()
+        console.log("Компонента вмонтирована!")
+    }, []);
+
+    useEffect(() => {
+        updateProfile()
+        console.log("Компонента обновилась!")
+    }, [props.match.params.userId]);
+
+    return (
+        <Profile {...props} updatePhoto={props.updatePhoto} owner={!props.match.params.userId}
+        profile={props.profile} status={props.status} updateStatus={props.updateStatus} updateProfile={props.updateProfile} />
+    )
 }
 
 const mapStateToProps = (state) => {
@@ -39,9 +41,6 @@ const mapStateToProps = (state) => {
         authorizedUserId: state.auth.userId
     }
 }
-
-
-
 
 export default compose(
     connect(mapStateToProps, { getUsersProfile, getStatus, updateStatus, updatePhoto, updateProfile }),
