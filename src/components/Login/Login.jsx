@@ -1,8 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm/LoginForm';
 import style from './Login.module.scss';
-import { connect } from 'react-redux';
-import { loginIntoSocialNetwork } from '../../redux/auth-reducer';
 import { Redirect } from 'react-router-dom';
 import LoginInfo from './LoginInfo/LoginInfo';
 
@@ -21,11 +19,4 @@ const Login = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isAuth: state.auth.isAuth,
-        captchaUrl: state.auth.captchaUrl
-    }
-}
-
-export default connect(mapStateToProps,{loginIntoSocialNetwork})(Login);
+export default Login;
