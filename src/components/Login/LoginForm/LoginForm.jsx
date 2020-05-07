@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import style from './LoginForm.module.scss';
 import {maxLength,requiredField} from '../../../utils/validate/validateForm';
 import createFormElement from '../../../hoc/createFormElement/createFormElement';
+import { Button } from 'antd';
 
 
 const maxLength100 = maxLength(100);
@@ -22,7 +23,7 @@ const LoginForm = (props) => {
                 Запомнить меня
             </div>
             <div>
-                <button className={style.loginBtn} >LOGIN</button>
+                <Button type="primary" htmlType="submit">LOGIN</Button>
             </div>
             <div>
                 { props.captchaUrl && <img src={props.captchaUrl} alt=""/>}

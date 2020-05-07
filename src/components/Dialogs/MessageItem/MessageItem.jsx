@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './MessageItem.module.scss';
 import cn from "classnames";
+import { Button } from 'antd';
 
 
 const MessageItem = (props) => {
@@ -8,7 +9,7 @@ const MessageItem = (props) => {
         <div className={cn(style.message, {[style.messageToMe] : !props.outMe})}>
             <div>{props.message}</div>
             { props.outMe &&
-                <button onClick={() => props.deleteMessage(props.id,props.userId)} className={style.messageDeleteBtn}>Удалить сообщение</button>
+                <Button onClick={() => props.deleteMessage(props.id,props.userId)} className={style.messageDeleteBtn}>Удалить сообщение</Button>
             }
         </div>
     );

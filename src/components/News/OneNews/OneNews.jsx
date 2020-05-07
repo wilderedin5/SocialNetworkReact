@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './OneNews.module.scss';
+import { Button } from 'antd';
 
 const OneNews = ({newsText,theme,author,date,category,inBookmarks,deleteNews,newsId,toggleSetToBookmarks}) => {
     return (
@@ -11,11 +12,11 @@ const OneNews = ({newsText,theme,author,date,category,inBookmarks,deleteNews,new
             <div><b>Категория:</b> {category}</div>
             <div className={style.btnLine}>
                 { inBookmarks ?
-                    <button onClick={() => toggleSetToBookmarks(newsId,false)} className={style.oneNewsBtn}>Убрать из закладок</button>
+                    <Button onClick={() => toggleSetToBookmarks(newsId,false)} className={style.oneNewsBtn}>Убрать из закладок</Button>
                     :
-                    <button onClick={() => toggleSetToBookmarks(newsId,true)} className={style.oneNewsBtn}>Добавить в закладки</button>
+                    <Button onClick={() => toggleSetToBookmarks(newsId,true)} className={style.oneNewsBtn}>Добавить в закладки</Button>
                 }
-                <button onClick={() => deleteNews(newsId)} className={style.oneNewsBtn}>Удалить новость</button>
+                <Button onClick={() => deleteNews(newsId)} className={style.oneNewsBtn}>Удалить новость</Button>
             </div>
         </div>
     );

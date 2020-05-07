@@ -11,14 +11,8 @@
 .noAuthorized button {
     align-self: center;
     background: transparent;
-    border: 1px solid #fff;
     color: #fff;
-    border-radius: 5px;
-    padding: 5px 15px;
-    font-size: 16px;
-    font-weight: 700;
     outline: none;
-    cursor: pointer;
     &:hover {
         background: #fff;
         color: rgb(45, 80, 165);

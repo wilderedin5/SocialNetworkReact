@@ -3,6 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import createFormElement from '../../../../hoc/createFormElement/createFormElement';
 import { maxLength } from '../../../../utils/validate/validateForm';
 import style from './../ProfileInfo.module.scss';
+import { Button } from 'antd';
 
 const maxLength200 = maxLength(200);
 const Input = createFormElement("input");
@@ -21,7 +22,7 @@ const ProfileInfoForm = (props) => {
                         })}
                     </ul>
                 </div>
-                <button className={style.editModeBtn}>Сохранить страницу</button> 
+                <Button htmlType="submit" className={style.editModeBtn}>Сохранить страницу</Button>
             <div>
                 {props.error ? props.error : null}
             </div>

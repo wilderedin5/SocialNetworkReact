@@ -3,10 +3,12 @@ import style from './MyPosts.module.scss';
 import Post from './Post/Post';
 import MyPostsForm from './MyPostsForm/MyPostsForm';
 
+import {v4} from 'uuid';
+
 const MyPosts = (props) => {
 
     const addPost = (formData) => {
-        props.addPost(formData.postText);
+        props.addPost(v4(),formData.postText,0,null,formData.name);
     }
 
     return (
@@ -15,8 +17,8 @@ const MyPosts = (props) => {
             <MyPostsForm onSubmit={addPost} />
             <div className={style.contentNewPosts}>
                     {
-                        props.posts.map(p => <Post liked={p.liked} toggleLikePost={props.toggleLikePost} postId={p.id} 
-                            deletePost={props.deletePost} key={p.id} message={p.message} likeCount={p.likeCount} />)
+                        props.posts.map(post => <Post {...post} toggleLikePost={props.toggleLikePost} 
+                            deletePost={props.deletePost} key={post.id}  />)
                     }
                 </div>
         </div>

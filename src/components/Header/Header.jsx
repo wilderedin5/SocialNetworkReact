@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
+import { Button } from 'antd';
 
 const Header = (props) => {
     return (
@@ -11,9 +12,9 @@ const Header = (props) => {
                         <img src={props.profile && props.profile.photos.small} className={style.avatar} alt=""/>
                         <div className={style.name}>{props.login}</div>
                     </div>
-                    <button onClick={props.logoutFromSocialNetwork}>Logout</button>
+                    <Button onClick={props.logoutFromSocialNetwork}>Logout</Button>
                   </div>
-                : <div className={style.noAuthorized}><NavLink to="/login"><button>Login</button></NavLink></div>}
+                : <div className={style.noAuthorized}><NavLink to="/login"><Button>Login</Button></NavLink></div>}
         </div>
     );
 }

@@ -8,22 +8,15 @@
         border: 1px solid rgb(45, 80, 165);
         outline: none;
         resize: none;
+        color: #000;
     }
-    & button {
-        display: block;
-        background: transparent;
-        border: 1px solid rgb(45, 80, 165);
-        color: rgb(45, 80, 165);
-        border-radius: 5px;
-        padding: 5px 15px;
-        font-size: 16px;
-        font-weight: 700;
+    & input {
+        color: #000;
         outline: none;
-        cursor: pointer;
-        &:hover {
-            background: rgb(45, 80, 165);
-            color: #fff;
-        }
+        border-radius: 5px;
+        padding: 0 10px;
+        border: 1px solid rgb(45, 80, 165);
+        margin-bottom: 10px;
     }
     .contentNewPosts {
         margin-top: 20px;

@@ -11,24 +11,8 @@
         position: absolute;
         bottom: 5px;
         right: 5px;
-        .oneNewsBtn {
-            display: block;
-            background: transparent;
-            border: 1px solid rgb(45, 80, 165);
-            color: rgb(45, 80, 165);
-            border-radius: 5px;
-            padding: 5px 15px;
-            font-size: 16px;
-            font-weight: 700;
-            outline: none;
-            cursor: pointer;
-            &:hover {
-                background: rgb(45, 80, 165);
-                color: #fff;
-            }
-            &:first-child {
-                margin-right: 15px;
-            }
+        & button:first-child{
+            margin-right: 10px;
         }
     }
 }

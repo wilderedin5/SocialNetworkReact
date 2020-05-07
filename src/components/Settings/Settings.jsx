@@ -1,14 +1,15 @@
 import React from 'react';
 import style from './Settings.module.scss';
+import { Button } from 'antd';
 
 const Settings = (props) => {
     return(
         <div>
             <div>
                 { props.darkTheme ?
-                <button onClick={() => props.setChangeTheme(false)}>Светлая тема</button>
+                <Button onClick={() => props.setChangeTheme(false)} type="primary">Светлая тема</Button>
                 :
-                <button onClick={() => props.setChangeTheme(true)}>Темная тема</button>
+                <Button onClick={() => props.setChangeTheme(true)} type="primary">Темная тема</Button>
                 }
             </div>
         </div>

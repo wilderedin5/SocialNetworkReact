@@ -1,37 +1,7 @@
-.post {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    position: relative;
-    border: 1px solid rgb(45, 80, 165);
-    padding: 5px;
-    .postBtnLine {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 5px;
-        display: flex;
-        align-items: center;
-        & button:first-child{
-            margin-right: 5px;
-        }
-    }
-}
-.message {
-    font-size: 20px;
-    color: rgb(45, 80, 165);
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-}
-.avatar img {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    border: 2px solid rgb(45, 80, 165);
-}
-.like {
-    font-weight: bold;
-    font-size: 12px;
+.post{
+    border: 1px solid rgb(189, 189, 189);
     color: #000;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border-radius: 10px;
 }

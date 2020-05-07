@@ -6,6 +6,7 @@ import Contact from './Contact/Contact';
 import ProfileInfoForm from './ProfileInfoForm/ProfileInfoForm';
 import { useState } from 'react';
 import noAvatar from '../../../assets/image/noAvatar.jpg';
+import { Button } from 'antd';
 
 const ProfileInfo = (props) => {
     let [editMode, setEditMode] = useState(false);
@@ -50,7 +51,7 @@ const ProfileInfo = (props) => {
                     </div>
                 }
                 {(props.isOwner && !editMode) &&
-                    <button className={style.editModeBtn} onClick={() => setEditMode(true)}>Редактировать страницу</button>
+                    <Button className={style.editModeBtn} onClick={() => setEditMode(true)}>Редактировать страницу</Button>
                 }
             </div>
     );

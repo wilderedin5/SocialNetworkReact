@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './Users.module.scss';
-import Paginator from '../common/Paginator/Paginator';
 import User from './User/User';
+import { Pagination } from 'antd';
 
 const Users = (props) => {
     return (
         <div className={style.userPage}>
-            <Paginator currentPage={props.currentPage} onPageChanged={props.onPageChanged} totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} />
+            <Pagination className={style.pagination} defaultCurrent={1} current={props.currentPage} total={props.totalUsersCount} onChange={props.onPageChanged} showSizeChanger={false} />
             {
                 props.users.map(user => (
                     <User key={user.id} isFollowingProgress={props.isFollowingProgress} unfollow={props.unfollow} follow={props.follow} user={user} />

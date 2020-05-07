@@ -1,3 +1,4 @@
+import 'antd/dist/antd.css';
 import React, { Suspense } from 'react';
 import style from './App.module.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -14,6 +15,7 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
 const SettingsContainer = React.lazy(() => import('./components/Settings/SettingsContainer'));
+
 
 class App extends React.Component {
   componentDidMount() {

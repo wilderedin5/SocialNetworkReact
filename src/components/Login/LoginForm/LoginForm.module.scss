@@ -14,22 +14,6 @@
     & input[type="checkbox"]{
         margin-bottom: 15px;
     }
-    .loginBtn{
-        display: block;
-        background: transparent;
-        border: 1px solid rgb(45, 80, 165);
-        color: rgb(45, 80, 165);
-        border-radius: 5px;
-        padding: 5px 15px;
-        font-size: 16px;
-        font-weight: 700;
-        outline: none;
-        cursor: pointer;
-        &:hover {
-            background: rgb(45, 80, 165);
-            color: #fff;
-        }
-    }
 }
 
 
