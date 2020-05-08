@@ -1,0 +1,7 @@
+.bookmarkDelete {
+    color: #000;
+    cursor: pointer;
+    &:hover {
+        color: red;
+    }
+}

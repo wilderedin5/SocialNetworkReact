@@ -7,7 +7,7 @@ const Bookmarks = (props) => {
         <div className={style.bookmarks}>
             <h1 className={style.title}>Закладки</h1>
             { props.bookMarks.length > 0 ?
-                props.bookMarks.map(bookmark => <Bookmark toggleSetToBookmarks={props.toggleSetToBookmarks} newsId={bookmark.id} inBookmarks={bookmark.inBookmarks} theme={bookmark.theme} />)
+                props.bookMarks.map(bookmark => <Bookmark toggleSetToBookmarks={props.toggleSetToBookmarks} newsId={bookmark.id} inBookmarks={bookmark.inBookmarks} newsText={bookmark.newsText} theme={bookmark.theme} />)
             :
                 <div> Здесь пока пусто, сюда будут попадать новости сохраненные в закладки!</div>
             }

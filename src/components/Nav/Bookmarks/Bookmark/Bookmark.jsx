@@ -1,14 +1,13 @@
 import React from 'react';
 import style from './Bookmark.module.scss';
+import { Card } from 'antd';
+import DeleteBookmark from './DeleteBookmark/DeleteBookmark';
 
 const Bookmark = (props) => {
     return (
-        <div className={style.bookmark}>
-            <div>{props.theme}</div>
-            {props.inBookmarks &&
-                <div onClick={() => props.toggleSetToBookmarks(props.newsId,false)} className={style.bookmarkDelete}>&#9932;</div>
-            }
-        </div>
+        <Card className={style.bookmark} size="small" title={props.theme} extra={props.inBookmarks && <DeleteBookmark toggleSetToBookmarks={props.toggleSetToBookmarks} newsId={props.newsId} />}>
+            <p>{props.newsText.substring(0, 100)}.....</p>
+        </Card>
     )
 }
 
