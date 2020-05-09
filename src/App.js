@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import style from './App.module.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
@@ -16,42 +16,40 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
 
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.initiliazeApp();
+const App = (props) => {
+  useEffect(() => {
+    props.initiliazeApp();
+  }, []);
+  if (!props.initiliazed) {
+    return <Preloader />
   }
-  render() {
-    if (!this.props.initiliazed) {
-      return <Preloader />
-    }
-    const { Header, Sider, Content } = Layout;
-    return (
+  const { Header, Sider, Content } = Layout;
+  return (
+    <Layout>
+      <Header className={style.header}>
+        <HeaderContainer />
+      </Header>
       <Layout>
-        <Header className={style.header}>
-          <HeaderContainer />
-        </Header>
-        <Layout>
-          {this.props.isAuth &&
-            <Sider>
-              <NavContainer />
-            </Sider>
-          }
-          <Content className={style.content}>
-            <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
-              <Switch>
-                <Route path="/dialogs/:userId?" render={() => <DialogsContainer />} />
-                <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-                <Route path="/users" render={() => <UsersContainer />} />
-                <Route path="/login" render={() => <LoginContainer />} />
-                <Route path="/news/:newsId?" render={() => <NewsContainer />} />
-                <Redirect from="/" to="/profile" />
-              </Switch>
-            </Suspense>
-          </Content>
-        </Layout>
+        {props.isAuth &&
+          <Sider>
+            <NavContainer />
+          </Sider>
+        }
+        <Content className={style.content}>
+          <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
+            <Switch>
+              <Route path="/dialogs/:userId?" render={() => <DialogsContainer />} />
+              <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+              <Route path="/users" render={() => <UsersContainer />} />
+              <Route path="/login" render={() => <LoginContainer />} />
+              <Route path="/news/:newsId?" render={() => <NewsContainer />} />
+              <Redirect from="/" to="/profile" />
+            </Switch>
+          </Suspense>
+        </Content>
       </Layout>
-    );
-  }
+    </Layout>
+  );
 }
 
 const mapStateToProps = (state) => {
