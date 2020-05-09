@@ -31,9 +31,11 @@ class App extends React.Component {
           <HeaderContainer />
         </Header>
         <Layout>
-          <Sider>
-            <NavContainer />
-          </Sider>
+          {this.props.isAuth &&
+            <Sider>
+              <NavContainer />
+            </Sider>
+          }
           <Content className={style.content}>
             <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
               <Switch>
@@ -55,7 +57,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   return {
     initiliazed: state.app.initiliazed,
-    darkTheme: state.app.darkTheme
+    isAuth: state.auth.isAuth
   }
 }
 
