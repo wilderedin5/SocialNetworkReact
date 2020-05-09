@@ -41,7 +41,7 @@ class App extends React.Component {
                 <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
                 <Route path="/users" render={() => <UsersContainer />} />
                 <Route path="/login" render={() => <LoginContainer />} />
-                <Route path="/news" render={() => <NewsContainer />} />
+                <Route path="/news/:newsId?" render={() => <NewsContainer />} />
                 <Route path="/settings" render={() => <SettingsContainer />} />
                 <Redirect from="/" to="/profile" />
               </Switch>

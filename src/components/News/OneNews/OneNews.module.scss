@@ -11,7 +11,7 @@
         position: absolute;
         bottom: 5px;
         right: 5px;
-        & button:first-child{
+        & button:not(:last-child){
             margin-right: 10px;
         }
     }
