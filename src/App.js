@@ -8,13 +8,12 @@ import { initiliazeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { compose } from 'redux';
 import NavContainer from './components/Nav/NavContainer';
-import cn from "classnames";
 import LoginContainer from './components/Login/LoginContainer';
+import { Layout } from 'antd';
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
-const SettingsContainer = React.lazy(() => import('./components/Settings/SettingsContainer'));
 
 
 class App extends React.Component {
@@ -25,16 +24,17 @@ class App extends React.Component {
     if (!this.props.initiliazed) {
       return <Preloader />
     }
+    const { Header, Sider, Content } = Layout;
     return (
-      <div className={cn(style.app, style.container, { [style.darkMode]: this.props.darkTheme })}>
-        <div className={style.appWrapper}>
-          <div className={style.header}>
-            <HeaderContainer />
-          </div>
-          <div className={style.sidebar}>
+      <Layout>
+        <Header className={style.header}>
+          <HeaderContainer />
+        </Header>
+        <Layout>
+          <Sider>
             <NavContainer />
-          </div>
-          <div className={style.appWrapperContent}>
+          </Sider>
+          <Content className={style.content}>
             <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
               <Switch>
                 <Route path="/dialogs/:userId?" render={() => <DialogsContainer />} />
@@ -42,13 +42,12 @@ class App extends React.Component {
                 <Route path="/users" render={() => <UsersContainer />} />
                 <Route path="/login" render={() => <LoginContainer />} />
                 <Route path="/news/:newsId?" render={() => <NewsContainer />} />
-                <Route path="/settings" render={() => <SettingsContainer />} />
                 <Redirect from="/" to="/profile" />
               </Switch>
             </Suspense>
-          </div>
-        </div>
-      </div>
+          </Content>
+        </Layout>
+      </Layout>
     );
   }
 }

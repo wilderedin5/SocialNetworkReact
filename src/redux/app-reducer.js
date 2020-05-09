@@ -1,11 +1,9 @@
 import { getAuthUserData } from "./auth-reducer";
 
 const INITIALIZED_COMPLETE = 'app-reducer/INITIALIZED_COMPLETE';
-const CHANGE_THEME = 'app-reducer/CHANGE_THEME';
 
 let initialState = {
-    initiliazed: false,
-    darkTheme: false
+    initiliazed: false
 };
 
 const appReducer = (state = initialState, action) => {
@@ -15,11 +13,6 @@ const appReducer = (state = initialState, action) => {
                 ...state,
                 initiliazed: true
             }
-        case CHANGE_THEME:
-            return {
-                ...state,
-                darkTheme: action.changeTheme
-            }
         default:
             return state;
     }
@@ -28,13 +21,6 @@ const appReducer = (state = initialState, action) => {
 export const setInitializeApp = () => {
     return ({
         type: INITIALIZED_COMPLETE
-    });
-}
-
-export const setChangeTheme = (changeTheme) => {
-    return ({
-        type: CHANGE_THEME,
-        changeTheme
     });
 }
 

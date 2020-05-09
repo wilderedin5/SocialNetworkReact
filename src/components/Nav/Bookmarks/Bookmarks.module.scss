@@ -1,11 +1,8 @@
 .bookmarks{
-    .title{
-        margin-bottom: 10px;
+    padding: 0 20px;
+    .bookMarksTitle{
+        font-size: 18px;
         color: #fff;
-        @media (max-width: 576px){
-            font-size: 28px;
-            margin-bottom: 0;
-        }
     }
     @media (max-width: 576px){
         font-size: 12px;

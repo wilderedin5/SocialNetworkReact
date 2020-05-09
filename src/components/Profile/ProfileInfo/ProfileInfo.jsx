@@ -6,7 +6,7 @@ import Contact from './Contact/Contact';
 import ProfileInfoForm from './ProfileInfoForm/ProfileInfoForm';
 import { useState } from 'react';
 import noAvatar from '../../../assets/image/noAvatar.jpg';
-import { Button } from 'antd';
+import { Button, Divider } from 'antd';
 
 const ProfileInfo = (props) => {
     let [editMode, setEditMode] = useState(false);
@@ -40,9 +40,11 @@ const ProfileInfo = (props) => {
                     <div className={style.profileInfo}>
                         <div className={style.profileInfoName}>{props.profile.fullName}</div>
                         <div className={style.profileInfoStatus}><ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} /></div>
+                        <Divider orientation="left">Основная информация:</Divider>
                         <div>Ищу работу: {props.profile.lookingForAJob ? "Да" : "Нет"} </div>
                         <div>Мои навыки: {props.profile.lookingForAJobDescription} </div>
                         <div>Обо мне: {props.profile.aboutMe}</div>
+                        <Divider orientation="left">Контакты:</Divider>
                         <ul>
                             {Object.keys(props.profile.contacts).map(key => {
                                 return <Contact key={key} contactName={key} contactValue={props.profile.contacts[key]} />

@@ -8,81 +8,24 @@ li {
 }
 body {
   color: #fff;
-  background: rgb(220, 220, 220) !important;
 }
-
-.app {
-  &.container {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    .appWrapper {
-      display: grid;
-      grid-template-areas:
-        "h h h"
-        "n c c";
-      grid-template-columns: 2fr 10fr;
-      grid-template-rows: auto 1fr;
-      grid-gap: 20px;
-      .header {
-        background: rgb(45, 80, 165);
-        grid-area: h;
-      }
-      .sidebar {
-        background: rgb(45, 80, 165);
-        grid-area: n;
-      }
-      .appWrapperContent {
-        background: rgb(255, 255, 255);
-        grid-area: c;
-      }
-      .appWrapperContent,
-      .sidebar,
-      .header {
-        border-radius: 10px;
-        padding: 20px 10px;
-      }
+.header{
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+.content{
+  margin: 0 20px;
+}
+.darkMode {
+  .appWrapper {
+    .header {
+      background: rgb(105, 36, 36);
     }
-    @media (max-width: 992px) {
-      max-width: 960px;
+    .sidebar {
+      background: rgb(105, 36, 36);
     }
-
-    @media (max-width: 576px) {
-      .appWrapper {
-        display: grid;
-        grid-template-areas:
-          "h h h"
-          "n n n"
-          "c c c";
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-        grid-gap: 10px;
-        .header {
-          background: rgb(45, 80, 165);
-          grid-area: h;
-        }
-        .sidebar {
-          background: rgb(45, 80, 165);
-          grid-area: n;
-        }
-        .appWrapperContent {
-          background: rgb(255, 255, 255);
-          grid-area: c;
-        }
-      }
-    }
-  }
-  &.darkMode {
-    .appWrapper {
-      .header {
-        background: rgb(105, 36, 36);
-      }
-      .sidebar {
-        background: rgb(105, 36, 36);
-      }
-      .appWrapperContent {
-        background: rgb(0, 16, 160);
-      }
+    .appWrapperContent {
+      background: rgb(0, 16, 160);
     }
   }
 }
