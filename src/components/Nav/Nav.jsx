@@ -29,6 +29,11 @@ const Nav = (props) => {
             Users
           </NavLink>
         </Menu.Item>
+        <Menu.Item key="5">
+          <NavLink to="/help" activeClassName={style.activeLink}>
+            Help
+          </NavLink>
+        </Menu.Item>
       </Menu>
       {props.isAuth &&
         <Friends friends={props.friends} />

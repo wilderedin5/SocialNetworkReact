@@ -14,6 +14,7 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
+const HelpContainer = React.lazy(() => import('./components/Help/HelpContainer'))
 
 
 const App = (props) => {
@@ -43,6 +44,7 @@ const App = (props) => {
               <Route path="/users" render={() => <UsersContainer />} />
               <Route path="/login" render={() => <LoginContainer />} />
               <Route path="/news/:newsId?" render={() => <NewsContainer />} />
+              <Route path="/help" render={() => <HelpContainer />} />
               <Redirect from="/" to="/profile" />
             </Switch>
           </Suspense>

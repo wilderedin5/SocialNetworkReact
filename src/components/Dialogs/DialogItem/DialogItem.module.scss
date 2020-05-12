@@ -20,6 +20,7 @@
     }
     &.activeDialogName,&:hover{
         color: rgb(45, 80, 165);
+        margin-bottom: -1px;
         border-bottom: 1px solid rgb(45, 80, 165);
     }
 }
