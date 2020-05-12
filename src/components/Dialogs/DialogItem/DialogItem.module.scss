@@ -2,27 +2,24 @@
     text-decoration: none;
     color: #000;
     font-weight: 700;
+    &:not(:last-child){
+        margin-right: 20px;
+    }
     .dialogItem{
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
-        border: 1px solid rgb(45, 80, 165);
-        padding: 5px 10px;
+        margin-bottom: 10px;
+        padding: 2px 10px;
         .avatar{
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             margin-right: 5px;
             border: 1px solid rgb(45, 80, 165);
         }
     }
     &.activeDialogName,&:hover{
-        color: #fff;
-        .dialogItem{
-            background: rgb(45, 80, 165);
-            .avatar{
-                border: 1px solid #fff;
-            }
-        }
+        color: rgb(45, 80, 165);
+        border-bottom: 1px solid rgb(45, 80, 165);
     }
 }
