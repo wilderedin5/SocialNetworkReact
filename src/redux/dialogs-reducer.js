@@ -1,6 +1,7 @@
 import {v4} from 'uuid';
 const ADD_MESSAGE = "dialogs-reducer/ADD-MESSAGE";
 const DELETE_MESSAGE = "dialogs-reducer/DELETE_MESSAGE";
+const DELETE_ALL_MESSAGES_FROM_DIALOG = "dialogs-reducer/DELETE_ALL_MESSAGES_FROM_DIALOG";
 
 let initialState = {
     dialogsData: [
@@ -58,6 +59,16 @@ const dialogsReducer = (state = initialState,action) => {
                     return dialog;
                 })
             }
+        case DELETE_ALL_MESSAGES_FROM_DIALOG:
+            return {
+                ...state,
+                dialogsData: state.dialogsData.map(dialog => {
+                    if(dialog.id === action.userId){
+                        return {...dialog, messages: []}
+                    }
+                    return dialog;
+                })
+            }
         default: 
             return state;
     }
@@ -78,5 +89,10 @@ export const deleteMessage = (messageId,userId) => {
         userId
     })
 }
+
+export const deleteAllMessagesFromDialog = (userId) => ({
+    type: DELETE_ALL_MESSAGES_FROM_DIALOG,
+    userId
+});
 
 export default dialogsReducer;

@@ -4,6 +4,7 @@ import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 import { Redirect } from 'react-router-dom';
 import DialogsForm from './DialogsForm/DialogsForm';
+import { Button } from 'antd';
 
 
 const Dialogs = (props) => {
@@ -29,7 +30,7 @@ const Dialogs = (props) => {
                 {
                     props.dialogsData[userId - 1].messages.map(m => <MessageItem key={m.id} userId={userId} id={m.id} message={m.message} outMe={m.outMe} deleteMessage={props.deleteMessage} />)
                 }
-                <DialogsForm onSubmit={AddMessage} />
+                <DialogsForm id={userId} deleteAllMessagesFromDialog={props.deleteAllMessagesFromDialog} onSubmit={AddMessage} />
             </div>
         </div>
     );
