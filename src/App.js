@@ -10,6 +10,7 @@ import { compose } from 'redux';
 import NavContainer from './components/Nav/NavContainer';
 import LoginContainer from './components/Login/LoginContainer';
 import { Layout } from 'antd';
+import AdvertsContainer from './components/Adverts/AdvertsContainer';
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
@@ -45,6 +46,7 @@ const App = (props) => {
               <Route path="/login" render={() => <LoginContainer />} />
               <Route path="/news/:newsId?" render={() => <NewsContainer />} />
               <Route path="/help" render={() => <HelpContainer />} />
+              <Route path="/adverts/:advertId?" render={() => <AdvertsContainer />} />
               <Redirect from="/" to="/profile" />
             </Switch>
           </Suspense>

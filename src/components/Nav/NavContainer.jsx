@@ -11,7 +11,7 @@ const NavContainer = (props) => {
         props.requestForLastFriends(1,9);
     },[])
     return (
-        <Nav isAuth={props.isAuth} friends={props.friends} bookMarks={props.bookMarks} toggleSetToBookmarks={props.toggleSetToBookmarks} />
+        <Nav advertising={props.advertising} isAuth={props.isAuth} friends={props.friends} bookMarks={props.bookMarks} toggleSetToBookmarks={props.toggleSetToBookmarks} />
     )
 }
 
@@ -19,7 +19,8 @@ const mapStateToProps = (state) => {
     return {
         friends: state.sidebar.friends,
         bookMarks: getBookmarks(state),
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        advertising: state.adverts.advertising
     }
 }
 

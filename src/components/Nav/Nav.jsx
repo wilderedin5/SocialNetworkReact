@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Friends from './Friends/Friends';
 import Bookmarks from './Bookmarks/Bookmarks';
 import { Menu } from 'antd';
+import Advertising from './Advertising/Advertising';
 
 const Nav = (props) => {
   return (
@@ -39,6 +40,7 @@ const Nav = (props) => {
         <Friends friends={props.friends} />
       }
       <Bookmarks toggleSetToBookmarks={props.toggleSetToBookmarks} bookMarks={props.bookMarks} />
+      <Advertising advertising={props.advertising} />
     </div>
   );
 }
