@@ -39,7 +39,7 @@ const CommentAdvert = (props) => {
                     src={props.avatar ? props.avatar : "https://www.kino-teatr.ru/movie/kadr/36398/pv_82319.jpg"}
                     alt="Han Solo"
                 />}
-            content={<p>{props.comment}</p>} />
+            content={<p>{props.text}</p>} />
     )
 }
 
