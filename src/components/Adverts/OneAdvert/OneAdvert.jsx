@@ -3,6 +3,7 @@ import style from './OneAdvert.module.scss';
 import CommentAdvert from '../Comment/CommentAdvert';
 import AdvertForm from '../AdvertForm/AdvertForm';
 import { v4 } from 'uuid';
+import { LikeOutlined, DislikeFilled } from '@ant-design/icons';
 
 const OneAdvert = (props) => {
 
@@ -23,6 +24,19 @@ const OneAdvert = (props) => {
                     </div>
                     <div className={style.text}>
                         {props.text}
+                    </div>
+                    <div>
+                        {props.liked ?
+                            <span className={style.like} onClick={() => props.toggleLikeAdvert(props.id)}>
+                                <DislikeFilled />
+                                {props.likeCount}
+                            </span>
+                            :
+                            <span className={style.like} onClick={() => props.toggleLikeAdvert(props.id)}>
+                                <LikeOutlined />
+                                {props.likeCount}
+                            </span>
+                        }
                     </div>
                 </div>
             </div>
