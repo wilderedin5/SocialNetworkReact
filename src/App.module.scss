@@ -17,16 +17,7 @@ body {
 .content{
   margin: 0 20px;
 }
-.darkMode {
-  .appWrapper {
-    .header {
-      background: rgb(105, 36, 36);
-    }
-    .sidebar {
-      background: rgb(105, 36, 36);
-    }
-    .appWrapperContent {
-      background: rgb(0, 16, 160);
-    }
-  }
+.footer{
+  margin-top: 10px;
+  background: #001529;
 }

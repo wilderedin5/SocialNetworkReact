@@ -11,6 +11,7 @@ import NavContainer from './components/Nav/NavContainer';
 import LoginContainer from './components/Login/LoginContainer';
 import { Layout } from 'antd';
 import AdvertsContainer from './components/Adverts/AdvertsContainer';
+import FooterContainer from './components/Footer/FooterContainer';
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
@@ -26,7 +27,7 @@ const App = (props) => {
   if (!props.initiliazed) {
     return <Preloader />
   }
-  const { Header, Sider, Content } = Layout;
+  const { Header, Sider, Content, Footer } = Layout;
   return (
     <Layout>
       <Header className={style.header}>
@@ -54,6 +55,9 @@ const App = (props) => {
           </Suspense>
         </Content>
       </Layout>
+      <Footer className={style.footer}>
+        <FooterContainer />
+      </Footer>
     </Layout>
   );
 }

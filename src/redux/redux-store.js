@@ -10,6 +10,7 @@ import { reducer as formReducer } from 'redux-form'
 import newsReducer from "./news-reducer";
 import helpReducer from "./help-reducer";
 import advertsReducer from "./adverts-reducer";
+import footerReducer from "./footer-reducer";
 
 
 let reducers = combineReducers({
@@ -22,7 +23,8 @@ let reducers = combineReducers({
     app: appReducer,
     newsPage: newsReducer,
     help: helpReducer,
-    adverts: advertsReducer
+    adverts: advertsReducer,
+    footer: footerReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
