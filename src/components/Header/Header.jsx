@@ -12,9 +12,9 @@ const Header = (props) => {
                         <img src={props.profile && props.profile.photos.small} className={style.avatar} alt=""/>
                         <div className={style.name}>{props.login}</div>
                     </div>
-                    <Button onClick={props.logoutFromSocialNetwork}>Logout</Button>
+                    <Button onClick={props.logoutFromSocialNetwork}>Выйти</Button>
                   </div>
-                : <div className={style.noAuthorized}><NavLink to="/login"><Button>Login</Button></NavLink></div>}
+                : <div className={style.noAuthorized}><NavLink to="/login"><Button>Войти</Button></NavLink></div>}
         </div>
     );
 }

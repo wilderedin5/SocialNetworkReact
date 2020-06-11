@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://wilderedin5.github.io/SocialNetworkReact/",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.1.0",

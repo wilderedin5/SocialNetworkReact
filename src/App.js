@@ -15,7 +15,8 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
-const HelpContainer = React.lazy(() => import('./components/Help/HelpContainer'))
+const HelpContainer = React.lazy(() => import('./components/Help/HelpContainer'));
+const OrderAdvertContainer = React.lazy(() => import('./components/OrderAdvert/OrderAdvertContainer'));
 
 
 const App = (props) => {
@@ -47,6 +48,7 @@ const App = (props) => {
               <Route path="/news/:newsId?" render={() => <NewsContainer />} />
               <Route path="/help" render={() => <HelpContainer />} />
               <Route path="/adverts/:advertId?" render={() => <AdvertsContainer />} />
+              <Route path="/order-advert" render={() => <OrderAdvertContainer />} />
               <Redirect from="/" to="/profile" />
             </Switch>
           </Suspense>

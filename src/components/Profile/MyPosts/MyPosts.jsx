@@ -13,7 +13,7 @@ const MyPosts = (props) => {
 
     return (
         <div className={style.MyPosts}>
-            <h2>My posts</h2>
+            <h2>Мои посты</h2>
             <MyPostsForm onSubmit={addPost} />
             <div className={style.contentNewPosts}>
                     {

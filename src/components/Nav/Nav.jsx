@@ -12,27 +12,32 @@ const Nav = (props) => {
       <Menu theme="dark" defaultOpenKeys={'1'} mode="inline">
         <Menu.Item key="1">
           <NavLink to="/profile" activeClassName={style.activeLink}>
-            Profile
+            Профиль
           </NavLink>
         </Menu.Item>
         <Menu.Item key="2">
           <NavLink to="/dialogs" activeClassName={style.activeLink}>
-            Messages
+            Сообщения
           </NavLink>
         </Menu.Item>
         <Menu.Item key="3">
           <NavLink to="/news" activeClassName={style.activeLink}>
-            News
+            Новости
           </NavLink>
         </Menu.Item>
         <Menu.Item key="4">
           <NavLink to="/users" activeClassName={style.activeLink}>
-            Users
+            Пользователи
           </NavLink>
         </Menu.Item>
         <Menu.Item key="5">
           <NavLink to="/help" activeClassName={style.activeLink}>
-            Help
+            Помощь
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="6">
+          <NavLink to="/order-advert" activeClassName={style.activeLink}>
+            Заказать рекламу
           </NavLink>
         </Menu.Item>
       </Menu>
