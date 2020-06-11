@@ -32,13 +32,11 @@ const ProfileContainer = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        profile: state.profilePage.profile,
-        status: state.profilePage.status,
-        authorizedUserId: state.auth.userId
-    }
-}
+const mapStateToProps = (state) => ({
+    profile: state.profilePage.profile,
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId
+});
 
 export default compose(
     connect(mapStateToProps, { getUsersProfile, getStatus, updateStatus, updatePhoto, updateProfile }),

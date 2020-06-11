@@ -5,11 +5,9 @@ import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { withRouter } from 'react-router-dom';
 
-let mapStateToProps = (state) => {
-    return {
-        dialogsData: state.dialogsPage.dialogsData
-    }
-}
+let mapStateToProps = (state) => ({
+    dialogsData: state.dialogsPage.dialogsData
+});
 
 export default compose(
     connect(mapStateToProps, {deleteMessage,addMessage,deleteAllMessagesFromDialog}),

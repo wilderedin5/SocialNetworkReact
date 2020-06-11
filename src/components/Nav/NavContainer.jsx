@@ -15,13 +15,11 @@ const NavContainer = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        friends: state.sidebar.friends,
-        bookMarks: getBookmarks(state),
-        isAuth: state.auth.isAuth,
-        advertising: state.adverts.advertising
-    }
-}
+const mapStateToProps = (state) => ({
+    friends: state.sidebar.friends,
+    bookMarks: getBookmarks(state),
+    isAuth: state.auth.isAuth,
+    advertising: state.adverts.advertising
+});
 
 export default connect(mapStateToProps, {toggleSetToBookmarks,requestForLastFriends})(NavContainer);

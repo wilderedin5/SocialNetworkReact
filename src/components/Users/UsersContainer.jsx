@@ -33,16 +33,14 @@ const UsersContainer = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        users: getUsers(state),
-        pageSize: getPageSize(state),
-        totalUsersCount: getTotalUsersCount(state),
-        currentPage: getCurrentPage(state),
-        isFetching: getIsFetching(state),
-        isFollowingProgress: getIsFollowingProgress(state)
-    }
-};
+const mapStateToProps = (state) => ({
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    isFollowingProgress: getIsFollowingProgress(state)
+});
 
 export default compose(
     withAuthRedirect,

@@ -4,11 +4,9 @@ import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { deleteCommentFromAdvert, toggleLikeCommentFromAdvert, addCommentToAdvert, toggleLikeAdvert } from "../../redux/adverts-reducer";
 
-const mapStateToProps = (state) => {
-    return {
-        advertising: state.adverts.advertising
-    }
-}
+const mapStateToProps = (state) => ({
+    advertising: state.adverts.advertising
+});
 
 export default compose(
     withRouter,

@@ -5,11 +5,9 @@ import { compose } from 'redux';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = (state) => {
-    return {
-        news: state.newsPage.news
-    }
-}
+const mapStateToProps = (state) => ({
+    news: state.newsPage.news
+});
 
 export default compose(
     withRouter,
