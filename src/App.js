@@ -55,9 +55,11 @@ const App = (props) => {
           </Suspense>
         </Content>
       </Layout>
-      <Footer className={style.footer}>
-        <FooterContainer />
-      </Footer>
+      {props.isAuth &&
+        <Footer className={style.footer}>
+          <FooterContainer />
+        </Footer>
+      }
     </Layout>
   );
 }

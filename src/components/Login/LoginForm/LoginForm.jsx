@@ -23,7 +23,7 @@ const LoginForm = (props) => {
                 Запомнить меня
             </div>
             <div>
-                <Button type="primary" htmlType="submit">LOGIN</Button>
+                <Button type="primary" htmlType="submit">Войти</Button>
             </div>
             <div>
                 { props.captchaUrl && <img src={props.captchaUrl} alt=""/>}

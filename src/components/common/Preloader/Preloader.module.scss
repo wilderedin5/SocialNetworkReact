@@ -1,5 +1,18 @@
-.preloader{
+.preloader {
     display: flex;
     align-items: center;
     justify-content: center;
+    .circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 6px dotted blue;
+        background: transparent;
+        animation: preloader 2s linear infinite;
+        @keyframes preloader {
+            50% {
+                transform: rotate(360deg);
+            }
+        }
+    }
 }
