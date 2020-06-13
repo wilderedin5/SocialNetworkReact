@@ -4,7 +4,8 @@ import { compose } from "redux";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 const mapStateToProps = (state) => ({
-    help: state.help.helpQA
+    help: state.help.helpQA,
+    contacts: state.help.contacts
 });
 
 export default compose(
