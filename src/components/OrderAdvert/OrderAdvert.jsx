@@ -9,7 +9,7 @@ const OrderAdvert = (props) => {
     return (
         <div> 
             {
-                props.adverts.map(advert => <OrderAdvertInfo {...advert} />)
+                props.adverts.map(advert => <OrderAdvertInfo deleteAdvert={props.deleteAdvert} {...advert} />)
             }
             <OrderAdvertForm onSubmit={onSubmit} />
         </div>

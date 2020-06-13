@@ -37,7 +37,7 @@ const Nav = (props) => {
         </Menu.Item>
         <Menu.Item key="6">
           <NavLink to="/order-advert" activeClassName={style.activeLink}>
-            Заказать рекламу
+            Управление рекламой
           </NavLink>
         </Menu.Item>
       </Menu>

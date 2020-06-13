@@ -3,6 +3,7 @@ const TOGGLE_LIKE_COMMENT_FROM_ADVERT = "adverts-reducer/TOGGLE_LIKE_COMMENT_FRO
 const ADD_COMMENT_TO_ADVERT = "adverts-reducer/ADD_COMMENT_TO_ADVERT";
 const TOGGLE_LIKE_ADVERT = "advert-reducer/TOGGLE_LIKE_ADVERT";
 const ADD_ADVERT = "advert-reducer/ADD_ADVERT";
+const DELETE_ADVERT = "advert-reducer/DELETE_ADVERT";
 
 let initialState = {
     advertising: [
@@ -83,6 +84,11 @@ const advertsReducer = (state = initialState, action) => {
                 ...state,
                 advertising: [...state.advertising, action.advert]
             }
+        case DELETE_ADVERT:
+            return {
+                ...state,
+                advertising: state.advertising.filter(advert => advert.id !== action.advertId)
+            }
         default:
             return state;
     }
@@ -114,6 +120,11 @@ export const toggleLikeAdvert = (advertId) => ({
 export const addAdvert = (id, liked, likeCount, title, text, image) => ({
     type: ADD_ADVERT,
     advert: {id, liked, likeCount, title, text, image, comment: []}
-})
+});
+
+export const deleteAdvert = (advertId) => ({
+    type: DELETE_ADVERT,
+    advertId
+});
 
 export default advertsReducer;
