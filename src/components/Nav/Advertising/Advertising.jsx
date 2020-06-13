@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const Advertising = (props) => {
     return (
-        <Carousel className={style.slider}>
+        <Carousel className={style.slider} autoplay={true}>
             {
                 props.advertising.map(advert => <NavLink to={`/adverts/${advert.id}`}>
                     <div className={style.slide}>
