@@ -7,35 +7,36 @@ import { Menu } from 'antd';
 import Advertising from './Advertising/Advertising';
 
 const Nav = (props) => {
+  debugger;
   return (
     <div>
-      <Menu theme="dark" defaultOpenKeys={'1'} mode="inline">
-        <Menu.Item key="1">
+      <Menu theme="dark" defaultSelectedKeys={props.url} mode="inline">
+        <Menu.Item key="/profile">
           <NavLink to="/profile" activeClassName={style.activeLink}>
             Профиль
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="2">
+        <Menu.Item key="/dialogs">
           <NavLink to="/dialogs" activeClassName={style.activeLink}>
             Сообщения
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="3">
+        <Menu.Item key="/news">
           <NavLink to="/news" activeClassName={style.activeLink}>
             Новости
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="4">
+        <Menu.Item key="/users">
           <NavLink to="/users" activeClassName={style.activeLink}>
             Пользователи
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="5">
+        <Menu.Item key="/help">
           <NavLink to="/help" activeClassName={style.activeLink}>
             Помощь
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="6">
+        <Menu.Item key="/order-advert">
           <NavLink to="/order-advert" activeClassName={style.activeLink}>
             Управление рекламой
           </NavLink>
