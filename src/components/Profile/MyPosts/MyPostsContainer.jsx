@@ -1,11 +1,9 @@
 import MyPosts from './MyPosts';
-import {addPost,deletePost,toggleLikePost} from './../../../redux/profile-reducer';
-import {connect} from 'react-redux';
+import { addPost, deletePost, toggleLikePost } from './../../../redux/profile-reducer';
+import { connect } from 'react-redux';
 
-let mapStateToProps = (state) => {
-    return {
-        posts: state.profilePage.posts
-    }
-}
+let mapStateToProps = (state) => ({
+    posts: state.profilePage.posts
+})
 
-export default connect(mapStateToProps,{addPost,deletePost,toggleLikePost})(MyPosts);
+export default connect(mapStateToProps, { addPost, deletePost, toggleLikePost })(MyPosts);

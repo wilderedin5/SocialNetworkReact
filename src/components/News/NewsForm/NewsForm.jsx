@@ -10,32 +10,30 @@ const maxLength100 = maxLength(100);
 const Input = createFormElement("input");
 const Textarea = createFormElement("textarea");
 
-const NewsForm = (props) => {
-    return(
-        <form className={style.newsForm} onSubmit={props.handleSubmit} >
-            <div>
-                <Field placeholder="Текст новости" name="newsText" component={Textarea} type="text" validate={[maxLength1000,requiredField]} />
-            </div>
-            <div>
-                <Field placeholder="Автор" name="author" component={Input} type="text" validate={[maxLength100,requiredField]} />
-            </div>
-            <div>
-                <Field placeholder="Тема" name="theme" component={Input} type="text" validate={[maxLength100,requiredField]} />
-            </div>
-            <div>
-                <Field placeholder="Категория" name="category" component={Input} type="text" validate={[maxLength100,requiredField]} />
-            </div>
-            <div>
-                <Button type="primary" htmlType="submit">Добавить новость</Button>
-            </div>
-            <div>
-                {props.error ? props.error : null}
-            </div>
-        </form>
-    )
-}
+const NewsForm = (props) => (
+    <form className={style.newsForm} onSubmit={props.handleSubmit} >
+        <div>
+            <Field placeholder="Текст новости" name="newsText" component={Textarea} type="text" validate={[maxLength1000, requiredField]} />
+        </div>
+        <div>
+            <Field placeholder="Автор" name="author" component={Input} type="text" validate={[maxLength100, requiredField]} />
+        </div>
+        <div>
+            <Field placeholder="Тема" name="theme" component={Input} type="text" validate={[maxLength100, requiredField]} />
+        </div>
+        <div>
+            <Field placeholder="Категория" name="category" component={Input} type="text" validate={[maxLength100, requiredField]} />
+        </div>
+        <div>
+            <Button type="primary" htmlType="submit">Добавить новость</Button>
+        </div>
+        <div>
+            {props.error ? props.error : null}
+        </div>
+    </form>
+)
 
 export default reduxForm({
     // a unique name for the form
     form: 'NewsForm'
-  })(NewsForm)
+})(NewsForm)

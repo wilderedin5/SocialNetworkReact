@@ -9,22 +9,19 @@ const maxLength60 = maxLength(60);
 const Textarea = createFormElement("textarea");
 const Input = createFormElement("input");
 
-const MyPostsForm = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={Textarea} name={"postText"} placeholder="Эта стена ждет твоего поста!" validate={[requiredField, maxLength250]} />
-            </div>
-            <div>
-                <Field component={Input} name={"name"} placeholder="Имя.." validate={[requiredField, maxLength60]} />
-            </div>
-            <div>
-                <Button type="primary" htmlType="submit">Отправить</Button>
-            </div>
-        </form>
-
-    )
-}
+const MyPostsForm = (props) => (
+    <form onSubmit={props.handleSubmit}>
+        <div>
+            <Field component={Textarea} name={"postText"} placeholder="Эта стена ждет твоего поста!" validate={[requiredField, maxLength250]} />
+        </div>
+        <div>
+            <Field component={Input} name={"name"} placeholder="Имя.." validate={[requiredField, maxLength60]} />
+        </div>
+        <div>
+            <Button type="primary" htmlType="submit">Отправить</Button>
+        </div>
+    </form>
+)
 
 export default reduxForm({
     // a unique name for the form
