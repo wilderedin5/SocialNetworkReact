@@ -10,16 +10,16 @@ const Card = styled(BaseCard)`
 const Contact = ({ name, status, phone, email, description }) => (
   <Card title={name} bordered={true}>
     <div>
-      <b>Должность:</b> {status}
+      <b>Working position:</b> {status}
     </div>
     <div>
-      <b>Телефон:</b> {phone}
+      <b>Phone number:</b> {phone}
     </div>
     <div>
       <b>Email:</b> {email}
     </div>
     <div>
-      <b>По вопросам:</b> {description}
+      <b>For questions:</b> {description}
     </div>
   </Card>
 );

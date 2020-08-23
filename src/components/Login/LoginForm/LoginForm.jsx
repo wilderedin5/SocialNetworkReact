@@ -33,7 +33,7 @@ const LoginForm = ({ handleSubmit, captchaUrl, error }) => {
     <Form onSubmit={handleSubmit}>
       <div>
         <Field
-          placeholder="Логин"
+          placeholder="Login"
           name="email"
           component={Input}
           type="text"
@@ -42,7 +42,7 @@ const LoginForm = ({ handleSubmit, captchaUrl, error }) => {
       </div>
       <div>
         <Field
-          placeholder="Пароль"
+          placeholder="Password"
           name="password"
           component={Input}
           type="password"
@@ -51,11 +51,11 @@ const LoginForm = ({ handleSubmit, captchaUrl, error }) => {
       </div>
       <div>
         <Field type="checkbox" name="rememberMe" component="input" />
-        Запомнить меня
+        Remember me
       </div>
       <div>
         <Button type="primary" htmlType="submit">
-          Войти
+          Login
         </Button>
       </div>
       <div>

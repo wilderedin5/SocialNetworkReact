@@ -33,7 +33,7 @@ const DialogsForm = ({ handleSubmit, deleteAllMessagesFromDialog, id }) => {
         <Field
           component={Textarea}
           name={"dialogsMessageText"}
-          placeholder="Йо, по ту сторону монитора заждались твоего сообщения!!!"
+          placeholder="Yo, on the other side of the monitor they are tired of waiting for your message !!!"
           type="text"
           validate={[maxLength250, requiredField]}
         />

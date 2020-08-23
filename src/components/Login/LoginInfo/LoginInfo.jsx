@@ -12,15 +12,15 @@ const Container = styled.div`
 const LoginInfo = () => (
   <Container>
     <span>
-      <b>Данные для входа:</b>
+      <b>Login details:</b>
     </span>
     <span>
-      <b>Логин: </b>wildnefalem5@gmail.com
+      <b>Login: </b>wildnefalem5@gmail.com
     </span>
     <span>
-      <b>Пароль: </b>testmysoc876a
+      <b>Password: </b>testmysoc876a
     </span>
-    <span>Если будут проблемы, пишите, звоните.</span>
+    <span>If you have any problems, please contact me.</span>
   </Container>
 );
 

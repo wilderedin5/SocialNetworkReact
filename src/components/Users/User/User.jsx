@@ -62,7 +62,7 @@ const User = ({ isFollowingProgress, unfollow, follow, user }) => (
             unfollow(user.id);
           }}
         >
-          Подписаться
+          Subscribe
         </Button>
       ) : (
         <Button
@@ -71,7 +71,7 @@ const User = ({ isFollowingProgress, unfollow, follow, user }) => (
             follow(user.id);
           }}
         >
-          Отписаться
+          Unsubscribe
         </Button>
       )}
     </AvatarContainer>
@@ -80,7 +80,7 @@ const User = ({ isFollowingProgress, unfollow, follow, user }) => (
         <span>Name:</span> {user.name}
       </div>
       <div>
-        <span>Status:</span> {user.status ? user.status : "Не заполнено!"}
+        <span>Status:</span> {user.status ? user.status : "Not filled!"}
       </div>
     </Info>
   </Container>

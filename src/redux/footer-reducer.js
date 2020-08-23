@@ -1,12 +1,12 @@
 let initialState = {
-    copyright: "Сделано почти в Нидерландах"
-}
+  copyright: "Almost made in the Netherlands",
+};
 
 const footerReducer = (state = initialState, action) => {
-    switch(action.type){
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
 
 export default footerReducer;

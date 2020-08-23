@@ -43,7 +43,7 @@ const MyPostsForm = (props) => {
         <Field
           component={Textarea}
           name={"postText"}
-          placeholder="Эта стена ждет твоего поста!"
+          placeholder="This wall is waiting for your post!"
           validate={[requiredField, maxLength250]}
         />
       </div>
@@ -51,7 +51,7 @@ const MyPostsForm = (props) => {
         <Field
           component={Input}
           name={"name"}
-          placeholder="Name.."
+          placeholder="Name"
           validate={[requiredField, maxLength60]}
         />
       </div>

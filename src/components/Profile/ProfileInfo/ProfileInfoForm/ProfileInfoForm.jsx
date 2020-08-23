@@ -41,17 +41,17 @@ const ProfileInfoForm = (props) => {
     <form onSubmit={props.handleSubmit}>
       <ProfileInfo>
         <Name>
-          Мое имя:{" "}
+          Name:{" "}
           <Field
             name="fullName"
-            placeholder="Имя"
+            placeholder="Name"
             type="text"
             component={Input}
             validate={[maxLength200]}
           />
         </Name>
         <div>
-          Ищу работу:{" "}
+          Looking for a job:{" "}
           <Field
             name="lookingForAJob"
             type="checkbox"
@@ -60,20 +60,20 @@ const ProfileInfoForm = (props) => {
           />{" "}
         </div>
         <div>
-          Мои навыки:{" "}
+          My skills:{" "}
           <Field
             name="lookingForAJobDescription"
-            placeholder="Мои навыки"
+            placeholder="My skills"
             type="text"
             component={Input}
             validate={[maxLength200]}
           />{" "}
         </div>
         <div>
-          Обо мне:{" "}
+          About me:{" "}
           <Field
             name="aboutMe"
-            placeholder="Обо мне"
+            placeholder="About me"
             type="text"
             component={Input}
             validate={[maxLength200]}
@@ -94,7 +94,7 @@ const ProfileInfoForm = (props) => {
           })}
         </ul>
       </ProfileInfo>
-      <Button htmlType="submit">Сохранить страницу</Button>
+      <Button htmlType="submit">Save page</Button>
       <div>{props.error ? props.error : null}</div>
     </form>
   );

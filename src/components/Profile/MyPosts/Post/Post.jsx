@@ -48,7 +48,7 @@ const Post = ({
         <span className="comment-action">{likeCount}</span>
       </span>
     ),
-    <span onClick={() => deletePost(id)}>удалить пост</span>,
+    <span onClick={() => deletePost(id)}>Remove post</span>,
   ];
   return (
     <Comment

@@ -114,7 +114,7 @@ const ProfileInfo = (props) => {
         {props.isOwner ? (
           <div>
             <Input type="file" id="photoFile" onChange={onChangePhoto} />
-            <Label for="photoFile">Изменить аватарку</Label>
+            <Label for="photoFile">Change avatar</Label>
           </div>
         ) : (
           ""
@@ -135,11 +135,13 @@ const ProfileInfo = (props) => {
               updateStatus={props.updateStatus}
             />
           </div>
-          <Divider orientation="left">Основная информация:</Divider>
-          <div>Ищу работу: {props.profile.lookingForAJob ? "Да" : "Нет"} </div>
-          <div>Мои навыки: {props.profile.lookingForAJobDescription} </div>
-          <div>Обо мне: {props.profile.aboutMe}</div>
-          <Divider orientation="left">Контакты:</Divider>
+          <Divider orientation="left">Basic information:</Divider>
+          <div>
+            Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}{" "}
+          </div>
+          <div>My skills: {props.profile.lookingForAJobDescription} </div>
+          <div>About me: {props.profile.aboutMe}</div>
+          <Divider orientation="left">Contacts:</Divider>
           <ul>
             {Object.keys(props.profile.contacts).map((key) => {
               return (
@@ -154,9 +156,7 @@ const ProfileInfo = (props) => {
         </Info>
       )}
       {props.isOwner && !editMode && (
-        <Button onClick={() => setEditMode(true)}>
-          Редактировать страницу
-        </Button>
+        <Button onClick={() => setEditMode(true)}>Edit page</Button>
       )}
     </Container>
   );

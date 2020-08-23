@@ -17,7 +17,7 @@ const Divider = styled(BaseDivider)`
 const Bookmarks = ({ bookMarks, toggleSetToBookmarks }) => (
   <Container>
     <Divider style={{ color: "#fff" }} orientation="center">
-      Закладки
+      Bookmarks
     </Divider>
     {bookMarks.length > 0 ? (
       bookMarks.map((bookmark) => (
@@ -30,10 +30,7 @@ const Bookmarks = ({ bookMarks, toggleSetToBookmarks }) => (
         />
       ))
     ) : (
-      <div>
-        {" "}
-        Здесь пока пусто, сюда будут попадать новости сохраненные в закладки!
-      </div>
+      <div> It is empty for now, news saved in bookmarks will fall here!</div>
     )}
   </Container>
 );
