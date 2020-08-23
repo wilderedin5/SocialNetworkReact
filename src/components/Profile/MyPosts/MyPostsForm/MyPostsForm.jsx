@@ -1,29 +1,69 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { maxLength, requiredField } from '../../../../utils/validate/validateForm';
-import createFormElement from '../../../../hoc/createFormElement/createFormElement';
-import { Button } from 'antd';
+import React from "react";
+import styled from "@emotion/styled";
+import { Field, reduxForm } from "redux-form";
+import { Button } from "antd";
+import {
+  maxLength,
+  requiredField,
+} from "../../../../utils/validate/validateForm";
+import createFormElement from "../../../../hoc/createFormElement/createFormElement";
 
 const maxLength250 = maxLength(250);
 const maxLength60 = maxLength(60);
-const Textarea = createFormElement("textarea");
-const Input = createFormElement("input");
 
-const MyPostsForm = (props) => (
-    <form onSubmit={props.handleSubmit}>
-        <div>
-            <Field component={Textarea} name={"postText"} placeholder="Эта стена ждет твоего поста!" validate={[requiredField, maxLength250]} />
-        </div>
-        <div>
-            <Field component={Input} name={"name"} placeholder="Имя.." validate={[requiredField, maxLength60]} />
-        </div>
-        <div>
-            <Button type="primary" htmlType="submit">Отправить</Button>
-        </div>
-    </form>
-)
+const Form = styled.form``;
+
+const BaseTextarea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid rgb(45, 80, 165);
+  outline: none;
+  resize: none;
+  color: #000;
+`;
+
+const BaseInput = styled.input`
+  color: #000;
+  outline: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  border: 1px solid rgb(45, 80, 165);
+  margin-bottom: 10px;
+`;
+
+const MyPostsForm = (props) => {
+  const Textarea = createFormElement(BaseTextarea);
+  const Input = createFormElement(BaseInput);
+  return (
+    <Form onSubmit={props.handleSubmit}>
+      <div>
+        <Field
+          component={Textarea}
+          name={"postText"}
+          placeholder="Эта стена ждет твоего поста!"
+          validate={[requiredField, maxLength250]}
+        />
+      </div>
+      <div>
+        <Field
+          component={Input}
+          name={"name"}
+          placeholder="Name.."
+          validate={[requiredField, maxLength60]}
+        />
+      </div>
+      <div>
+        <Button type="primary" htmlType="submit">
+          Send
+        </Button>
+      </div>
+    </Form>
+  );
+};
 
 export default reduxForm({
-    // a unique name for the form
-    form: 'MyPosts'
-})(MyPostsForm)
+  form: "MyPosts",
+})(MyPostsForm);

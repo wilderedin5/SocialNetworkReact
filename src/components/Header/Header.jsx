@@ -1,20 +1,78 @@
-import React from 'react';
-import style from './Header.module.scss';
-import { NavLink } from 'react-router-dom';
-import { Button } from 'antd';
+import React from "react";
+import styled from "@emotion/styled";
+import { NavLink } from "react-router-dom";
+import { Button } from "antd";
 
-const Header = (props) => (
-    <div>
-        {props.isAuth
-            ? <div className={style.authorized}>
-                <div className={style.profileInfo}>
-                    <img src={props.profile && props.profile.photos.small} className={style.avatar} alt="" />
-                    <div className={style.name}>{props.login}</div>
-                </div>
-                <Button onClick={props.logoutFromSocialNetwork}>Выйти</Button>
-            </div>
-            : <div className={style.noAuthorized}><NavLink to="/login"><Button>Войти</Button></NavLink></div>}
-    </div>
-)
+const Authorized = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  button {
+    align-self: center;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    margin: 0;
+    &:hover {
+      background: #fff;
+      color: rgb(45, 80, 165);
+    }
+  }
+`;
+
+const NoAuthorized = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  button {
+    align-self: center;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    margin: 0;
+    &:hover {
+      background: #fff;
+      color: rgb(45, 80, 165);
+    }
+  }
+`;
+
+const Avatar = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  margin-right: 10px;
+`;
+
+const Info = styled.div`
+  display: flex;
+  align-items: center;
+  color: #fff;
+`;
+
+const Name = styled.div`
+  font-size: 22px;
+  font-weight: 700;
+`;
+
+const Header = ({ isAuth, profile, login, logoutFromSocialNetwork }) => (
+  <div>
+    {isAuth ? (
+      <Authorized>
+        <Info>
+          <Avatar src={profile && profile.photos.small} alt="" />
+          <Name>{login}</Name>
+        </Info>
+        <Button onClick={logoutFromSocialNetwork}>Log out</Button>
+      </Authorized>
+    ) : (
+      <NoAuthorized>
+        <NavLink to="/login">
+          <Button>Login</Button>
+        </NavLink>
+      </NoAuthorized>
+    )}
+  </div>
+);
 
 export default Header;

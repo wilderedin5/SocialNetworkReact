@@ -1,37 +1,81 @@
-import React from 'react';
-import style from './OneNews.module.scss';
-import { Button } from 'antd';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import styled from "@emotion/styled";
+import { Button } from "antd";
+import { NavLink } from "react-router-dom";
 
-const OneNews = ({ newsOpened, newsText, theme, author, date, category, inBookmarks, deleteNews, newsId, toggleSetToBookmarks }) => (
-    <div className={style.oneNews}>
-        {newsOpened ?
-            <div>{newsText}</div>
-            :
-            <div>{newsText.substring(0, 200)}.....</div>
-        }
-        <div><b>Тема:</b> {theme}</div>
-        <div><b>Автор:</b> {author}</div>
-        <div><b>Дата:</b> {date}</div>
-        <div><b>Категория:</b> {category}</div>
-        <div className={style.btnLine}>
-            {inBookmarks ?
-                <Button onClick={() => toggleSetToBookmarks(newsId, false)} className={style.oneNewsBtn}>Убрать из закладок</Button>
-                :
-                <Button onClick={() => toggleSetToBookmarks(newsId, true)} className={style.oneNewsBtn}>Добавить в закладки</Button>
-            }
-            <Button onClick={() => deleteNews(newsId)} className={style.oneNewsBtn}>Удалить новость</Button>
-            {newsOpened ?
-                <NavLink to={`/news`}>
-                    <Button>Вернуться на страницу новостей</Button>
-                </NavLink>
-                :
-                <NavLink to={`/news/${newsId}`}>
-                    <Button>Перейти на страницу новости</Button>
-                </NavLink>
-            }
-        </div>
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(45, 80, 165);
+  padding: 10px 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  position: relative;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  & button:not(:last-child) {
+    margin-right: 10px;
+  }
+`;
+
+const OneNews = ({
+  newsOpened,
+  newsText,
+  theme,
+  author,
+  date,
+  category,
+  inBookmarks,
+  deleteNews,
+  newsId,
+  toggleSetToBookmarks,
+}) => (
+  <Container>
+    {newsOpened ? (
+      <div>{newsText}</div>
+    ) : (
+      <div>{newsText.substring(0, 200)}.....</div>
+    )}
+    <div>
+      <b>Theme:</b> {theme}
     </div>
-)
+    <div>
+      <b>Author:</b> {author}
+    </div>
+    <div>
+      <b>Date:</b> {date}
+    </div>
+    <div>
+      <b>Category:</b> {category}
+    </div>
+    <Flex>
+      {inBookmarks ? (
+        <Button onClick={() => toggleSetToBookmarks(newsId, false)}>
+          Remove from bookmarks
+        </Button>
+      ) : (
+        <Button onClick={() => toggleSetToBookmarks(newsId, true)}>
+          Add in bookmarks
+        </Button>
+      )}
+      <Button onClick={() => deleteNews(newsId)}>Remove news</Button>
+      {newsOpened ? (
+        <NavLink to={`/news`}>
+          <Button>Return to news page</Button>
+        </NavLink>
+      ) : (
+        <NavLink to={`/news/${newsId}`}>
+          <Button>Go to this news</Button>
+        </NavLink>
+      )}
+    </Flex>
+  </Container>
+);
 
 export default OneNews;

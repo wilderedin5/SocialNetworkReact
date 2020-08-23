@@ -1,39 +1,86 @@
-import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { maxLength, requiredField } from '../../../utils/validate/validateForm';
-import createFormElement from '../../../hoc/createFormElement/createFormElement';
-import style from './NewsForm.module.scss';
-import { Button } from 'antd';
+import React from "react";
+import styled from "@emotion/styled";
+import { reduxForm, Field } from "redux-form";
+import { Button } from "antd";
+import { maxLength, requiredField } from "../../../utils/validate/validateForm";
+import createFormElement from "../../../hoc/createFormElement/createFormElement";
 
 const maxLength1000 = maxLength(1000);
 const maxLength100 = maxLength(100);
-const Input = createFormElement("input");
-const Textarea = createFormElement("textarea");
 
-const NewsForm = (props) => (
-    <form className={style.newsForm} onSubmit={props.handleSubmit} >
-        <div>
-            <Field placeholder="Текст новости" name="newsText" component={Textarea} type="text" validate={[maxLength1000, requiredField]} />
-        </div>
-        <div>
-            <Field placeholder="Автор" name="author" component={Input} type="text" validate={[maxLength100, requiredField]} />
-        </div>
-        <div>
-            <Field placeholder="Тема" name="theme" component={Input} type="text" validate={[maxLength100, requiredField]} />
-        </div>
-        <div>
-            <Field placeholder="Категория" name="category" component={Input} type="text" validate={[maxLength100, requiredField]} />
-        </div>
-        <div>
-            <Button type="primary" htmlType="submit">Добавить новость</Button>
-        </div>
-        <div>
-            {props.error ? props.error : null}
-        </div>
-    </form>
-)
+const Form = styled.form``;
+
+const BaseTextarea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid rgb(45, 80, 165);
+  padding: 10px;
+  outline: none;
+  resize: none;
+`;
+
+const BaseInput = styled.input`
+  width: 300px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(45, 80, 165);
+  margin-bottom: 5px;
+  outline: none;
+`;
+
+const NewsForm = ({ handleSubmit, error }) => {
+  const Textarea = createFormElement(BaseTextarea);
+  const Input = createFormElement(BaseInput);
+  return (
+    <Form onSubmit={handleSubmit}>
+      <div>
+        <Field
+          placeholder="Text news"
+          name="newsText"
+          component={Textarea}
+          type="text"
+          validate={[maxLength1000, requiredField]}
+        />
+      </div>
+      <div>
+        <Field
+          placeholder="Author"
+          name="author"
+          component={Input}
+          type="text"
+          validate={[maxLength100, requiredField]}
+        />
+      </div>
+      <div>
+        <Field
+          placeholder="Theme"
+          name="theme"
+          component={Input}
+          type="text"
+          validate={[maxLength100, requiredField]}
+        />
+      </div>
+      <div>
+        <Field
+          placeholder="Category"
+          name="category"
+          component={Input}
+          type="text"
+          validate={[maxLength100, requiredField]}
+        />
+      </div>
+      <div>
+        <Button type="primary" htmlType="submit">
+          Add news
+        </Button>
+      </div>
+      <div>{error ? error : null}</div>
+    </Form>
+  );
+};
 
 export default reduxForm({
-    // a unique name for the form
-    form: 'NewsForm'
-})(NewsForm)
+  form: "NewsForm",
+})(NewsForm);

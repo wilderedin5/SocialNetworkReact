@@ -1,10 +1,23 @@
-import React from 'react';
-import style from './Preloader.module.scss';
+import styled from "@emotion/styled";
 
-const Preloader = () => (
-    <div className={style.preloader}>
-        <div className={style.circle}></div>
-    </div>
-)
+const Preloader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px dotted blue;
+    background: transparent;
+    animation: preloader 2s linear infinite;
+    @keyframes preloader {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+`;
 
 export default Preloader;

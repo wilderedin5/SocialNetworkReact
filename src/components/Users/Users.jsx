@@ -1,17 +1,39 @@
-import React from 'react';
-import style from './Users.module.scss';
-import User from './User/User';
-import { Pagination } from 'antd';
+import React from "react";
+import styled from "@emotion/styled";
+import { Pagination as BasePagination } from "antd";
+import User from "./User/User";
 
-const Users = (props) => (
-    <div className={style.userPage}>
-        <Pagination className={style.pagination} defaultCurrent={1} current={props.currentPage} total={props.totalUsersCount} onChange={props.onPageChanged} showSizeChanger={false} />
-        {
-            props.users.map(user => (
-                <User key={user.id} isFollowingProgress={props.isFollowingProgress} unfollow={props.unfollow} follow={props.follow} user={user} />
-            ))
-        }
-    </div>
-)
+const Pagination = styled(BasePagination)`
+  margin-bottom: 20px;
+`;
+
+const Users = ({
+  users,
+  currentPage,
+  totalUsersCount,
+  onPageChanged,
+  isFollowingProgress,
+  unfollow,
+  follow,
+}) => (
+  <div>
+    <Pagination
+      defaultCurrent={1}
+      current={currentPage}
+      total={totalUsersCount}
+      onChange={onPageChanged}
+      showSizeChanger={false}
+    />
+    {users.map((user) => (
+      <User
+        key={user.id}
+        isFollowingProgress={isFollowingProgress}
+        unfollow={unfollow}
+        follow={follow}
+        user={user}
+      />
+    ))}
+  </div>
+);
 
 export default Users;

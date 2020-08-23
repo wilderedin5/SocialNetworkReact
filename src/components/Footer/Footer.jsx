@@ -1,10 +1,13 @@
-import React from 'react';
-import style from './Footer.module.scss';
+import React from "react";
+import styled from "@emotion/styled";
 
-const Footer = (props) => (
-    <div className={style.copyright}>
-        {props.copyright}
-    </div>
-)
+const Container = styled.div`
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+const Footer = ({ copyright }) => <Container>{copyright}</Container>;
 
 export default Footer;

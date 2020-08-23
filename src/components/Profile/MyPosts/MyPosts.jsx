@@ -1,28 +1,36 @@
-import React from 'react';
-import style from './MyPosts.module.scss';
-import Post from './Post/Post';
-import MyPostsForm from './MyPostsForm/MyPostsForm';
+import React from "react";
+import styled from "@emotion/styled";
+import { v4 } from "uuid";
+import Post from "./Post/Post";
+import MyPostsForm from "./MyPostsForm/MyPostsForm";
 
-import {v4} from 'uuid';
+const Container = styled.div``;
+
+const NewPost = styled.div`
+  margin-top: 20px;
+`;
 
 const MyPosts = (props) => {
+  const addPost = (formData) => {
+    props.addPost(v4(), formData.postText, 0, null, formData.name);
+  };
 
-    const addPost = (formData) => {
-        props.addPost(v4(),formData.postText,0,null,formData.name);
-    }
-
-    return (
-        <div className={style.MyPosts}>
-            <h2>Мои посты</h2>
-            <MyPostsForm onSubmit={addPost} />
-            <div className={style.contentNewPosts}>
-                    {
-                        props.posts.map(post => <Post {...post} toggleLikePost={props.toggleLikePost} 
-                            deletePost={props.deletePost} key={post.id}  />)
-                    }
-                </div>
-        </div>
-    );
-}
+  return (
+    <Container>
+      <h2>My posts</h2>
+      <MyPostsForm onSubmit={addPost} />
+      <NewPost>
+        {props.posts.map((post) => (
+          <Post
+            {...post}
+            toggleLikePost={props.toggleLikePost}
+            deletePost={props.deletePost}
+            key={post.id}
+          />
+        ))}
+      </NewPost>
+    </Container>
+  );
+};
 
 export default MyPosts;
