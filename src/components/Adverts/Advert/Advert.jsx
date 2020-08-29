@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { v4 } from "uuid";
 import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
-import CommentAdvert from "../Comment/CommentAdvert";
+import Post from "../Post/Post";
 import AdvertForm from "../AdvertForm/AdvertForm";
 
 const Image = styled.img`
@@ -38,7 +38,7 @@ const Like = styled.span`
   color: #000;
 `;
 
-const OneAdvert = ({
+const Advert = ({
   image,
   title,
   text,
@@ -70,7 +70,7 @@ const OneAdvert = ({
       </AdvertBlock>
       <CommentBlock>
         {comment.map((comment) => (
-          <CommentAdvert
+          <Post
             {...comment}
             toggleLikeCommentFromAdvert={toggleLikeCommentFromAdvert}
             advertId={id}
@@ -83,4 +83,4 @@ const OneAdvert = ({
   );
 };
 
-export default OneAdvert;
+export default Advert;

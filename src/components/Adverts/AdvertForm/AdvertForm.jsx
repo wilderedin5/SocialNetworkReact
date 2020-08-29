@@ -34,27 +34,21 @@ const AdvertForm = ({ handleSubmit }) => {
   const Input = createFormElement(BaseInput);
   return (
     <Form onSubmit={handleSubmit}>
-      <div>
-        <Field
-          component={Textarea}
-          name={"commentText"}
-          placeholder="Message"
-          validate={[requiredField, maxLength250]}
-        />
-      </div>
-      <div>
-        <Field
-          component={Input}
-          name={"name"}
-          placeholder="Name"
-          validate={[requiredField, maxLength60]}
-        />
-      </div>
-      <div>
-        <Button type="primary" htmlType="submit">
-          Send
-        </Button>
-      </div>
+      <Field
+        component={Textarea}
+        name={"commentText"}
+        placeholder="Message"
+        validate={[requiredField, maxLength250]}
+      />
+      <Field
+        component={Input}
+        name={"name"}
+        placeholder="Name"
+        validate={[requiredField, maxLength60]}
+      />
+      <Button type="primary" htmlType="submit">
+        Send
+      </Button>
     </Form>
   );
 };

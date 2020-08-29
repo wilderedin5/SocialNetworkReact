@@ -31,33 +31,27 @@ const LoginForm = ({ handleSubmit, captchaUrl, error }) => {
   const Input = createFormElement(BaseInput);
   return (
     <Form onSubmit={handleSubmit}>
-      <div>
-        <Field
-          placeholder="Login"
-          name="email"
-          component={Input}
-          type="text"
-          validate={[maxLength100, requiredField]}
-        />
-      </div>
-      <div>
-        <Field
-          placeholder="Password"
-          name="password"
-          component={Input}
-          type="password"
-          validate={[maxLength100, requiredField]}
-        />
-      </div>
+      <Field
+        placeholder="Login"
+        name="email"
+        component={Input}
+        type="text"
+        validate={[maxLength100, requiredField]}
+      />
+      <Field
+        placeholder="Password"
+        name="password"
+        component={Input}
+        type="password"
+        validate={[maxLength100, requiredField]}
+      />
       <div>
         <Field type="checkbox" name="rememberMe" component="input" />
         Remember me
       </div>
-      <div>
-        <Button type="primary" htmlType="submit">
-          Login
-        </Button>
-      </div>
+      <Button type="primary" htmlType="submit">
+        Login
+      </Button>
       <div>
         {captchaUrl && <img src={captchaUrl} alt="" />}
         {captchaUrl && (

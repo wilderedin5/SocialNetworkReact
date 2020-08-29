@@ -9,7 +9,7 @@ const Name = styled(NavLink)`
   &:not(:last-child) {
     margin-right: 20px;
   }
-  &.activeDialogName,
+  &.active,
   &:hover {
     color: rgb(45, 80, 165);
     margin-bottom: -1px;
@@ -32,10 +32,10 @@ const Avatar = styled.img`
   border: 1px solid rgb(45, 80, 165);
 `;
 
-const DialogItem = ({ id, photo, name }) => (
-  <Name to={`/dialogs/${id}`} activeClassName="activeDialogName">
+const DialogItem = ({ id, photoUrl, name }) => (
+  <Name to={`/dialogs/${id}`} activeClassName="active">
     <Dialog>
-      <Avatar src={photo} alt="" />
+      <Avatar src={photoUrl} alt="" />
       {name}
     </Dialog>
   </Name>

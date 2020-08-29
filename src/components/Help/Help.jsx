@@ -15,7 +15,7 @@ const Help = ({ help, contacts }) => (
     <Collapse>
       {help.map((help) => (
         <Collapse.Panel header={help.questionTitle} key={help.id}>
-          <p>{help.answer}</p>
+          {help.answer}
         </Collapse.Panel>
       ))}
     </Collapse>

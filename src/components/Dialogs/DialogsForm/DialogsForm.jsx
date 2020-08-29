@@ -29,15 +29,13 @@ const DialogsForm = ({ handleSubmit, deleteAllMessagesFromDialog, id }) => {
   const Textarea = createFormElement(BaseTextarea);
   return (
     <Form onSubmit={handleSubmit}>
-      <div>
-        <Field
-          component={Textarea}
-          name={"dialogsMessageText"}
-          placeholder="Yo, on the other side of the monitor they are tired of waiting for your message !!!"
-          type="text"
-          validate={[maxLength250, requiredField]}
-        />
-      </div>
+      <Field
+        component={Textarea}
+        name={"dialogsMessageText"}
+        placeholder="Yo, on the other side of the monitor they are tired of waiting for your message !!!"
+        type="text"
+        validate={[maxLength250, requiredField]}
+      />
       <Flex>
         <Button htmlType="submit" type="primary">
           Send

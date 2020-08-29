@@ -42,7 +42,7 @@ const Dialogs = ({
     <Container>
       <Dialog>
         {dialogsData.map((d) => (
-          <DialogItem key={d.id} photo={d.photoUrl} {...d} />
+          <DialogItem key={d.id} {...d} />
         ))}
       </Dialog>
       <Messages>

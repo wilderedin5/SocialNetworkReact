@@ -19,17 +19,15 @@ const Bookmarks = ({ bookMarks, toggleSetToBookmarks }) => (
     <Divider style={{ color: "#fff" }} orientation="center">
       Bookmarks
     </Divider>
-    {bookMarks.length > 0 ? (
-      bookMarks.map((bookmark) => (
-        <Bookmark
-          toggleSetToBookmarks={toggleSetToBookmarks}
-          newsId={bookmark.id}
-          {...bookmark}
-        />
-      ))
-    ) : (
-      <div> It is empty for now, news saved in bookmarks will fall here!</div>
-    )}
+    {bookMarks.length > 0
+      ? bookMarks.map((bookmark) => (
+          <Bookmark
+            toggleSetToBookmarks={toggleSetToBookmarks}
+            newsId={bookmark.id}
+            {...bookmark}
+          />
+        ))
+      : "It is empty for now, news saved in bookmarks will fall here!"}
   </Container>
 );
 

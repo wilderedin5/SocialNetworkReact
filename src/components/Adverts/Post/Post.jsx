@@ -15,7 +15,7 @@ const Comment = styled(BaseComment)`
   color: #000;
 `;
 
-const CommentAdvert = ({
+const Post = ({
   toggleLikeCommentFromAdvert,
   liked,
   advertId,
@@ -74,4 +74,4 @@ const CommentAdvert = ({
   );
 };
 
-export default CommentAdvert;
+export default Post;

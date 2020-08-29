@@ -11,15 +11,8 @@ const Container = styled.div`
 
 const LoginInfo = () => (
   <Container>
-    <span>
-      <b>Login details:</b>
-    </span>
-    <span>
-      <b>Login: </b>wildnefalem5@gmail.com
-    </span>
-    <span>
-      <b>Password: </b>testmysoc876a
-    </span>
+    <span>Login: wildnefalem5@gmail.com</span>
+    <span>Password: testmysoc876a</span>
     <span>If you have any problems, please contact me.</span>
   </Container>
 );

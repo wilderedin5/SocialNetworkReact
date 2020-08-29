@@ -35,47 +35,37 @@ const NewsForm = ({ handleSubmit, error }) => {
   const Input = createFormElement(BaseInput);
   return (
     <Form onSubmit={handleSubmit}>
-      <div>
-        <Field
-          placeholder="Text news"
-          name="newsText"
-          component={Textarea}
-          type="text"
-          validate={[maxLength1000, requiredField]}
-        />
-      </div>
-      <div>
-        <Field
-          placeholder="Author"
-          name="author"
-          component={Input}
-          type="text"
-          validate={[maxLength100, requiredField]}
-        />
-      </div>
-      <div>
-        <Field
-          placeholder="Theme"
-          name="theme"
-          component={Input}
-          type="text"
-          validate={[maxLength100, requiredField]}
-        />
-      </div>
-      <div>
-        <Field
-          placeholder="Category"
-          name="category"
-          component={Input}
-          type="text"
-          validate={[maxLength100, requiredField]}
-        />
-      </div>
-      <div>
-        <Button type="primary" htmlType="submit">
-          Add news
-        </Button>
-      </div>
+      <Field
+        placeholder="Text news"
+        name="newsText"
+        component={Textarea}
+        type="text"
+        validate={[maxLength1000, requiredField]}
+      />
+      <Field
+        placeholder="Author"
+        name="author"
+        component={Input}
+        type="text"
+        validate={[maxLength100, requiredField]}
+      />
+      <Field
+        placeholder="Theme"
+        name="theme"
+        component={Input}
+        type="text"
+        validate={[maxLength100, requiredField]}
+      />
+      <Field
+        placeholder="Category"
+        name="category"
+        component={Input}
+        type="text"
+        validate={[maxLength100, requiredField]}
+      />
+      <Button type="primary" htmlType="submit">
+        Add news
+      </Button>
       <div>{error ? error : null}</div>
     </Form>
   );

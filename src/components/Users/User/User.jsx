@@ -55,25 +55,14 @@ const User = ({ isFollowingProgress, unfollow, follow, user }) => (
           size={64}
         />
       </NavLink>
-      {user.followed ? (
-        <Button
-          disabled={isFollowingProgress.some((key) => key === user.id)}
-          onClick={() => {
-            unfollow(user.id);
-          }}
-        >
-          Subscribe
-        </Button>
-      ) : (
-        <Button
-          disabled={isFollowingProgress.some((key) => key === user.id)}
-          onClick={() => {
-            follow(user.id);
-          }}
-        >
-          Unsubscribe
-        </Button>
-      )}
+      <Button
+        disabled={isFollowingProgress.some((key) => key === user.id)}
+        onClick={() => {
+          user.followed ? unfollow(user.id) : follow(user.id);
+        }}
+      >
+        {user.followed ? "Subscribe" : "Unsubscribe"}
+      </Button>
     </AvatarContainer>
     <Info>
       <div>

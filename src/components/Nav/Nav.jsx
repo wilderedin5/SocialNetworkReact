@@ -25,7 +25,7 @@ const Container = styled.div`
     }
   }
 
-  .activeLink {
+  .active {
     color: red;
     & li {
       background: rgb(30, 45, 190);
@@ -44,32 +44,32 @@ const Nav = ({
   <Container>
     <Menu theme="dark" defaultSelectedKeys={url} mode="inline">
       <Menu.Item key="/profile">
-        <NavLink to="/profile" activeClassName="activeLink">
+        <NavLink to="/profile" activeClassName="active">
           Profile
         </NavLink>
       </Menu.Item>
       <Menu.Item key="/dialogs">
-        <NavLink to="/dialogs" activeClassName="activeLink">
+        <NavLink to="/dialogs" activeClassName="active">
           Messages
         </NavLink>
       </Menu.Item>
       <Menu.Item key="/news">
-        <NavLink to="/news" activeClassName="activeLink">
+        <NavLink to="/news" activeClassName="active">
           News
         </NavLink>
       </Menu.Item>
       <Menu.Item key="/users">
-        <NavLink to="/users" activeClassName="activeLink">
+        <NavLink to="/users" activeClassName="active">
           Users
         </NavLink>
       </Menu.Item>
       <Menu.Item key="/help">
-        <NavLink to="/help" activeClassName="activeLink">
+        <NavLink to="/help" activeClassName="active">
           Help
         </NavLink>
       </Menu.Item>
       <Menu.Item key="/order-advert">
-        <NavLink to="/order-advert" activeClassName="activeLink">
+        <NavLink to="/order-advert" activeClassName="active">
           Manage advert
         </NavLink>
       </Menu.Item>
