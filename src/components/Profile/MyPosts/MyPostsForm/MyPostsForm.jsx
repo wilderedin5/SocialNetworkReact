@@ -34,11 +34,11 @@ const BaseInput = styled.input`
   margin-bottom: 10px;
 `;
 
-const MyPostsForm = (props) => {
+const MyPostsForm = ({ handleSubmit }) => {
   const Textarea = createFormElement(BaseTextarea);
   const Input = createFormElement(BaseInput);
   return (
-    <Form onSubmit={props.handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <div>
         <Field
           component={Textarea}

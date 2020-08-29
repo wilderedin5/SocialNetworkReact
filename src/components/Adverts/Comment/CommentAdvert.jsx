@@ -15,60 +15,61 @@ const Comment = styled(BaseComment)`
   color: #000;
 `;
 
-const CommentAdvert = (props) => {
+const CommentAdvert = ({
+  toggleLikeCommentFromAdvert,
+  liked,
+  advertId,
+  id,
+  likeCount,
+  deleteCommentFromAdvert,
+  name,
+  avatar,
+  text,
+}) => {
   const actions = [
-    props.liked ? (
+    liked ? (
       <span key="comment-basic-like">
         <Tooltip title="Like">
-          {React.createElement(
-            props.liked === true ? DislikeFilled : LikeOutlined,
-            {
-              onClick: () =>
-                props.toggleLikeCommentFromAdvert(props.advertId, props.id),
-            }
-          )}
+          {React.createElement(liked === true ? DislikeFilled : LikeOutlined, {
+            onClick: () => toggleLikeCommentFromAdvert(advertId, id),
+          })}
         </Tooltip>
-        <span className="comment-action">{props.likeCount}</span>
+        <span className="comment-action">{likeCount}</span>
       </span>
     ) : (
       <span key=' key="comment-basic-dislike"'>
         <Tooltip title="Dislike">
           {React.createElement(
-            props.liked === false || props.liked === null
-              ? LikeOutlined
-              : DislikeOutlined,
+            liked === false || liked === null ? LikeOutlined : DislikeOutlined,
             {
-              onClick: () =>
-                props.toggleLikeCommentFromAdvert(props.advertId, props.id),
+              onClick: () => toggleLikeCommentFromAdvert(advertId, id),
             }
           )}
         </Tooltip>
-        <span className="comment-action">{props.likeCount}</span>
+        <span className="comment-action">{likeCount}</span>
       </span>
     ),
-    <span
-      onClick={() => props.deleteCommentFromAdvert(props.advertId, props.id)}
-    >
+    <span onClick={() => deleteCommentFromAdvert(advertId, id)}>
       Remove post
     </span>,
   ];
   return (
     <Comment
-      author={<a>{props.name}</a>}
+      author={<a>{name}</a>}
       actions={actions}
       avatar={
         <Avatar
           size={"large"}
           shape="circle"
           src={
-            props.avatar
-              ? props.avatar
+            avatar
+              ? avatar
               : "https://www.kino-teatr.ru/movie/kadr/36398/pv_82319.jpg"
           }
           alt="Han Solo"
         />
       }
-      content={<p>{props.text}</p>}
+      content={<p>{text}</p>}
     />
   );
 };

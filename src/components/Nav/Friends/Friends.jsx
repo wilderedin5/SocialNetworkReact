@@ -27,7 +27,7 @@ const Friends = ({ friends }) => (
     </Divider>
     <Panel>
       {friends.map((friend) => (
-        <Friend id={friend.id} key={friend.id} name={friend.name} />
+        <Friend key={friend.id} {...friend} />
       ))}
     </Panel>
   </Container>

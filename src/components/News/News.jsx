@@ -32,30 +32,20 @@ const News = ({
               <OneNews
                 key={news.id}
                 deleteNews={deleteNews}
-                newsText={news.newsText}
-                author={news.author}
                 toggleSetToBookmarks={toggleSetToBookmarks}
                 newsOpened={newsId}
                 newsId={news.id}
-                date={news.date}
-                category={news.category}
-                theme={news.theme}
-                inBookmarks={news.inBookmarks}
+                {...news}
               />
             ))
         : news.map((news) => (
             <OneNews
               key={news.id}
               deleteNews={deleteNews}
-              newsText={news.newsText}
-              author={news.author}
               toggleSetToBookmarks={toggleSetToBookmarks}
               newsOpened={newsId}
               newsId={news.id}
-              date={news.date}
-              category={news.category}
-              theme={news.theme}
-              inBookmarks={news.inBookmarks}
+              {...news}
             />
           ))}
       {!newsId && <NewsForm onSubmit={onSubmit} />}

@@ -35,10 +35,10 @@ const BaseInput = styled.input`
   margin-bottom: 5px;
 `;
 
-const ProfileInfoForm = (props) => {
+const ProfileInfoForm = ({ handleSubmit, profile, error }) => {
   const Input = createFormElement(BaseInput);
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <ProfileInfo>
         <Name>
           Name:{" "}
@@ -80,7 +80,7 @@ const ProfileInfoForm = (props) => {
           />
         </div>
         <ul>
-          {Object.keys(props.profile.contacts).map((key) => {
+          {Object.keys(profile.contacts).map((key) => {
             return (
               <Field
                 name={"contacts." + key}
@@ -95,7 +95,7 @@ const ProfileInfoForm = (props) => {
         </ul>
       </ProfileInfo>
       <Button htmlType="submit">Save page</Button>
-      <div>{props.error ? props.error : null}</div>
+      <div>{error ? error : null}</div>
     </form>
   );
 };

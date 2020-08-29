@@ -42,7 +42,7 @@ const Dialogs = ({
     <Container>
       <Dialog>
         {dialogsData.map((d) => (
-          <DialogItem key={d.id} name={d.name} id={d.id} photo={d.photoUrl} />
+          <DialogItem key={d.id} photo={d.photoUrl} {...d} />
         ))}
       </Dialog>
       <Messages>
@@ -50,10 +50,8 @@ const Dialogs = ({
           <MessageItem
             key={m.id}
             userId={userId}
-            id={m.id}
-            message={m.message}
-            outMe={m.outMe}
             deleteMessage={deleteMessage}
+            {...m}
           />
         ))}
         <DialogsForm

@@ -10,7 +10,7 @@ const NewPost = styled.div`
   margin-top: 20px;
 `;
 
-const MyPosts = (props) => {
+const MyPosts = ({ posts, toggleLikePost, deletePost, ...props }) => {
   const addPost = (formData) => {
     props.addPost(v4(), formData.postText, 0, null, formData.name);
   };
@@ -20,11 +20,11 @@ const MyPosts = (props) => {
       <h2>My posts</h2>
       <MyPostsForm onSubmit={addPost} />
       <NewPost>
-        {props.posts.map((post) => (
+        {posts.map((post) => (
           <Post
             {...post}
-            toggleLikePost={props.toggleLikePost}
-            deletePost={props.deletePost}
+            toggleLikePost={toggleLikePost}
+            deletePost={deletePost}
             key={post.id}
           />
         ))}

@@ -38,45 +38,43 @@ const Like = styled.span`
   color: #000;
 `;
 
-const OneAdvert = (props) => {
+const OneAdvert = ({
+  image,
+  title,
+  text,
+  liked,
+  id,
+  toggleLikeCommentFromAdvert,
+  comment,
+  deleteCommentFromAdvert,
+  likeCount,
+  addCommentToAdvert,
+  toggleLikeAdvert,
+}) => {
   const AddCommentToAdvert = (formData) => {
-    props.addCommentToAdvert(
-      props.id,
-      v4(),
-      formData.commentText,
-      formData.name,
-      false,
-      0
-    );
+    addCommentToAdvert(id, v4(), formData.commentText, formData.name, false, 0);
   };
 
   return (
     <div>
       <AdvertBlock>
-        <Image src={props.image} />
+        <Image src={image} />
         <AdvertContent>
-          <Title>{props.title}</Title>
-          <Content>{props.text}</Content>
-          {props.liked ? (
-            <Like onClick={() => props.toggleLikeAdvert(props.id)}>
-              <DislikeFilled />
-              {props.likeCount}
-            </Like>
-          ) : (
-            <Like onClick={() => props.toggleLikeAdvert(props.id)}>
-              <LikeOutlined />
-              {props.likeCount}
-            </Like>
-          )}
+          <Title>{title}</Title>
+          <Content>{text}</Content>
+          <Like onClick={() => toggleLikeAdvert(id)}>
+            {liked ? <DislikeFilled /> : <LikeOutlined />}
+            {likeCount}
+          </Like>
         </AdvertContent>
       </AdvertBlock>
       <CommentBlock>
-        {props.comment.map((comment) => (
+        {comment.map((comment) => (
           <CommentAdvert
             {...comment}
-            toggleLikeCommentFromAdvert={props.toggleLikeCommentFromAdvert}
-            advertId={props.id}
-            deleteCommentFromAdvert={props.deleteCommentFromAdvert}
+            toggleLikeCommentFromAdvert={toggleLikeCommentFromAdvert}
+            advertId={id}
+            deleteCommentFromAdvert={deleteCommentFromAdvert}
           />
         ))}
       </CommentBlock>

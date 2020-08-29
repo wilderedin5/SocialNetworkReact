@@ -24,9 +24,7 @@ const Bookmarks = ({ bookMarks, toggleSetToBookmarks }) => (
         <Bookmark
           toggleSetToBookmarks={toggleSetToBookmarks}
           newsId={bookmark.id}
-          inBookmarks={bookmark.inBookmarks}
-          newsText={bookmark.newsText}
-          theme={bookmark.theme}
+          {...bookmark}
         />
       ))
     ) : (

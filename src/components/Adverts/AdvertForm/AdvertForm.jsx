@@ -29,11 +29,11 @@ const Button = styled(BaseButton)`
   margin-top: 10px;
 `;
 
-const AdvertForm = (props) => {
+const AdvertForm = ({ handleSubmit }) => {
   const Textarea = createFormElement(BaseTextarea);
   const Input = createFormElement(BaseInput);
   return (
-    <Form onSubmit={props.handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <div>
         <Field
           component={Textarea}
