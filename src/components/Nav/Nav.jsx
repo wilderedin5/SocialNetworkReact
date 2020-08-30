@@ -37,7 +37,7 @@ const Nav = ({
   url,
   friends,
   isAuth,
-  toggleSetToBookmarks,
+  toggleBookmarks,
   bookMarks,
   advertising,
 }) => (
@@ -75,10 +75,7 @@ const Nav = ({
       </Menu.Item>
     </Menu>
     {isAuth && <Friends friends={friends} />}
-    <Bookmarks
-      toggleSetToBookmarks={toggleSetToBookmarks}
-      bookMarks={bookMarks}
-    />
+    <Bookmarks toggleBookmarks={toggleBookmarks} bookMarks={bookMarks} />
     <Advertising advertising={advertising} />
   </Container>
 );

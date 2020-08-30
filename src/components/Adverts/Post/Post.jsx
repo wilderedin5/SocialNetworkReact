@@ -16,12 +16,12 @@ const Comment = styled(BaseComment)`
 `;
 
 const Post = ({
-  toggleLikeCommentFromAdvert,
+  likeComment,
   liked,
   advertId,
   id,
   likeCount,
-  deleteCommentFromAdvert,
+  deleteComment,
   name,
   avatar,
   text,
@@ -31,7 +31,7 @@ const Post = ({
       <span key="comment-basic-like">
         <Tooltip title="Like">
           {React.createElement(liked === true ? DislikeFilled : LikeOutlined, {
-            onClick: () => toggleLikeCommentFromAdvert(advertId, id),
+            onClick: () => likeComment(advertId, id),
           })}
         </Tooltip>
         <span className="comment-action">{likeCount}</span>
@@ -42,16 +42,14 @@ const Post = ({
           {React.createElement(
             liked === false || liked === null ? LikeOutlined : DislikeOutlined,
             {
-              onClick: () => toggleLikeCommentFromAdvert(advertId, id),
+              onClick: () => likeComment(advertId, id),
             }
           )}
         </Tooltip>
         <span className="comment-action">{likeCount}</span>
       </span>
     ),
-    <span onClick={() => deleteCommentFromAdvert(advertId, id)}>
-      Remove post
-    </span>,
+    <span onClick={() => deleteComment(advertId, id)}>Remove post</span>,
   ];
   return (
     <Comment

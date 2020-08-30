@@ -13,7 +13,7 @@ const Card = styled(BaseCard)`
 const Bookmark = ({
   theme,
   inBookmarks,
-  toggleSetToBookmarks,
+  toggleBookmarks,
   newsId,
   newsText,
 }) => (
@@ -22,10 +22,7 @@ const Bookmark = ({
     title={theme}
     extra={
       inBookmarks && (
-        <DeleteBookmark
-          toggleSetToBookmarks={toggleSetToBookmarks}
-          newsId={newsId}
-        />
+        <DeleteBookmark toggleBookmarks={toggleBookmarks} newsId={newsId} />
       )
     }
   >

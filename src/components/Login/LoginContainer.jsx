@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import { loginIntoSocialNetwork } from '../../redux/auth-reducer';
-import Login from './Login';
+import { connect } from "react-redux";
+import { login } from "../../redux/auth-reducer";
+import Login from "./Login";
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth,
-    captchaUrl: state.auth.captchaUrl
+  isAuth: state.auth.isAuth,
+  captchaUrl: state.auth.captchaUrl,
 });
 
-export default connect(mapStateToProps,{loginIntoSocialNetwork})(Login);
+export default connect(mapStateToProps, { login })(Login);

@@ -25,7 +25,7 @@ const Flex = styled.div`
   justify-content: space-between;
 `;
 
-const DialogsForm = ({ handleSubmit, deleteAllMessagesFromDialog, id }) => {
+const DialogsForm = ({ handleSubmit, deleteAllMessages, id }) => {
   const Textarea = createFormElement(BaseTextarea);
   return (
     <Form onSubmit={handleSubmit}>
@@ -40,7 +40,7 @@ const DialogsForm = ({ handleSubmit, deleteAllMessagesFromDialog, id }) => {
         <Button htmlType="submit" type="primary">
           Send
         </Button>
-        <Button onClick={() => deleteAllMessagesFromDialog(id)} type="primary">
+        <Button onClick={() => deleteAllMessages(id)} type="primary">
           Clear chat
         </Button>
       </Flex>

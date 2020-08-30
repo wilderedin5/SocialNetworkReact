@@ -90,12 +90,12 @@ export const deleteNews = (newsId) => ({
   newsId,
 });
 
-export const addNewNews = (newsText, theme, author, category) => ({
+export const addNews = (newsText, theme, author, category) => ({
   type: ADD_NEW_NEWS,
   newNews: { id: v4(), newsText, theme, author, category },
 });
 
-export const toggleSetToBookmarks = (newsId, bookmarked) => {
+export const toggleBookmarks = (newsId, bookmarked) => {
   return {
     type: TOGGLE_SET_TO_BOOKMARKS,
     newsId,

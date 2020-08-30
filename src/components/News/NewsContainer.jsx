@@ -1,16 +1,16 @@
-import { connect } from 'react-redux';
-import News from './News';
-import { deleteNews,addNewNews,toggleSetToBookmarks } from '../../redux/news-reducer';
-import { compose } from 'redux';
-import {withAuthRedirect} from '../../hoc/withAuthRedirect';
-import { withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { deleteNews, addNews, toggleBookmarks } from "../../redux/news-reducer";
+import News from "./News";
 
 const mapStateToProps = (state) => ({
-    news: state.newsPage.news
+  news: state.newsPage.news,
 });
 
 export default compose(
-    withRouter,
-    withAuthRedirect,
-    connect(mapStateToProps,{deleteNews,addNewNews,toggleSetToBookmarks})
+  withRouter,
+  withAuthRedirect,
+  connect(mapStateToProps, { deleteNews, addNews, toggleBookmarks })
 )(News);

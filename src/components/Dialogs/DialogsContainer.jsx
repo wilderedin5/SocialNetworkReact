@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import {
   addMessage,
   deleteMessage,
-  deleteAllMessagesFromDialog,
+  deleteAllMessages,
 } from "./../../redux/dialogs-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import Dialogs from "./Dialogs";
@@ -17,7 +17,7 @@ export default compose(
   connect(mapStateToProps, {
     deleteMessage,
     addMessage,
-    deleteAllMessagesFromDialog,
+    deleteAllMessages,
   }),
   withAuthRedirect,
   withRouter

@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import {
-  deleteCommentFromAdvert,
-  toggleLikeCommentFromAdvert,
-  addCommentToAdvert,
-  toggleLikeAdvert,
+  deleteComment,
+  likeComment,
+  addComment,
+  toggleLike,
 } from "../../redux/adverts-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import Adverts from "./Adverts";
@@ -18,9 +18,9 @@ export default compose(
   withAuthRedirect,
   withRouter,
   connect(mapStateToProps, {
-    deleteCommentFromAdvert,
-    toggleLikeCommentFromAdvert,
-    addCommentToAdvert,
-    toggleLikeAdvert,
+    deleteComment,
+    likeComment,
+    addComment,
+    toggleLike,
   })
 )(Adverts);

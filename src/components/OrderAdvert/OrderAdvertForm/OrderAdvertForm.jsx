@@ -12,6 +12,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  color: #000;
 `;
 
 const BaseTextarea = styled.textarea`

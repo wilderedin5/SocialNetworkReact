@@ -173,7 +173,7 @@ export const toggleLikePost = (postId) => {
   };
 };
 
-export const getUsersProfile = (userId) => async (dispatch) => {
+export const getProfile = (userId) => async (dispatch) => {
   let response = await usersAPI.getProfile(userId);
   dispatch(setUsersProfile(response.data));
 };
@@ -201,7 +201,7 @@ export const updateProfile = (profile) => async (dispatch, getState) => {
   let userId = getState().auth.userId;
   let response = await profileAPI.updateProfile(profile);
   if (response.data.resultCode === 0) {
-    dispatch(getUsersProfile(userId));
+    dispatch(getProfile(userId));
   } else {
     let message =
       response.data.messages[0].length > 0

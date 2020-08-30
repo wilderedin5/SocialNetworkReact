@@ -9,10 +9,8 @@ const Container = styled.div`
   }
 `;
 
-const DeleteBookmark = ({ toggleSetToBookmarks, newsId }) => (
-  <Container onClick={() => toggleSetToBookmarks(newsId, false)}>
-    &#9932;
-  </Container>
+const DeleteBookmark = ({ toggleBookmarks, newsId }) => (
+  <Container onClick={() => toggleBookmarks(newsId, false)}>&#9932;</Container>
 );
 
 export default DeleteBookmark;

@@ -34,7 +34,7 @@ const OneNews = ({
   inBookmarks,
   deleteNews,
   newsId,
-  toggleSetToBookmarks,
+  toggleBookmarks,
 }) => (
   <Container>
     {newsOpened ? (
@@ -56,11 +56,11 @@ const OneNews = ({
     </div>
     <Flex>
       {inBookmarks ? (
-        <Button onClick={() => toggleSetToBookmarks(newsId, false)}>
+        <Button onClick={() => toggleBookmarks(newsId, false)}>
           Remove from bookmarks
         </Button>
       ) : (
-        <Button onClick={() => toggleSetToBookmarks(newsId, true)}>
+        <Button onClick={() => toggleBookmarks(newsId, true)}>
           Add in bookmarks
         </Button>
       )}

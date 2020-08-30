@@ -139,7 +139,7 @@ export const deleteMessage = (messageId, userId) => {
   };
 };
 
-export const deleteAllMessagesFromDialog = (userId) => ({
+export const deleteAllMessages = (userId) => ({
   type: DELETE_ALL_MESSAGES_FROM_DIALOG,
   userId,
 });

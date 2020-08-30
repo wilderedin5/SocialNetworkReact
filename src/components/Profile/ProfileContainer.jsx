@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 import { useEffect } from "react";
 import {
-  getUsersProfile,
+  getProfile,
   updateStatus,
   getStatus,
   updatePhoto,
@@ -20,7 +20,7 @@ const ProfileContainer = (props) => {
     if (!userId) {
       userId = props.authorizedUserId;
     }
-    props.getUsersProfile(userId);
+    props.getProfile(userId);
     props.getStatus(userId);
   };
 
@@ -53,7 +53,7 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   connect(mapStateToProps, {
-    getUsersProfile,
+    getProfile,
     getStatus,
     updateStatus,
     updatePhoto,

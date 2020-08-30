@@ -194,32 +194,25 @@ const advertsReducer = (state = initialState, action) => {
   }
 };
 
-export const deleteCommentFromAdvert = (advertId, commentId) => ({
+export const deleteComment = (advertId, commentId) => ({
   type: DELETE_COMMENT_FROM_ADVERT,
   advertId,
   commentId,
 });
 
-export const toggleLikeCommentFromAdvert = (advertId, commentId) => ({
+export const likeComment = (advertId, commentId) => ({
   type: TOGGLE_LIKE_COMMENT_FROM_ADVERT,
   advertId,
   commentId,
 });
 
-export const addCommentToAdvert = (
-  advertId,
-  id,
-  text,
-  name,
-  liked,
-  likeCount
-) => ({
+export const addComment = (advertId, id, text, name, liked, likeCount) => ({
   type: ADD_COMMENT_TO_ADVERT,
   advertId,
   comment: { id, text, name, liked, likeCount },
 });
 
-export const toggleLikeAdvert = (advertId) => ({
+export const toggleLike = (advertId) => ({
   type: TOGGLE_LIKE_ADVERT,
   advertId,
 });

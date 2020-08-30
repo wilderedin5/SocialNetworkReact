@@ -25,7 +25,7 @@ const Dialogs = ({
   isAuth,
   dialogsData,
   deleteMessage,
-  deleteAllMessagesFromDialog,
+  deleteAllMessages,
 }) => {
   let userId = Number(match.params.userId);
   if (!userId) {
@@ -56,7 +56,7 @@ const Dialogs = ({
         ))}
         <DialogsForm
           id={userId}
-          deleteAllMessagesFromDialog={deleteAllMessagesFromDialog}
+          deleteAllMessages={deleteAllMessages}
           onSubmit={AddMessage}
         />
       </Messages>

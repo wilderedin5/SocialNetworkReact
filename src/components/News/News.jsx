@@ -7,16 +7,10 @@ const Container = styled.div`
   color: #000;
 `;
 
-const News = ({
-  addNewNews,
-  news,
-  toggleSetToBookmarks,
-  deleteNews,
-  match,
-}) => {
+const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
   const newsId = match.params.newsId;
   const onSubmit = (formData) => {
-    addNewNews(
+    addNews(
       formData.newsText,
       formData.theme,
       formData.author,
@@ -32,7 +26,7 @@ const News = ({
               <OneNews
                 key={news.id}
                 deleteNews={deleteNews}
-                toggleSetToBookmarks={toggleSetToBookmarks}
+                toggleBookmarks={toggleBookmarks}
                 newsOpened={newsId}
                 newsId={news.id}
                 {...news}
@@ -42,7 +36,7 @@ const News = ({
             <OneNews
               key={news.id}
               deleteNews={deleteNews}
-              toggleSetToBookmarks={toggleSetToBookmarks}
+              toggleBookmarks={toggleBookmarks}
               newsOpened={newsId}
               newsId={news.id}
               {...news}

@@ -14,7 +14,7 @@ const Divider = styled(BaseDivider)`
   font-size: 18px;
 `;
 
-const Bookmarks = ({ bookMarks, toggleSetToBookmarks }) => (
+const Bookmarks = ({ bookMarks, toggleBookmarks }) => (
   <Container>
     <Divider style={{ color: "#fff" }} orientation="center">
       Bookmarks
@@ -22,7 +22,7 @@ const Bookmarks = ({ bookMarks, toggleSetToBookmarks }) => (
     {bookMarks.length > 0
       ? bookMarks.map((bookmark) => (
           <Bookmark
-            toggleSetToBookmarks={toggleSetToBookmarks}
+            toggleBookmarks={toggleBookmarks}
             newsId={bookmark.id}
             {...bookmark}
           />

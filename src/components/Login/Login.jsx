@@ -12,9 +12,9 @@ const Container = styled.div`
   color: #000;
 `;
 
-const Login = ({ loginIntoSocialNetwork, isAuth, captchaUrl }) => {
+const Login = ({ login, isAuth, captchaUrl }) => {
   const onSubmit = (formData) => {
-    loginIntoSocialNetwork(
+    login(
       formData.email,
       formData.password,
       formData.rememberMe,

@@ -44,15 +44,15 @@ const Advert = ({
   text,
   liked,
   id,
-  toggleLikeCommentFromAdvert,
+  likeComment,
   comment,
-  deleteCommentFromAdvert,
+  deleteComment,
   likeCount,
-  addCommentToAdvert,
-  toggleLikeAdvert,
+  addComment,
+  toggleLike,
 }) => {
-  const AddCommentToAdvert = (formData) => {
-    addCommentToAdvert(id, v4(), formData.commentText, formData.name, false, 0);
+  const sendComment = (formData) => {
+    addComment(id, v4(), formData.commentText, formData.name, false, 0);
   };
 
   return (
@@ -62,7 +62,7 @@ const Advert = ({
         <AdvertContent>
           <Title>{title}</Title>
           <Content>{text}</Content>
-          <Like onClick={() => toggleLikeAdvert(id)}>
+          <Like onClick={() => toggleLike(id)}>
             {liked ? <DislikeFilled /> : <LikeOutlined />}
             {likeCount}
           </Like>
@@ -72,13 +72,13 @@ const Advert = ({
         {comment.map((comment) => (
           <Post
             {...comment}
-            toggleLikeCommentFromAdvert={toggleLikeCommentFromAdvert}
+            likeComment={likeComment}
             advertId={id}
-            deleteCommentFromAdvert={deleteCommentFromAdvert}
+            deleteComment={deleteComment}
           />
         ))}
       </CommentBlock>
-      <AdvertForm onSubmit={AddCommentToAdvert} />
+      <AdvertForm onSubmit={sendComment} />
     </div>
   );
 };

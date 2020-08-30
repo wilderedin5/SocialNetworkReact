@@ -55,7 +55,7 @@ const Name = styled.div`
   font-weight: 700;
 `;
 
-const Header = ({ isAuth, profile, login, logoutFromSocialNetwork }) => (
+const Header = ({ isAuth, profile, login, logout }) => (
   <div>
     {isAuth ? (
       <Authorized>
@@ -63,7 +63,7 @@ const Header = ({ isAuth, profile, login, logoutFromSocialNetwork }) => (
           <Avatar src={profile && profile.photos.small} alt="" />
           <Name>{login}</Name>
         </Info>
-        <Button onClick={logoutFromSocialNetwork}>Log out</Button>
+        <Button onClick={logout}>Log out</Button>
       </Authorized>
     ) : (
       <NoAuthorized>
