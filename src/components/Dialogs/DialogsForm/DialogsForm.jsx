@@ -2,23 +2,13 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import styled from "@emotion/styled";
 import { Button } from "antd";
+import { Textarea as BaseTextarea } from "../../common/shared/type";
 import { maxLength, requiredField } from "../../../utils/validate/validateForm";
 import createFormElement from "../../../hoc/createFormElement/createFormElement";
 
 const maxLength250 = maxLength(250);
 
 const Form = styled.form``;
-
-const BaseTextarea = styled.textarea`
-  width: 100%;
-  height: 100px;
-  margin: 0 auto;
-  border-radius: 10px;
-  border: 1px solid rgb(45, 80, 165);
-  padding: 10px;
-  outline: none;
-  resize: none;
-`;
 
 const Flex = styled.div`
   display: flex;

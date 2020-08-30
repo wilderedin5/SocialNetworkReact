@@ -2,19 +2,11 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import styled from "@emotion/styled";
 import { Button } from "antd";
+import { Input as BaseInput } from "../../common/shared/type";
 import { maxLength, requiredField } from "../../../utils/validate/validateForm";
 import createFormElement from "../../../hoc/createFormElement/createFormElement";
 
 const maxLength100 = maxLength(100);
-
-const BaseInput = styled.input`
-  width: 250px;
-  padding: 5px 10px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  border: 1px solid rgb(45, 80, 165);
-  outline: none;
-`;
 
 const Form = styled.form`
   display: flex;

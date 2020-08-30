@@ -2,6 +2,10 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Button } from "antd";
 import { reduxForm, Field } from "redux-form";
+import {
+  Textarea as BaseTextarea,
+  Input as BaseInput,
+} from "../../common/shared/type";
 import createFormElement from "../../../hoc/createFormElement/createFormElement";
 import { maxLength, requiredField } from "../../../utils/validate/validateForm";
 
@@ -13,26 +17,6 @@ const Form = styled.form`
   flex-direction: column;
   align-items: flex-start;
   color: #000;
-`;
-
-const BaseTextarea = styled.textarea`
-  width: 400px;
-  height: 200px;
-  margin: 0 auto;
-  border-radius: 10px;
-  border: 1px solid rgb(45, 80, 165);
-  padding: 10px;
-  outline: none;
-  resize: none;
-`;
-
-const BaseInput = styled.input`
-  width: 400px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid rgb(45, 80, 165);
-  margin-bottom: 5px;
-  outline: none;
 `;
 
 const OrderAdvertForm = ({ handleSubmit, error }) => {

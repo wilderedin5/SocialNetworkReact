@@ -2,6 +2,7 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import styled from "@emotion/styled";
 import { Button as BaseButton } from "antd";
+import { Input as BaseInput } from "../../../common/shared/type";
 import createFormElement from "../../../../hoc/createFormElement/createFormElement";
 import { maxLength } from "../../../../utils/validate/validateForm";
 
@@ -26,13 +27,6 @@ const Button = styled(BaseButton)`
   position: absolute;
   top: 10px;
   right: 0;
-`;
-
-const BaseInput = styled.input`
-  border-radius: 5px;
-  border: 1px solid rgb(45, 80, 165);
-  padding: 5px 10px;
-  margin-bottom: 5px;
 `;
 
 const ProfileInfoForm = ({ handleSubmit, profile, error }) => {

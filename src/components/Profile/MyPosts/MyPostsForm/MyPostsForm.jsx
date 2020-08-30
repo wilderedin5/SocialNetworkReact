@@ -3,6 +3,10 @@ import styled from "@emotion/styled";
 import { Field, reduxForm } from "redux-form";
 import { Button } from "antd";
 import {
+  Textarea as BaseTextarea,
+  Input as BaseInput,
+} from "../../../common/shared/type";
+import {
   maxLength,
   requiredField,
 } from "../../../../utils/validate/validateForm";
@@ -12,27 +16,6 @@ const maxLength250 = maxLength(250);
 const maxLength60 = maxLength(60);
 
 const Form = styled.form``;
-
-const BaseTextarea = styled.textarea`
-  width: 100%;
-  height: 100px;
-  margin: 0 auto;
-  border-radius: 10px;
-  padding: 10px;
-  border: 1px solid rgb(45, 80, 165);
-  outline: none;
-  resize: none;
-  color: #000;
-`;
-
-const BaseInput = styled.input`
-  color: #000;
-  outline: none;
-  border-radius: 5px;
-  padding: 0 10px;
-  border: 1px solid rgb(45, 80, 165);
-  margin-bottom: 10px;
-`;
 
 const MyPostsForm = ({ handleSubmit }) => {
   const Textarea = createFormElement(BaseTextarea);
