@@ -2,7 +2,14 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Card as BaseCard, Button } from "antd";
 import { NavLink } from "react-router-dom";
-import DeleteBookmark from "./DeleteBookmark/DeleteBookmark";
+
+const Delete = styled.div`
+  color: #000;
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
+`;
 
 const Card = styled(BaseCard)`
   margin-bottom: 5px;
@@ -22,11 +29,11 @@ const Bookmark = ({
     title={theme}
     extra={
       inBookmarks && (
-        <DeleteBookmark toggleBookmarks={toggleBookmarks} newsId={newsId} />
+        <Delete onClick={() => toggleBookmarks(newsId, false)}>&#9932;</Delete>
       )
     }
   >
-    <p>{newsText.substring(0, 100)}.....</p>
+    {newsText.substring(0, 100)}.....
     <NavLink to={`/news/${newsId}`}>
       <Button type="primary">Open news</Button>
     </NavLink>
