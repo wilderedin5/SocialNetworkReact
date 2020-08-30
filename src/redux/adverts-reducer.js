@@ -14,7 +14,7 @@ let initialState = {
       likeCount: 11,
       title: "World of Warcraft: Shadowlands Ads",
       text:
-        "World of Warcraft: Shadowlands — восьмое дополнение к компьютерной игре World of Warcraft, анонсированное 1 ноября 2019 года на BlizzCon и готовящееся к выходу в 2020 году. Действия сюжета Shadowlands происходят в Тёмных землях, куда попадают души мертвецов",
+        "World of Warcraft: Shadowlands is the eighth expansion to the computer game World of Warcraft, announced on November 1, 2019 at BlizzCon and is set for release in 2020. The story of Shadowlands takes place in the Dark lands, where the souls of the dead fall",
       image: "https://i.ytimg.com/vi/5bYZyjHhrtU/maxresdefault.jpg",
       comment: [
         {
@@ -57,7 +57,7 @@ let initialState = {
       likeCount: 81,
       title: "Ads ryzen",
       text:
-        "Ryzen (/ˈraɪzən/, рус. ра́йзен)[3] — торговая марка[4] микропроцессоров транснациональной корпорации AMD второй половины 2010-х годов. Данное семейство процессоров относится к архитектуре x86_64, применяется в настольных, мобильных и встроенных вычислительных системах и на данный момент использует процессорные микроархитектуры Zen, Zen+ и Zen 2.",
+        "Ryzen (/ˈraɪzən/ Rus. Riesen)[3] - trademark[4] microprocessors of the AMD multinational Corporation in the second half of the 2010s. This family of processors belongs to the x86_64 architecture, is used in desktop, mobile, and embedded computing systems, and currently uses the Zen, Zen+, and Zen 2 processor microarchitectures.",
       image: "https://www.ixbt.com/img/n1/news/2020/4/4/434234_large.jpg",
       comment: [
         {
@@ -84,7 +84,7 @@ let initialState = {
       likeCount: 211,
       title: "Ads intel",
       text:
-        "«И́нтел» — транснациональная корпорация, производитель электронных устройств и компьютерных компонентов, включая полноцикловое производство микропроцессоров и наборов системной логики. Штаб-квартира расположена в Санта-Кларе, штат Калифорния, США",
+        "Intel is a multinational Corporation that produces electronic devices and computer components, including full-cycle production of microprocessors and system logic kits. It is headquartered in Santa Clara, California, USA",
       image:
         "https://hsto.org/getpro/habr/post_images/5ba/fd7/ada/5bafd7ada71e48b1567c19e6b3770d15.jpg",
       comment: [

@@ -4,43 +4,43 @@ let initialState = {
       id: 1,
       questionTitle: "What is Adobe Flash Player?",
       answer:
-        "Adobe Flash Player – это специальное приложение, которое позволяет смотреть видео, слушать музыку и совершать звонки на веб-сайтах.",
+        "Adobe Flash Player is a special application that allows you to watch videos, listen to music, and make calls on websites.",
     },
     {
       id: 2,
       questionTitle: "What is like?",
       answer:
-        "Лайк (с англ. to like — «нравиться») — популярный в Интернете способ показать свое одобрение какой-либо записи, фотографии, статьи, видеоролика или же любого другого материала. Вам не придется ничего писать, достаточно будет лишь кликнуть на специальную иконку под приглянувшемся вам контентом, на которой чаще всего рисуют сердечко или же большой палец вверх. Рядом с иконкой обычно находится цифра, которая отображает общее количество собранных лайков.",
+        "Like is a popular online way to show your approval of a record, photo, article, video, or any other material. You don't have to write anything, just click on a special icon under the content you like, which is most often drawn with a heart or a thumbs up. Next to the icon is usually a number that shows the total number of collected likes.",
     },
     {
       id: 3,
       questionTitle: "What is repost?",
       answer:
-        "Репост — возможность поделиться чужой публикацией на своей странице в социальной сети, оставляя её в первоначальном виде с сохранением ссылки на первоисточник. Репост, или перепост, как ещё называют этот приём, присутствует практически во всех социальных сетях, являясь одним из основных способов обмена информацией.",
+        "Repost — the ability to share someone else's post on your page in a social network, leaving it in its original form with the link to the original source. Repost, or repost, as this technique is also called, is present in almost all social networks, being one of the main ways to exchange information.",
     },
     {
       id: 4,
       questionTitle: "What is social network?",
       answer:
-        "Социальная сеть — онлайн-платформа, которую люди используют для общения, знакомств, создания социальных отношений с другими людьми, которые имеют схожие интересы или офлайн-связи, также развлечения и работы.",
+        "A social network is an online platform that people use for communication, Dating, creating social relationships with other people who have similar interests or offline connections, as well as entertainment and work.",
     },
     {
       id: 5,
       questionTitle: "What is Facebook?",
       answer:
-        "Facebook — крупнейшая социальная сеть в мире и одноимённая компания, владеющая ею. Была основана 4 февраля 2004 года Марком Цукербергом и его соседями по комнате во время обучения в Гарвардском университете — Эдуардо Саверином, Дастином Московицем и Крисом Хьюзом.",
+        "Facebook is the largest social network in the world and the company that owns it. It was founded on February 4, 2004 by mark Zuckerberg and his roommates while studying at Harvard University-Eduardo Saverin, Dustin Moskowitz and Chris Hughes.",
     },
     {
       id: 6,
       questionTitle: "What is Twitter?",
       answer:
-        "«Тви́ттер» — социальная сеть для публичного обмена сообщениями при помощи веб-интерфейса, SMS, средств мгновенного обмена сообщениями или сторонних программ-клиентов для пользователей интернета любого возраста. Публикация коротких заметок в формате блога получила название «микроблогинг»",
+        "Twitter is a social network for public messaging via a web interface, SMS, instant messaging, or third-party client programs for Internet users of any age. The publication of short notes in the blog format was called",
     },
     {
       id: 7,
       questionTitle: "What is SEO?",
       answer:
-        "Поиско́вая оптимиза́ция — комплекс мер по внутренней и внешней оптимизации для поднятия позиций сайта в результатах выдачи поисковых систем по определённым запросам пользователей, с целью увеличения сетевого трафика и потенциальных клиентов и последующей монетизации этого трафика.",
+        "Search engine optimization — a set of measures for internal and external optimization to raise the site's position in search engine results for certain user queries, in order to increase network traffic and potential customers and then monetize this traffic.",
     },
   ],
   contacts: [
