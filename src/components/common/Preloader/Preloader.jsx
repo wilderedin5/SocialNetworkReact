@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
-const Preloader = styled.div`
+export const Preloader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  &:after {
+  :after {
     content: "";
     width: 80px;
     height: 80px;
@@ -19,5 +19,3 @@ const Preloader = styled.div`
     }
   }
 `;
-
-export default Preloader;

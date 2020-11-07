@@ -1,5 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import {
+  selectUsers,
+  getPageSize,
+  getTotalUsersCount,
+  getCurrentPage,
+  getIsFetching,
+  getIsFollowingProgress,
+} from "../../redux/Selectors/users-selectors";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import {
   follow,
   unfollow,
@@ -9,19 +19,8 @@ import {
   setFetching,
   getUsers,
 } from "../../redux/users-reducer";
-import Users from "./Users";
-import Prealoder from "../common/Preloader/Preloader";
-import { compose } from "redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import {
-  selectUsers,
-  getPageSize,
-  getTotalUsersCount,
-  getCurrentPage,
-  getIsFetching,
-  getIsFollowingProgress,
-} from "../../redux/Selectors/users-selectors";
-import { useEffect } from "react";
+import { Preloader } from "../common/Preloader/Preloader";
+import { Users } from "./Users";
 
 const UsersContainer = (props) => {
   useEffect(() => {
@@ -34,19 +33,7 @@ const UsersContainer = (props) => {
   };
 
   return (
-    <div>
-      {props.isFetching ? <Prealoder /> : null}
-      <Users
-        totalUsersCount={props.totalUsersCount}
-        pageSize={props.pageSize}
-        currentPage={props.currentPage}
-        onPageChanged={onPageChanged}
-        users={props.users}
-        follow={props.follow}
-        unfollow={props.unfollow}
-        isFollowingProgress={props.isFollowingProgress}
-      />
-    </div>
+    props.isFetching ? <Preloader /> : <Users onPageChanged={onPageChanged} {...props} />
   );
 };
 

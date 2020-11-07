@@ -8,7 +8,7 @@ import {
   toggleLike,
 } from "../../redux/adverts-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import Adverts from "./Adverts";
+import { Adverts } from "./Adverts";
 
 const mapStateToProps = (state) => ({
   advertising: state.adverts.advertising,

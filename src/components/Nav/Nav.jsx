@@ -2,9 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { Menu } from "antd";
-import Advertising from "./Advertising/Advertising";
-import Friends from "./Friends/Friends";
-import Bookmarks from "./Bookmarks/Bookmarks";
+import { Advertising } from "./Advertising";
+import { Friends } from "./Friends";
+import { Bookmarks } from "./Bookmarks";
 
 const Container = styled.div`
   .list {
@@ -33,7 +33,7 @@ const Container = styled.div`
   }
 `;
 
-const Nav = ({
+export const Nav = ({
   url,
   friends,
   isAuth,
@@ -41,43 +41,41 @@ const Nav = ({
   bookMarks,
   advertising,
 }) => (
-  <Container>
-    <Menu theme="dark" defaultSelectedKeys={url} mode="inline">
-      <Menu.Item key="/profile">
-        <NavLink to="/profile" activeClassName="active">
-          Profile
+    <Container>
+      <Menu theme="dark" defaultSelectedKeys={url} mode="inline">
+        <Menu.Item key="/profile">
+          <NavLink to="/profile" activeClassName="active">
+            Profile
         </NavLink>
-      </Menu.Item>
-      <Menu.Item key="/dialogs">
-        <NavLink to="/dialogs" activeClassName="active">
-          Messages
+        </Menu.Item>
+        <Menu.Item key="/dialogs">
+          <NavLink to="/dialogs" activeClassName="active">
+            Messages
         </NavLink>
-      </Menu.Item>
-      <Menu.Item key="/news">
-        <NavLink to="/news" activeClassName="active">
-          News
+        </Menu.Item>
+        <Menu.Item key="/news">
+          <NavLink to="/news" activeClassName="active">
+            News
         </NavLink>
-      </Menu.Item>
-      <Menu.Item key="/users">
-        <NavLink to="/users" activeClassName="active">
-          Users
+        </Menu.Item>
+        <Menu.Item key="/users">
+          <NavLink to="/users" activeClassName="active">
+            Users
         </NavLink>
-      </Menu.Item>
-      <Menu.Item key="/help">
-        <NavLink to="/help" activeClassName="active">
-          Help
+        </Menu.Item>
+        <Menu.Item key="/help">
+          <NavLink to="/help" activeClassName="active">
+            Help
         </NavLink>
-      </Menu.Item>
-      <Menu.Item key="/order-advert">
-        <NavLink to="/order-advert" activeClassName="active">
-          Manage advert
+        </Menu.Item>
+        <Menu.Item key="/order-advert">
+          <NavLink to="/order-advert" activeClassName="active">
+            Manage advert
         </NavLink>
-      </Menu.Item>
-    </Menu>
-    {isAuth && <Friends friends={friends} />}
-    <Bookmarks toggleBookmarks={toggleBookmarks} bookMarks={bookMarks} />
-    <Advertising advertising={advertising} />
-  </Container>
-);
-
-export default Nav;
+        </Menu.Item>
+      </Menu>
+      {isAuth && <Friends friends={friends} />}
+      <Bookmarks toggleBookmarks={toggleBookmarks} bookMarks={bookMarks} />
+      <Advertising advertising={advertising} />
+    </Container>
+  );

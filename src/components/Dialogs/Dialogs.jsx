@@ -1,25 +1,21 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Redirect } from "react-router-dom";
-import DialogsForm from "./DialogsForm/DialogsForm";
-import DialogItem from "./DialogItem/DialogItem";
-import MessageItem from "./MessageItem/MessageItem";
+import DialogsForm from "./dialog-form";
+import { DialogItem } from "./dialog-item";
+import { MessageItem } from "./dialog-message";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  color: #000;
-`;
+const Container = styled.div``;
 
 const Dialog = styled.div`
-  border-bottom: 1px solid rgb(235, 235, 235);
+  border-bottom: 1px solid rgb(218, 218, 218);
   margin-bottom: 20px;
   display: flex;
 `;
 
 const Messages = styled.div``;
 
-const Dialogs = ({
+export const Dialogs = ({
   match,
   addMessage,
   isAuth,
@@ -27,41 +23,34 @@ const Dialogs = ({
   deleteMessage,
   deleteAllMessages,
 }) => {
-  let userId = Number(match.params.userId);
-  if (!userId) {
-    userId = 1;
-  }
+  let userId = Number(match.params.userId) || 1;
 
   let AddMessage = (formData) => {
     addMessage(formData.dialogsMessageText, userId);
   };
 
-  if (!isAuth) return <Redirect to="/login" />;
-
-  return (
-    <Container>
-      <Dialog>
-        {dialogsData.map((d) => (
+  return (isAuth ? <Container>
+    <Dialog>
+      {
+        dialogsData.map((d) => (
           <DialogItem key={d.id} {...d} />
-        ))}
-      </Dialog>
-      <Messages>
-        {dialogsData[userId - 1].messages.map((m) => (
-          <MessageItem
-            key={m.id}
-            userId={userId}
-            deleteMessage={deleteMessage}
-            {...m}
-          />
-        ))}
-        <DialogsForm
-          id={userId}
-          deleteAllMessages={deleteAllMessages}
-          onSubmit={AddMessage}
+        ))
+      }
+    </Dialog>
+    <Messages>
+      {dialogsData[userId - 1].messages.map(({ id, ...m }) => (
+        <MessageItem
+          key={id}
+          deleteMessage={() => deleteMessage(id, userId)}
+          {...m}
         />
-      </Messages>
-    </Container>
-  );
+      ))}
+      <DialogsForm
+        id={userId}
+        deleteAllMessages={deleteAllMessages}
+        onSubmit={AddMessage}
+      />
+    </Messages>
+  </Container> : <Redirect to="/login" />
+  )
 };
-
-export default Dialogs;

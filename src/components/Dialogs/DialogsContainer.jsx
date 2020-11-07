@@ -7,7 +7,7 @@ import {
   deleteAllMessages,
 } from "./../../redux/dialogs-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import Dialogs from "./Dialogs";
+import { Dialogs } from "./Dialogs";
 
 let mapStateToProps = (state) => ({
   dialogsData: state.dialogsPage.dialogsData,

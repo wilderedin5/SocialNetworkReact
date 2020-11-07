@@ -8,6 +8,4 @@ const Container = styled.div`
   font-weight: 700;
 `;
 
-const Footer = ({ copyright }) => <Container>{copyright}</Container>;
-
-export default Footer;
+export const Footer = ({ copyright }) => <Container>{copyright}</Container>;

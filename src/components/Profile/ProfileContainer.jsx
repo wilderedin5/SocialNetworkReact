@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
-import { useEffect } from "react";
 import {
   getProfile,
   updateStatus,
   getStatus,
   updatePhoto,
   updateProfile,
-} from "./../../redux/profile-reducer";
+} from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import Profile from "./Profile";
+import { Profile } from "./Profile";
 
 const ProfileContainer = (props) => {
   const updateProfile = () => {
@@ -35,12 +34,7 @@ const ProfileContainer = (props) => {
   return (
     <Profile
       {...props}
-      updatePhoto={props.updatePhoto}
       owner={!props.match.params.userId}
-      profile={props.profile}
-      status={props.status}
-      updateStatus={props.updateStatus}
-      updateProfile={props.updateProfile}
     />
   );
 };

@@ -1,35 +1,29 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Redirect } from "react-router-dom";
-import LoginInfo from "./LoginInfo/LoginInfo";
-import LoginForm from "./LoginForm/LoginForm";
+import { LoginInfo } from "./login-info";
+import LoginForm from "./login-form";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 50px;
   color: #000;
 `;
 
-const Login = ({ login, isAuth, captchaUrl }) => {
-  const onSubmit = (formData) => {
+export const Login = ({ login, isAuth, captchaUrl }) => {
+  const onSubmit = ({ email, password, rememberMe, captcha }) => {
     login(
-      formData.email,
-      formData.password,
-      formData.rememberMe,
-      formData.captcha
+      email,
+      password,
+      rememberMe,
+      captcha
     );
   };
-  if (isAuth) {
-    return <Redirect to="/profile" />;
-  }
-  return (
+
+  return isAuth ?
+    <Redirect to="/profile" />
+    :
     <Container>
       <LoginForm captchaUrl={captchaUrl} onSubmit={onSubmit} />
       <LoginInfo />
     </Container>
-  );
 };
-
-export default Login;

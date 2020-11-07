@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
-import Help from "./Help"
 import { compose } from "redux";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { Help } from "./Help"
 
 const mapStateToProps = (state) => ({
     help: state.help.helpQA,
@@ -10,5 +10,5 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     withAuthRedirect,
-    connect(mapStateToProps,{})
+    connect(mapStateToProps, {})
 )(Help);

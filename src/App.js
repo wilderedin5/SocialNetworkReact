@@ -5,7 +5,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { initiliazeApp } from './redux/app-reducer';
-import Preloader from './components/common/Preloader/Preloader';
+import { Preloader } from './components/common/Preloader/Preloader';
 import { compose } from 'redux';
 import NavContainer from './components/Nav/NavContainer';
 import LoginContainer from './components/Login/LoginContainer';

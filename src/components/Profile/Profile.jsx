@@ -1,12 +1,15 @@
 import React from "react";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import styled from "@emotion/styled";
+import { ProfileInfo } from "./ProfileInfo";
+import MyPostsContainer from "./MyPostsContainer";
 
-const Profile = ({ owner, ...props }) => (
-  <div>
+const Container = styled.div`
+  color: #000;
+`
+
+export const Profile = ({ owner, ...props }) => (
+  <Container>
     <ProfileInfo isOwner={owner} {...props} />
     <MyPostsContainer />
-  </div>
+  </Container>
 );
-
-export default Profile;
