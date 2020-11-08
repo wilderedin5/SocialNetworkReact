@@ -26,7 +26,7 @@ const Button = styled(BaseButton)`
   right: 0;
 `;
 
-const ProfileInfoForm = ({ handleSubmit, profile, error }) => (
+const ProfileForm = ({ handleSubmit, profile, error }) => (
   <form onSubmit={handleSubmit}>
     <ProfileInfo>
       <Name>
@@ -90,4 +90,4 @@ const ProfileInfoForm = ({ handleSubmit, profile, error }) => (
 
 export default reduxForm({
   form: "profileInfoForm",
-})(ProfileInfoForm);
+})(ProfileForm);

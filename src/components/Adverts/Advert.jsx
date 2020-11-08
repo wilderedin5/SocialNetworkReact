@@ -1,9 +1,9 @@
 import React from "react";
 import { v4 } from "uuid";
 import styled from "@emotion/styled";
-import AdvertForm from "./advert-form";
-import { Comments } from "./advert-comments";
-import { AdvertContent } from "./advert-content";
+import Form from "./Form";
+import { Comments } from "./Comments";
+import { Content } from "./Content";
 
 const Container = styled.div`
   color: #000;
@@ -22,8 +22,8 @@ export const Advert = ({
   addComment,
   toggleLike,
 }) => {
-  const sendComment = (formData) => {
-    addComment(id, v4(), formData.commentText, formData.name, false, 0);
+  const handleSubmit = ({ commentText, name }) => {
+    addComment(id, v4(), commentText, name, false, 0);
   };
 
   const CommentsProps = {
@@ -45,11 +45,11 @@ export const Advert = ({
 
   return (
     <Container>
-      <AdvertContent {...ContentProps} />
+      <Content {...ContentProps} />
 
       <Comments {...CommentsProps} />
 
-      <AdvertForm onSubmit={sendComment} />
+      <Form onSubmit={handleSubmit} />
     </Container>
   );
 };

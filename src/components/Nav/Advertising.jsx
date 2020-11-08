@@ -7,8 +7,6 @@ const Carousel = styled(BaseCarousel)`
   margin: 20px 0;
 `;
 
-const Slide = styled.div``;
-
 const Img = styled.img`
   width: 100%;
   height: 150px;
@@ -16,11 +14,9 @@ const Img = styled.img`
 
 export const Advertising = ({ advertising }) => (
   <Carousel autoplay={true}>
-    {advertising.map((advert) => (
-      <NavLink to={`/adverts/${advert.id}`}>
-        <Slide>
-          <Img src={advert.image} alt="" />
-        </Slide>
+    {advertising.map(({ image, id }) => (
+      <NavLink to={`/adverts/${id}`}>
+        <Img src={image} alt="" />
       </NavLink>
     ))}
   </Carousel>

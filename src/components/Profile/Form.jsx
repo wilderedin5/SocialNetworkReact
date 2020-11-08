@@ -1,20 +1,15 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Button as BaseButton } from "antd";
-import styled from "@emotion/styled";
+import { Button } from "antd";
 import { requiredField } from "../../utils/validate/validateForm";
-import { maxLength60, maxLength250, Textarea, Input } from "../../hoc/createFormElement/createFormElement";
+import { maxLength250, maxLength60, Textarea, Input } from "../../hoc/createFormElement/createFormElement";
 
-const Button = styled(BaseButton)`
-  margin-top: 10px;
-`;
-
-const AdvertForm = ({ handleSubmit }) => (
+const Form = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Field
       component={Textarea}
-      name={"commentText"}
-      placeholder="Message"
+      name={"postText"}
+      placeholder="This wall is waiting for your post!"
       validate={[requiredField, maxLength250]}
     />
     <Field
@@ -29,7 +24,6 @@ const AdvertForm = ({ handleSubmit }) => (
   </form>
 );
 
-
 export default reduxForm({
-  form: "AdvertForm",
-})(AdvertForm);
+  form: "MyPosts",
+})(Form);

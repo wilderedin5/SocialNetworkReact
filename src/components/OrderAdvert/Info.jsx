@@ -9,7 +9,7 @@ const Container = styled.div`
   margin-bottom: 10px;
 `;
 
-export const OrderAdvertInfo = ({ title, text, id, deleteAdvert }) => (
+export const Info = ({ title, text, id, deleteAdvert }) => (
   <Container>
     <div>
       <b>Title:</b> {title}

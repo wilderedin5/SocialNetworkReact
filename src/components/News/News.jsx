@@ -6,8 +6,8 @@ import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { deleteNews, addNews, toggleBookmarks } from "../../redux/news-reducer";
-import { OneNews } from "./one-news";
-import NewsForm from "./news-form";
+import { Article } from "./Article";
+import Form from "./Form";
 
 const Container = styled.div`
   color: #000;
@@ -17,7 +17,7 @@ const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
   const newsId = match.params.newsId;
   const formattedNews = newsId ? news.filter((news) => newsId === String(news.id)) : news
 
-  const onSubmit = ({ newsText, theme, author, category }) => {
+  const handleSubmit = ({ newsText, theme, author, category }) => {
     addNews(
       newsText,
       theme,
@@ -29,16 +29,15 @@ const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
   return (
     <Container>
       {formattedNews.map((news) =>
-        <OneNews
+        <Article
           key={news.id}
-          deleteNews={deleteNews}
-          toggleBookmarks={toggleBookmarks}
+          deleteNews={() => deleteNews(news.id)}
+          toggleBookmarks={() => toggleBookmarks(news.id, !news.inBookmarks)}
           newsOpened={newsId}
-          newsId={news.id}
           {...news}
         />)
       }
-      {!newsId && <NewsForm onSubmit={onSubmit} />}
+      {!newsId && <Form onSubmit={handleSubmit} />}
     </Container>
   );
 };

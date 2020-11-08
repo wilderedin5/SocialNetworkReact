@@ -8,7 +8,7 @@ const Container = styled.div`
   padding: 10px;
 `;
 
-export const LoginInfo = () => (
+export const Info = () => (
   <Container>
     <div>Login: wildnefalem5@gmail.com</div>
     <div>Password: testmysoc876a</div>

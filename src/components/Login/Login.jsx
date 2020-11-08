@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import styled from "@emotion/styled";
 import { Redirect } from "react-router-dom";
 import { login } from "../../redux/auth-reducer";
-import { LoginInfo } from "./login-info";
-import LoginForm from "./login-form";
+import { Info } from "./Info";
+import Form from "./Form";
 
 const Container = styled.div`
   margin-top: 50px;
@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Login = ({ login, isAuth, captchaUrl }) => {
-  const onSubmit = ({ email, password, rememberMe, captcha }) => {
+  const handleSubmit = ({ email, password, rememberMe, captcha }) => {
     login(
       email,
       password,
@@ -25,8 +25,8 @@ const Login = ({ login, isAuth, captchaUrl }) => {
     <Redirect to="/profile" />
     :
     <Container>
-      <LoginForm captchaUrl={captchaUrl} onSubmit={onSubmit} />
-      <LoginInfo />
+      <Form captchaUrl={captchaUrl} onSubmit={handleSubmit} />
+      <Info />
     </Container>
 };
 

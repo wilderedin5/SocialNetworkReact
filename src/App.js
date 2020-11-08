@@ -17,7 +17,7 @@ const Dialogs = React.lazy(() => import('./components/Dialogs/Dialogs'));
 const Users = React.lazy(() => import('./components/Users/Users'));
 const News = React.lazy(() => import('./components/News/News'));
 const Help = React.lazy(() => import('./components/Help/Help'));
-const OrderAdvert = React.lazy(() => import('./components/OrderAdvert/order-advert'));
+const OrderAdvert = React.lazy(() => import('./components/OrderAdvert/OrderAdvert'));
 
 
 const App = (props) => {
@@ -64,12 +64,10 @@ const App = (props) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    initiliazed: state.app.initiliazed,
-    isAuth: state.auth.isAuth
-  }
-}
+const mapStateToProps = (state) => ({
+  initiliazed: state.app.initiliazed,
+  isAuth: state.auth.isAuth
+})
 
 export default compose(
   withRouter,

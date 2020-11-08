@@ -11,7 +11,7 @@ const Button = styled(BaseButton)`
   }
 `
 
-const DialogsForm = ({ handleSubmit, deleteAllMessages, id }) => (
+const Form = ({ handleSubmit, deleteAllMessages, id }) => (
   <form onSubmit={handleSubmit}>
     <Field
       component={Textarea}
@@ -23,16 +23,14 @@ const DialogsForm = ({ handleSubmit, deleteAllMessages, id }) => (
     <div>
       <Button htmlType="submit" type="primary">
         Send
-        </Button>
+      </Button>
       <Button onClick={() => deleteAllMessages(id)} type="primary">
         Clear chat
-        </Button>
+      </Button>
     </div>
-
   </form>
 );
 
-
 export default reduxForm({
   form: "DialogsForm",
-})(DialogsForm);
+})(Form);

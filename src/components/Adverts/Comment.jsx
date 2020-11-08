@@ -1,25 +1,19 @@
 import React from "react";
 import { Tooltip, Avatar, Comment as BaseComment } from "antd";
 import styled from "@emotion/styled";
+import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
 import NoAvatar from '../../assets/image/noAvatar.jpg'
-import {
-  DislikeOutlined,
-  LikeOutlined,
-  DislikeFilled,
-} from "@ant-design/icons";
 
-const Comment = styled(BaseComment)`
+const CommentContainer = styled(BaseComment)`
   border: 1px solid grey;
   margin-bottom: 10px;
   border-radius: 10px;
   padding: 0 5px;
 `;
 
-export const Post = ({
+export const Comment = ({
   likeComment,
   liked,
-  advertId,
-  id,
   likeCount,
   deleteComment,
   name,
@@ -29,33 +23,25 @@ export const Post = ({
   const actions = [
     <span key="comment-basic-dislike">
       <Tooltip title={liked ? 'Like' : 'Dislike'}>
-        {liked ?
-          React.createElement(liked === true ? DislikeFilled : LikeOutlined, {
-            onClick: () => likeComment(advertId, id),
-          })
-          :
-          React.createElement(
-            liked === false || liked === null ? LikeOutlined : DislikeOutlined,
-            {
-              onClick: () => likeComment(advertId, id),
-            }
-          )
-        }
+        {React.createElement(
+          liked ? DislikeFilled : LikeOutlined,
+          {
+            onClick: likeComment,
+          }
+        )}
       </Tooltip>
       <span className="comment-action">{likeCount}</span>
     </span>,
-    <span onClick={() => deleteComment(advertId, id)}>Remove post</span>,
+    <span onClick={deleteComment}>Remove post</span>,
   ];
   return (
-    <Comment
+    <CommentContainer
       author={name}
       actions={actions}
       avatar={
         <Avatar
           size="large"
-          src={
-            avatar || NoAvatar
-          }
+          src={avatar || NoAvatar}
           alt={name}
         />
       }

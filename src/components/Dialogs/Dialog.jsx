@@ -7,8 +7,8 @@ const Name = styled(NavLink)`
   display: flex;
   align-items: center;
   padding: 10px;
-  color: #000;
   font-weight: 700;
+  color: #000;
   :not(:last-child) {
     margin-right: 20px;
   }
@@ -24,7 +24,7 @@ const Avatar = styled(BaseAvatar)`
   margin-right: 10px;
 `
 
-export const DialogItem = ({ id, photoUrl, name }) => (
+export const Dialog = ({ id, photoUrl, name }) => (
   <Name to={`/dialogs/${id}`} activeClassName="active">
     <Avatar size={30} src={photoUrl} />
     {name}

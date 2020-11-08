@@ -3,9 +3,9 @@ import { Collapse } from "antd";
 
 export const Faq = ({ help }) => (
     <Collapse>
-        {help.map((help) => (
-            <Collapse.Panel header={help.questionTitle} key={help.id}>
-                {help.answer}
+        {help.map(({ questionTitle, id, answer }) => (
+            <Collapse.Panel header={questionTitle} key={id}>
+                {answer}
             </Collapse.Panel>
         ))}
     </Collapse>

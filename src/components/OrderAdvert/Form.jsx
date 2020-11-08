@@ -4,7 +4,7 @@ import { reduxForm, Field } from "redux-form";
 import { requiredField } from "../../utils/validate/validateForm";
 import { maxLength1000, maxLength100, Input, Textarea } from "../../hoc/createFormElement/createFormElement";
 
-const OrderAdvertForm = ({ handleSubmit, error }) => (
+const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
     <Field
       type="text"
@@ -37,4 +37,4 @@ const OrderAdvertForm = ({ handleSubmit, error }) => (
 
 export default reduxForm({
   form: "AdvertForm",
-})(OrderAdvertForm);
+})(Form);

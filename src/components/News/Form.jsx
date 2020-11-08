@@ -4,7 +4,7 @@ import { Button } from "antd";
 import { requiredField } from "../../utils/validate/validateForm";
 import { maxLength1000, maxLength100, Textarea, Input } from "../../hoc/createFormElement/createFormElement";
 
-const NewsForm = ({ handleSubmit, error }) => (
+const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
     <Field
       placeholder="Text news"
@@ -43,4 +43,4 @@ const NewsForm = ({ handleSubmit, error }) => (
 
 export default reduxForm({
   form: "NewsForm",
-})(NewsForm);
+})(Form);

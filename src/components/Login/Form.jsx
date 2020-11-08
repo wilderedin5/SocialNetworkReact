@@ -5,7 +5,7 @@ import { Button } from "antd";
 import { requiredField } from "../../utils/validate/validateForm";
 import { maxLength100, Input } from "../../hoc/createFormElement/createFormElement";
 
-const Form = styled.form`
+const Container = styled.form`
   text-align: center;
   margin-bottom: 40px;
   input[type="checkbox"] {
@@ -14,8 +14,8 @@ const Form = styled.form`
   }
 `;
 
-const LoginForm = ({ handleSubmit, captchaUrl, error }) => (
-  <Form onSubmit={handleSubmit}>
+const Form = ({ handleSubmit, captchaUrl, error }) => (
+  <Container onSubmit={handleSubmit}>
     <Field
       placeholder="Login"
       name="email"
@@ -49,9 +49,9 @@ const LoginForm = ({ handleSubmit, captchaUrl, error }) => (
       )}
     </div>
     {error}
-  </Form>
+  </Container>
 );
 
 export default reduxForm({
   form: "login",
-})(LoginForm);
+})(Form);

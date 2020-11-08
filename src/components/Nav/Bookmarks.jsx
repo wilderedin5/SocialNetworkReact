@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Divider as BaseDivider } from "antd";
+import { Divider } from "antd";
 import { Bookmark } from "./Bookmark";
 
 const Container = styled.div`
@@ -8,10 +8,6 @@ const Container = styled.div`
   @media (max-width: 576px) {
     font-size: 12px;
   }
-`;
-
-const Divider = styled(BaseDivider)`
-  font-size: 18px;
 `;
 
 export const Bookmarks = ({ bookMarks, toggleBookmarks }) => (
@@ -22,8 +18,7 @@ export const Bookmarks = ({ bookMarks, toggleBookmarks }) => (
     {bookMarks.length > 0
       ? bookMarks.map((bookmark) => (
         <Bookmark
-          toggleBookmarks={toggleBookmarks}
-          newsId={bookmark.id}
+          toggleBookmarks={() => toggleBookmarks(bookmark.id, false)}
           {...bookmark}
         />
       ))

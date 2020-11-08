@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Button as BaseButton } from "antd";
 
-const Message = styled.div`
+const Container = styled.div`
   position: relative;
   margin-bottom: 25px;
   border: 1px solid ${p => p.outMe ? ' rgb(45, 80, 165)' : 'rgb(20, 199, 35)'};
@@ -19,11 +19,11 @@ const Button = styled(BaseButton)`
   right: 5px;
 `;
 
-export const MessageItem = ({ outMe, message, deleteMessage }) => (
-  <Message outMe={outMe}>
+export const Message = ({ outMe, message, deleteMessage }) => (
+  <Container outMe={outMe}>
     {message}
     {outMe && (
       <Button onClick={deleteMessage}>Remove message</Button>
     )}
-  </Message>
+  </Container>
 );

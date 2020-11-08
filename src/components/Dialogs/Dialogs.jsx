@@ -10,13 +10,15 @@ import {
   deleteAllMessages,
 } from "../../redux/dialogs-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import DialogsForm from "./dialog-form";
-import { DialogItem } from "./dialog-item";
-import { MessageItem } from "./dialog-message";
+import Form from "./Form";
+import { Dialog } from "./Dialog";
+import { Message } from "./Message";
 
-const Container = styled.div``;
+const Container = styled.div`
+  color: #000;
+`;
 
-const Dialog = styled.div`
+const DialogsList = styled.div`
   border-bottom: 1px solid rgb(218, 218, 218);
   margin-bottom: 20px;
   display: flex;
@@ -30,39 +32,37 @@ const Dialogs = ({
   deleteMessage,
   deleteAllMessages,
 }) => {
-  let userId = Number(match.params.userId) || 1;
+  const userId = Number(match.params.userId) || 1;
 
-  let AddMessage = (formData) => {
-    addMessage(formData.dialogsMessageText, userId);
+  const handleSubmit = ({ dialogsMessageText }) => {
+    addMessage(dialogsMessageText, userId);
   };
 
   return (isAuth ? <Container>
-    <Dialog>
+    <DialogsList>
       {
         dialogsData.map((d) => (
-          <DialogItem key={d.id} {...d} />
+          <Dialog key={d.id} {...d} />
         ))
       }
-    </Dialog>
-    <div>
-      {dialogsData[userId - 1].messages.map(({ id, ...m }) => (
-        <MessageItem
-          key={id}
-          deleteMessage={() => deleteMessage(id, userId)}
-          {...m}
-        />
-      ))}
-      <DialogsForm
-        id={userId}
-        deleteAllMessages={deleteAllMessages}
-        onSubmit={AddMessage}
+    </DialogsList>
+    {dialogsData[userId - 1].messages.map(({ id, ...m }) => (
+      <Message
+        key={id}
+        deleteMessage={() => deleteMessage(id, userId)}
+        {...m}
       />
-    </div>
+    ))}
+    <Form
+      id={userId}
+      deleteAllMessages={deleteAllMessages}
+      onSubmit={handleSubmit}
+    />
   </Container> : <Redirect to="/login" />
   )
 };
 
-let mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   dialogsData: state.dialogsPage.dialogsData,
 });
 

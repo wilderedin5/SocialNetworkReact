@@ -20,7 +20,7 @@ const Button = styled(BaseButton)`
   }
 `
 
-export const OneNews = ({
+export const Article = ({
   newsOpened,
   newsText,
   theme,
@@ -29,7 +29,7 @@ export const OneNews = ({
   category,
   inBookmarks,
   deleteNews,
-  newsId,
+  id,
   toggleBookmarks,
 }) => (
     <Container>
@@ -47,11 +47,11 @@ export const OneNews = ({
         <b>Category:</b> {category}
       </div>
       <Tools>
-        <Button onClick={() => toggleBookmarks(newsId, !inBookmarks)}>
+        <Button onClick={toggleBookmarks}>
           {inBookmarks ? 'Remove from bookmarks' : 'Add in bookmarks'}
         </Button>
-        <Button onClick={() => deleteNews(newsId)}>Remove news</Button>
-        <NavLink to={`/news/${newsOpened ? '' : newsId}`}>
+        <Button onClick={deleteNews}>Remove news</Button>
+        <NavLink to={`/news/${newsOpened ? '' : id}`}>
           <Button>{newsOpened ? 'Return to news page' : 'Go to this news'}</Button>
         </NavLink>
       </Tools>

@@ -20,7 +20,7 @@ export const Bookmark = ({
   theme,
   inBookmarks,
   toggleBookmarks,
-  newsId,
+  id,
   newsText,
 }) => (
     <Card
@@ -28,12 +28,12 @@ export const Bookmark = ({
       title={theme}
       extra={
         inBookmarks && (
-          <Delete onClick={() => toggleBookmarks(newsId, false)}>&#9932;</Delete>
+          <Delete onClick={toggleBookmarks}>&#9932;</Delete>
         )
       }
     >
       {newsText.substring(0, 100)}.....
-      <NavLink to={`/news/${newsId}`}>
+      <NavLink to={`/news/${id}`}>
         <Button type="primary">Open news</Button>
       </NavLink>
     </Card>

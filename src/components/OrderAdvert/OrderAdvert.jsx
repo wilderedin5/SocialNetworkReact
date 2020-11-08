@@ -4,15 +4,15 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { addAdvert, deleteAdvert } from "../../redux/adverts-reducer";
-import { OrderAdvertInfo } from "./order-advert-info";
-import OrderAdvertForm from "./order-advert-form";
+import { Info } from "./Info";
+import Form from "./Form";
 
 const Container = styled.div`
   color: #000;
 `
 
 const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
-  const onSubmit = ({ title, text, image }) => {
+  const handleSubmit = ({ title, text, image }) => {
     addAdvert(
       adverts.length + 1,
       false,
@@ -25,9 +25,9 @@ const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
   return (
     <Container>
       {adverts.map((advert) => (
-        <OrderAdvertInfo deleteAdvert={deleteAdvert} {...advert} />
+        <Info deleteAdvert={deleteAdvert} {...advert} />
       ))}
-      <OrderAdvertForm onSubmit={onSubmit} />
+      <Form onSubmit={handleSubmit} />
     </Container>
   );
 };

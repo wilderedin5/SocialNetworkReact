@@ -12,10 +12,6 @@ const Title = styled.h2`
   margin: 0;
 `;
 
-const Content = styled.div`
-  font-size: 18px;
-`;
-
 const Container = styled.div`
   margin-bottom: 10px;    
   padding: 10px;
@@ -27,16 +23,14 @@ const Like = styled.span`
   cursor: pointer;
 `;
 
-export const AdvertContent = ({ image, title, text, id, liked, likeCount, toggleLike }) => (
+export const Content = ({ image, title, text, id, liked, likeCount, toggleLike }) => (
   <Container>
     <Image src={image} />
-    <div>
-      <Title>{title}</Title>
-      <Content>{text}</Content>
-      <Like onClick={() => toggleLike(id)}>
-        {liked ? <DislikeFilled /> : <LikeOutlined />}
-        {likeCount}
-      </Like>
-    </div>
+    <Title>{title}</Title>
+    <div>{text}</div>
+    <Like onClick={() => toggleLike(id)}>
+      {liked ? <DislikeFilled /> : <LikeOutlined />}
+      {likeCount}
+    </Like>
   </Container>
 )

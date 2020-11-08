@@ -11,27 +11,20 @@ import {
   updateProfile,
 } from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { ProfileInfo } from "./ProfileInfo";
-import MyPosts from "./MyPosts";
+import { Info } from "./Info";
+import Posts from "./Posts";
 
 const Container = styled.div`
   color: #000;
 `
 
-const ProfileContainer = (props) => {
-  const updateProfile = () => {
-    let userId = props.match.params.userId;
+const Profile = (props) => {
+  const userId = props.match.params.userId || props.authorizedUserId;
 
-    if (!userId) {
-      userId = props.authorizedUserId;
-    }
+  const updateProfile = () => {
     props.getProfile(userId);
     props.getStatus(userId);
   };
-
-  useEffect(() => {
-    updateProfile();
-  }, []);
 
   useEffect(() => {
     updateProfile();
@@ -39,8 +32,8 @@ const ProfileContainer = (props) => {
 
   return (
     <Container>
-      <ProfileInfo isOwner={!props.match.params.userId} {...props} />
-      <MyPosts />
+      <Info isOwner={!props.match.params.userId} {...props} />
+      <Posts />
     </Container>
   );
 };
@@ -61,4 +54,4 @@ export default compose(
   }),
   withRouter,
   withAuthRedirect
-)(ProfileContainer);
+)(Profile);

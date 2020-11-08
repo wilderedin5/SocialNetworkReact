@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import { Button as BaseButton, Divider } from "antd";
 import noAvatar from "../../assets/image/noAvatar.jpg";
 import { Preloader } from "../common/Preloader/Preloader";
-import { Status } from "./status";
-import ProfileInfoForm from "./ProfileInfoForm";
+import { Status } from "./Status";
+import ProfileForm from "./ProfileForm";
 
 const Container = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const Label = styled.label`
   }
 `;
 
-const Info = styled.div`
+const InfoContainer = styled.div`
   padding-left: 30px;
 `;
 
@@ -71,10 +71,10 @@ const Button = styled(BaseButton)`
   right: 0;
 `;
 
-export const ProfileInfo = (props) => {
+export const Info = (props) => {
   let [editMode, setEditMode] = useState(false);
 
-  const onSubmit = (formData) => {
+  const handleSubmit = (formData) => {
     props.updateProfile(formData).then(() => {
       setEditMode(false);
     });
@@ -97,13 +97,13 @@ export const ProfileInfo = (props) => {
       </div>
 
       {editMode ? (
-        <ProfileInfoForm
+        <ProfileForm
           initialValues={props.profile}
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           profile={props.profile}
         />
       ) : (
-          <Info>
+          <InfoContainer>
             <Name>{props.profile.fullName}</Name>
             <Status
               status={props.status}
@@ -124,7 +124,7 @@ export const ProfileInfo = (props) => {
               )
               )}
             </ContactList>
-          </Info>
+          </InfoContainer>
         )}
       {(props.isOwner && !editMode) && (
         <Button onClick={() => setEditMode(true)}>Edit page</Button>

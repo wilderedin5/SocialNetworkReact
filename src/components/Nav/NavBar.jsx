@@ -12,34 +12,9 @@ import { Advertising } from "./Advertising";
 import { Friends } from "./Friends";
 import { Bookmarks } from "./Bookmarks";
 
-const Container = styled.div`
-  .list {
-    list-style-type: none;
-    font-size: 24px;
-    & li {
-      padding: 5px;
-      background: rgb(25, 115, 200);
-      margin-bottom: 5px;
-      @media (max-width: 576px) {
-        padding: 0 5px;
-        font-size: 18px;
-      }
-    }
-    & a {
-      color: #fff;
-      text-decoration: none;
-    }
-  }
+const Container = styled.div``;
 
-  .active {
-    color: red;
-    & li {
-      background: rgb(30, 45, 190);
-    }
-  }
-`;
-
-const NavContainer = ({ history, getLastFriends, friends, isAuth, toggleBookmarks, bookMarks, advertising }) => {
+const NavBar = ({ history, getLastFriends, friends, isAuth, toggleBookmarks, bookMarks, advertising }) => {
   useEffect(() => {
     getLastFriends(1, 9);
   }, []);
@@ -95,4 +70,4 @@ const mapStateToProps = (state) => ({
 export default compose(
   connect(mapStateToProps, { toggleBookmarks, getLastFriends }),
   withRouter
-)(NavContainer);
+)(NavBar);
