@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { Menu } from "antd";
+import { toggleBookmarks } from "../../redux/news-reducer";
+import { getBookmarks } from "../../redux/Selectors/news-selectors";
+import { getLastFriends } from "../../redux/sidebar-reducer";
 import { Advertising } from "./Advertising";
 import { Friends } from "./Friends";
 import { Bookmarks } from "./Bookmarks";
@@ -33,16 +39,14 @@ const Container = styled.div`
   }
 `;
 
-export const Nav = ({
-  url,
-  friends,
-  isAuth,
-  toggleBookmarks,
-  bookMarks,
-  advertising,
-}) => (
+const NavContainer = ({ history, getLastFriends, friends, isAuth, toggleBookmarks, bookMarks, advertising }) => {
+  useEffect(() => {
+    getLastFriends(1, 9);
+  }, []);
+
+  return (
     <Container>
-      <Menu theme="dark" defaultSelectedKeys={url} mode="inline">
+      <Menu theme="dark" defaultSelectedKeys={history.location.pathname} mode="inline">
         <Menu.Item key="/profile">
           <NavLink to="/profile" activeClassName="active">
             Profile
@@ -79,3 +83,16 @@ export const Nav = ({
       <Advertising advertising={advertising} />
     </Container>
   );
+};
+
+const mapStateToProps = (state) => ({
+  friends: state.sidebar.friends,
+  bookMarks: getBookmarks(state),
+  isAuth: state.auth.isAuth,
+  advertising: state.adverts.advertising,
+});
+
+export default compose(
+  connect(mapStateToProps, { toggleBookmarks, getLastFriends }),
+  withRouter
+)(NavContainer);

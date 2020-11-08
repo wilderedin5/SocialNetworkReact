@@ -1,5 +1,11 @@
+
 import React from "react";
 import styled from "@emotion/styled";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { deleteNews, addNews, toggleBookmarks } from "../../redux/news-reducer";
 import { OneNews } from "./one-news";
 import NewsForm from "./news-form";
 
@@ -7,7 +13,7 @@ const Container = styled.div`
   color: #000;
 `;
 
-export const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
+const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
   const newsId = match.params.newsId;
   const formattedNews = newsId ? news.filter((news) => newsId === String(news.id)) : news
 
@@ -36,3 +42,13 @@ export const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
     </Container>
   );
 };
+
+const mapStateToProps = (state) => ({
+  news: state.newsPage.news,
+});
+
+export default compose(
+  withRouter,
+  withAuthRedirect,
+  connect(mapStateToProps, { deleteNews, addNews, toggleBookmarks })
+)(News);

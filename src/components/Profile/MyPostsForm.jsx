@@ -4,7 +4,6 @@ import { Button } from "antd";
 import { requiredField } from "../../utils/validate/validateForm";
 import { maxLength250, maxLength60, Textarea, Input } from "../../hoc/createFormElement/createFormElement";
 
-
 const MyPostsForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Field
@@ -24,7 +23,6 @@ const MyPostsForm = ({ handleSubmit }) => (
       </Button>
   </form>
 );
-
 
 export default reduxForm({
   form: "MyPosts",

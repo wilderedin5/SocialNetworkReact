@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import { Button as BaseButton, Avatar as BaseAvatar } from "antd";
 import NoAvatar from '../../assets/image/noAvatar.jpg'
+import { logout } from "../../redux/auth-reducer";
 
 const Authorized = styled.div`
   display: flex;
@@ -38,7 +40,7 @@ const Avatar = styled(BaseAvatar)`
   margin-right: 10px;
 `
 
-export const Header = ({ isAuth, profile, login, logout }) => (
+const Header = ({ isAuth, profile, login, logout }) => (
   <div>
     {isAuth ? (
       <Authorized>
@@ -57,3 +59,11 @@ export const Header = ({ isAuth, profile, login, logout }) => (
       )}
   </div>
 );
+
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+  login: state.auth.login,
+  profile: state.profilePage.profile,
+});
+
+export default connect(mapStateToProps, { logout })(Header);

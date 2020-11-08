@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { connect } from "react-redux";
 
 const Container = styled.div`
   text-align: center;
@@ -8,4 +9,10 @@ const Container = styled.div`
   font-weight: 700;
 `;
 
-export const Footer = ({ copyright }) => <Container>{copyright}</Container>;
+const Footer = ({ copyright }) => <Container>{copyright}</Container>;
+
+const mapStateToProps = (state) => ({
+  copyright: state.footer.copyright
+});
+
+export default connect(mapStateToProps, {})(Footer)
