@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { Button as BaseButton } from "antd";
 import styled from "@emotion/styled";
 import { requiredField } from "../../utils/validate/validateForm";
-import { maxLength60, maxLength250, Textarea, Input } from "../../hoc/createFormElement/createFormElement";
+import { maxLength60, maxLength250, Textarea, Input } from "../../hoc/createFormElement";
 
 const Button = styled(BaseButton)`
   margin-top: 10px;

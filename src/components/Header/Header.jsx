@@ -6,15 +6,10 @@ import { Button as BaseButton, Avatar as BaseAvatar } from "antd";
 import NoAvatar from '../../assets/image/noAvatar.jpg'
 import { logout } from "../../redux/auth-reducer";
 
-const Authorized = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-`;
-
-const NoAuthorized = styled.div`
-  display: flex;
-  justify-content: flex-end;
 `;
 
 const Button = styled(BaseButton)`
@@ -41,23 +36,21 @@ const Avatar = styled(BaseAvatar)`
 `
 
 const Header = ({ isAuth, profile, login, logout }) => (
-  <div>
+  <Container>
     {isAuth ? (
-      <Authorized>
-        <Info>
+      <>
+       <Info>
           <Avatar src={60} src={profile?.photos.small || NoAvatar} />
           {login}
         </Info>
         <Button onClick={logout}>Log out</Button>
-      </Authorized>
+      </>
     ) : (
-        <NoAuthorized>
           <NavLink to="/login">
             <Button>Login</Button>
           </NavLink>
-        </NoAuthorized>
       )}
-  </div>
+  </Container>
 );
 
 const mapStateToProps = (state) => ({

@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import styled from "@emotion/styled";
 import { Button } from "antd";
 import { requiredField } from "../../utils/validate/validateForm";
-import { maxLength100, Input } from "../../hoc/createFormElement/createFormElement";
+import { maxLength100, Input } from "../../hoc/createFormElement";
 
 const Container = styled.form`
   text-align: center;
