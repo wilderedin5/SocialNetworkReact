@@ -6,14 +6,14 @@ import { NavLink } from "react-router-dom";
 import { Menu } from "antd";
 import { toggleBookmarks } from "../../redux/news-reducer";
 import { getBookmarks } from "../../redux/Selectors/news-selectors";
-import { getLastFriends } from "../../redux/sidebar-reducer";
+import { getFriends } from "../../redux/sidebar-reducer";
 import { Advertising } from "./Advertising";
 import { Friends } from "./Friends";
 import { Bookmarks } from "./Bookmarks";
 
-const NavBar = ({ history, getLastFriends, friends, isAuth, toggleBookmarks, bookMarks, advertising }) => {
+const NavBar = ({ history, getFriends, friends, isAuth, toggleBookmarks, bookMarks, advertising }) => {
   useEffect(() => {
-    getLastFriends(1, 9);
+    getFriends(1, 9);
   }, []);
 
   return (
@@ -65,6 +65,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { toggleBookmarks, getLastFriends }),
+  connect(mapStateToProps, { toggleBookmarks, getFriends }),
   withRouter
 )(NavBar);
