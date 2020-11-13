@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Button as BaseButton, Divider } from 'antd';
 import noAvatar from '../../assets/image/noAvatar.jpg';
 import { Preloader } from '../common/Preloader/Preloader';
-import { Status } from './status';
+import { Status } from './Status';
 import ProfileForm from './ProfileForm';
 
 const Container = styled.div`
@@ -105,30 +105,30 @@ export const Info = (props) => {
           profile={props.profile}
         />
       ) : (
-        <InfoContainer>
-          <Name>{props.profile.fullName}</Name>
-          <Status status={props.status} updateStatus={props.updateStatus} />
-          <Divider orientation="left">Basic information:</Divider>
-          <div>
-            Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}
-          </div>
-          <div>My skills: {props.profile.lookingForAJobDescription} </div>
-          <div>About me: {props.profile.aboutMe}</div>
-          <Divider orientation="left">Contacts:</Divider>
-          <ContactList>
-            {Object.keys(props.profile.contacts).map((key) => (
-              <li>
-                {key}: {props.profile.contacts[key]}
-              </li>
-            ))}
-          </ContactList>
-        </InfoContainer>
-      )}
+          <InfoContainer>
+            <Name>{props.profile.fullName}</Name>
+            <Status status={props.status} updateStatus={props.updateStatus} />
+            <Divider orientation="left">Basic information:</Divider>
+            <div>
+              Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}
+            </div>
+            <div>My skills: {props.profile.lookingForAJobDescription} </div>
+            <div>About me: {props.profile.aboutMe}</div>
+            <Divider orientation="left">Contacts:</Divider>
+            <ContactList>
+              {Object.keys(props.profile.contacts).map((key) => (
+                <li>
+                  {key}: {props.profile.contacts[key]}
+                </li>
+              ))}
+            </ContactList>
+          </InfoContainer>
+        )}
       {props.isOwner && !editMode && (
         <Button onClick={() => setEditMode(true)}>Edit page</Button>
       )}
     </Container>
   ) : (
-    <Preloader />
-  );
+      <Preloader />
+    );
 };
