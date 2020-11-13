@@ -88,11 +88,9 @@ let initialState = {
   ],
 };
 
-const helpReducer = (state = initialState, action) => {
+export const helpReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
   }
 };
-
-export default helpReducer;

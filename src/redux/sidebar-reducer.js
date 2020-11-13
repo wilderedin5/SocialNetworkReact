@@ -5,7 +5,7 @@ let initialState = {
   friends: [],
 };
 
-const sidebarReducer = (state = initialState, action) => {
+export const sidebarReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LAST_FRIEND:
       return {
@@ -26,5 +26,3 @@ export const getLastFriends = (currentPage, pageSize) => async (dispatch) => {
   let data = await usersAPI.getUsers(currentPage, pageSize);
   dispatch(setLastFriend(data.items));
 };
-
-export default sidebarReducer;

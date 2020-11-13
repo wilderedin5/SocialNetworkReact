@@ -85,7 +85,7 @@ let initialState = {
   status: "",
 };
 
-const profileReducer = (state = initialState, action) => {
+export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       return {
@@ -131,47 +131,35 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = (id, message, likeCount, liked, name) => {
-  return {
-    type: ADD_POST,
-    newPost: { id, message, likeCount, liked, name },
-  };
-};
+export const addPost = (id, message, likeCount, liked, name) => ({
+  type: ADD_POST,
+  newPost: { id, message, likeCount, liked, name },
+})
 
-export const deletePost = (postId) => {
-  return {
-    type: DELETE_POST,
-    postId,
-  };
-};
+export const deletePost = (postId) => ({
+  type: DELETE_POST,
+  postId
+})
 
-export const setUsersProfile = (profile) => {
-  return {
-    type: SET_USERS_PROFILE,
-    profile,
-  };
-};
+export const setUsersProfile = (profile) => ({
+  type: SET_USERS_PROFILE,
+  profile
+})
 
-export const setStatus = (status) => {
-  return {
-    type: SET_STATUS,
-    status: status,
-  };
-};
+export const setStatus = (status) => ({
+  type: SET_STATUS,
+  status: status
+})
 
-export const updatePhotoSuccess = (photo) => {
-  return {
-    type: UPDATE_PHOTO,
-    photo,
-  };
-};
+export const updatePhotoSuccess = (photo) => ({
+  type: UPDATE_PHOTO,
+  photo
+})
 
-export const toggleLikePost = (postId) => {
-  return {
-    type: TOGGLE_LIKE_POST,
-    postId,
-  };
-};
+export const toggleLikePost = (postId) => ({
+  type: TOGGLE_LIKE_POST,
+  postId
+})
 
 export const getProfile = (userId) => async (dispatch) => {
   let response = await usersAPI.getProfile(userId);
@@ -210,5 +198,3 @@ export const updateProfile = (profile) => async (dispatch, getState) => {
     dispatch(stopSubmit("profileInfoForm", { _error: message }));
   }
 };
-
-export default profileReducer;

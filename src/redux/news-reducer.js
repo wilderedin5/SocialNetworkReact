@@ -58,7 +58,7 @@ let initialState = {
   ],
 };
 
-const newsReducer = (state = initialState, action) => {
+export const newsReducer = (state = initialState, action) => {
   switch (action.type) {
     case DELETE_NEWS:
       return {
@@ -74,10 +74,10 @@ const newsReducer = (state = initialState, action) => {
       return {
         ...state,
         news: state.news.map((news) => {
-          if (news.id === action.newsId) {
-            return { ...news, inBookmarks: action.bookmarked };
-          }
-          return news;
+          return news.id === action.newsId ?
+            { ...news, inBookmarks: action.bookmarked }
+            :
+            news
         }),
       };
     default:
@@ -95,12 +95,8 @@ export const addNews = (newsText, theme, author, category) => ({
   newNews: { id: v4(), newsText, theme, author, category },
 });
 
-export const toggleBookmarks = (newsId, bookmarked) => {
-  return {
-    type: TOGGLE_SET_TO_BOOKMARKS,
-    newsId,
-    bookmarked,
-  };
-};
-
-export default newsReducer;
+export const toggleBookmarks = (newsId, bookmarked) => ({
+  type: TOGGLE_SET_TO_BOOKMARKS,
+  newsId,
+  bookmarked,
+})

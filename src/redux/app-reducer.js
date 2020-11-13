@@ -6,7 +6,7 @@ let initialState = {
     initiliazed: false
 };
 
-const appReducer = (state = initialState, action) => {
+export const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZED_COMPLETE:
             return {
@@ -18,11 +18,7 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-export const setInitializeApp = () => {
-    return ({
-        type: INITIALIZED_COMPLETE
-    });
-}
+export const setInitializeApp = () => ({ type: INITIALIZED_COMPLETE })
 
 export const initiliazeApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData());
@@ -30,5 +26,3 @@ export const initiliazeApp = () => (dispatch) => {
         dispatch(setInitializeApp());
     });
 }
-
-export default appReducer;

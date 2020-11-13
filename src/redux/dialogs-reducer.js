@@ -78,7 +78,7 @@ let initialState = {
   ],
 };
 
-const dialogsReducer = (state = initialState, action) => {
+export const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE:
       let newMessage = {
@@ -89,10 +89,10 @@ const dialogsReducer = (state = initialState, action) => {
       return {
         ...state,
         dialogsData: state.dialogsData.map((dialog) => {
-          if (dialog.id === action.userId) {
-            return { ...dialog, messages: [...dialog.messages, newMessage] };
-          }
-          return dialog;
+          return dialog.id === action.userId ?
+            { ...dialog, messages: [...dialog.messages, newMessage] }
+            :
+            dialog
         }),
       };
     case DELETE_MESSAGE:
@@ -101,7 +101,7 @@ const dialogsReducer = (state = initialState, action) => {
         dialogsData: state.dialogsData.map((dialog) => {
           if (dialog.id === action.userId) {
             let messages = dialog.messages.filter(
-              (message) => message.id !== action.messageId
+              ({ id }) => id !== action.messageId
             );
             return { ...dialog, messages };
           }
@@ -112,10 +112,10 @@ const dialogsReducer = (state = initialState, action) => {
       return {
         ...state,
         dialogsData: state.dialogsData.map((dialog) => {
-          if (dialog.id === action.userId) {
-            return { ...dialog, messages: [] };
-          }
-          return dialog;
+          return dialog.id === action.userId ?
+            { ...dialog, messages: [] }
+            :
+            dialog
         }),
       };
     default:
@@ -123,25 +123,19 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = (newMessageText, userId) => {
-  return {
-    type: ADD_MESSAGE,
-    newMessageText,
-    userId,
-  };
-};
+export const addMessage = (newMessageText, userId) => ({
+  type: ADD_MESSAGE,
+  newMessageText,
+  userId,
+})
 
-export const deleteMessage = (messageId, userId) => {
-  return {
-    type: DELETE_MESSAGE,
-    messageId,
-    userId,
-  };
-};
+export const deleteMessage = (messageId, userId) => ({
+  type: DELETE_MESSAGE,
+  messageId,
+  userId,
+})
 
 export const deleteAllMessages = (userId) => ({
   type: DELETE_ALL_MESSAGES_FROM_DIALOG,
   userId,
 });
-
-export default dialogsReducer;

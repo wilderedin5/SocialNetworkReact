@@ -117,16 +117,16 @@ let initialState = {
   ],
 };
 
-const advertsReducer = (state = initialState, action) => {
+export const advertsReducer = (state = initialState, action) => {
   switch (action.type) {
     case DELETE_COMMENT_FROM_ADVERT:
       return {
         ...state,
         advertising: state.advertising.map((advert) => {
           if (advert.id === action.advertId) {
-            let comment = advert.comment.filter(
-              (comment) => comment.id !== action.commentId
-            );
+            const comment = advert.comment.filter(
+              ({ id }) => id !== action.commentId
+            )
             return { ...advert, comment };
           }
           return advert;
@@ -138,16 +138,10 @@ const advertsReducer = (state = initialState, action) => {
         advertising: state.advertising.map((advert) => {
           if (advert.id === action.advertId) {
             advert.comment.map((comment) => {
-              if (comment.id === action.commentId) {
-                if (comment.liked === true) {
-                  comment.liked = false;
-                  return { ...comment, likeCount: --comment.likeCount };
-                } else if (comment.liked === false) {
-                  comment.liked = true;
-                  return { ...comment, likeCount: ++comment.likeCount };
-                }
-              }
-              return comment;
+              return comment.id === action.commentId ?
+                { ...comment, likeCount: comment.liked ? --comment.likeCount : ++comment.likeCount, liked: !comment.liked }
+                :
+                comment
             });
           }
           return advert;
@@ -157,24 +151,24 @@ const advertsReducer = (state = initialState, action) => {
       return {
         ...state,
         advertising: state.advertising.map((advert) => {
-          if (advert.id === action.advertId) {
-            return { ...advert, comment: [...advert.comment, action.comment] };
-          }
-          return advert;
+          return advert.id === action.advertId ?
+            { ...advert, comment: [...advert.comment, action.comment] }
+            :
+            advert
         }),
       };
     case TOGGLE_LIKE_ADVERT:
       return {
         ...state,
         advertising: state.advertising.map((advert) => {
-          if (advert.id === action.advertId) {
-            return {
+          return advert.id === action.advertId ?
+            {
               ...advert,
               liked: !advert.liked,
               likeCount: advert.liked ? ++advert.likeCount : --advert.likeCount,
-            };
-          }
-          return advert;
+            }
+            :
+            advert
         }),
       };
     case ADD_ADVERT:
@@ -186,7 +180,7 @@ const advertsReducer = (state = initialState, action) => {
       return {
         ...state,
         advertising: state.advertising.filter(
-          (advert) => advert.id !== action.advertId
+          ({ id }) => id !== action.advertId
         ),
       };
     default:
@@ -226,5 +220,3 @@ export const deleteAdvert = (advertId) => ({
   type: DELETE_ADVERT,
   advertId,
 });
-
-export default advertsReducer;
