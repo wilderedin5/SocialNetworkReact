@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
-import { Button as BaseButton, Divider } from "antd";
-import noAvatar from "../../assets/image/noAvatar.jpg";
-import { Preloader } from "../common/Preloader/Preloader";
-import { Status } from "./Status";
-import ProfileForm from "./ProfileForm";
+import React, { useState } from 'react';
+import styled from '@emotion/styled';
+import { Button as BaseButton, Divider } from 'antd';
+import noAvatar from '../../assets/image/noAvatar.jpg';
+import { Preloader } from '../common/Preloader/Preloader';
+import { Status } from './status';
+import ProfileForm from './ProfileForm';
 
 const Container = styled.div`
   display: flex;
@@ -37,8 +37,8 @@ const Label = styled.label`
   padding: 10px;
   cursor: pointer;
   :after {
-    content: "";
-    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/OOjs_UI_icon_upload.svg/1200px-OOjs_UI_icon_upload.svg.png")
+    content: '';
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/OOjs_UI_icon_upload.svg/1200px-OOjs_UI_icon_upload.svg.png')
       center center/cover;
     width: 32px;
     height: 32px;
@@ -58,7 +58,7 @@ const InfoContainer = styled.div`
 const ContactList = styled.ul`
   list-style: none;
   font-size: 24px;
-`
+`;
 
 const Name = styled.div`
   font-size: 28px;
@@ -86,14 +86,16 @@ export const Info = (props) => {
     }
   };
 
-  return (props.profile ?
+  return props.profile ? (
     <Container>
       <div>
         <AvatarImage src={props.profile.photos.large || noAvatar} />
-        {props.isOwner && <>
-          <Input type="file" id="photoFile" onChange={onChangePhoto} />
-          <Label for="photoFile">Change avatar</Label>
-        </>}
+        {props.isOwner && (
+          <>
+            <Input type="file" id="photoFile" onChange={onChangePhoto} />
+            <Label for="photoFile">Change avatar</Label>
+          </>
+        )}
       </div>
 
       {editMode ? (
@@ -103,32 +105,30 @@ export const Info = (props) => {
           profile={props.profile}
         />
       ) : (
-          <InfoContainer>
-            <Name>{props.profile.fullName}</Name>
-            <Status
-              status={props.status}
-              updateStatus={props.updateStatus}
-            />
-            <Divider orientation="left">Basic information:</Divider>
-            <div>
-              Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
-            </div>
-            <div>My skills: {props.profile.lookingForAJobDescription} </div>
-            <div>About me: {props.profile.aboutMe}</div>
-            <Divider orientation="left">Contacts:</Divider>
-            <ContactList>
-              {Object.keys(props.profile.contacts).map((key) => (
-                <li>
-                  {key}: {props.profile.contacts[key]}
-                </li>
-              )
-              )}
-            </ContactList>
-          </InfoContainer>
-        )}
-      {(props.isOwner && !editMode) && (
+        <InfoContainer>
+          <Name>{props.profile.fullName}</Name>
+          <Status status={props.status} updateStatus={props.updateStatus} />
+          <Divider orientation="left">Basic information:</Divider>
+          <div>
+            Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}
+          </div>
+          <div>My skills: {props.profile.lookingForAJobDescription} </div>
+          <div>About me: {props.profile.aboutMe}</div>
+          <Divider orientation="left">Contacts:</Divider>
+          <ContactList>
+            {Object.keys(props.profile.contacts).map((key) => (
+              <li>
+                {key}: {props.profile.contacts[key]}
+              </li>
+            ))}
+          </ContactList>
+        </InfoContainer>
+      )}
+      {props.isOwner && !editMode && (
         <Button onClick={() => setEditMode(true)}>Edit page</Button>
       )}
-    </Container> : <Preloader />
+    </Container>
+  ) : (
+    <Preloader />
   );
 };

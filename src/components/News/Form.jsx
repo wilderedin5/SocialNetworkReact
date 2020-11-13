@@ -2,7 +2,7 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { Button } from "antd";
 import { requiredField } from "../../utils/validate/validateForm";
-import { maxLength1000, maxLength100, Textarea, Input } from "../../hoc/createFormElement/createFormElement";
+import { maxLength1000, maxLength100, Textarea, Input } from "../../hoc/createFormElement";
 
 const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
