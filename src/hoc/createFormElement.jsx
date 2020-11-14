@@ -14,7 +14,7 @@ const Error = styled.div`
 export const createFormElement = (Element) => ({ input, meta, ...props }) => (
   <div>
     <Element {...input} {...props} />
-    {meta.error && <Error>{meta.error}</Error>}
+    {(meta.error && meta.touched) && <Error>{meta.error}</Error>}
   </div>
 );
 

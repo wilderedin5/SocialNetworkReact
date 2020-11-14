@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tooltip, Avatar, Comment as BaseComment } from "antd";
 import styled from "@emotion/styled";
 import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
@@ -13,20 +13,26 @@ const CommentContainer = styled(BaseComment)`
 
 export const Comment = ({
   likeComment,
-  liked,
   likeCount,
   deleteComment,
   name,
   avatar,
   text,
 }) => {
+  const [hasLike, setHasLike] = useState(false)
+
+  const handleCommentLike = () => {
+    setHasLike(!hasLike)
+    likeComment(hasLike)
+  }
+
   const actions = [
-    <span key="comment-basic-dislike">
-      <Tooltip title={liked ? 'Like' : 'Dislike'}>
+    <span>
+      <Tooltip title={hasLike ? 'Like' : 'Dislike'}>
         {React.createElement(
-          liked ? DislikeFilled : LikeOutlined,
+          hasLike ? DislikeFilled : LikeOutlined,
           {
-            onClick: likeComment,
+            onClick: handleCommentLike,
           }
         )}
       </Tooltip>

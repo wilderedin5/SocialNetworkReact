@@ -19,52 +19,53 @@ export const usersAPI = {
     unfollow(userId) {
         return axiosClone.delete(`follow/${userId}`);
     },
-    follow(userId){
+    follow(userId) {
         return axiosClone.post(`follow/${userId}`);
     },
-    getProfile(userId){
+    getProfile(userId) {
         return profileAPI.getProfile(userId);
     }
 }
 
 export const profileAPI = {
-    getProfile(userId){
+    getProfile(userId) {
         return axiosClone.get(`profile/${userId}`);
     },
-    getStatus(userId){
+    getStatus(userId) {
         return axiosClone.get(`profile/status/${userId}`);
     },
-    updateStatus(status){
-        return axiosClone.put(`profile/status/`, {status: status});
+    updateStatus(status) {
+        return axiosClone.put(`profile/status/`, { status: status });
     },
-    uploadPhoto(photo){
+    uploadPhoto(photo) {
         const formData = new FormData();
         formData.append("image", photo);
-        return axiosClone.put(`profile/photo`,formData, {
+        return axiosClone.put(`profile/photo`, formData, {
             headers: {
                 'Content-type': 'multipart/form-data'
             }
         });
     },
-    updateProfile(profile){
+    updateProfile(profile) {
         return axiosClone.put(`profile`, profile);
     },
 }
 
 export const authAPI = {
-    me(){
+    me() {
+        console.log(axiosClone.get(`auth/me`).then((data) => console.log(data)))
         return axiosClone.get(`auth/me`);
     },
-    login(email,password,rememberMe = false,captcha = null){
-        return axiosClone.post(`auth/login`, {email,password,rememberMe,captcha});
+    login(email, password, rememberMe = false, captcha = null) {
+        return axiosClone.post(`auth/login`, { email, password, rememberMe, captcha });
     },
-    logout(){
+    logout() {
         return axiosClone.delete(`auth/login`);
     }
 }
 
 export const securityAPI = {
-    getCaptchaUrl(){
+    getCaptchaUrl() {
         return axiosClone.get(`security/get-captcha-url`);
     }
 }

@@ -14,8 +14,8 @@ const Img = styled.img`
 
 export const Advertising = ({ advertising }) => (
   <Carousel autoplay={true}>
-    {advertising.map(({ image, id }) => (
-      <NavLink to={`/adverts/${id}`}>
+    {advertising.map(({ image, title, id }) => (
+      <NavLink key={title} to={`/adverts/${id}`}>
         <Img src={image} alt="" />
       </NavLink>
     ))}

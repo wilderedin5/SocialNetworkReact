@@ -13,7 +13,6 @@ export const Advert = ({
   image,
   title,
   text,
-  liked,
   id,
   likeComment,
   comment,
@@ -23,7 +22,7 @@ export const Advert = ({
   toggleLike,
 }) => {
   const handleSubmit = ({ commentText, name }) => {
-    addComment(id, v4(), commentText, name, false, 0);
+    addComment(id, v4(), commentText, name);
   };
 
   const CommentsProps = {
@@ -38,9 +37,8 @@ export const Advert = ({
     image,
     title,
     text,
-    liked,
     likeCount,
-    toggleLike
+    toggleLike,
   }
 
   return (

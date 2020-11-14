@@ -3,12 +3,12 @@ import { Comment } from "./Comment";
 
 export const Comments = ({ comment, id, likeComment, deleteComment }) => (
   <div>
-    {comment.map(com => (
-      <Comment
-        {...com}
+    {comment.map((comment) => (
+      <Comment key={comment.text}
+        {...comment}
         advertId={id}
-        likeComment={() => likeComment(id, com.id)}
-        deleteComment={() => deleteComment(id, com.id)}
+        likeComment={(hasLike) => likeComment(id, comment.id, hasLike)}
+        deleteComment={() => deleteComment(id, comment.id)}
       />
     ))}
   </div>

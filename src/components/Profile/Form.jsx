@@ -20,7 +20,7 @@ const Form = ({ handleSubmit }) => (
     />
     <Button type="primary" htmlType="submit">
       Send
-      </Button>
+    </Button>
   </form>
 );
 

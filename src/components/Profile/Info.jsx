@@ -117,7 +117,7 @@ export const Info = (props) => {
             <Divider orientation="left">Contacts:</Divider>
             <ContactList>
               {Object.keys(props.profile.contacts).map((key) => (
-                <li>
+                <li key={key}>
                   {key}: {props.profile.contacts[key]}
                 </li>
               ))}

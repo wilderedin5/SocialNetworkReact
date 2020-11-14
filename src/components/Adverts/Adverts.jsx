@@ -13,9 +13,8 @@ import { Advert } from './Advert'
 
 const Adverts = (props) => {
   const advertId = +props.match.params.advertId;
-  const filteredAdvert = props.advertising.filter((advert) => advert.id === advertId)
 
-  return filteredAdvert.map((advert) => <Advert {...props} {...advert} />);
+  return props.advertising.map((advert) => advert.id === advertId && <Advert key={advert.title} {...props} {...advert} />);
 };
 
 const mapStateToProps = (state) => ({

@@ -12,7 +12,7 @@ const Container = styled.div`
 export const Cards = ({ contacts }) => (
   <Container>
     {contacts.map(({ name, status, phone, email, description }) => (
-      <Card title={name} bordered={true}>
+      <Card key={name} title={name} bordered={true}>
         <div>
           <b>Working position:</b> {status}
         </div>

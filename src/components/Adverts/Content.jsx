@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
 
@@ -23,14 +23,23 @@ const Like = styled.span`
   cursor: pointer;
 `;
 
-export const Content = ({ image, title, text, id, liked, likeCount, toggleLike }) => (
-  <Container>
-    <Image src={image} />
-    <Title>{title}</Title>
-    <div>{text}</div>
-    <Like onClick={() => toggleLike(id)}>
-      {liked ? <DislikeFilled /> : <LikeOutlined />}
-      {likeCount}
-    </Like>
-  </Container>
-)
+export const Content = ({ id, image, title, text, likeCount, toggleLike }) => {
+  const [hasLike, setHasLike] = useState(false)
+
+  const handleAdvertLike = () => {
+    setHasLike(!hasLike)
+    toggleLike(id, hasLike)
+  }
+
+  return (
+    <Container>
+      <Image src={image} />
+      <Title>{title}</Title>
+      <div>{text}</div>
+      <Like onClick={handleAdvertLike}>
+        {hasLike ? <DislikeFilled /> : <LikeOutlined />}
+        {likeCount}
+      </Like>
+    </Container>
+  )
+}

@@ -25,7 +25,7 @@ const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
   return (
     <Container>
       {adverts.map((advert) => (
-        <Info deleteAdvert={deleteAdvert} {...advert} />
+        <Info key={advert.id} deleteAdvert={deleteAdvert} {...advert} />
       ))}
       <Form onSubmit={handleSubmit} />
     </Container>

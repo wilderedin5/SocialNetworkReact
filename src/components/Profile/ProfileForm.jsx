@@ -64,7 +64,7 @@ const profileFormData = [
 const ProfileForm = ({ handleSubmit, profile, error }) => (
   <form onSubmit={handleSubmit}>
     <ProfileInfo>
-      {profileFormData.map(field => <FieldContainer isName={field.name === 'fullName'} >
+      {profileFormData.map(field => <FieldContainer key={field.name} isName={field.name === 'fullName'} >
         {field.value}:
           <Field {...field} />
       </FieldContainer>)}
