@@ -1,9 +1,8 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import styled from "@emotion/styled";
 import { Button as BaseButton } from "antd";
-import { requiredField } from "../../utils/validate/validateForm";
-import { maxLength250, Textarea } from "../../hoc/createFormElement";
+import { Field } from "../../hoc/form-elements";
 
 const Button = styled(BaseButton)`
   & + & {
@@ -14,11 +13,10 @@ const Button = styled(BaseButton)`
 const Form = ({ handleSubmit, eraseDialog }) => (
   <form onSubmit={handleSubmit}>
     <Field
-      component={Textarea}
-      name={"dialogsMessageText"}
+      component="textarea"
+      name="dialogsMessageText"
       placeholder="Yo, on the other side of the monitor they are tired of waiting for your message !!!"
-      type="text"
-      validate={[maxLength250, requiredField]}
+      maxLength="250"
     />
     <Button htmlType="submit" type="primary">
       Send

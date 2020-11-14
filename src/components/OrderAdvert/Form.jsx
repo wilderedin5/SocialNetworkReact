@@ -1,36 +1,17 @@
 import React from "react";
 import { Button } from "antd";
-import { reduxForm, Field } from "redux-form";
-import { requiredField } from "../../utils/validate/validateForm";
-import {
-  maxLength1000,
-  maxLength100,
-  Input,
-  Textarea,
-} from "../../hoc/createFormElement";
+import { reduxForm } from "redux-form";
+import { Field } from "../../hoc/form-elements";
 
 const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
+    <Field name="title" placeholder="Title your advert" maxLength="100" />
+    <Field name="image" placeholder="Link on image" maxLength="1000" />
     <Field
-      type="text"
-      name="title"
-      placeholder="Title your advert"
-      component={Input}
-      validate={[maxLength100, requiredField]}
-    />
-    <Field
-      type="text"
-      name="image"
-      placeholder="Link on image"
-      component={Input}
-      validate={[maxLength1000, requiredField]}
-    />
-    <Field
-      type="text"
-      component={Textarea}
+      component="textarea"
       name="text"
       placeholder="text your advert"
-      validate={[maxLength1000, requiredField]}
+      maxLength="1000"
     />
     <Button type="primary" htmlType="submit">
       Add news

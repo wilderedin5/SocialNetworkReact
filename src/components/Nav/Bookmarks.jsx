@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Divider } from "antd";
+import { Divider } from "../common/shared/type";
 import { Bookmark } from "./Bookmark";
 
 const Container = styled.div`
@@ -12,9 +12,7 @@ const Container = styled.div`
 
 export const Bookmarks = ({ bookMarks, toggleBookmarks }) => (
   <Container>
-    <Divider style={{ color: "#fff" }} orientation="center">
-      Bookmarks
-    </Divider>
+    <Divider title="Bookmarks" />
     {bookMarks.length > 0
       ? bookMarks.map((bookmark) => (
           <Bookmark

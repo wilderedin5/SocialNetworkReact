@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { Button as BaseButton, Divider } from "antd";
+import { Button as BaseButton } from "antd";
 import noAvatar from "../../assets/image/noAvatar.jpg";
 import { Preloader } from "../common/Preloader/Preloader";
+import { Divider } from "../common/shared/type";
 import { Status } from "./Status";
 import ProfileForm from "./ProfileForm";
 
@@ -108,13 +109,13 @@ export const Info = (props) => {
         <InfoContainer>
           <Name>{props.profile.fullName}</Name>
           <Status status={props.status} updateStatus={props.updateStatus} />
-          <Divider orientation="left">Basic information:</Divider>
+          <Divider title="Basic information:" orientation="left" />
           <div>
             Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
           </div>
           <div>My skills: {props.profile.lookingForAJobDescription} </div>
           <div>About me: {props.profile.aboutMe}</div>
-          <Divider orientation="left">Contacts:</Divider>
+          <Divider title="Contacts:" orientation="left" />
           <ContactList>
             {Object.keys(props.profile.contacts).map((key) => (
               <li key={key}>

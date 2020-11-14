@@ -11,6 +11,17 @@ import { Advertising } from "./Advertising";
 import { Friends } from "./Friends";
 import { Bookmarks } from "./Bookmarks";
 
+const MenuItem = ({ to, ...props }) => {
+  const url = `/${to.toLowerCase()}`;
+  return (
+    <Menu.Item key={url} {...props}>
+      <NavLink to={url} activeClassName="active">
+        {to}
+      </NavLink>
+    </Menu.Item>
+  );
+};
+
 const NavBar = ({
   history,
   getFriends,
@@ -31,36 +42,12 @@ const NavBar = ({
         defaultSelectedKeys={history.location.pathname}
         mode="inline"
       >
-        <Menu.Item key="/profile">
-          <NavLink to="/profile" activeClassName="active">
-            Profile
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="/dialogs">
-          <NavLink to="/dialogs" activeClassName="active">
-            Messages
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="/news">
-          <NavLink to="/news" activeClassName="active">
-            News
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="/users">
-          <NavLink to="/users" activeClassName="active">
-            Users
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="/help">
-          <NavLink to="/help" activeClassName="active">
-            Help
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="/order-advert">
-          <NavLink to="/order-advert" activeClassName="active">
-            Manage advert
-          </NavLink>
-        </Menu.Item>
+        <MenuItem to="Profile" />
+        <MenuItem to="Dialogs" />
+        <MenuItem to="News" />
+        <MenuItem to="Users" />
+        <MenuItem to="Help" />
+        <MenuItem to="Order-advert" />
       </Menu>
       {isAuth && <Friends friends={friends} />}
       <Bookmarks

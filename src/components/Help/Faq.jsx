@@ -3,8 +3,8 @@ import { Collapse } from "antd";
 
 export const Faq = ({ help }) => (
   <Collapse>
-    {help.map(({ questionTitle, id, answer }) => (
-      <Collapse.Panel header={questionTitle} key={id}>
+    {help.map(({ title, id, answer }) => (
+      <Collapse.Panel header={title} key={id}>
         {answer}
       </Collapse.Panel>
     ))}

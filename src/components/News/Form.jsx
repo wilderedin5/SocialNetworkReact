@@ -1,44 +1,19 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm } from "redux-form";
 import { Button } from "antd";
-import { requiredField } from "../../utils/validate/validateForm";
-import {
-  maxLength1000,
-  maxLength100,
-  Textarea,
-  Input,
-} from "../../hoc/createFormElement";
+import { Field } from "../../hoc/form-elements";
 
 const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
     <Field
-      placeholder="Text news"
+      component="textarea"
       name="newsText"
-      component={Textarea}
-      type="text"
-      validate={[maxLength1000, requiredField]}
+      placeholder="Text news"
+      maxLength="1000"
     />
-    <Field
-      placeholder="Author"
-      name="author"
-      component={Input}
-      type="text"
-      validate={[maxLength100, requiredField]}
-    />
-    <Field
-      placeholder="Theme"
-      name="theme"
-      component={Input}
-      type="text"
-      validate={[maxLength100, requiredField]}
-    />
-    <Field
-      placeholder="Category"
-      name="category"
-      component={Input}
-      type="text"
-      validate={[maxLength100, requiredField]}
-    />
+    <Field name="author" placeholder="Author" maxLength="100" />
+    <Field name="theme" placeholder="Theme" maxLength="100" />
+    <Field name="category" placeholder="Category" maxLength="100" />
     <Button type="primary" htmlType="submit">
       Add news
     </Button>

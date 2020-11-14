@@ -1,28 +1,17 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { Button } from "antd";
-import { requiredField } from "../../utils/validate/validateForm";
-import {
-  maxLength250,
-  maxLength60,
-  Textarea,
-  Input,
-} from "../../hoc/createFormElement";
+import { Field } from "../../hoc/form-elements";
 
 const Form = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Field
-      component={Textarea}
-      name={"postText"}
+      component="textarea"
+      name="postText"
       placeholder="This wall is waiting for your post!"
-      validate={[requiredField, maxLength250]}
+      maxLength="250"
     />
-    <Field
-      component={Input}
-      name={"name"}
-      placeholder="Name"
-      validate={[requiredField, maxLength60]}
-    />
+    <Field name="name" placeholder="Name" maxLength="60" />
     <Button type="primary" htmlType="submit">
       Send
     </Button>

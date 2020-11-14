@@ -9,31 +9,15 @@ const Container = styled.div`
   color: #000;
 `;
 
-export const Advert = ({
-  image,
-  title,
-  text,
-  id,
-  toggleLike,
-  comments,
-  deleteComment,
-  addComment,
-}) => {
+export const Advert = ({ contentProps, id, commentProps, addComment }) => {
   const handleSubmit = ({ commentText, name }) => {
     addComment(id, v4(), commentText, name);
   };
 
   return (
     <Container>
-      <Content image={image} title={title} text={text} />
-
-      <Comments
-        id={id}
-        toggleLike={toggleLike}
-        comments={comments}
-        deleteComment={deleteComment}
-      />
-
+      <Content {...contentProps} />
+      <Comments {...commentProps} id={id} />
       <Form onSubmit={handleSubmit} />
     </Container>
   );

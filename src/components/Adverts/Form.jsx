@@ -1,14 +1,8 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { Button as BaseButton } from "antd";
 import styled from "@emotion/styled";
-import { requiredField } from "../../utils/validate/validateForm";
-import {
-  maxLength60,
-  maxLength250,
-  Textarea,
-  Input,
-} from "../../hoc/createFormElement";
+import { Field } from "../../hoc/form-elements";
 
 const Button = styled(BaseButton)`
   margin-top: 10px;
@@ -17,17 +11,12 @@ const Button = styled(BaseButton)`
 const Form = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Field
-      component={Textarea}
-      name={"commentText"}
+      component="textarea"
+      name="commentText"
       placeholder="Message"
-      validate={[requiredField, maxLength250]}
+      maxLength="250"
     />
-    <Field
-      component={Input}
-      name={"name"}
-      placeholder="Name"
-      validate={[requiredField, maxLength60]}
-    />
+    <Field name="name" placeholder="Name" maxLength="60" />
     <Button type="primary" htmlType="submit">
       Send
     </Button>

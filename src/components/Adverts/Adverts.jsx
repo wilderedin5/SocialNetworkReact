@@ -18,14 +18,14 @@ const Adverts = ({
   addComment,
 }) =>
   advertising.map(
-    (adv) =>
-      adv.id === +match.params.advertId && (
+    ({ id, image, title, text, comments }) =>
+      id === +match.params.advertId && (
         <Advert
-          key={adv.title}
-          deleteComment={deleteComment}
-          toggleLike={toggleLike}
+          key={title}
           addComment={addComment}
-          {...adv}
+          contentProps={{ image, title, text }}
+          commentProps={{ comments, deleteComment, toggleLike }}
+          id={id}
         />
       )
   );

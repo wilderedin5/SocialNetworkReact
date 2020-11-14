@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Divider, Avatar } from "antd";
+import { Avatar } from "antd";
 import { NavLink } from "react-router-dom";
 import NoAvatar from "../../assets/image/noAvatar.jpg";
+import { Divider } from "../common/shared/type";
 
 const Link = styled(NavLink)`
   text-align: center;
@@ -39,9 +40,7 @@ const Panel = styled.div`
 
 export const Friends = ({ friends }) => (
   <Container>
-    <Divider style={{ color: "#fff" }} orientation="center">
-      Friends
-    </Divider>
+    <Divider title="Friends" />
     <Panel>
       {friends.map((friend) => (
         <Friend key={friend.id} {...friend} />

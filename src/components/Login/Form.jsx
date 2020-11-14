@@ -1,9 +1,9 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import styled from "@emotion/styled";
 import { Button } from "antd";
 import { requiredField } from "../../utils/validate/validateForm";
-import { maxLength100, Input } from "../../hoc/createFormElement";
+import { Field } from "../../hoc/form-elements";
 
 const Container = styled.form`
   text-align: center;
@@ -17,21 +17,19 @@ const Container = styled.form`
 const Form = ({ handleSubmit, captchaUrl, error }) => (
   <Container onSubmit={handleSubmit}>
     <Field
-      placeholder="Login"
+      component="textarea"
       name="email"
-      component={Input}
-      type="text"
-      validate={[maxLength100, requiredField]}
+      placeholder="Login"
+      maxLength="100"
     />
     <Field
-      placeholder="Password"
       name="password"
-      component={Input}
+      placeholder="Password"
+      maxLength="100"
       type="password"
-      validate={[maxLength100, requiredField]}
     />
     <div>
-      <Field type="checkbox" name="rememberMe" component="input" />
+      <Field type="checkbox" name="rememberMe" />
       Remember me
     </div>
     <Button type="primary" htmlType="submit">
@@ -40,12 +38,7 @@ const Form = ({ handleSubmit, captchaUrl, error }) => (
     {captchaUrl && (
       <div>
         <img src={captchaUrl} alt="" />
-        <Field
-          type="text"
-          name="captcha"
-          component={Input}
-          validate={[requiredField]}
-        />
+        <Field type="text" name="captcha" />
       </div>
     )}
     {error}
