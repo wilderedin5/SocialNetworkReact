@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
 
 const Image = styled.img`
   width: 100%;
@@ -19,27 +18,10 @@ const Container = styled.div`
   border-radius: 10px;
 `;
 
-const Like = styled.span`
-  cursor: pointer;
-`;
-
-export const Content = ({ id, image, title, text, likeCount, toggleLike }) => {
-  const [hasLike, setHasLike] = useState(false);
-
-  const handleAdvertLike = () => {
-    setHasLike(!hasLike);
-    toggleLike(id, hasLike);
-  };
-
-  return (
-    <Container>
-      <Image src={image} />
-      <Title>{title}</Title>
-      <div>{text}</div>
-      <Like onClick={handleAdvertLike}>
-        {hasLike ? <DislikeFilled /> : <LikeOutlined />}
-        {likeCount}
-      </Like>
-    </Container>
-  );
-};
+export const Content = ({ image, title, text }) => (
+  <Container>
+    <Image src={image} />
+    <Title>{title}</Title>
+    <div>{text}</div>
+  </Container>
+);

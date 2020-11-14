@@ -17,9 +17,7 @@ export const Advert = ({
   likeComment,
   comment,
   deleteComment,
-  likeCount,
   addComment,
-  toggleLike,
 }) => {
   const handleSubmit = ({ commentText, name }) => {
     addComment(id, v4(), commentText, name);
@@ -33,12 +31,9 @@ export const Advert = ({
   };
 
   const ContentProps = {
-    id,
     image,
     title,
     text,
-    likeCount,
-    toggleLike,
   };
 
   return (

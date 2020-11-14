@@ -6,7 +6,6 @@ import {
   deleteComment,
   likeComment,
   addComment,
-  toggleLike,
 } from "../../redux/adverts-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { Advert } from "./Advert";
@@ -33,6 +32,5 @@ export default compose(
     deleteComment,
     likeComment,
     addComment,
-    toggleLike,
   })
 )(Adverts);

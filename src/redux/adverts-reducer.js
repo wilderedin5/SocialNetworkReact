@@ -2,7 +2,6 @@ const DELETE_COMMENT_FROM_ADVERT = "adverts-reducer/DELETE_COMMENT_FROM_ADVERT";
 const TOGGLE_LIKE_COMMENT_FROM_ADVERT =
   "adverts-reducer/TOGGLE_LIKE_COMMENT_FROM_ADVERT";
 const ADD_COMMENT_TO_ADVERT = "adverts-reducer/ADD_COMMENT_TO_ADVERT";
-const TOGGLE_LIKE_ADVERT = "advert-reducer/TOGGLE_LIKE_ADVERT";
 const ADD_ADVERT = "advert-reducer/ADD_ADVERT";
 const DELETE_ADVERT = "advert-reducer/DELETE_ADVERT";
 
@@ -10,7 +9,6 @@ let initialState = {
   advertising: [
     {
       id: 1,
-      likeCount: 11,
       title: "World of Warcraft: Shadowlands Ads",
       text:
         "World of Warcraft: Shadowlands is the eighth expansion to the computer game World of Warcraft, announced on November 1, 2019 at BlizzCon and is set for release in 2020. The story of Shadowlands takes place in the Dark lands, where the souls of the dead fall",
@@ -48,7 +46,6 @@ let initialState = {
     },
     {
       id: 2,
-      likeCount: 81,
       title: "Ads ryzen",
       text:
         "Ryzen (/ˈraɪzən/ Rus. Riesen)[3] - trademark[4] microprocessors of the AMD multinational Corporation in the second half of the 2010s. This family of processors belongs to the x86_64 architecture, is used in desktop, mobile, and embedded computing systems, and currently uses the Zen, Zen+, and Zen 2 processor microarchitectures.",
@@ -72,7 +69,6 @@ let initialState = {
     },
     {
       id: 3,
-      likeCount: 211,
       title: "Ads intel",
       text:
         "Intel is a multinational Corporation that produces electronic devices and computer components, including full-cycle production of microprocessors and system logic kits. It is headquartered in Santa Clara, California, USA",
@@ -148,20 +144,6 @@ export const advertsReducer = (state = initialState, action) => {
             : advert;
         }),
       };
-    case TOGGLE_LIKE_ADVERT:
-      return {
-        ...state,
-        advertising: state.advertising.map((advert) => {
-          return advert.id === action.advertId
-            ? {
-                ...advert,
-                likeCount: action.hasLike
-                  ? --advert.likeCount
-                  : ++advert.likeCount,
-              }
-            : advert;
-        }),
-      };
     case ADD_ADVERT:
       return {
         ...state,
@@ -196,12 +178,6 @@ export const addComment = (advertId, id, text, name) => ({
   type: ADD_COMMENT_TO_ADVERT,
   advertId,
   comment: { id, text, name, likeCount: 0 },
-});
-
-export const toggleLike = (advertId, hasLike) => ({
-  type: TOGGLE_LIKE_ADVERT,
-  advertId,
-  hasLike,
 });
 
 export const addAdvert = (id, liked, likeCount, title, text, image) => ({
