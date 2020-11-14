@@ -12,7 +12,7 @@ const Container = styled.div`
 const Footer = ({ copyright }) => <Container>{copyright}</Container>;
 
 const mapStateToProps = (state) => ({
-  copyright: state.footer.copyright
+  copyright: state.footer.copyright,
 });
 
-export default connect(mapStateToProps, {})(Footer)
+export default connect(mapStateToProps, {})(Footer);

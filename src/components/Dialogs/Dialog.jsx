@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { Avatar as BaseAvatar } from 'antd';
+import { Avatar as BaseAvatar } from "antd";
 
 const Name = styled(NavLink)`
   display: flex;
@@ -22,7 +22,7 @@ const Name = styled(NavLink)`
 
 const Avatar = styled(BaseAvatar)`
   margin-right: 10px;
-`
+`;
 
 export const Dialog = ({ id, photoUrl, name }) => (
   <Name to={`/dialogs/${id}`} activeClassName="active">

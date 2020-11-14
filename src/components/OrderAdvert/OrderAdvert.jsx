@@ -9,18 +9,11 @@ import Form from "./Form";
 
 const Container = styled.div`
   color: #000;
-`
+`;
 
 const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
   const handleSubmit = ({ title, text, image }) => {
-    addAdvert(
-      adverts.length + 1,
-      false,
-      0,
-      title,
-      text,
-      image
-    );
+    addAdvert(adverts.length + 1, false, 0, title, text, image);
   };
   return (
     <Container>

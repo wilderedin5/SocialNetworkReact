@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
-import { Cards } from './Cards';
-import { Faq } from './Faq';
+import React from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { Cards } from "./Cards";
+import { Faq } from "./Faq";
 
 const Help = ({ help, contacts }) => (
   <div>

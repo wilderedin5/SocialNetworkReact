@@ -7,7 +7,7 @@ import { Content } from "./Content";
 
 const Container = styled.div`
   color: #000;
-`
+`;
 
 export const Advert = ({
   image,
@@ -29,8 +29,8 @@ export const Advert = ({
     id,
     likeComment,
     comment,
-    deleteComment
-  }
+    deleteComment,
+  };
 
   const ContentProps = {
     id,
@@ -39,7 +39,7 @@ export const Advert = ({
     text,
     likeCount,
     toggleLike,
-  }
+  };
 
   return (
     <Container>

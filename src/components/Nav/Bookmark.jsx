@@ -23,18 +23,14 @@ export const Bookmark = ({
   id,
   newsText,
 }) => (
-    <Card
-      size="small"
-      title={theme}
-      extra={
-        inBookmarks && (
-          <Delete onClick={toggleBookmarks}>&#9932;</Delete>
-        )
-      }
-    >
-      {newsText.substring(0, 100)}.....
-      <NavLink to={`/news/${id}`}>
-        <Button type="primary">Open news</Button>
-      </NavLink>
-    </Card>
-  );
+  <Card
+    size="small"
+    title={theme}
+    extra={inBookmarks && <Delete onClick={toggleBookmarks}>&#9932;</Delete>}
+  >
+    {newsText.substring(0, 100)}.....
+    <NavLink to={`/news/${id}`}>
+      <Button type="primary">Open news</Button>
+    </NavLink>
+  </Card>
+);

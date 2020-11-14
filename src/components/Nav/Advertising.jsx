@@ -10,7 +10,7 @@ const Carousel = styled(BaseCarousel)`
 const Img = styled.img`
   width: 100%;
   height: 150px;
-`
+`;
 
 export const Advertising = ({ advertising }) => (
   <Carousel autoplay={true}>

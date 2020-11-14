@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Tooltip, Avatar, Comment as BaseComment } from "antd";
 import styled from "@emotion/styled";
 import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
-import NoAvatar from '../../assets/image/noAvatar.jpg'
+import NoAvatar from "../../assets/image/noAvatar.jpg";
 
 const CommentContainer = styled(BaseComment)`
   border: 1px solid grey;
@@ -19,22 +19,19 @@ export const Comment = ({
   avatar,
   text,
 }) => {
-  const [hasLike, setHasLike] = useState(false)
+  const [hasLike, setHasLike] = useState(false);
 
   const handleCommentLike = () => {
-    setHasLike(!hasLike)
-    likeComment(hasLike)
-  }
+    setHasLike(!hasLike);
+    likeComment(hasLike);
+  };
 
   const actions = [
     <span>
-      <Tooltip title={hasLike ? 'Like' : 'Dislike'}>
-        {React.createElement(
-          hasLike ? DislikeFilled : LikeOutlined,
-          {
-            onClick: handleCommentLike,
-          }
-        )}
+      <Tooltip title={hasLike ? "Like" : "Dislike"}>
+        {React.createElement(hasLike ? DislikeFilled : LikeOutlined, {
+          onClick: handleCommentLike,
+        })}
       </Tooltip>
       <span className="comment-action">{likeCount}</span>
     </span>,
@@ -44,13 +41,7 @@ export const Comment = ({
     <CommentContainer
       author={name}
       actions={actions}
-      avatar={
-        <Avatar
-          size="large"
-          src={avatar || NoAvatar}
-          alt={name}
-        />
-      }
+      avatar={<Avatar size="large" src={avatar || NoAvatar} alt={name} />}
       content={<p>{text}</p>}
     />
   );

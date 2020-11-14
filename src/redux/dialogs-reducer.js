@@ -89,10 +89,9 @@ export const dialogsReducer = (state = initialState, action) => {
       return {
         ...state,
         dialogsData: state.dialogsData.map((dialog) => {
-          return dialog.id === action.userId ?
-            { ...dialog, messages: [...dialog.messages, newMessage] }
-            :
-            dialog
+          return dialog.id === action.userId
+            ? { ...dialog, messages: [...dialog.messages, newMessage] }
+            : dialog;
         }),
       };
     case DELETE_MESSAGE:
@@ -112,10 +111,9 @@ export const dialogsReducer = (state = initialState, action) => {
       return {
         ...state,
         dialogsData: state.dialogsData.map((dialog) => {
-          return dialog.id === action.userId ?
-            { ...dialog, messages: [] }
-            :
-            dialog
+          return dialog.id === action.userId
+            ? { ...dialog, messages: [] }
+            : dialog;
         }),
       };
     default:
@@ -127,13 +125,13 @@ export const addMessage = (newMessageText, userId) => ({
   type: ADD_MESSAGE,
   newMessageText,
   userId,
-})
+});
 
 export const deleteMessage = (messageId, userId) => ({
   type: DELETE_MESSAGE,
   messageId,
   userId,
-})
+});
 
 export const deleteAllMessages = (userId) => ({
   type: DELETE_ALL_MESSAGES_FROM_DIALOG,

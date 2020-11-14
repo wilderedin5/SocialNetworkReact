@@ -9,7 +9,7 @@ const Button = styled(BaseButton)`
   & + & {
     margin-left: 10px;
   }
-`
+`;
 
 const Form = ({ handleSubmit, deleteAllMessages, id }) => (
   <form onSubmit={handleSubmit}>

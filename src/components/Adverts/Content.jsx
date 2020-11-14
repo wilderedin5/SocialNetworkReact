@@ -13,7 +13,7 @@ const Title = styled.h2`
 `;
 
 const Container = styled.div`
-  margin-bottom: 10px;    
+  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #000;
   border-radius: 10px;
@@ -24,12 +24,12 @@ const Like = styled.span`
 `;
 
 export const Content = ({ id, image, title, text, likeCount, toggleLike }) => {
-  const [hasLike, setHasLike] = useState(false)
+  const [hasLike, setHasLike] = useState(false);
 
   const handleAdvertLike = () => {
-    setHasLike(!hasLike)
-    toggleLike(id, hasLike)
-  }
+    setHasLike(!hasLike);
+    toggleLike(id, hasLike);
+  };
 
   return (
     <Container>
@@ -41,5 +41,5 @@ export const Content = ({ id, image, title, text, likeCount, toggleLike }) => {
         {likeCount}
       </Like>
     </Container>
-  )
-}
+  );
+};

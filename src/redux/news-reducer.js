@@ -74,10 +74,9 @@ export const newsReducer = (state = initialState, action) => {
       return {
         ...state,
         news: state.news.map((news) => {
-          return news.id === action.newsId ?
-            { ...news, inBookmarks: action.bookmarked }
-            :
-            news
+          return news.id === action.newsId
+            ? { ...news, inBookmarks: action.bookmarked }
+            : news;
         }),
       };
     default:
@@ -99,4 +98,4 @@ export const toggleBookmarks = (newsId, bookmarked) => ({
   type: TOGGLE_SET_TO_BOOKMARKS,
   newsId,
   bookmarked,
-})
+});

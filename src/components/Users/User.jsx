@@ -34,11 +34,11 @@ const Button = styled(BaseButton)`
 `;
 
 export const User = ({ isFollowingProgress, unfollow, follow, user }) => {
-  const followProgressActive = isFollowingProgress.some(id => id === user.id)
+  const followProgressActive = isFollowingProgress.some((id) => id === user.id);
 
   const handleFollow = () => {
-    user.followed ? unfollow(user.id) : follow(user.id)
-  }
+    user.followed ? unfollow(user.id) : follow(user.id);
+  };
 
   return (
     <Container>
@@ -51,13 +51,9 @@ export const User = ({ isFollowingProgress, unfollow, follow, user }) => {
         </Button>
       </AvatarContainer>
       <Info>
-        <div>
-          Name: {user.name}
-        </div>
-        <div>
-          Status:{user.status ? user.status : "Not filled!"}
-        </div>
+        <div>Name: {user.name}</div>
+        <div>Status:{user.status ? user.status : "Not filled!"}</div>
       </Info>
     </Container>
-  )
+  );
 };

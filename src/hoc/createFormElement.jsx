@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { maxLength } from '../utils/validate/validateForm';
+import React from "react";
+import styled from "@emotion/styled";
+import { maxLength } from "../utils/validate/validateForm";
 import {
   Textarea as BaseTextarea,
   Input as BaseInput,
-} from '../components/common/shared/type';
+} from "../components/common/shared/type";
 
 const Error = styled.div`
   color: red;
@@ -14,7 +14,7 @@ const Error = styled.div`
 export const createFormElement = (Element) => ({ input, meta, ...props }) => (
   <div>
     <Element {...input} {...props} />
-    {(meta.error && meta.touched) && <Error>{meta.error}</Error>}
+    {meta.error && meta.touched && <Error>{meta.error}</Error>}
   </div>
 );
 

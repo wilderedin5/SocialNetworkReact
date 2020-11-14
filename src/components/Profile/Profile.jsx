@@ -16,7 +16,7 @@ import Posts from "./Posts";
 
 const Container = styled.div`
   color: #000;
-`
+`;
 
 const Profile = (props) => {
   const userId = props.match.params.userId || props.authorizedUserId;

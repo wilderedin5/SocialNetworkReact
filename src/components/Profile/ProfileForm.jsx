@@ -13,10 +13,10 @@ const ProfileInfo = styled.div`
 const ContactList = styled.ul`
   list-style: none;
   font-size: 24px;
-`
+`;
 
 const FieldContainer = styled.div`
-  font-size: ${p => p.isName ? '28px' : null};
+  font-size: ${(p) => (p.isName ? "28px" : null)};
   line-height: 1;
 `;
 
@@ -33,7 +33,7 @@ const profileFormData = [
     placeholder: "",
     type: "checkbox",
     component: Input,
-    validate: [maxLength250]
+    validate: [maxLength250],
   },
   {
     value: "My skills:",
@@ -41,7 +41,7 @@ const profileFormData = [
     placeholder: "My skills",
     type: "text",
     component: Input,
-    validate: [maxLength250]
+    validate: [maxLength250],
   },
   {
     value: "About me:",
@@ -49,7 +49,7 @@ const profileFormData = [
     placeholder: "About me",
     type: "text",
     component: Input,
-    validate: [maxLength250]
+    validate: [maxLength250],
   },
   {
     value: "Name:",
@@ -57,17 +57,19 @@ const profileFormData = [
     placeholder: "Name",
     type: "text",
     component: Input,
-    validate: [maxLength250]
-  }
-]
+    validate: [maxLength250],
+  },
+];
 
 const ProfileForm = ({ handleSubmit, profile, error }) => (
   <form onSubmit={handleSubmit}>
     <ProfileInfo>
-      {profileFormData.map(field => <FieldContainer key={field.name} isName={field.name === 'fullName'} >
-        {field.value}:
+      {profileFormData.map((field) => (
+        <FieldContainer key={field.name} isName={field.name === "fullName"}>
+          {field.value}:
           <Field {...field} />
-      </FieldContainer>)}
+        </FieldContainer>
+      ))}
 
       <ContactList>
         {Object.keys(profile.contacts).map((key) => (
@@ -79,15 +81,13 @@ const ProfileForm = ({ handleSubmit, profile, error }) => (
             component={Input}
             validate={[maxLength250]}
           />
-        )
-        )}
+        ))}
       </ContactList>
     </ProfileInfo>
     <Button htmlType="submit">Save page</Button>
     <div>{error}</div>
   </form>
 );
-
 
 export default reduxForm({
   form: "profileInfoForm",

@@ -28,7 +28,18 @@ const Pagination = styled(BasePagination)`
   margin-bottom: 20px;
 `;
 
-const Users = ({ getUsers, currentPage, pageSize, setCurrentPage, totalUsersCount, isFollowingProgress, unfollow, follow, isFetching, users }) => {
+const Users = ({
+  getUsers,
+  currentPage,
+  pageSize,
+  setCurrentPage,
+  totalUsersCount,
+  isFollowingProgress,
+  unfollow,
+  follow,
+  isFetching,
+  users,
+}) => {
   useEffect(() => {
     getUsers(currentPage, pageSize);
   }, []);
@@ -38,8 +49,10 @@ const Users = ({ getUsers, currentPage, pageSize, setCurrentPage, totalUsersCoun
     getUsers(pageNumber, pageSize);
   };
 
-  return (
-    isFetching ? <Preloader /> : <div>
+  return isFetching ? (
+    <Preloader />
+  ) : (
+    <div>
       <Pagination
         defaultCurrent={1}
         current={currentPage}

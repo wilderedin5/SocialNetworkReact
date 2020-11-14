@@ -134,32 +134,32 @@ export const profileReducer = (state = initialState, action) => {
 export const addPost = (id, message, likeCount, liked, name) => ({
   type: ADD_POST,
   newPost: { id, message, likeCount, liked, name },
-})
+});
 
 export const deletePost = (postId) => ({
   type: DELETE_POST,
-  postId
-})
+  postId,
+});
 
 export const setUsersProfile = (profile) => ({
   type: SET_USERS_PROFILE,
-  profile
-})
+  profile,
+});
 
 export const setStatus = (status) => ({
   type: SET_STATUS,
-  status: status
-})
+  status: status,
+});
 
 export const updatePhotoSuccess = (photo) => ({
   type: UPDATE_PHOTO,
-  photo
-})
+  photo,
+});
 
 export const toggleLikePost = (postId) => ({
   type: TOGGLE_LIKE_POST,
-  postId
-})
+  postId,
+});
 
 export const getProfile = (userId) => async (dispatch) => {
   let response = await usersAPI.getProfile(userId);

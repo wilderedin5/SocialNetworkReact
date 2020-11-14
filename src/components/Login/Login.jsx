@@ -13,21 +13,17 @@ const Container = styled.div`
 
 const Login = ({ login, isAuth, captchaUrl }) => {
   const handleSubmit = ({ email, password, rememberMe, captcha }) => {
-    login(
-      email,
-      password,
-      rememberMe,
-      captcha
-    );
+    login(email, password, rememberMe, captcha);
   };
 
-  return isAuth ?
+  return isAuth ? (
     <Redirect to="/profile" />
-    :
+  ) : (
     <Container>
       <Form captchaUrl={captchaUrl} onSubmit={handleSubmit} />
       <Info />
     </Container>
+  );
 };
 
 const mapStateToProps = (state) => ({

@@ -26,13 +26,13 @@ export const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login, isAuth, captcha) => ({
   type: SET_AUTH_USER_DATA,
-  userData: { userId, email, login, isAuth, captcha }
-})
+  userData: { userId, email, login, isAuth, captcha },
+});
 
 export const getCaptchaUrlSuccess = (captchaUrl) => ({
   type: GET_CAPTCHA_SUCCESS,
-  userData: { captchaUrl }
-})
+  userData: { captchaUrl },
+});
 
 export const getAuthUserData = () => async (dispatch) => {
   let response = await authAPI.me();

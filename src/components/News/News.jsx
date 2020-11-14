@@ -1,4 +1,3 @@
-
 import React from "react";
 import styled from "@emotion/styled";
 import { connect } from "react-redux";
@@ -15,28 +14,25 @@ const Container = styled.div`
 
 const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
   const newsId = match.params.newsId;
-  const formattedNews = newsId ? news.filter((news) => newsId === String(news.id)) : news
+  const formattedNews = newsId
+    ? news.filter((news) => newsId === String(news.id))
+    : news;
 
   const handleSubmit = ({ newsText, theme, author, category }) => {
-    addNews(
-      newsText,
-      theme,
-      author,
-      category
-    );
+    addNews(newsText, theme, author, category);
   };
 
   return (
     <Container>
-      {formattedNews.map((news) =>
+      {formattedNews.map((news) => (
         <Article
           key={news.id}
           deleteNews={() => deleteNews(news.id)}
           toggleBookmarks={() => toggleBookmarks(news.id, !news.inBookmarks)}
           newsOpened={newsId}
           {...news}
-        />)
-      }
+        />
+      ))}
       {!newsId && <Form onSubmit={handleSubmit} />}
     </Container>
   );

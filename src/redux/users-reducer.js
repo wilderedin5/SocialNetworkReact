@@ -22,10 +22,7 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => {
-          return user.id === action.userId ?
-            { ...user, followed: true }
-            :
-            user
+          return user.id === action.userId ? { ...user, followed: true } : user;
         }),
       };
     }
@@ -33,10 +30,9 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => {
-          return user.id === action.userId ?
-            { ...user, followed: false }
-            :
-            user
+          return user.id === action.userId
+            ? { ...user, followed: false }
+            : user;
         }),
       };
     }
@@ -80,38 +76,38 @@ export const usersReducer = (state = initialState, action) => {
 export const followSuccess = (userId) => ({
   type: FOLLOW,
   userId,
-})
+});
 
 export const unfollowSuccess = (userId) => ({
   type: UNFOLLOW,
   userId,
-})
+});
 
 export const setUsers = (users) => ({
   type: SET_USERS,
   users,
-})
+});
 
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
-})
+});
 
 export const setUsersCount = (totalUsersCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   totalUsersCount,
-})
+});
 
 export const setFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
-})
+});
 
 export const setFollowingProgress = (isFetching, userId) => ({
   type: FOLLOWING_IS_PROGRESS,
   isFetching,
-  userId
-})
+  userId,
+});
 
 export const getUsers = (currentPage, pageSize) => async (dispatch) => {
   dispatch(setFetching(true));

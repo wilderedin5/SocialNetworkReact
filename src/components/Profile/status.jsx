@@ -40,8 +40,8 @@ export const Status = (props) => {
           value={status}
         />
       ) : (
-          <span onClick={activateEditMode}>{status || "----"}</span>
-        )}
+        <span onClick={activateEditMode}>{status || "----"}</span>
+      )}
     </div>
   );
 };

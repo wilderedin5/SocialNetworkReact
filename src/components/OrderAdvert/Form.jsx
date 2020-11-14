@@ -2,7 +2,12 @@ import React from "react";
 import { Button } from "antd";
 import { reduxForm, Field } from "redux-form";
 import { requiredField } from "../../utils/validate/validateForm";
-import { maxLength1000, maxLength100, Input, Textarea } from "../../hoc/createFormElement";
+import {
+  maxLength1000,
+  maxLength100,
+  Input,
+  Textarea,
+} from "../../hoc/createFormElement";
 
 const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
@@ -29,11 +34,10 @@ const Form = ({ handleSubmit, error }) => (
     />
     <Button type="primary" htmlType="submit">
       Add news
-      </Button>
+    </Button>
     <div>{error}</div>
   </form>
 );
-
 
 export default reduxForm({
   form: "AdvertForm",

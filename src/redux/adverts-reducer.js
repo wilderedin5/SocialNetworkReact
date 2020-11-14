@@ -114,7 +114,7 @@ export const advertsReducer = (state = initialState, action) => {
           if (advert.id === action.advertId) {
             const comment = advert.comment.filter(
               (comment) => comment.id !== action.commentId
-            )
+            );
             return { ...advert, comment };
           }
           return advert;
@@ -126,10 +126,14 @@ export const advertsReducer = (state = initialState, action) => {
         advertising: state.advertising.map((advert) => {
           if (advert.id === action.advertId) {
             advert.comment.map((comment) => {
-              return comment.id === action.commentId ?
-                { ...comment, likeCount: action.hasLike ? --comment.likeCount : ++comment.likeCount }
-                :
-                comment
+              return comment.id === action.commentId
+                ? {
+                    ...comment,
+                    likeCount: action.hasLike
+                      ? --comment.likeCount
+                      : ++comment.likeCount,
+                  }
+                : comment;
             });
           }
           return advert;
@@ -139,23 +143,23 @@ export const advertsReducer = (state = initialState, action) => {
       return {
         ...state,
         advertising: state.advertising.map((advert) => {
-          return advert.id === action.advertId ?
-            { ...advert, comment: [...advert.comment, action.comment] }
-            :
-            advert
+          return advert.id === action.advertId
+            ? { ...advert, comment: [...advert.comment, action.comment] }
+            : advert;
         }),
       };
     case TOGGLE_LIKE_ADVERT:
       return {
         ...state,
         advertising: state.advertising.map((advert) => {
-          return advert.id === action.advertId ?
-            {
-              ...advert,
-              likeCount: action.hasLike ? --advert.likeCount : ++advert.likeCount,
-            }
-            :
-            advert
+          return advert.id === action.advertId
+            ? {
+                ...advert,
+                likeCount: action.hasLike
+                  ? --advert.likeCount
+                  : ++advert.likeCount,
+              }
+            : advert;
         }),
       };
     case ADD_ADVERT:
@@ -185,7 +189,7 @@ export const likeComment = (advertId, commentId, hasLike) => ({
   type: TOGGLE_LIKE_COMMENT_FROM_ADVERT,
   advertId,
   commentId,
-  hasLike
+  hasLike,
 });
 
 export const addComment = (advertId, id, text, name) => ({
@@ -197,7 +201,7 @@ export const addComment = (advertId, id, text, name) => ({
 export const toggleLike = (advertId, hasLike) => ({
   type: TOGGLE_LIKE_ADVERT,
   advertId,
-  hasLike
+  hasLike,
 });
 
 export const addAdvert = (id, liked, likeCount, title, text, image) => ({

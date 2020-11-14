@@ -32,11 +32,11 @@ const Form = ({ handleSubmit, captchaUrl, error }) => (
     />
     <div>
       <Field type="checkbox" name="rememberMe" component="input" />
-        Remember me
-      </div>
+      Remember me
+    </div>
     <Button type="primary" htmlType="submit">
       Login
-      </Button>
+    </Button>
     <div>
       {captchaUrl && <img src={captchaUrl} alt="" />}
       {captchaUrl && (

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Divider,Avatar } from "antd";
+import { Divider, Avatar } from "antd";
 import { NavLink } from "react-router-dom";
-import NoAvatar from '../../assets/image/noAvatar.jpg'
+import NoAvatar from "../../assets/image/noAvatar.jpg";
 
 const Link = styled(NavLink)`
   text-align: center;

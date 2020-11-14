@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Button as BaseButton, Avatar as BaseAvatar } from "antd";
-import NoAvatar from '../../assets/image/noAvatar.jpg'
+import NoAvatar from "../../assets/image/noAvatar.jpg";
 import { logout } from "../../redux/auth-reducer";
 
 const Container = styled.div`
@@ -22,7 +22,7 @@ const Button = styled(BaseButton)`
     background: #fff;
     color: rgb(45, 80, 165);
   }
-`
+`;
 
 const Info = styled.div`
   display: flex;
@@ -33,23 +33,23 @@ const Info = styled.div`
 
 const Avatar = styled(BaseAvatar)`
   margin-right: 10px;
-`
+`;
 
 const Header = ({ isAuth, profile, login, logout }) => (
   <Container>
     {isAuth ? (
       <>
-       <Info>
+        <Info>
           <Avatar src={60} src={profile?.photos.small || NoAvatar} />
           {login}
         </Info>
         <Button onClick={logout}>Log out</Button>
       </>
     ) : (
-          <NavLink to="/login">
-            <Button>Login</Button>
-          </NavLink>
-      )}
+      <NavLink to="/login">
+        <Button>Login</Button>
+      </NavLink>
+    )}
   </Container>
 );
 

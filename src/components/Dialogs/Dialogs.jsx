@@ -38,28 +38,29 @@ const Dialogs = ({
     addMessage(dialogsMessageText, userId);
   };
 
-  return (isAuth ? <Container>
-    <DialogsList>
-      {
-        dialogsData.map((d) => (
+  return isAuth ? (
+    <Container>
+      <DialogsList>
+        {dialogsData.map((d) => (
           <Dialog key={d.id} {...d} />
-        ))
-      }
-    </DialogsList>
-    {dialogsData[userId - 1].messages.map(({ id, ...m }) => (
-      <Message
-        key={id}
-        deleteMessage={() => deleteMessage(id, userId)}
-        {...m}
+        ))}
+      </DialogsList>
+      {dialogsData[userId - 1].messages.map(({ id, ...m }) => (
+        <Message
+          key={id}
+          deleteMessage={() => deleteMessage(id, userId)}
+          {...m}
+        />
+      ))}
+      <Form
+        id={userId}
+        deleteAllMessages={deleteAllMessages}
+        onSubmit={handleSubmit}
       />
-    ))}
-    <Form
-      id={userId}
-      deleteAllMessages={deleteAllMessages}
-      onSubmit={handleSubmit}
-    />
-  </Container> : <Redirect to="/login" />
-  )
+    </Container>
+  ) : (
+    <Redirect to="/login" />
+  );
 };
 
 const mapStateToProps = (state) => ({

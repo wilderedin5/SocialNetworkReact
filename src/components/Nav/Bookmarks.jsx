@@ -17,11 +17,12 @@ export const Bookmarks = ({ bookMarks, toggleBookmarks }) => (
     </Divider>
     {bookMarks.length > 0
       ? bookMarks.map((bookmark) => (
-        <Bookmark key={bookmark.id}
-          toggleBookmarks={() => toggleBookmarks(bookmark.id, false)}
-          {...bookmark}
-        />
-      ))
+          <Bookmark
+            key={bookmark.id}
+            toggleBookmarks={() => toggleBookmarks(bookmark.id, false)}
+            {...bookmark}
+          />
+        ))
       : "It is empty for now, news saved in bookmarks will fall here!"}
   </Container>
 );
