@@ -1,46 +1,52 @@
-import 'antd/dist/antd.css';
-import React, { Suspense, useEffect } from 'react';
-import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Layout } from 'antd';
-import { initiliazeApp } from './redux/app-reducer';
-import { Preloader } from './components/common/Preloader/Preloader';
-import NavBar from './components/Nav/NavBar';
-import Login from './components/Login/Login';
-import Adverts from './components/Adverts/Adverts';
-import Footer from './components/Footer/Footer';
-import style from './App.module.scss';
-import Header from './components/Header/Header';
-const Profile = React.lazy(() => import('./components/Profile/Profile'));
-const Dialogs = React.lazy(() => import('./components/Dialogs/Dialogs'));
-const Users = React.lazy(() => import('./components/Users/Users'));
-const News = React.lazy(() => import('./components/News/News'));
-const Help = React.lazy(() => import('./components/Help/Help'));
-const OrderAdvert = React.lazy(() => import('./components/OrderAdvert/OrderAdvert'));
-
+import "antd/dist/antd.css";
+import React, { Suspense, useEffect } from "react";
+import { Route, withRouter, Redirect, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { Layout } from "antd";
+import { initiliazeApp } from "./redux/app-reducer";
+import { Preloader } from "./components/common/Preloader/Preloader";
+import NavBar from "./components/Nav/NavBar";
+import Login from "./components/Login/Login";
+import Adverts from "./components/Adverts/Adverts";
+import { Footer } from "./components/Footer/Footer";
+import style from "./App.module.scss";
+import Header from "./components/Header/Header";
+const Profile = React.lazy(() => import("./components/Profile/Profile"));
+const Dialogs = React.lazy(() => import("./components/Dialogs/Dialogs"));
+const Users = React.lazy(() => import("./components/Users/Users"));
+const News = React.lazy(() => import("./components/News/News"));
+const Help = React.lazy(() => import("./components/Help/Help"));
+const OrderAdvert = React.lazy(() =>
+  import("./components/OrderAdvert/OrderAdvert")
+);
 
 const App = (props) => {
+  const {
+    Header: HeaderContainer,
+    Sider,
+    Content,
+    Footer: FooterContainer,
+  } = Layout;
   useEffect(() => {
     props.initiliazeApp();
   }, []);
-  if (!props.initiliazed) {
-    return <Preloader />
-  }
-  const { Header: HeaderContainer, Sider, Content, Footer: FooterContainer } = Layout;
-  return (
+
+  return !props.initiliazed ? (
+    <Preloader />
+  ) : (
     <Layout>
       <HeaderContainer className={style.header}>
         <Header />
       </HeaderContainer>
       <Layout>
-        {props.isAuth &&
+        {props.isAuth && (
           <Sider>
             <NavBar />
           </Sider>
-        }
+        )}
         <Content className={style.content}>
-          <Suspense fallback={<div>Идет загрузка компоненты! Lazy load в действии!</div>}>
+          <Suspense fallback={<div>Lazy load в действии!</div>}>
             <Switch>
               <Route path="/dialogs/:userId?" render={() => <Dialogs />} />
               <Route path="/profile/:userId?" render={() => <Profile />} />
@@ -55,20 +61,21 @@ const App = (props) => {
           </Suspense>
         </Content>
       </Layout>
-      {props.isAuth &&
+      {props.isAuth && (
         <FooterContainer className={style.footer}>
           <Footer />
         </FooterContainer>
-      }
+      )}
     </Layout>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   initiliazed: state.app.initiliazed,
-  isAuth: state.auth.isAuth
-})
+  isAuth: state.auth.isAuth,
+});
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { initiliazeApp }))(App);
+  connect(mapStateToProps, { initiliazeApp })
+)(App);

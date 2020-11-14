@@ -16,17 +16,11 @@ const Card = styled(BaseCard)`
   text-align: justify;
 `;
 
-export const Bookmark = ({
-  theme,
-  inBookmarks,
-  toggleBookmarks,
-  id,
-  newsText,
-}) => (
+export const Bookmark = ({ theme, toggleBookmarks, id, newsText }) => (
   <Card
     size="small"
     title={theme}
-    extra={inBookmarks && <Delete onClick={toggleBookmarks}>&#9932;</Delete>}
+    extra={<Delete onClick={toggleBookmarks}>&#9932;</Delete>}
   >
     {newsText.substring(0, 100)}.....
     <NavLink to={`/news/${id}`}>

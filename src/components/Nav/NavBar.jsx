@@ -22,7 +22,7 @@ const NavBar = ({
 }) => {
   useEffect(() => {
     getFriends(1, 9);
-  }, []);
+  }, [isAuth]);
 
   return (
     <div>
@@ -63,8 +63,11 @@ const NavBar = ({
         </Menu.Item>
       </Menu>
       {isAuth && <Friends friends={friends} />}
-      <Bookmarks toggleBookmarks={toggleBookmarks} bookMarks={bookMarks} />
-      <Advertising advertising={advertising} />
+      <Bookmarks
+        toggleBookmarks={toggleBookmarks}
+        bookMarks={bookMarks || []}
+      />
+      <Advertising advertising={advertising || []} />
     </div>
   );
 };

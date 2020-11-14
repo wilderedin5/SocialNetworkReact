@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import {
   addMessage,
   deleteMessage,
-  deleteAllMessages,
+  eraseDialog,
 } from "../../redux/dialogs-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import Form from "./Form";
@@ -30,9 +30,9 @@ const Dialogs = ({
   isAuth,
   dialogsData,
   deleteMessage,
-  deleteAllMessages,
+  eraseDialog,
 }) => {
-  const userId = Number(match.params.userId) || 1;
+  const userId = +match.params.userId || 1;
 
   const handleSubmit = ({ dialogsMessageText }) => {
     addMessage(dialogsMessageText, userId);
@@ -52,11 +52,7 @@ const Dialogs = ({
           {...m}
         />
       ))}
-      <Form
-        id={userId}
-        deleteAllMessages={deleteAllMessages}
-        onSubmit={handleSubmit}
-      />
+      <Form eraseDialog={() => eraseDialog(userId)} onSubmit={handleSubmit} />
     </Container>
   ) : (
     <Redirect to="/login" />
@@ -71,7 +67,7 @@ export default compose(
   connect(mapStateToProps, {
     deleteMessage,
     addMessage,
-    deleteAllMessages,
+    eraseDialog,
   }),
   withAuthRedirect,
   withRouter

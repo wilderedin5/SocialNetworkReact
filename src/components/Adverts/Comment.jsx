@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Tooltip, Avatar, Comment as BaseComment } from "antd";
 import styled from "@emotion/styled";
 import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
@@ -12,7 +12,7 @@ const CommentContainer = styled(BaseComment)`
 `;
 
 export const Comment = ({
-  likeComment,
+  toggleLike,
   likeCount,
   deleteComment,
   name,
@@ -23,7 +23,7 @@ export const Comment = ({
 
   const handleCommentLike = () => {
     setHasLike(!hasLike);
-    likeComment(hasLike);
+    toggleLike(hasLike);
   };
 
   const actions = [

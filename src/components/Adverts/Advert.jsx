@@ -14,8 +14,8 @@ export const Advert = ({
   title,
   text,
   id,
-  likeComment,
-  comment,
+  toggleLike,
+  comments,
   deleteComment,
   addComment,
 }) => {
@@ -23,24 +23,16 @@ export const Advert = ({
     addComment(id, v4(), commentText, name);
   };
 
-  const CommentsProps = {
-    id,
-    likeComment,
-    comment,
-    deleteComment,
-  };
-
-  const ContentProps = {
-    image,
-    title,
-    text,
-  };
-
   return (
     <Container>
-      <Content {...ContentProps} />
+      <Content image={image} title={title} text={text} />
 
-      <Comments {...CommentsProps} />
+      <Comments
+        id={id}
+        toggleLike={toggleLike}
+        comments={comments}
+        deleteComment={deleteComment}
+      />
 
       <Form onSubmit={handleSubmit} />
     </Container>

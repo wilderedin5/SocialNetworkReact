@@ -1,11 +1,12 @@
 import React from "react";
 import { Card } from "antd";
 import styled from "@emotion/styled";
+import { Note } from "../common/shared/type";
 
 const Container = styled.div`
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 `;
 
@@ -13,18 +14,10 @@ export const Cards = ({ contacts }) => (
   <Container>
     {contacts.map(({ name, status, phone, email, description }) => (
       <Card key={name} title={name} bordered={true}>
-        <div>
-          <b>Working position:</b> {status}
-        </div>
-        <div>
-          <b>Phone number:</b> {phone}
-        </div>
-        <div>
-          <b>Email:</b> {email}
-        </div>
-        <div>
-          <b>For questions:</b> {description}
-        </div>
+        <Note label="Working position" value={status} />
+        <Note label="Phone number" value={phone} />
+        <Note label="Email" value={email} />
+        <Note label="For questions" value={description} />
       </Card>
     ))}
   </Container>

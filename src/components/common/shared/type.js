@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 export const Textarea = styled.textarea`
@@ -18,4 +19,10 @@ export const Input = styled.input`
   border-radius: 5px;
   border: 1px solid rgb(45, 80, 165);
   outline: none;
-`; 
+`;
+
+export const Note = ({ label, value }) => (
+  <div>
+    <b>{label}</b>: {value}
+  </div>
+);

@@ -1,14 +1,13 @@
 import React from "react";
 import { Comment } from "./Comment";
 
-export const Comments = ({ comment, id, likeComment, deleteComment }) => (
+export const Comments = ({ comments, id, toggleLike, deleteComment }) => (
   <div>
-    {comment.map((comment) => (
+    {comments.map((comment) => (
       <Comment
         key={comment.text}
         {...comment}
-        advertId={id}
-        likeComment={(hasLike) => likeComment(id, comment.id, hasLike)}
+        toggleLike={(hasLike) => toggleLike(id, comment.id, hasLike)}
         deleteComment={() => deleteComment(id, comment.id)}
       />
     ))}

@@ -11,7 +11,7 @@ const Button = styled(BaseButton)`
   }
 `;
 
-const Form = ({ handleSubmit, deleteAllMessages, id }) => (
+const Form = ({ handleSubmit, eraseDialog }) => (
   <form onSubmit={handleSubmit}>
     <Field
       component={Textarea}
@@ -20,14 +20,12 @@ const Form = ({ handleSubmit, deleteAllMessages, id }) => (
       type="text"
       validate={[maxLength250, requiredField]}
     />
-    <div>
-      <Button htmlType="submit" type="primary">
-        Send
-      </Button>
-      <Button onClick={() => deleteAllMessages(id)} type="primary">
-        Clear chat
-      </Button>
-    </div>
+    <Button htmlType="submit" type="primary">
+      Send
+    </Button>
+    <Button onClick={eraseDialog} type="primary">
+      Clear chat
+    </Button>
   </form>
 );
 

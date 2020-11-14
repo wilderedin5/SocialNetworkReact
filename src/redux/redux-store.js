@@ -10,7 +10,6 @@ import { reducer as formReducer } from "redux-form";
 import { newsReducer } from "./news-reducer";
 import { helpReducer } from "./help-reducer";
 import { advertsReducer } from "./adverts-reducer";
-import { footerReducer } from "./footer-reducer";
 
 let reducers = combineReducers({
   profilePage: profileReducer,
@@ -23,7 +22,8 @@ let reducers = combineReducers({
   newsPage: newsReducer,
   help: helpReducer,
   adverts: advertsReducer,
-  footer: footerReducer,
 });
 
-export const store = createStore(reducers, applyMiddleware(thunkMiddleware));
+const store = createStore(reducers, applyMiddleware(thunkMiddleware));
+
+export default store;

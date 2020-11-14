@@ -4,22 +4,31 @@ import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import {
   deleteComment,
-  likeComment,
+  toggleLike,
   addComment,
 } from "../../redux/adverts-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { Advert } from "./Advert";
 
-const Adverts = (props) => {
-  const advertId = +props.match.params.advertId;
-
-  return props.advertising.map(
-    (advert) =>
-      advert.id === advertId && (
-        <Advert key={advert.title} {...props} {...advert} />
+const Adverts = ({
+  advertising,
+  match,
+  deleteComment,
+  toggleLike,
+  addComment,
+}) =>
+  advertising.map(
+    (adv) =>
+      adv.id === +match.params.advertId && (
+        <Advert
+          key={adv.title}
+          deleteComment={deleteComment}
+          toggleLike={toggleLike}
+          addComment={addComment}
+          {...adv}
+        />
       )
   );
-};
 
 const mapStateToProps = (state) => ({
   advertising: state.adverts.advertising,
@@ -30,7 +39,7 @@ export default compose(
   withRouter,
   connect(mapStateToProps, {
     deleteComment,
-    likeComment,
+    toggleLike,
     addComment,
   })
 )(Adverts);

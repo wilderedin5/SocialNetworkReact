@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Button as BaseButton } from "antd";
 import { NavLink } from "react-router-dom";
+import { Note } from "../common/shared/type";
 
 const Container = styled.div`
   border: 1px solid rgb(45, 80, 165);
@@ -15,8 +16,8 @@ const Tools = styled.div`
 `;
 
 const Button = styled(BaseButton)`
-  :not(:last-child) {
-    margin-right: 10px;
+  & + & {
+    margin-left: 10px;
   }
 `;
 
@@ -34,18 +35,10 @@ export const Article = ({
 }) => (
   <Container>
     <div>{newsOpened ? newsText : newsText.substring(0, 200)}.....</div>
-    <div>
-      <b>Theme:</b> {theme}
-    </div>
-    <div>
-      <b>Author:</b> {author}
-    </div>
-    <div>
-      <b>Date:</b> {date}
-    </div>
-    <div>
-      <b>Category:</b> {category}
-    </div>
+    <Note label="Theme" value={theme} />
+    <Note label="Author" value={author} />
+    <Note label="Date" value={date} />
+    <Note label="Category" value={category} />
     <Tools>
       <Button onClick={toggleBookmarks}>
         {inBookmarks ? "Remove from bookmarks" : "Add in bookmarks"}

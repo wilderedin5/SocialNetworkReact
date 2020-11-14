@@ -37,17 +37,17 @@ const Form = ({ handleSubmit, captchaUrl, error }) => (
     <Button type="primary" htmlType="submit">
       Login
     </Button>
-    <div>
-      {captchaUrl && <img src={captchaUrl} alt="" />}
-      {captchaUrl && (
+    {captchaUrl && (
+      <div>
+        <img src={captchaUrl} alt="" />
         <Field
           type="text"
           name="captcha"
           component={Input}
           validate={[requiredField]}
         />
-      )}
-    </div>
+      </div>
+    )}
     {error}
   </Container>
 );
