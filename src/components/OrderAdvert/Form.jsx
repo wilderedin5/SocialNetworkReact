@@ -5,12 +5,12 @@ import { Field } from "../../hoc/form-elements";
 
 const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
-    <Field name="title" placeholder="Title your advert" maxLength="100" />
+    <Field name="title" placeholder="Title your advert" />
     <Field name="image" placeholder="Link on image" maxLength="1000" />
     <Field
       component="textarea"
       name="text"
-      placeholder="text your advert"
+      placeholder="Type your text"
       maxLength="1000"
     />
     <Button type="primary" htmlType="submit">

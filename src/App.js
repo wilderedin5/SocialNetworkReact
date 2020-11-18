@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { Layout } from "antd";
 import { initiliazeApp } from "./redux/app-reducer";
-import { Preloader } from "./components/common/Preloader/Preloader";
+import { Loader } from "./components/common/type";
 import NavBar from "./components/Nav/NavBar";
 import Login from "./components/Login/Login";
 import Adverts from "./components/Adverts/Adverts";
@@ -33,7 +33,7 @@ const App = (props) => {
   }, []);
 
   return !props.initiliazed ? (
-    <Preloader />
+    <Loader />
   ) : (
     <Layout>
       <HeaderContainer className={style.header}>

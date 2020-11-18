@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -14,10 +13,6 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { Info } from "./Info";
 import Posts from "./Posts";
 
-const Container = styled.div`
-  color: #000;
-`;
-
 const Profile = (props) => {
   const userId = props.match.params.userId || props.authorizedUserId;
 
@@ -31,10 +26,10 @@ const Profile = (props) => {
   }, [props.match.params.userId]);
 
   return (
-    <Container>
+    <div>
       <Info isOwner={!props.match.params.userId} {...props} />
       <Posts />
-    </Container>
+    </div>
   );
 };
 

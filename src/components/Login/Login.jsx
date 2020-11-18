@@ -8,7 +8,6 @@ import Form from "./Form";
 
 const Container = styled.div`
   margin-top: 50px;
-  color: #000;
 `;
 
 const Login = ({ login, isAuth, captchaUrl }) => {

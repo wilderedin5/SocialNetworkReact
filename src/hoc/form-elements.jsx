@@ -4,7 +4,7 @@ import { maxLength, requiredField } from "../utils/validate/validateForm";
 import {
   Textarea as StyledTextarea,
   Input as StyledInput,
-} from "../components/common/shared/type";
+} from "../components/common/type";
 import { Field as BaseField } from "redux-form";
 
 const Error = styled.div`

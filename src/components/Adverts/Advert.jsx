@@ -1,13 +1,8 @@
 import React from "react";
 import { v4 } from "uuid";
-import styled from "@emotion/styled";
 import Form from "./Form";
 import { Comments } from "./Comments";
 import { Content } from "./Content";
-
-const Container = styled.div`
-  color: #000;
-`;
 
 export const Advert = ({ contentProps, id, commentProps, addComment }) => {
   const handleSubmit = ({ commentText, name }) => {
@@ -15,10 +10,10 @@ export const Advert = ({ contentProps, id, commentProps, addComment }) => {
   };
 
   return (
-    <Container>
+    <div>
       <Content {...contentProps} />
       <Comments {...commentProps} id={id} />
       <Form onSubmit={handleSubmit} />
-    </Container>
+    </div>
   );
 };

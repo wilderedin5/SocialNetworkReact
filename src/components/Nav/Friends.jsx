@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Avatar } from "antd";
 import { NavLink } from "react-router-dom";
 import NoAvatar from "../../assets/image/noAvatar.jpg";
-import { Divider } from "../common/shared/type";
+import { Divider } from "../common/type";
 
 const Link = styled(NavLink)`
   text-align: center;

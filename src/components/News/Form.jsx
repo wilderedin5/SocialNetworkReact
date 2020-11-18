@@ -11,9 +11,9 @@ const Form = ({ handleSubmit, error }) => (
       placeholder="Text news"
       maxLength="1000"
     />
-    <Field name="author" placeholder="Author" maxLength="100" />
-    <Field name="theme" placeholder="Theme" maxLength="100" />
-    <Field name="category" placeholder="Category" maxLength="100" />
+    <Field name="author" placeholder="Author" />
+    <Field name="theme" placeholder="Theme" />
+    <Field name="category" placeholder="Category" />
     <Button type="primary" htmlType="submit">
       Add news
     </Button>

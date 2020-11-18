@@ -22,14 +22,34 @@ export const Input = styled.input`
   outline: none;
 `;
 
+export const Loader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px dotted blue;
+    background: transparent;
+    animation: Loader 2s linear infinite;
+    @keyframes Loader {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+`;
+
 export const Note = ({ label, value }) => (
   <div>
     <b>{label}</b>: {value}
   </div>
 );
 
-export const Divider = ({ title, orientation }) => (
-  <BaseDivider style={{ color: "#fff" }} orientation={orientation || "center"}>
+export const Divider = ({ title, orientation,color }) => (
+  <BaseDivider style={{ color: color || "#fff" }} orientation={orientation || "center"}>
     {title}
   </BaseDivider>
 );

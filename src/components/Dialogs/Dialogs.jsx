@@ -14,10 +14,6 @@ import Form from "./Form";
 import { Dialog } from "./Dialog";
 import { Message } from "./Message";
 
-const Container = styled.div`
-  color: #000;
-`;
-
 const DialogsList = styled.div`
   border-bottom: 1px solid rgb(218, 218, 218);
   margin-bottom: 20px;
@@ -39,7 +35,7 @@ const Dialogs = ({
   };
 
   return isAuth ? (
-    <Container>
+    <div>
       <DialogsList>
         {dialogsData.map((d) => (
           <Dialog key={d.id} {...d} />
@@ -53,7 +49,7 @@ const Dialogs = ({
         />
       ))}
       <Form eraseDialog={() => eraseDialog(userId)} onSubmit={handleSubmit} />
-    </Container>
+    </div>
   ) : (
     <Redirect to="/login" />
   );

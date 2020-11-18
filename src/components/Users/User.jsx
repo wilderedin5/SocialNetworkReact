@@ -5,55 +5,39 @@ import { Button as BaseButton, Avatar } from "antd";
 import userPhoto from "../../assets/image/defaultAVA.jpg";
 
 const Container = styled.div`
+  position: relative;
   border: 1px solid rgb(45, 80, 165);
-  margin-bottom: 10px;
   padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  color: #000;
-`;
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-`;
-
-const AvatarContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const Button = styled(BaseButton)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
   :disabled {
     background: rgb(128, 128, 128);
-    color: #000;
   }
 `;
 
-export const User = ({ isFollowingProgress, unfollow, follow, user }) => {
-  const followProgressActive = isFollowingProgress.some((id) => id === user.id);
+export const User = ({ isFollowing, unfollow, follow, user }) => {
+  const isFollowingProgress = isFollowing.some((id) => id === user.id);
+  const { id, followed, status, name, photos } = user;
 
   const handleFollow = () => {
-    user.followed ? unfollow(user.id) : follow(user.id);
+    followed ? unfollow(id) : follow(id);
   };
 
   return (
     <Container>
-      <AvatarContainer>
-        <NavLink to={"/profile/" + user.id}>
-          <Avatar src={user.photos.small || userPhoto} size={60} />
-        </NavLink>
-        <Button disabled={followProgressActive} onClick={handleFollow}>
-          {user.followed ? "Subscribe" : "Unsubscribe"}
-        </Button>
-      </AvatarContainer>
-      <Info>
-        <div>Name: {user.name}</div>
-        <div>Status:{user.status ? user.status : "Not filled!"}</div>
-      </Info>
+      <NavLink to={`/profile/${id}`}>
+        <Avatar src={photos.small || userPhoto} size={60} />
+      </NavLink>
+      <Button disabled={isFollowingProgress} onClick={handleFollow}>
+        {followed ? "Subscribe" : "Unsubscribe"}
+      </Button>
+
+      <div>Name: {name}</div>
+      <div>Status:{status || "No data!"}</div>
     </Container>
   );
 };

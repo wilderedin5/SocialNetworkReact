@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 import styled from "@emotion/styled";
-import { Note } from "../common/shared/type";
+import { Note } from "../common/type";
 
 const Container = styled.div`
   margin-top: 50px;

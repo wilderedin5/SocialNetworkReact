@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Button as BaseButton } from "antd";
 import { NavLink } from "react-router-dom";
-import { Note } from "../common/shared/type";
+import { Note } from "../common/type";
 
 const Container = styled.div`
   border: 1px solid rgb(45, 80, 165);

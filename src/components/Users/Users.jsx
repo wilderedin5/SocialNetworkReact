@@ -21,11 +21,17 @@ import {
   setFetching,
   getUsers,
 } from "../../redux/users-reducer";
-import { Preloader } from "../common/Preloader/Preloader";
+import { Loader } from "../common/type";
 import { User } from "./User";
 
 const Pagination = styled(BasePagination)`
   margin-bottom: 20px;
+`;
+
+const UsersContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
 `;
 
 const Users = ({
@@ -34,7 +40,7 @@ const Users = ({
   pageSize,
   setCurrentPage,
   totalUsersCount,
-  isFollowingProgress,
+  isFollowing,
   unfollow,
   follow,
   isFetching,
@@ -50,7 +56,7 @@ const Users = ({
   };
 
   return isFetching ? (
-    <Preloader />
+    <Loader />
   ) : (
     <div>
       <Pagination
@@ -60,15 +66,17 @@ const Users = ({
         onChange={onPageChanged}
         showSizeChanger={false}
       />
-      {users.map((user) => (
-        <User
-          key={user.id}
-          isFollowingProgress={isFollowingProgress}
-          unfollow={unfollow}
-          follow={follow}
-          user={user}
-        />
-      ))}
+      <UsersContainer>
+        {users.map((user) => (
+          <User
+            key={user.id}
+            isFollowing={isFollowing}
+            unfollow={unfollow}
+            follow={follow}
+            user={user}
+          />
+        ))}
+      </UsersContainer>
     </div>
   );
 };
@@ -79,7 +87,7 @@ const mapStateToProps = (state) => ({
   totalUsersCount: getTotalUsersCount(state),
   currentPage: getCurrentPage(state),
   isFetching: getIsFetching(state),
-  isFollowingProgress: getIsFollowingProgress(state),
+  isFollowing: getIsFollowingProgress(state),
 });
 
 export default compose(

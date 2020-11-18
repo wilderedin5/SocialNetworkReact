@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Button as BaseButton } from "antd";
 import noAvatar from "../../assets/image/noAvatar.jpg";
-import { Preloader } from "../common/Preloader/Preloader";
-import { Divider } from "../common/shared/type";
+import { Loader, Divider } from "../common/type";
 import { Status } from "./Status";
 import ProfileForm from "./ProfileForm";
 
@@ -109,13 +108,13 @@ export const Info = (props) => {
         <InfoContainer>
           <Name>{props.profile.fullName}</Name>
           <Status status={props.status} updateStatus={props.updateStatus} />
-          <Divider title="Basic information:" orientation="left" />
+          <Divider color="#000" title="Basic information:" orientation="left" />
           <div>
             Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
           </div>
           <div>My skills: {props.profile.lookingForAJobDescription} </div>
           <div>About me: {props.profile.aboutMe}</div>
-          <Divider title="Contacts:" orientation="left" />
+          <Divider color="#000" title="Contacts:" orientation="left" />
           <ContactList>
             {Object.keys(props.profile.contacts).map((key) => (
               <li key={key}>
@@ -130,6 +129,6 @@ export const Info = (props) => {
       )}
     </Container>
   ) : (
-    <Preloader />
+    <Loader />
   );
 };

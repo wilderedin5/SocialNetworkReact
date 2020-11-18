@@ -13,7 +13,7 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
-  isFollowingProgress: [],
+  isFollowing: [],
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -63,9 +63,9 @@ export const usersReducer = (state = initialState, action) => {
     case FOLLOWING_IS_PROGRESS: {
       return {
         ...state,
-        isFollowingProgress: action.isFetching
-          ? [...state.isFollowingProgress, action.userId]
-          : state.isFollowingProgress.filter((id) => id !== action.userId),
+        isFollowing: action.isFetching
+          ? [...state.isFollowing, action.userId]
+          : state.isFollowing.filter((id) => id !== action.userId),
       };
     }
     default:

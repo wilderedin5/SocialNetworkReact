@@ -8,9 +8,8 @@ const Name = styled(NavLink)`
   align-items: center;
   padding: 10px;
   font-weight: 700;
-  color: #000;
-  :not(:last-child) {
-    margin-right: 20px;
+  & + & {
+    margin-left: 20px;
   }
   &.active,
   :hover {

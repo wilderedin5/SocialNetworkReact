@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
@@ -7,10 +6,6 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { deleteNews, addNews, toggleBookmarks } from "../../redux/news-reducer";
 import { Article } from "./Article";
 import Form from "./Form";
-
-const Container = styled.div`
-  color: #000;
-`;
 
 const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
   const newsId = match.params.newsId;
@@ -23,7 +18,7 @@ const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
   };
 
   return (
-    <Container>
+    <div>
       {formattedNews.map((news) => (
         <Article
           key={news.id}
@@ -34,7 +29,7 @@ const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
         />
       ))}
       {!newsId && <Form onSubmit={handleSubmit} />}
-    </Container>
+    </div>
   );
 };
 
