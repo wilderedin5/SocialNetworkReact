@@ -23,25 +23,21 @@ export const Status = (props) => {
 
   const deactivateEditMode = () => {
     setEditMode(false);
-    props.updateStatus(status);
+    props.editStatus(status);
   };
 
   const onChangeStatus = (e) => {
     setStatus(e.currentTarget.value);
   };
 
-  return (
-    <div>
-      {editMode ? (
-        <Input
-          autoFocus={true}
-          onChange={onChangeStatus}
-          onBlur={deactivateEditMode}
-          value={status}
-        />
-      ) : (
-        <span onClick={activateEditMode}>{status || "----"}</span>
-      )}
-    </div>
+  return editMode ? (
+    <Input
+      autoFocus={true}
+      onChange={onChangeStatus}
+      onBlur={deactivateEditMode}
+      value={status}
+    />
+  ) : (
+    <div onClick={activateEditMode}>{status || "----"}</div>
   );
 };

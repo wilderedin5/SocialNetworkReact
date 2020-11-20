@@ -13,7 +13,7 @@ const Comment = styled(BaseComment)`
 
 export const Post = ({
   liked,
-  toggleLikePost,
+  toggleLike,
   likeCount,
   deletePost,
   name,
@@ -24,7 +24,7 @@ export const Post = ({
     <span key="comment-basic-slike">
       <Tooltip title={liked ? "Like" : "Dislike"}>
         {React.createElement(liked ? DislikeFilled : LikeOutlined, {
-          onClick: toggleLikePost,
+          onClick: toggleLike,
         })}
       </Tooltip>
       <span className="comment-action">{likeCount}</span>

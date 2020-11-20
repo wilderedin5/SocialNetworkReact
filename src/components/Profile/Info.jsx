@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Button as BaseButton } from "antd";
 import noAvatar from "../../assets/image/noAvatar.jpg";
-import { Loader, Divider } from "../common/type";
+import { Divider } from "../common/type";
 import { Status } from "./Status";
 import ProfileForm from "./ProfileForm";
 
@@ -36,14 +36,6 @@ const Label = styled.label`
   border: 1px solid grey;
   padding: 10px;
   cursor: pointer;
-  :after {
-    content: "";
-    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/OOjs_UI_icon_upload.svg/1200px-OOjs_UI_icon_upload.svg.png")
-      center center/cover;
-    width: 32px;
-    height: 32px;
-    margin-left: 10px;
-  }
   :hover {
     border: 1px solid rgb(45, 80, 165);
     color: #fff;
@@ -53,11 +45,6 @@ const Label = styled.label`
 
 const InfoContainer = styled.div`
   padding-left: 30px;
-`;
-
-const ContactList = styled.ul`
-  list-style: none;
-  font-size: 24px;
 `;
 
 const Name = styled.div`
@@ -71,64 +58,65 @@ const Button = styled(BaseButton)`
   right: 0;
 `;
 
-export const Info = (props) => {
+export const Info = ({
+  editProfile,
+  editPhoto,
+  isOwner,
+  profile,
+  editStatus,
+  status,
+}) => {
   let [editMode, setEditMode] = useState(false);
 
   const handleSubmit = (formData) => {
-    props.updateProfile(formData).then(() => {
-      setEditMode(false);
-    });
+    editProfile(formData);
+    setEditMode(false);
   };
 
   const onChangePhoto = (e) => {
     if (e.target.files.length) {
-      props.updatePhoto(e.target.files[0]);
+      editPhoto(e.target.files[0]);
     }
   };
 
-  return props.profile ? (
-    <Container>
-      <div>
-        <AvatarImage src={props.profile.photos.large || noAvatar} />
-        {props.isOwner && (
-          <>
-            <Input type="file" id="photoFile" onChange={onChangePhoto} />
-            <Label for="photoFile">Change avatar</Label>
-          </>
-        )}
-      </div>
+  return (
+    profile && (
+      <Container>
+        <div>
+          <AvatarImage src={profile.photos.large || noAvatar} />
+          {isOwner && (
+            <>
+              <Input type="file" id="photoFile" onChange={onChangePhoto} />
+              <Label for="photoFile">Click to change avatar</Label>
+            </>
+          )}
+        </div>
 
-      {editMode ? (
-        <ProfileForm
-          initialValues={props.profile}
-          onSubmit={handleSubmit}
-          profile={props.profile}
-        />
-      ) : (
-        <InfoContainer>
-          <Name>{props.profile.fullName}</Name>
-          <Status status={props.status} updateStatus={props.updateStatus} />
-          <Divider color="#000" title="Basic information:" orientation="left" />
-          <div>
-            Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
-          </div>
-          <div>My skills: {props.profile.lookingForAJobDescription} </div>
-          <div>About me: {props.profile.aboutMe}</div>
-          <Divider color="#000" title="Contacts:" orientation="left" />
-          <ContactList>
-            {Object.keys(props.profile.contacts).map((key) => (
-              <li key={key}>
-                {key}: {props.profile.contacts[key]}
-              </li>
+        {editMode ? (
+          <ProfileForm onSubmit={handleSubmit} profile={profile} />
+        ) : (
+          <InfoContainer>
+            <Name>{profile.fullName}</Name>
+            <Status status={status} editStatus={editStatus} />
+            <Divider color="#000" title="About me" orientation="left" />
+            <div>
+              Looking for a job: {profile.lookingForAJob ? "Yes" : "No"}
+            </div>
+            <div>My skills: {profile.lookingForAJobDescription} </div>
+            <div>About me: {profile.aboutMe}</div>
+            <Divider color="#000" title="Contacts:" orientation="left" />
+
+            {Object.keys(profile.contacts).map((key) => (
+              <div key={key}>
+                {key}: {profile.contacts[key]}
+              </div>
             ))}
-          </ContactList>
-        </InfoContainer>
-      )}
-      {props.isOwner && !editMode && (
-        <Button onClick={() => setEditMode(true)}>Edit page</Button>
-      )}
-    </Container>
-  ) : (
-    <Loader />
+          </InfoContainer>
+        )}
+        {isOwner && !editMode && (
+          <Button onClick={() => setEditMode(true)}>Edit page</Button>
+        )}
+      </Container>
+    )
   );
 };

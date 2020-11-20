@@ -2,11 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { v4 } from "uuid";
 import { connect } from "react-redux";
-import {
-  addPost,
-  deletePost,
-  toggleLikePost,
-} from "../../redux/profile-reducer";
+import { addPost, deletePost, toggleLike } from "../../redux/profile-reducer";
 import { Post } from "./Post";
 import Form from "./Form";
 
@@ -14,7 +10,7 @@ const PostsList = styled.div`
   margin-top: 20px;
 `;
 
-const Posts = ({ posts, toggleLikePost, deletePost, ...props }) => {
+const Posts = ({ posts, toggleLike, deletePost, ...props }) => {
   const handleSubmit = ({ postText, name }) => {
     props.addPost(v4(), postText, 0, null, name);
   };
@@ -27,7 +23,7 @@ const Posts = ({ posts, toggleLikePost, deletePost, ...props }) => {
         {posts.map((post) => (
           <Post
             {...post}
-            toggleLikePost={() => toggleLikePost(post.id)}
+            toggleLike={() => toggleLike(post.id)}
             deletePost={() => deletePost(post.id)}
             key={post.id}
           />
@@ -44,5 +40,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   addPost,
   deletePost,
-  toggleLikePost,
+  toggleLike,
 })(Posts);

@@ -151,12 +151,12 @@ export const setStatus = (status) => ({
   status: status,
 });
 
-export const updatePhotoSuccess = (photo) => ({
+export const editPhotoSuccess = (photo) => ({
   type: UPDATE_PHOTO,
   photo,
 });
 
-export const toggleLikePost = (postId) => ({
+export const toggleLike = (postId) => ({
   type: TOGGLE_LIKE_POST,
   postId,
 });
@@ -171,23 +171,23 @@ export const getStatus = (userId) => async (dispatch) => {
   dispatch(setStatus(response.data));
 };
 
-export const updateStatus = (status) => async (dispatch) => {
-  let response = await profileAPI.updateStatus(status);
+export const editStatus = (status) => async (dispatch) => {
+  let response = await profileAPI.editStatus(status);
   if (response.data.resultCode === 0) {
     dispatch(setStatus(status));
   }
 };
 
-export const updatePhoto = (photo) => async (dispatch) => {
+export const editPhoto = (photo) => async (dispatch) => {
   let response = await profileAPI.uploadPhoto(photo);
   if (response.data.resultCode === 0) {
-    dispatch(updatePhotoSuccess(response.data.data.photos));
+    dispatch(editPhotoSuccess(response.data.data.photos));
   }
 };
 
-export const updateProfile = (profile) => async (dispatch, getState) => {
+export const editProfile = (profile) => async (dispatch, getState) => {
   let userId = getState().auth.userId;
-  let response = await profileAPI.updateProfile(profile);
+  let response = await profileAPI.editProfile(profile);
   if (response.data.resultCode === 0) {
     dispatch(getProfile(userId));
   } else {

@@ -4,10 +4,10 @@ import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 import {
   getProfile,
-  updateStatus,
+  editStatus,
   getStatus,
-  updatePhoto,
-  updateProfile,
+  editPhoto,
+  editProfile,
 } from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { Info } from "./Info";
@@ -16,13 +16,13 @@ import Posts from "./Posts";
 const Profile = (props) => {
   const userId = props.match.params.userId || props.authorizedUserId;
 
-  const updateProfile = () => {
+  const editProfile = () => {
     props.getProfile(userId);
     props.getStatus(userId);
   };
 
   useEffect(() => {
-    updateProfile();
+    editProfile();
   }, [props.match.params.userId]);
 
   return (
@@ -43,9 +43,9 @@ export default compose(
   connect(mapStateToProps, {
     getProfile,
     getStatus,
-    updateStatus,
-    updatePhoto,
-    updateProfile,
+    editStatus,
+    editPhoto,
+    editProfile,
   }),
   withRouter,
   withAuthRedirect

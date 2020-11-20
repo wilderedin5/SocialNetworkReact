@@ -21,7 +21,7 @@ const Button = styled(BaseButton)`
   right: 0;
 `;
 
-const ProfileForm = ({ handleSubmit, profile, error }) => (
+const ProfileForm = ({ handleSubmit, profile }) => (
   <form onSubmit={handleSubmit}>
     <ProfileInfo>
       <label>
@@ -48,7 +48,6 @@ const ProfileForm = ({ handleSubmit, profile, error }) => (
       </ContactList>
     </ProfileInfo>
     <Button htmlType="submit">Save page</Button>
-    <div>{error}</div>
   </form>
 );
 
