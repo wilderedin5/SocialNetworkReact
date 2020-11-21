@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { Button as BaseButton, Avatar } from "antd";
+import { Avatar } from "antd";
 import userPhoto from "../../assets/image/defaultAVA.jpg";
+import { Button } from "../common/type";
 
 const Container = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ const Container = styled.div`
   padding: 10px;
 `;
 
-const Button = styled(BaseButton)`
+const StyledButton = styled(Button)`
   position: absolute;
   top: 10px;
   right: 10px;
@@ -32,9 +33,9 @@ export const User = ({ isFollowing, unfollow, follow, user }) => {
       <NavLink to={`/profile/${id}`}>
         <Avatar src={photos.small || userPhoto} size={60} />
       </NavLink>
-      <Button disabled={isFollowingProgress} onClick={handleFollow}>
+      <StyledButton disabled={isFollowingProgress} onClick={handleFollow}>
         {followed ? "Subscribe" : "Unsubscribe"}
-      </Button>
+      </StyledButton>
 
       <div>Name: {name}</div>
       <div>Status:{status || "No data!"}</div>

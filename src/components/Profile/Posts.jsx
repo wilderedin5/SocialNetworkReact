@@ -3,16 +3,20 @@ import styled from "@emotion/styled";
 import { v4 } from "uuid";
 import { connect } from "react-redux";
 import { addPost, deletePost, toggleLike } from "../../redux/profile-reducer";
-import { Post } from "./Post";
+import { Comment as BaseComment } from "../common/comment";
 import Form from "./Form";
 
 const PostsList = styled.div`
   margin-top: 20px;
 `;
 
+const StyledComment = styled(BaseComment)`
+  margin-bottom: 10px;
+`;
+
 const Posts = ({ posts, toggleLike, deletePost, ...props }) => {
-  const handleSubmit = ({ postText, name }) => {
-    props.addPost(v4(), postText, 0, null, name);
+  const handleSubmit = ({ postText, author }) => {
+    props.addPost(v4(), postText, 0, null, author);
   };
 
   return (
@@ -21,11 +25,11 @@ const Posts = ({ posts, toggleLike, deletePost, ...props }) => {
       <Form onSubmit={handleSubmit} />
       <PostsList>
         {posts.map((post) => (
-          <Post
-            {...post}
-            toggleLike={() => toggleLike(post.id)}
-            deletePost={() => deletePost(post.id)}
+          <StyledComment
             key={post.id}
+            onLike={() => toggleLike(post.id)}
+            onRemove={() => deletePost(post.id)}
+            {...post}
           />
         ))}
       </PostsList>

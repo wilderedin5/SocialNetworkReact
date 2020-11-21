@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
@@ -15,33 +14,32 @@ import { Dialog } from "./Dialog";
 import { Message } from "./Message";
 
 const DialogsList = styled.div`
+  display: flex;
   border-bottom: 1px solid rgb(218, 218, 218);
   margin-bottom: 20px;
-  display: flex;
 `;
 
 const Dialogs = ({
   match,
   addMessage,
-  isAuth,
-  dialogsData,
+  dialogs,
   deleteMessage,
   eraseDialog,
 }) => {
   const userId = +match.params.userId || 1;
 
-  const handleSubmit = ({ dialogsMessageText }) => {
-    addMessage(dialogsMessageText, userId);
+  const handleSubmit = ({ message }) => {
+    addMessage(message, userId);
   };
 
-  return isAuth ? (
+  return (
     <div>
       <DialogsList>
-        {dialogsData.map((d) => (
+        {dialogs.map((d) => (
           <Dialog key={d.id} {...d} />
         ))}
       </DialogsList>
-      {dialogsData[userId - 1].messages.map(({ id, ...m }) => (
+      {dialogs[userId - 1].messages.map(({ id, ...m }) => (
         <Message
           key={id}
           deleteMessage={() => deleteMessage(id, userId)}
@@ -50,13 +48,11 @@ const Dialogs = ({
       ))}
       <Form eraseDialog={() => eraseDialog(userId)} onSubmit={handleSubmit} />
     </div>
-  ) : (
-    <Redirect to="/login" />
   );
 };
 
 const mapStateToProps = (state) => ({
-  dialogsData: state.dialogsPage.dialogsData,
+  dialogs: state.dialogsPage.dialogs,
 });
 
 export default compose(

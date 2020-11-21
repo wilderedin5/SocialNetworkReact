@@ -1,10 +1,10 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import { Button as BaseButton } from "antd";
 import styled from "@emotion/styled";
 import { Field } from "../../hoc/form-elements";
+import { Button } from "../common/type";
 
-const Button = styled(BaseButton)`
+const StyledButton = styled(Button)`
   margin-top: 10px;
 `;
 
@@ -16,10 +16,8 @@ const Form = ({ handleSubmit }) => (
       placeholder="Message"
       maxLength="250"
     />
-    <Field name="name" placeholder="Name" maxLength="60" />
-    <Button type="primary" htmlType="submit">
-      Send
-    </Button>
+    <Field name="author" placeholder="Author" maxLength="60" />
+    <StyledButton>Send</StyledButton>
   </form>
 );
 

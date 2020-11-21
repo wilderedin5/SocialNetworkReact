@@ -13,8 +13,8 @@ const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
     ? news.filter((news) => newsId === String(news.id))
     : news;
 
-  const handleSubmit = ({ newsText, theme, author, category }) => {
-    addNews(newsText, theme, author, category);
+  const handleSubmit = ({ text, theme, author, category }) => {
+    addNews(text, theme, author, category);
   };
 
   return (
@@ -24,7 +24,7 @@ const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
           key={news.id}
           deleteNews={() => deleteNews(news.id)}
           toggleBookmarks={() => toggleBookmarks(news.id, !news.inBookmarks)}
-          newsOpened={newsId}
+          isOpened={newsId}
           {...news}
         />
       ))}

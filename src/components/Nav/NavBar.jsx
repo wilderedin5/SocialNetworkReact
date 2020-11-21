@@ -7,7 +7,7 @@ import { Menu } from "antd";
 import { toggleBookmarks } from "../../redux/news-reducer";
 import { getBookmarks } from "../../redux/Selectors/news-selectors";
 import { getFriends } from "../../redux/sidebar-reducer";
-import { Advertising } from "./Advertising";
+import { Adverts } from "./Advertising";
 import { Friends } from "./Friends";
 import { Bookmarks } from "./Bookmarks";
 
@@ -29,7 +29,7 @@ const NavBar = ({
   isAuth,
   toggleBookmarks,
   bookMarks,
-  advertising,
+  adverts,
 }) => {
   useEffect(() => {
     getFriends(1, 9);
@@ -54,7 +54,7 @@ const NavBar = ({
         toggleBookmarks={toggleBookmarks}
         bookMarks={bookMarks || []}
       />
-      <Advertising advertising={advertising || []} />
+      <Adverts adverts={adverts || []} />
     </div>
   );
 };
@@ -63,7 +63,7 @@ const mapStateToProps = (state) => ({
   friends: state.sidebar.friends,
   bookMarks: getBookmarks(state),
   isAuth: state.auth.isAuth,
-  advertising: state.adverts.advertising,
+  adverts: state.adverts.adverts,
 });
 
 export default compose(

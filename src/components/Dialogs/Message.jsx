@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button as BaseButton } from "antd";
+import { Button } from "../common/type";
 
 const Container = styled.div`
   position: relative;
@@ -13,7 +13,7 @@ const Container = styled.div`
   color: ${(p) => (p.outMe ? "#000" : "rgb(20, 199, 35)")};
 `;
 
-const Button = styled(BaseButton)`
+const StyledButton = styled(Button)`
   position: absolute;
   bottom: 50%;
   transform: translateY(50%);
@@ -23,6 +23,8 @@ const Button = styled(BaseButton)`
 export const Message = ({ outMe, message, deleteMessage }) => (
   <Container outMe={outMe}>
     {message}
-    {outMe && <Button onClick={deleteMessage}>Remove message</Button>}
+    {outMe && (
+      <StyledButton onClick={deleteMessage}>Remove message</StyledButton>
+    )}
   </Container>
 );

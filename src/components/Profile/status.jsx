@@ -26,14 +26,14 @@ export const Status = (props) => {
     props.editStatus(status);
   };
 
-  const onChangeStatus = (e) => {
+  const handleStatusChange = (e) => {
     setStatus(e.currentTarget.value);
   };
 
   return editMode ? (
     <Input
       autoFocus={true}
-      onChange={onChangeStatus}
+      onChange={handleStatusChange}
       onBlur={deactivateEditMode}
       value={status}
     />

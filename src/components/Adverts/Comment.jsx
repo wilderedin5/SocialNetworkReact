@@ -1,24 +1,12 @@
 import React, { useState } from "react";
-import { Tooltip, Avatar, Comment as BaseComment } from "antd";
 import styled from "@emotion/styled";
-import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
-import NoAvatar from "../../assets/image/noAvatar.jpg";
+import { Comment as BaseComment } from "../common/comment";
 
-const CommentContainer = styled(BaseComment)`
-  border: 1px solid grey;
+const StyledComment = styled(BaseComment)`
   margin-bottom: 10px;
-  border-radius: 10px;
-  padding: 0 5px;
 `;
 
-export const Comment = ({
-  toggleLike,
-  likeCount,
-  deleteComment,
-  name,
-  avatar,
-  text,
-}) => {
+export const Comment = ({ toggleLike, deleteComment, ...props }) => {
   const [hasLike, setHasLike] = useState(false);
 
   const handleCommentLike = () => {
@@ -26,23 +14,12 @@ export const Comment = ({
     toggleLike(hasLike);
   };
 
-  const actions = [
-    <span>
-      <Tooltip title={hasLike ? "Like" : "Dislike"}>
-        {React.createElement(hasLike ? DislikeFilled : LikeOutlined, {
-          onClick: handleCommentLike,
-        })}
-      </Tooltip>
-      <span className="comment-action">{likeCount}</span>
-    </span>,
-    <span onClick={deleteComment}>Remove post</span>,
-  ];
   return (
-    <CommentContainer
-      author={name}
-      actions={actions}
-      avatar={<Avatar size="large" src={avatar || NoAvatar} alt={name} />}
-      content={<p>{text}</p>}
+    <StyledComment
+      onLike={handleCommentLike}
+      onRemove={deleteComment}
+      hasLike={hasLike}
+      {...props}
     />
   );
 };

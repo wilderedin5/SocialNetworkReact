@@ -1,31 +1,24 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { Avatar as BaseAvatar } from "antd";
+import { Avatar } from "antd";
 
-const Name = styled(NavLink)`
-  display: flex;
+const Container = styled(NavLink)`
+  display: grid;
   align-items: center;
+  grid-template-columns: 30px auto;
+  grid-column-gap: 10px;
   padding: 10px;
   font-weight: 700;
-  & + & {
-    margin-left: 20px;
+  color: #000;
+  &.active {
+    color: rgb(9, 78, 252);
   }
-  &.active,
-  :hover {
-    color: rgb(45, 80, 165);
-    margin-bottom: -1px;
-    border-bottom: 1px solid rgb(45, 80, 165);
-  }
-`;
-
-const Avatar = styled(BaseAvatar)`
-  margin-right: 10px;
 `;
 
 export const Dialog = ({ id, photoUrl, name }) => (
-  <Name to={`/dialogs/${id}`} activeClassName="active">
+  <Container to={`/dialogs/${id}`} activeClassName="active">
     <Avatar size={30} src={photoUrl} />
     {name}
-  </Name>
+  </Container>
 );

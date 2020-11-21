@@ -10,14 +10,8 @@ import {
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { Advert } from "./Advert";
 
-const Adverts = ({
-  advertising,
-  match,
-  deleteComment,
-  toggleLike,
-  addComment,
-}) =>
-  advertising.map(
+const Adverts = ({ adverts, match, deleteComment, toggleLike, addComment }) =>
+  adverts.map(
     ({ id, image, title, text, comments }) =>
       id === +match.params.advertId && (
         <Advert
@@ -31,7 +25,7 @@ const Adverts = ({
   );
 
 const mapStateToProps = (state) => ({
-  advertising: state.adverts.advertising,
+  adverts: state.adverts.adverts,
 });
 
 export default compose(

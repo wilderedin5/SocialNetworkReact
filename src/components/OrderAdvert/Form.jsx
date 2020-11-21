@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "antd";
 import { reduxForm } from "redux-form";
 import { Field } from "../../hoc/form-elements";
+import { Button } from "../common/type";
 
 const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
@@ -13,9 +13,7 @@ const Form = ({ handleSubmit, error }) => (
       placeholder="Type your text"
       maxLength="1000"
     />
-    <Button type="primary" htmlType="submit">
-      Add news
-    </Button>
+    <Button>Add news</Button>
     <div>{error}</div>
   </form>
 );

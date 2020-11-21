@@ -4,7 +4,7 @@ const DELETE_MESSAGE = "dialogs-reducer/DELETE_MESSAGE";
 const ERASE_DIALOG = "dialogs-reducer/ERASE_DIALOG";
 
 let initialState = {
-  dialogsData: [
+  dialogs: [
     {
       name: "Andrey",
       id: 1,
@@ -87,7 +87,7 @@ export const dialogsReducer = (state = initialState, action) => {
       };
       return {
         ...state,
-        dialogsData: state.dialogsData.map((dialog) => {
+        dialogs: state.dialogs.map((dialog) => {
           return dialog.id === action.userId
             ? { ...dialog, messages: [...dialog.messages, newMessage] }
             : dialog;
@@ -96,7 +96,7 @@ export const dialogsReducer = (state = initialState, action) => {
     case DELETE_MESSAGE:
       return {
         ...state,
-        dialogsData: state.dialogsData.map((dialog) => {
+        dialogs: state.dialogs.map((dialog) => {
           if (dialog.id === action.userId) {
             let messages = dialog.messages.filter(
               ({ id }) => id !== action.messageId
@@ -109,7 +109,7 @@ export const dialogsReducer = (state = initialState, action) => {
     case ERASE_DIALOG:
       return {
         ...state,
-        dialogsData: state.dialogsData.map((dialog) => {
+        dialogs: state.dialogs.map((dialog) => {
           return dialog.id === action.userId
             ? { ...dialog, messages: [] }
             : dialog;

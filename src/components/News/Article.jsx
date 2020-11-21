@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button as BaseButton } from "antd";
 import { NavLink } from "react-router-dom";
+import { Button } from "../common/type";
 import { Note } from "../common/type";
 
 const Container = styled.div`
@@ -12,18 +12,15 @@ const Container = styled.div`
 `;
 
 const Tools = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 175px);
+  grid-column-gap: 10px;
   margin-top: 10px;
 `;
 
-const Button = styled(BaseButton)`
-  & + & {
-    margin-left: 10px;
-  }
-`;
-
 export const Article = ({
-  newsOpened,
-  newsText,
+  isOpened,
+  text,
   theme,
   author,
   date,
@@ -34,20 +31,18 @@ export const Article = ({
   toggleBookmarks,
 }) => (
   <Container>
-    <div>{newsOpened ? newsText : newsText.substring(0, 200)}.....</div>
+    <div>{isOpened ? text : text.substring(0, 200)}.....</div>
     <Note label="Theme" value={theme} />
     <Note label="Author" value={author} />
     <Note label="Date" value={date} />
     <Note label="Category" value={category} />
     <Tools>
       <Button onClick={toggleBookmarks}>
-        {inBookmarks ? "Remove from bookmarks" : "Add in bookmarks"}
+        {inBookmarks ? "Remove bookmarks" : "Add to bookmarks"}
       </Button>
       <Button onClick={deleteNews}>Remove news</Button>
-      <NavLink to={`/news/${newsOpened ? "" : id}`}>
-        <Button>
-          {newsOpened ? "Return to news page" : "Go to this news"}
-        </Button>
+      <NavLink to={`/news/${isOpened ? "" : id}`}>
+        <Button>{isOpened ? "Return to news page" : "Go to this news"}</Button>
       </NavLink>
     </Tools>
   </Container>

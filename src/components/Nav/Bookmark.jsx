@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Card as BaseCard, Button } from "antd";
+import { Card as BaseCard } from "antd";
 import { NavLink } from "react-router-dom";
+import { Button } from "../common/type";
 
 const Delete = styled.div`
   cursor: pointer;
@@ -16,15 +17,15 @@ const Card = styled(BaseCard)`
   text-align: justify;
 `;
 
-export const Bookmark = ({ theme, onRemove, id, newsText }) => (
+export const Bookmark = ({ theme, onRemove, id, text }) => (
   <Card
     size="small"
     title={theme}
     extra={<Delete onClick={onRemove}>&#9932;</Delete>}
   >
-    {newsText.substring(0, 100)}.....
+    {text.substring(0, 100)}.....
     <NavLink to={`/news/${id}`}>
-      <Button type="primary">Open news</Button>
+      <Button>Open news</Button>
     </NavLink>
   </Card>
 );

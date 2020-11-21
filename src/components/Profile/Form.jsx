@@ -1,6 +1,6 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import { Button } from "antd";
+import { Button } from "../common/type";
 import { Field } from "../../hoc/form-elements";
 
 const Form = ({ handleSubmit }) => (
@@ -8,13 +8,11 @@ const Form = ({ handleSubmit }) => (
     <Field
       component="textarea"
       name="postText"
-      placeholder="This wall is waiting for your post!"
+      placeholder="Type your text"
       maxLength="250"
     />
-    <Field name="name" placeholder="Name" maxLength="60" />
-    <Button type="primary" htmlType="submit">
-      Send
-    </Button>
+    <Field name="author" placeholder="Author" maxLength="60" />
+    <Button>Send</Button>
   </form>
 );
 

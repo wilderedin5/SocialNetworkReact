@@ -11,72 +11,72 @@ let initialState = {
   posts: [
     {
       id: 1,
-      message: "Hi, how are you?",
+      text: "Hi, how are you?",
       likeCount: 144,
-      liked: null,
-      name: "Han",
+      hasLike: null,
+      author: "Han",
       avatar:
         "https://tengrinews.kz/userdata/news/2019/news_384523/thumb_m/photo_302091.png",
     },
     {
       id: 2,
-      message: "Second comments",
+      text: "Second comments",
       likeCount: 24,
-      liked: null,
-      name: "Cheburek",
+      hasLike: null,
+      author: "Cheburek",
       avatar:
         "https://sovkusom.ru/wp-content/uploads/recepty/h/hrustyashchie-chebureki/thumb1-840x440.jpg",
     },
     {
       id: 3,
-      message: "I'm waiting for the bus, it will arrive at 8-15",
+      text: "I'm waiting for the bus, it will arrive at 8-15",
       likeCount: 31,
-      liked: null,
-      name: "Xzibit",
+      hasLike: null,
+      author: "Xzibit",
       avatar: "https://riamo.ru/files/image/14/01/77/-gallery!6sr.jpg",
     },
     {
       id: 4,
-      message: "Social network",
+      text: "Social network",
       likeCount: 2,
-      liked: null,
-      name: "Splinter",
+      hasLike: null,
+      author: "Splinter",
       avatar:
         "https://otvet.imgsmail.ru/download/u_83d34359929bef51c974dad2a2104c2d_800.jpg",
     },
     {
       id: 5,
-      message: "Yo, this is the 5th comment",
+      text: "Yo, this is the 5th comment",
       likeCount: 7,
-      liked: null,
-      name: "Mike",
+      hasLike: null,
+      author: "Mike",
       avatar:
         "https://cdn.igromania.ru/mnt/articles/6/e/e/6/8/4/25282/html/img/f001fd5b52963a4d.jpg",
     },
     {
       id: 6,
-      message: "Below",
+      text: "Below",
       likeCount: 17,
-      liked: null,
-      name: "Donatello",
+      hasLike: null,
+      author: "Donatello",
       avatar:
         "https://dic.academic.ru/pictures/wiki/files/50/230px-Red_Donatello.jpg",
     },
     {
       id: 7,
-      message: "Above",
+      text: "Above",
       likeCount: 31,
-      liked: null,
-      name: "Leonardo",
+      hasLike: null,
+      author: "Leonardo",
       avatar:
         "https://www.ninjaturtles.ru/wp-content/uploads/2012/05/%D0%9B%D0%B5%D0%BE%D0%BD%D0%B0%D1%80%D0%B4%D0%BE-2008-%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%82.jpg",
     },
     {
       id: 8,
-      message: "Below",
+      text: "Below",
       likeCount: 19,
-      liked: null,
-      name: "Rafael",
+      hasLike: null,
+      author: "Rafael",
       avatar:
         "https://mult-online.ru/posters/260_347_90_1/uploads/posts/2011-05/thumbs/1305106204_rafael.jpg",
     },
@@ -117,10 +117,10 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         posts: state.posts.map((post) => {
           if (post.id === action.postId) {
-            if (post.liked === true) {
-              return { ...post, liked: false, likeCount: --post.likeCount };
-            } else if (post.liked === false || post.liked === null) {
-              return { ...post, liked: true, likeCount: ++post.likeCount };
+            if (post.hasLike === true) {
+              return { ...post, hasLike: false, likeCount: --post.likeCount };
+            } else if (post.hasLike === false || post.hasLike === null) {
+              return { ...post, hasLike: true, likeCount: ++post.likeCount };
             }
           }
           return post;
@@ -131,9 +131,9 @@ export const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = (id, message, likeCount, liked, name) => ({
+export const addPost = (id, text, likeCount, hasLike, author) => ({
   type: ADD_POST,
-  newPost: { id, message, likeCount, liked, name },
+  newPost: { id, text, likeCount, hasLike, author },
 });
 
 export const deletePost = (postId) => ({
@@ -191,10 +191,8 @@ export const editProfile = (profile) => async (dispatch, getState) => {
   if (response.data.resultCode === 0) {
     dispatch(getProfile(userId));
   } else {
-    let message =
-      response.data.messages[0].length > 0
-        ? response.data.messages[0]
-        : "Error!";
-    dispatch(stopSubmit("profileInfoForm", { _error: message }));
+    let text =
+      response.data.texts[0].length > 0 ? response.data.texts[0] : "Error!";
+    dispatch(stopSubmit("profileInfoForm", { _error: text }));
   }
 };

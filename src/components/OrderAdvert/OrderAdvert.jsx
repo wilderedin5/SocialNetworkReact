@@ -21,7 +21,7 @@ const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
 };
 
 const mapStateToProps = (state) => ({
-  adverts: state.adverts.advertising,
+  adverts: state.adverts.adverts,
 });
 
 export default compose(

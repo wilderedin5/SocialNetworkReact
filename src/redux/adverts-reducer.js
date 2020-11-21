@@ -6,7 +6,7 @@ const ADD_ADVERT = "advert-reducer/ADD_ADVERT";
 const DELETE_ADVERT = "advert-reducer/DELETE_ADVERT";
 
 let initialState = {
-  advertising: [
+  adverts: [
     {
       id: 1,
       title: "World of Warcraft: Shadowlands Ads",
@@ -16,28 +16,28 @@ let initialState = {
       comments: [
         {
           id: 1,
-          name: "Elena",
+          author: "Elena",
           text: "Wow! this is the eighth addon",
           avatar: "",
           likeCount: 12,
         },
         {
           id: 2,
-          name: "Viktor",
+          author: "Viktor",
           text: "Second comment",
           avatar: "",
           likeCount: 22,
         },
         {
           id: 3,
-          name: "Ilya",
+          author: "Ilya",
           text: "fake comments",
           avatar: "",
           likeCount: 32,
         },
         {
           id: 4,
-          name: "Ivan",
+          author: "Ivan",
           text: "tips and tricks",
           avatar: "",
           likeCount: 42,
@@ -53,14 +53,14 @@ let initialState = {
       comments: [
         {
           id: 1,
-          name: "Grigory",
+          author: "Grigory",
           text: "Ryzen top!",
           avatar: "",
           likeCount: 21,
         },
         {
           id: 2,
-          name: "Stas",
+          author: "Stas",
           text: "No! Intel top!",
           avatar: "",
           likeCount: 22,
@@ -77,21 +77,21 @@ let initialState = {
       comments: [
         {
           id: 1,
-          name: "Eugene",
+          author: "Eugene",
           text: "Intel top",
           avatar: "",
           likeCount: 42,
         },
         {
           id: 2,
-          name: "Viktor",
+          author: "Viktor",
           text: "No! Intel is not top!",
           avatar: "",
           likeCount: 0,
         },
         {
           id: 3,
-          name: "Ilya",
+          author: "Ilya",
           text: "Third comments",
           avatar: "",
           likeCount: 76,
@@ -106,7 +106,7 @@ export const advertsReducer = (state = initialState, action) => {
     case DELETE_COMMENT_FROM_ADVERT:
       return {
         ...state,
-        advertising: state.advertising.map((advert) => {
+        adverts: state.adverts.map((advert) => {
           if (advert.id === action.advertId) {
             const comments = advert.comments.filter(
               (comment) => comment.id !== action.commentId
@@ -119,7 +119,7 @@ export const advertsReducer = (state = initialState, action) => {
     case TOGGLE_LIKE_COMMENT_FROM_ADVERT:
       return {
         ...state,
-        advertising: state.advertising.map((advert) => {
+        adverts: state.adverts.map((advert) => {
           if (advert.id === action.advertId) {
             advert.comments.map((comment) => {
               return comment.id === action.commentId
@@ -138,7 +138,7 @@ export const advertsReducer = (state = initialState, action) => {
     case ADD_COMMENT_TO_ADVERT:
       return {
         ...state,
-        advertising: state.advertising.map((advert) => {
+        adverts: state.adverts.map((advert) => {
           return advert.id === action.advertId
             ? { ...advert, comments: [...advert.comments, action.comment] }
             : advert;
@@ -147,14 +147,12 @@ export const advertsReducer = (state = initialState, action) => {
     case ADD_ADVERT:
       return {
         ...state,
-        advertising: [...state.advertising, action.advert],
+        adverts: [...state.adverts, action.advert],
       };
     case DELETE_ADVERT:
       return {
         ...state,
-        advertising: state.advertising.filter(
-          ({ id }) => id !== action.advertId
-        ),
+        adverts: state.adverts.filter(({ id }) => id !== action.advertId),
       };
     default:
       return state;
@@ -174,10 +172,10 @@ export const toggleLike = (advertId, commentId, hasLike) => ({
   hasLike,
 });
 
-export const addComment = (advertId, id, text, name) => ({
+export const addComment = (advertId, id, text, author) => ({
   type: ADD_COMMENT_TO_ADVERT,
   advertId,
-  comment: { id, text, name, likeCount: 0 },
+  comment: { id, text, author, likeCount: 0 },
 });
 
 export const addAdvert = (id, liked, likeCount, title, text, image) => ({

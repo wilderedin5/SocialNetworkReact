@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm } from "redux-form";
 import styled from "@emotion/styled";
-import { Button as BaseButton } from "antd";
+import { Button } from "../common/type";
 import { Field } from "../../hoc/form-elements";
 
 const ProfileInfo = styled.div`
@@ -15,7 +15,7 @@ const ContactList = styled.ul`
   font-size: 24px;
 `;
 
-const Button = styled(BaseButton)`
+const StyledButton = styled(Button)`
   position: absolute;
   top: 10px;
   right: 0;
@@ -47,7 +47,7 @@ const ProfileForm = ({ handleSubmit, profile }) => (
         ))}
       </ContactList>
     </ProfileInfo>
-    <Button htmlType="submit">Save page</Button>
+    <StyledButton>Save page</StyledButton>
   </form>
 );
 

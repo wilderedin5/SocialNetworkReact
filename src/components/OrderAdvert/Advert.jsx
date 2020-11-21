@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button } from "antd";
+import { Button } from "../common/type";
 import { Note } from "../common/type";
 
 const Container = styled.div`

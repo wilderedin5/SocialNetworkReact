@@ -1,8 +1,8 @@
 import React from "react";
 import { reduxForm } from "redux-form";
 import styled from "@emotion/styled";
-import { Button } from "antd";
 import { Field as BaseField } from "../../hoc/form-elements";
+import { Button } from "../common/type";
 
 const Container = styled.form`
   text-align: center;
@@ -31,9 +31,7 @@ const Form = ({ handleSubmit, captchaUrl, error }) => (
       <Field type="checkbox" name="rememberMe" />
       Remember me
     </Label>
-    <Button type="primary" htmlType="submit">
-      Login
-    </Button>
+    <Button>Login</Button>
     {captchaUrl && (
       <div>
         <img src={captchaUrl} alt="" />

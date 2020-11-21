@@ -12,9 +12,9 @@ const Img = styled.img`
   height: 150px;
 `;
 
-export const Advertising = ({ advertising }) => (
+export const Adverts = ({ adverts }) => (
   <Carousel autoplay={true}>
-    {advertising.map(({ image, title, id }) => (
+    {adverts.map(({ image, title, id }) => (
       <NavLink key={title} to={`/adverts/${id}`}>
         <Img src={image} alt="" />
       </NavLink>

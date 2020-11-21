@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { Button as BaseButton } from "antd";
 import noAvatar from "../../assets/image/noAvatar.jpg";
 import { Divider } from "../common/type";
+import { Button } from "../common/type";
 import { Status } from "./Status";
 import ProfileForm from "./ProfileForm";
 
@@ -52,7 +52,7 @@ const Name = styled.div`
   line-height: 1;
 `;
 
-const Button = styled(BaseButton)`
+const StyledButton = styled(Button)`
   position: absolute;
   top: 10px;
   right: 0;
@@ -114,7 +114,9 @@ export const Info = ({
           </InfoContainer>
         )}
         {isOwner && !editMode && (
-          <Button onClick={() => setEditMode(true)}>Edit page</Button>
+          <StyledButton onClick={() => setEditMode(true)}>
+            Edit page
+          </StyledButton>
         )}
       </Container>
     )

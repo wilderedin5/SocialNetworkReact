@@ -14,7 +14,7 @@ const Container = styled.div`
 export const Bookmarks = ({ bookMarks, toggleBookmarks }) => (
   <Container>
     <Divider title="Bookmarks" />
-    {bookMarks.length > 0
+    {bookMarks.length
       ? bookMarks.map((bookmark) => (
           <Bookmark
             key={bookmark.id}

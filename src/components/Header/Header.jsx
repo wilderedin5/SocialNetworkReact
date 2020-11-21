@@ -2,9 +2,10 @@ import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { Button as BaseButton, Avatar as BaseAvatar } from "antd";
+import { Avatar as BaseAvatar } from "antd";
 import NoAvatar from "../../assets/image/noAvatar.jpg";
 import { logout } from "../../redux/auth-reducer";
+import { Button } from "../common/type";
 
 const Container = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const Container = styled.div`
   align-items: flex-start;
 `;
 
-const Button = styled(BaseButton)`
+const StyledButton = styled(Button)`
   align-self: center;
   background: transparent;
   color: #fff;
@@ -43,11 +44,11 @@ const Header = ({ isAuth, profile, login, logout }) => (
           <Avatar src={60} src={profile?.photos.small || NoAvatar} />
           {login}
         </Info>
-        <Button onClick={logout}>Log out</Button>
+        <StyledButton onClick={logout}>Log out</StyledButton>
       </>
     ) : (
       <NavLink to="/login">
-        <Button>Login</Button>
+        <StyledButton>Login</StyledButton>
       </NavLink>
     )}
   </Container>

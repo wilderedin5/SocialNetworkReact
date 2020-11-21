@@ -48,8 +48,18 @@ export const Note = ({ label, value }) => (
   </div>
 );
 
-export const Divider = ({ title, orientation,color }) => (
-  <BaseDivider style={{ color: color || "#fff" }} orientation={orientation || "center"}>
+export const Divider = ({ title, orientation, color }) => (
+  <BaseDivider
+    style={{ color: color || "#fff" }}
+    orientation={orientation || "center"}
+  >
     {title}
   </BaseDivider>
 );
+
+export const Button = styled.button`
+  padding: 5px 16px;
+  border: 1px solid gray;
+  line-height: 1.5;
+  color: #000;
+`;
