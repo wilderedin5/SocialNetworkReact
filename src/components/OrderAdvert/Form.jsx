@@ -6,7 +6,7 @@ import { Button } from "../common/type";
 const Form = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
     <Field name="title" placeholder="Title your advert" />
-    <Field name="image" placeholder="Link on image" maxLength="1000" />
+    <Field name="img" placeholder="Link on img" maxLength="1000" />
     <Field
       component="textarea"
       name="text"

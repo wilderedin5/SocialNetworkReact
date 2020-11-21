@@ -10,12 +10,7 @@ const StyledButton = styled(Button)`
 
 const Form = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
-    <Field
-      component="textarea"
-      name="commentText"
-      placeholder="Message"
-      maxLength="250"
-    />
+    <Field component="textarea" name="text" placeholder="Message" />
     <Field name="author" placeholder="Author" maxLength="60" />
     <StyledButton>Send</StyledButton>
   </form>

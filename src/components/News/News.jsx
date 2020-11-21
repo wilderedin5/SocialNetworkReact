@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { deleteNews, addNews, toggleBookmarks } from "../../redux/news-reducer";
+import { deleteNews, addNews, setMark } from "../../redux/news-reducer";
 import { Article } from "./Article";
 import Form from "./Form";
 
-const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
+const News = ({ addNews, news, setMark, deleteNews, match }) => {
   const newsId = match.params.newsId;
   const formattedNews = newsId
     ? news.filter((news) => newsId === String(news.id))
@@ -22,8 +22,8 @@ const News = ({ addNews, news, toggleBookmarks, deleteNews, match }) => {
       {formattedNews.map((news) => (
         <Article
           key={news.id}
-          deleteNews={() => deleteNews(news.id)}
-          toggleBookmarks={() => toggleBookmarks(news.id, !news.inBookmarks)}
+          onDelete={() => deleteNews(news.id)}
+          onMark={() => setMark(news.id, !news.isMarked)}
           isOpened={newsId}
           {...news}
         />
@@ -40,5 +40,5 @@ const mapStateToProps = (state) => ({
 export default compose(
   withRouter,
   withAuthRedirect,
-  connect(mapStateToProps, { deleteNews, addNews, toggleBookmarks })
+  connect(mapStateToProps, { deleteNews, addNews, setMark })
 )(News);

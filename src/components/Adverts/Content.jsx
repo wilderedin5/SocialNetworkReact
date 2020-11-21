@@ -18,9 +18,9 @@ const Container = styled.div`
   border-radius: 10px;
 `;
 
-export const Content = ({ image, title, text }) => (
+export const Content = ({ img, title, text }) => (
   <Container>
-    <Image src={image} />
+    <Image src={img} />
     <Title>{title}</Title>
     <div>{text}</div>
   </Container>

@@ -136,3 +136,5 @@ export const eraseDialog = (userId) => ({
   type: ERASE_DIALOG,
   userId,
 });
+
+export default { addMessage, deleteMessage, eraseDialog };

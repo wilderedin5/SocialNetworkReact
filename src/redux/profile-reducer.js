@@ -146,17 +146,17 @@ export const setUsersProfile = (profile) => ({
   profile,
 });
 
-export const setStatus = (status) => ({
+export const setStatusSuccess = (status) => ({
   type: SET_STATUS,
   status: status,
 });
 
-export const editPhotoSuccess = (photo) => ({
+export const setPhotoSuccess = (photo) => ({
   type: UPDATE_PHOTO,
   photo,
 });
 
-export const toggleLike = (postId) => ({
+export const setLike = (postId) => ({
   type: TOGGLE_LIKE_POST,
   postId,
 });
@@ -168,20 +168,20 @@ export const getProfile = (userId) => async (dispatch) => {
 
 export const getStatus = (userId) => async (dispatch) => {
   let response = await profileAPI.getStatus(userId);
-  dispatch(setStatus(response.data));
+  dispatch(setStatusSuccess(response.data));
 };
 
-export const editStatus = (status) => async (dispatch) => {
-  let response = await profileAPI.editStatus(status);
+export const setStatus = (status) => async (dispatch) => {
+  let response = await profileAPI.setStatus(status);
   if (response.data.resultCode === 0) {
-    dispatch(setStatus(status));
+    dispatch(setStatusSuccess(status));
   }
 };
 
-export const editPhoto = (photo) => async (dispatch) => {
+export const setPhoto = (photo) => async (dispatch) => {
   let response = await profileAPI.uploadPhoto(photo);
   if (response.data.resultCode === 0) {
-    dispatch(editPhotoSuccess(response.data.data.photos));
+    dispatch(setPhotoSuccess(response.data.data.photos));
   }
 };
 

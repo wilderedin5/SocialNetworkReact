@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { withRouter } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import { Menu } from "antd";
-import { toggleBookmarks } from "../../redux/news-reducer";
-import { getBookmarks } from "../../redux/Selectors/news-selectors";
+import { setMark } from "../../redux/news-reducer";
+import { getMarks } from "../../redux/Selectors/news-selectors";
 import { getFriends } from "../../redux/sidebar-reducer";
-import { Adverts } from "./Advertising";
+import { Adverts } from "./Adverts";
 import { Friends } from "./Friends";
-import { Bookmarks } from "./Bookmarks";
+import { Marks } from "./Marks";
 
 const MenuItem = ({ to, ...props }) => {
   const url = `/${to.toLowerCase()}`;
@@ -27,8 +26,8 @@ const NavBar = ({
   getFriends,
   friends,
   isAuth,
-  toggleBookmarks,
-  bookMarks,
+  setMark,
+  marks,
   adverts,
 }) => {
   useEffect(() => {
@@ -50,10 +49,7 @@ const NavBar = ({
         <MenuItem to="Order-advert" />
       </Menu>
       {isAuth && <Friends friends={friends} />}
-      <Bookmarks
-        toggleBookmarks={toggleBookmarks}
-        bookMarks={bookMarks || []}
-      />
+      <Marks setMark={setMark} marks={marks || []} />
       <Adverts adverts={adverts || []} />
     </div>
   );
@@ -61,12 +57,12 @@ const NavBar = ({
 
 const mapStateToProps = (state) => ({
   friends: state.sidebar.friends,
-  bookMarks: getBookmarks(state),
+  marks: getMarks(state),
   isAuth: state.auth.isAuth,
   adverts: state.adverts.adverts,
 });
 
 export default compose(
-  connect(mapStateToProps, { toggleBookmarks, getFriends }),
+  connect(mapStateToProps, { setMark, getFriends }),
   withRouter
 )(NavBar);

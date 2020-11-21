@@ -5,8 +5,8 @@ import { Comments } from "./Comments";
 import { Content } from "./Content";
 
 export const Advert = ({ contentProps, id, commentProps, addComment }) => {
-  const handleSubmit = ({ commentText, author }) => {
-    addComment(id, v4(), commentText, author);
+  const handleSubmit = ({ text, author }) => {
+    addComment(id, v4(), text, author);
   };
 
   return (

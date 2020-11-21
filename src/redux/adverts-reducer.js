@@ -12,7 +12,7 @@ let initialState = {
       title: "World of Warcraft: Shadowlands Ads",
       text:
         "World of Warcraft: Shadowlands is the eighth expansion to the computer game World of Warcraft, announced on November 1, 2019 at BlizzCon and is set for release in 2020. The story of Shadowlands takes place in the Dark lands, where the souls of the dead fall",
-      image: "https://i.ytimg.com/vi/5bYZyjHhrtU/maxresdefault.jpg",
+      img: "https://i.ytimg.com/vi/5bYZyjHhrtU/maxresdefault.jpg",
       comments: [
         {
           id: 1,
@@ -49,7 +49,7 @@ let initialState = {
       title: "Ads ryzen",
       text:
         "Ryzen (/ˈraɪzən/ Rus. Riesen)[3] - trademark[4] microprocessors of the AMD multinational Corporation in the second half of the 2010s. This family of processors belongs to the x86_64 architecture, is used in desktop, mobile, and embedded computing systems, and currently uses the Zen, Zen+, and Zen 2 processor microarchitectures.",
-      image: "https://www.ixbt.com/img/n1/news/2020/4/4/434234_large.jpg",
+      img: "https://www.ixbt.com/img/n1/news/2020/4/4/434234_large.jpg",
       comments: [
         {
           id: 1,
@@ -72,7 +72,7 @@ let initialState = {
       title: "Ads intel",
       text:
         "Intel is a multinational Corporation that produces electronic devices and computer components, including full-cycle production of microprocessors and system logic kits. It is headquartered in Santa Clara, California, USA",
-      image:
+      img:
         "https://hsto.org/getpro/habr/post_images/5ba/fd7/ada/5bafd7ada71e48b1567c19e6b3770d15.jpg",
       comments: [
         {
@@ -165,7 +165,7 @@ export const deleteComment = (advertId, commentId) => ({
   commentId,
 });
 
-export const toggleLike = (advertId, commentId, hasLike) => ({
+export const setLike = (advertId, commentId, hasLike) => ({
   type: TOGGLE_LIKE_COMMENT_FROM_ADVERT,
   advertId,
   commentId,
@@ -178,9 +178,9 @@ export const addComment = (advertId, id, text, author) => ({
   comment: { id, text, author, likeCount: 0 },
 });
 
-export const addAdvert = (id, liked, likeCount, title, text, image) => ({
+export const addAdvert = (id, liked, likeCount, title, text, img) => ({
   type: ADD_ADVERT,
-  advert: { id, liked, likeCount, title, text, image, comments: [] },
+  advert: { id, liked, likeCount, title, text, img, comments: [] },
 });
 
 export const deleteAdvert = (advertId) => ({

@@ -1,3 +1,3 @@
-export const getBookmarks = (state) => {
-  return state.newsPage.news.filter((item) => item.inBookmarks);
+export const getMarks = (state) => {
+  return state.newsPage.news.filter((item) => item.isMarked);
 };

@@ -25,10 +25,10 @@ export const Article = ({
   author,
   date,
   category,
-  inBookmarks,
-  deleteNews,
+  isMarked,
+  onDelete,
   id,
-  toggleBookmarks,
+  onMark,
 }) => (
   <Container>
     <div>{isOpened ? text : text.substring(0, 200)}.....</div>
@@ -37,10 +37,10 @@ export const Article = ({
     <Note label="Date" value={date} />
     <Note label="Category" value={category} />
     <Tools>
-      <Button onClick={toggleBookmarks}>
-        {inBookmarks ? "Remove bookmarks" : "Add to bookmarks"}
+      <Button onClick={onMark}>
+        {isMarked ? "Remove mark" : "Add to mark"}
       </Button>
-      <Button onClick={deleteNews}>Remove news</Button>
+      <Button onClick={onDelete}>Remove news</Button>
       <NavLink to={`/news/${isOpened ? "" : id}`}>
         <Button>{isOpened ? "Return to news page" : "Go to this news"}</Button>
       </NavLink>

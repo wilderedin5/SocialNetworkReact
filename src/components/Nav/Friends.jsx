@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Avatar } from "antd";
 import { NavLink } from "react-router-dom";
-import NoAvatar from "../../assets/image/noAvatar.jpg";
+import NoImg from "../../assets/image/NoImg.jpg";
 import { Divider } from "../common/type";
 
 const Link = styled(NavLink)`
@@ -20,7 +20,7 @@ const Name = styled.div`
 
 const Friend = ({ name, id }) => (
   <Link to={`/profile/${id}`} activeClassName="active">
-    <Avatar src={NoAvatar} size={30} />
+    <Avatar src={NoImg} size={30} />
     <Name>{name.slice(0, 10)}</Name>
   </Link>
 );

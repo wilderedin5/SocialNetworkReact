@@ -50,7 +50,7 @@ const Users = ({
     getUsers(currentPage, pageSize);
   }, []);
 
-  const onPageChanged = (pageNumber) => {
+  const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     getUsers(pageNumber, pageSize);
   };
@@ -63,7 +63,7 @@ const Users = ({
         defaultCurrent={1}
         current={currentPage}
         total={totalUsersCount}
-        onChange={onPageChanged}
+        onChange={handlePageChange}
         showSizeChanger={false}
       />
       <UsersContainer>

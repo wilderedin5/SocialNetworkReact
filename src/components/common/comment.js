@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import LikeIcon from "../../assets/image/like.svg";
-import NoAvatar from "../../assets/image/noAvatar.jpg";
+import NoImg from "../../assets/image/NoImg.jpg";
 
 const Container = styled.div`
   display: grid;
@@ -60,7 +60,7 @@ const Tools = ({ likeCount, onLike, onRemove, hasLike }) => (
 
 export const Comment = ({ avatar, author, text, className, ...props }) => (
   <Container className={className}>
-    <Avatar src={avatar || NoAvatar} />
+    <Avatar src={avatar || NoImg} />
     <Content>
       <Name>{author}</Name>
       <div>{text}</div>

@@ -4,9 +4,9 @@ import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 import {
   getProfile,
-  editStatus,
+  setStatus,
   getStatus,
-  editPhoto,
+  setPhoto,
   editProfile,
 } from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
@@ -43,8 +43,8 @@ export default compose(
   connect(mapStateToProps, {
     getProfile,
     getStatus,
-    editStatus,
-    editPhoto,
+    setStatus,
+    setPhoto,
     editProfile,
   }),
   withRouter,

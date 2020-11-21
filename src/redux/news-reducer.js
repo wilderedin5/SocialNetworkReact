@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 const DELETE_NEWS = "news-reducer/DELETE_NEWS";
 const ADD_NEW_NEWS = "news-reducer/ADD_NEW_NEWS";
-const TOGGLE_SET_TO_BOOKMARKS = "news-reducer/TOGGLE_SET_TO_BOOKMARKS";
+const TOGGLE_SET_TO_MARKS = "news-reducer/TOGGLE_SET_TO_MARKS";
 
 let initialState = {
   news: [
@@ -13,7 +13,7 @@ let initialState = {
       author: "React document",
       date: "19.04.2020",
       category: "react",
-      inBookmarks: false,
+      isMarked: false,
     },
     {
       id: 2,
@@ -23,7 +23,7 @@ let initialState = {
       author: "Wikipedia",
       date: "12.04.2020",
       category: "HTML",
-      inBookmarks: false,
+      isMarked: false,
     },
     {
       id: 3,
@@ -33,7 +33,7 @@ let initialState = {
       author: "Wikipedia",
       date: "11.04.2020",
       category: "CSS",
-      inBookmarks: false,
+      isMarked: false,
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ let initialState = {
       author: "Wikipedia",
       date: "18.04.2020",
       category: "REDUX",
-      inBookmarks: false,
+      isMarked: false,
     },
     {
       id: 5,
@@ -53,7 +53,7 @@ let initialState = {
       author: "Vesemir",
       date: "17.04.2020",
       category: "HOC",
-      inBookmarks: false,
+      isMarked: false,
     },
   ],
 };
@@ -70,12 +70,12 @@ export const newsReducer = (state = initialState, action) => {
         ...state,
         news: [...state.news, action.newNews],
       };
-    case TOGGLE_SET_TO_BOOKMARKS:
+    case TOGGLE_SET_TO_MARKS:
       return {
         ...state,
         news: state.news.map((news) => {
           return news.id === action.newsId
-            ? { ...news, inBookmarks: action.bookmarked }
+            ? { ...news, isMarked: action.marked }
             : news;
         }),
       };
@@ -94,8 +94,8 @@ export const addNews = (text, theme, author, category) => ({
   newNews: { id: v4(), text, theme, author, category },
 });
 
-export const toggleBookmarks = (newsId, bookmarked) => ({
-  type: TOGGLE_SET_TO_BOOKMARKS,
+export const setMark = (newsId, marked) => ({
+  type: TOGGLE_SET_TO_MARKS,
   newsId,
-  bookmarked,
+  marked,
 });

@@ -7,8 +7,8 @@ import { Advert } from "./Advert";
 import Form from "./Form";
 
 const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
-  const handleSubmit = ({ title, text, image }) => {
-    addAdvert(adverts.length + 1, false, 0, title, text, image);
+  const handleSubmit = ({ title, text, img }) => {
+    addAdvert(adverts.length + 1, false, 0, title, text, img);
   };
   return (
     <div>

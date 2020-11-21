@@ -6,20 +6,15 @@ const StyledComment = styled(BaseComment)`
   margin-bottom: 10px;
 `;
 
-export const Comment = ({ toggleLike, deleteComment, ...props }) => {
+export const Comment = ({ setLike, ...props }) => {
   const [hasLike, setHasLike] = useState(false);
 
   const handleCommentLike = () => {
     setHasLike(!hasLike);
-    toggleLike(hasLike);
+    setLike(hasLike);
   };
 
   return (
-    <StyledComment
-      onLike={handleCommentLike}
-      onRemove={deleteComment}
-      hasLike={hasLike}
-      {...props}
-    />
+    <StyledComment onLike={handleCommentLike} hasLike={hasLike} {...props} />
   );
 };

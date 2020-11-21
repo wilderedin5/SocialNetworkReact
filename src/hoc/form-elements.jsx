@@ -22,15 +22,13 @@ export const createFormElement = (Element) => ({ input, meta, ...props }) => (
 const BaseTextarea = createFormElement(StyledTextarea);
 const BaseInput = createFormElement(StyledInput);
 
-export const maxLength250 = maxLength(250);
 export const maxLength60 = maxLength(60);
-export const maxLength100 = maxLength(100);
+export const maxLength200 = maxLength(200);
 export const maxLength1000 = maxLength(1000);
 
 const MAX_LENGTH = {
   "60": maxLength60,
-  "100": maxLength100,
-  "250": maxLength250,
+  "200": maxLength200,
   "1000": maxLength1000,
 };
 
@@ -43,7 +41,7 @@ export const Field = ({
   name = "",
   placeholder = "",
   type = "text",
-  maxLength = "100",
+  maxLength = "200",
   component = "input",
   ...props
 }) => (

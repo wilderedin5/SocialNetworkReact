@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { v4 } from "uuid";
 import { connect } from "react-redux";
-import { addPost, deletePost, toggleLike } from "../../redux/profile-reducer";
+import { addPost, deletePost, setLike } from "../../redux/profile-reducer";
 import { Comment as BaseComment } from "../common/comment";
 import Form from "./Form";
 
@@ -14,9 +14,9 @@ const StyledComment = styled(BaseComment)`
   margin-bottom: 10px;
 `;
 
-const Posts = ({ posts, toggleLike, deletePost, ...props }) => {
-  const handleSubmit = ({ postText, author }) => {
-    props.addPost(v4(), postText, 0, null, author);
+const Posts = ({ posts, setLike, deletePost, ...props }) => {
+  const handleSubmit = ({ text, author }) => {
+    props.addPost(v4(), text, 0, null, author);
   };
 
   return (
@@ -27,7 +27,7 @@ const Posts = ({ posts, toggleLike, deletePost, ...props }) => {
         {posts.map((post) => (
           <StyledComment
             key={post.id}
-            onLike={() => toggleLike(post.id)}
+            onLike={() => setLike(post.id)}
             onRemove={() => deletePost(post.id)}
             {...post}
           />
@@ -44,5 +44,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   addPost,
   deletePost,
-  toggleLike,
+  setLike,
 })(Posts);

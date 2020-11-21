@@ -17,7 +17,7 @@ const Card = styled(BaseCard)`
   text-align: justify;
 `;
 
-export const Bookmark = ({ theme, onRemove, id, text }) => (
+export const Mark = ({ theme, onRemove, id, text }) => (
   <Card
     size="small"
     title={theme}

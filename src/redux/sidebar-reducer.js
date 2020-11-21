@@ -26,5 +26,3 @@ export const getFriends = (currentPage, pageSize) => async (dispatch) => {
   let data = await usersAPI.getUsers(currentPage, pageSize);
   dispatch(setFriends(data.items));
 };
-
-export default sidebarReducer;

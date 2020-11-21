@@ -34,7 +34,7 @@ export const profileAPI = {
   getStatus(userId) {
     return axiosClone.get(`profile/status/${userId}`);
   },
-  editStatus(status) {
+  setStatus(status) {
     return axiosClone.put(`profile/status/`, { status: status });
   },
   uploadPhoto(photo) {

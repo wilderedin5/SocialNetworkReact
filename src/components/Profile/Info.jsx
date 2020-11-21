@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import noAvatar from "../../assets/image/noAvatar.jpg";
+import NoImg from "../../assets/image/NoImg.jpg";
 import { Divider } from "../common/type";
 import { Button } from "../common/type";
 import { Status } from "./Status";
 import ProfileForm from "./ProfileForm";
 
 const Container = styled.div`
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 224px auto;
+  grid-column-gap: 20px;
   position: relative;
   border-bottom: 1px dashed #fff;
 `;
@@ -43,10 +44,6 @@ const Label = styled.label`
   }
 `;
 
-const InfoContainer = styled.div`
-  padding-left: 30px;
-`;
-
 const Name = styled.div`
   font-size: 28px;
   line-height: 1;
@@ -60,10 +57,10 @@ const StyledButton = styled(Button)`
 
 export const Info = ({
   editProfile,
-  editPhoto,
+  setPhoto,
   isOwner,
   profile,
-  editStatus,
+  setStatus,
   status,
 }) => {
   let [editMode, setEditMode] = useState(false);
@@ -75,7 +72,7 @@ export const Info = ({
 
   const onChangePhoto = (e) => {
     if (e.target.files.length) {
-      editPhoto(e.target.files[0]);
+      setPhoto(e.target.files[0]);
     }
   };
 
@@ -83,7 +80,7 @@ export const Info = ({
     profile && (
       <Container>
         <div>
-          <AvatarImage src={profile.photos.large || noAvatar} />
+          <AvatarImage src={profile.photos.large || NoImg} />
           {isOwner && (
             <>
               <Input type="file" id="photoFile" onChange={onChangePhoto} />
@@ -95,9 +92,9 @@ export const Info = ({
         {editMode ? (
           <ProfileForm onSubmit={handleSubmit} profile={profile} />
         ) : (
-          <InfoContainer>
+          <div>
             <Name>{profile.fullName}</Name>
-            <Status status={status} editStatus={editStatus} />
+            <Status status={status} setStatus={setStatus} />
             <Divider color="#000" title="About me" orientation="left" />
             <div>
               Looking for a job: {profile.lookingForAJob ? "Yes" : "No"}
@@ -111,7 +108,7 @@ export const Info = ({
                 {key}: {profile.contacts[key]}
               </div>
             ))}
-          </InfoContainer>
+          </div>
         )}
         {isOwner && !editMode && (
           <StyledButton onClick={() => setEditMode(true)}>

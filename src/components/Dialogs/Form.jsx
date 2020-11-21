@@ -12,12 +12,7 @@ const StyledButton = styled(Button)`
 
 const Form = ({ handleSubmit, eraseDialog }) => (
   <form onSubmit={handleSubmit}>
-    <Field
-      component="textarea"
-      name="message"
-      placeholder="Message"
-      maxLength="250"
-    />
+    <Field component="textarea" name="message" placeholder="Message" />
     <StyledButton>Send</StyledButton>
     <StyledButton onClick={eraseDialog}>Clear chat</StyledButton>
   </form>
