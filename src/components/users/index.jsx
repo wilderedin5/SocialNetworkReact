@@ -28,9 +28,9 @@ const Pagination = styled(BasePagination)`
   margin-bottom: 20px;
 `;
 
-const UsersContainer = styled.div`
+const UserList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 `;
 
@@ -66,7 +66,7 @@ const Users = ({
         onChange={handlePageChange}
         showSizeChanger={false}
       />
-      <UsersContainer>
+      <UserList>
         {users.map((user) => (
           <User
             key={user.id}
@@ -76,7 +76,7 @@ const Users = ({
             user={user}
           />
         ))}
-      </UsersContainer>
+      </UserList>
     </div>
   );
 };

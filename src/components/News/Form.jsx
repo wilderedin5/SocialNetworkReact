@@ -3,8 +3,8 @@ import { reduxForm } from "redux-form";
 import { Field } from "../../hoc/form-elements";
 import { Button } from "../common/type";
 
-const Form = ({ handleSubmit, error }) => (
-  <form onSubmit={handleSubmit}>
+const Form = ({ handleSubmit, error, className }) => (
+  <form onSubmit={handleSubmit} className={className}>
     <Field
       component="textarea"
       name="text"

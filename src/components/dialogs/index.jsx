@@ -33,6 +33,10 @@ const Dialogs = ({
     addMessage(message, userId);
   };
 
+  const handleErase = () => {
+    eraseDialog(userId);
+  };
+
   return (
     <div>
       <DialogsList>
@@ -43,7 +47,7 @@ const Dialogs = ({
       {messages.map(({ id, ...m }) => (
         <Message key={id} onRemove={() => deleteMessage(id, userId)} {...m} />
       ))}
-      <Form eraseDialog={() => eraseDialog(userId)} onSubmit={handleSubmit} />
+      <Form onErase={handleErase} onSubmit={handleSubmit} />
     </div>
   );
 };

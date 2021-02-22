@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import styled from "@emotion/styled";
 import { compose } from "redux";
 import { withRouter, NavLink } from "react-router-dom";
 import { Menu } from "antd";
@@ -9,6 +10,10 @@ import { getFriends } from "../../redux/sidebar-reducer";
 import { Adverts } from "./adverts";
 import { Friends } from "./friends";
 import { Marks } from "./marks";
+
+const StyledAdverts = styled(Adverts)`
+  margin: 20px 0;
+`;
 
 const MenuItem = ({ to, ...props }) => {
   const url = `/${to.toLowerCase()}`;
@@ -21,26 +26,14 @@ const MenuItem = ({ to, ...props }) => {
   );
 };
 
-const NavBar = ({
-  history,
-  getFriends,
-  friends,
-  isAuth,
-  setMark,
-  marks,
-  adverts,
-}) => {
+const NavBar = ({ getFriends, friends, isAuth, setMark, marks, adverts }) => {
   useEffect(() => {
     getFriends(1, 9);
   }, [isAuth]);
 
   return (
     <div>
-      <Menu
-        theme="dark"
-        defaultSelectedKeys={history.location.pathname}
-        mode="inline"
-      >
+      <Menu theme="dark">
         <MenuItem to="Profile" />
         <MenuItem to="Dialogs" />
         <MenuItem to="News" />
@@ -48,9 +41,9 @@ const NavBar = ({
         <MenuItem to="Help" />
         <MenuItem to="Order-advert" />
       </Menu>
-      {isAuth && <Friends friends={friends} />}
+      {isAuth && <Friends friends={friends || []} />}
       <Marks setMark={setMark} marks={marks || []} />
-      <Adverts adverts={adverts || []} />
+      <StyledAdverts adverts={adverts || []} />
     </div>
   );
 };

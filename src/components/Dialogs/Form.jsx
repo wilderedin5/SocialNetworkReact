@@ -10,11 +10,11 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Form = ({ handleSubmit, eraseDialog }) => (
+const Form = ({ handleSubmit, onErase }) => (
   <form onSubmit={handleSubmit}>
     <Field component="textarea" name="message" placeholder="Message" />
     <StyledButton>Send</StyledButton>
-    <StyledButton onClick={eraseDialog}>Clear chat</StyledButton>
+    <StyledButton onClick={onErase}>Clear chat</StyledButton>
   </form>
 );
 

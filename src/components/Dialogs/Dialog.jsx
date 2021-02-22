@@ -4,10 +4,8 @@ import { NavLink } from "react-router-dom";
 import { Avatar } from "antd";
 
 const Container = styled(NavLink)`
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-template-columns: 30px auto;
-  grid-column-gap: 10px;
   padding: 10px;
   font-weight: 700;
   color: #000;
@@ -16,9 +14,13 @@ const Container = styled(NavLink)`
   }
 `;
 
+const StyledAvatar = styled(Avatar)`
+  margin-right: 10px;
+`;
+
 export const Dialog = ({ id, photoUrl, name }) => (
   <Container to={`/dialogs/${id}`} activeClassName="active">
-    <Avatar size={30} src={photoUrl} />
+    <StyledAvatar size={30} src={photoUrl} />
     {name}
   </Container>
 );

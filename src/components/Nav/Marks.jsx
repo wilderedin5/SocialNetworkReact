@@ -6,6 +6,7 @@ import { Mark } from "./mark";
 const Container = styled.div`
   padding: 0 20px;
   color: #fff;
+
   @media (max-width: 576px) {
     font-size: 12px;
   }

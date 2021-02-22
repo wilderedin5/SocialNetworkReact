@@ -8,14 +8,14 @@ const Container = styled.div`
   align-items: center;
   margin-bottom: 20px;
   padding: 5px 10px;
-  border: 1px solid ${(p) => (p.outMe ? " #2D50A5" : "#14C723")};
+  border: 1px solid ${(p) => (p.isMy ? " #2D50A5" : "#14C723")};
   border-radius: 10px;
-  color: ${(p) => (p.outMe ? "#000" : "#14C723")};
+  color: ${(p) => (p.isMy ? "#000" : "#14C723")};
 `;
 
-export const Message = ({ outMe, message, onRemove }) => (
-  <Container outMe={outMe}>
+export const Message = ({ isMy, message, onRemove }) => (
+  <Container isMy={isMy}>
     {message}
-    {outMe && <Button onClick={onRemove}>Remove message</Button>}
+    {isMy && <Button onClick={onRemove}>Remove message</Button>}
   </Container>
 );

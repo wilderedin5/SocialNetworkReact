@@ -7,7 +7,11 @@ import { Info } from "./info";
 import Form from "./form";
 
 const Container = styled.div`
-  margin-top: 50px;
+  margin: 50px auto 0;
+`;
+
+const StyledForm = styled(Form)`
+  margin-bottom: 50px;
 `;
 
 const Login = ({ login, isAuth, captchaUrl }) => {
@@ -19,7 +23,7 @@ const Login = ({ login, isAuth, captchaUrl }) => {
     <Redirect to="/profile" />
   ) : (
     <Container>
-      <Form captchaUrl={captchaUrl} onSubmit={handleSubmit} />
+      <StyledForm captchaUrl={captchaUrl} onSubmit={handleSubmit} />
       <Info />
     </Container>
   );

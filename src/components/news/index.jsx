@@ -6,6 +6,17 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { deleteNews, addNews, setMark } from "../../redux/news-reducer";
 import { Article } from "./article";
 import Form from "./form";
+import styled from "@emotion/styled";
+
+const StyledArticle = styled(Article)`
+  & + & {
+    margin-top: 10px;
+  }
+`;
+
+const StyledForm = styled(Form)`
+  margin-top: 10px;
+`;
 
 const News = ({ addNews, news, setMark, deleteNews, match }) => {
   const newsId = match.params.newsId;
@@ -20,7 +31,7 @@ const News = ({ addNews, news, setMark, deleteNews, match }) => {
   return (
     <div>
       {formattedNews.map((news) => (
-        <Article
+        <StyledArticle
           key={news.id}
           onDelete={() => deleteNews(news.id)}
           onMark={() => setMark(news.id, !news.isMarked)}
@@ -28,7 +39,7 @@ const News = ({ addNews, news, setMark, deleteNews, match }) => {
           {...news}
         />
       ))}
-      {!newsId && <Form onSubmit={handleSubmit} />}
+      {!newsId && <StyledForm onSubmit={handleSubmit} />}
     </div>
   );
 };

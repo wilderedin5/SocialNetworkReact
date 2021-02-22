@@ -4,26 +4,32 @@ import { Card as BaseCard } from "antd";
 import { NavLink } from "react-router-dom";
 import { Button } from "../common/type";
 
-const Delete = styled.div`
+const Close = styled.div`
   cursor: pointer;
+
   :hover {
     color: red;
   }
 `;
 
 const Card = styled(BaseCard)`
-  margin-bottom: 5px;
+  display: flex;
+  flex-flow: column;
   font-size: 10px;
   text-align: justify;
+
+  & + & {
+    margin-top: 5px;
+  }
 `;
 
 export const Mark = ({ theme, onRemove, id, text }) => (
   <Card
     size="small"
     title={theme}
-    extra={<Delete onClick={onRemove}>&#9932;</Delete>}
+    extra={<Close onClick={onRemove}>&#9932;</Close>}
   >
-    {text.substring(0, 100)}.....
+    {text.substring(0, 100)}
     <NavLink to={`/news/${id}`}>
       <Button>Open news</Button>
     </NavLink>

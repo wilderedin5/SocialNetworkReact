@@ -12,16 +12,15 @@ const Title = styled.h2`
 `;
 
 const Container = styled.div`
-  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #000;
   border-radius: 10px;
 `;
 
-export const Content = ({ img, title, text }) => (
-  <Container>
+export const Content = ({ img, title, text, className }) => (
+  <Container className={className}>
     <Image src={img} />
     <Title>{title}</Title>
-    <div>{text}</div>
+    {text}
   </Container>
 );

@@ -7,20 +7,17 @@ import { Note } from "../common/type";
 const Container = styled.div`
   border: 1px solid #2d50a5;
   padding: 10px 5px;
-  border-radius: 10px;
-  margin-bottom: 10px;
 `;
 
 const Tools = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 175px);
+  grid-template-columns: repeat(3, 175px);
   grid-column-gap: 10px;
   margin-top: 10px;
 `;
 
 export const Article = ({
   isOpened,
-  text,
   theme,
   author,
   date,
@@ -29,9 +26,9 @@ export const Article = ({
   onDelete,
   id,
   onMark,
+  className,
 }) => (
-  <Container>
-    <div>{isOpened ? text : text.substring(0, 200)}.....</div>
+  <Container className={className}>
     <Note label="Theme" value={theme} />
     <Note label="Author" value={author} />
     <Note label="Date" value={date} />
@@ -41,7 +38,7 @@ export const Article = ({
         {isMarked ? "Remove mark" : "Add to mark"}
       </Button>
       <Button onClick={onDelete}>Remove news</Button>
-      <NavLink to={`/news/${isOpened ? "" : id}`}>
+      <NavLink to={`/news/${!isOpened && id}`}>
         <Button>{isOpened ? "Return to news page" : "Go to this news"}</Button>
       </NavLink>
     </Tools>

@@ -15,6 +15,7 @@ const StyledButton = styled(Button)`
   position: absolute;
   top: 10px;
   right: 10px;
+
   :disabled {
     background: rgb(128, 128, 128);
   }

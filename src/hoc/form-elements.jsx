@@ -12,6 +12,11 @@ const Error = styled.div`
   font-size: 12px;
 `;
 
+const Label = styled.label`
+  display: flex;
+  justify-content: center;
+`;
+
 export const createFormElement = (Element) => ({ input, meta, ...props }) => (
   <div>
     <Element {...input} {...props} />
@@ -53,4 +58,11 @@ export const Field = ({
     type={type}
     validate={[requiredField, MAX_LENGTH[maxLength]]}
   />
+);
+
+export const Checkbox = ({ name, children }) => (
+  <Label>
+    <Field type="checkbox" name={name} />
+    {children}
+  </Label>
 );

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Avatar } from "antd";
 import NoImg from "../../assets/image/NoImg.jpg";
@@ -20,7 +19,7 @@ const StyledAvatar = styled(Avatar)`
 
 const Header = ({ isAuth, profile, login, logout }) => (
   <Container>
-    {isAuth ? (
+    {isAuth && (
       <>
         <div>
           <StyledAvatar src={60} src={profile?.photos.small || NoImg} />
@@ -28,10 +27,6 @@ const Header = ({ isAuth, profile, login, logout }) => (
         </div>
         <Button onClick={logout}>Log out</Button>
       </>
-    ) : (
-      <NavLink to="/login">
-        <Button>Login</Button>
-      </NavLink>
     )}
   </Container>
 );
