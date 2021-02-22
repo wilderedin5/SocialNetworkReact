@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Divider } from "../common/type";
-import { Mark } from "./Mark";
+import { Mark } from "./mark";
 
 const Container = styled.div`
   padding: 0 20px;

@@ -6,20 +6,18 @@ import { compose } from "redux";
 import { Layout } from "antd";
 import { initiliazeApp } from "./redux/app-reducer";
 import { Loader } from "./components/common/type";
-import NavBar from "./components/Nav/NavBar";
-import Login from "./components/Login/Login";
-import Adverts from "./components/Adverts/Adverts";
-import { Footer } from "./components/Footer/Footer";
+import NavBar from "./components/nav";
+import Login from "./components/login";
+import Adverts from "./components/adverts";
+import { Footer } from "./components/footer";
 import style from "./App.module.scss";
-import Header from "./components/Header/Header";
+import Header from "./components/header";
 const Profile = React.lazy(() => import("./components/profile"));
 const Dialogs = React.lazy(() => import("./components/dialogs"));
-const Users = React.lazy(() => import("./components/Users/Users"));
-const News = React.lazy(() => import("./components/News/News"));
-const Help = React.lazy(() => import("./components/Help/Help"));
-const OrderAdvert = React.lazy(() =>
-  import("./components/OrderAdvert/OrderAdvert")
-);
+const Users = React.lazy(() => import("./components/users"));
+const News = React.lazy(() => import("./components/news"));
+const Help = React.lazy(() => import("./components/help"));
+const OrderAdvert = React.lazy(() => import("./components/order-advert"));
 
 const App = (props) => {
   const {

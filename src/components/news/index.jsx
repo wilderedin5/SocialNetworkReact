@@ -4,8 +4,8 @@ import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { deleteNews, addNews, setMark } from "../../redux/news-reducer";
-import { Article } from "./Article";
-import Form from "./Form";
+import { Article } from "./article";
+import Form from "./form";
 
 const News = ({ addNews, news, setMark, deleteNews, match }) => {
   const newsId = match.params.newsId;

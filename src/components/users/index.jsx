@@ -10,7 +10,7 @@ import {
   getCurrentPage,
   getIsFetching,
   getIsFollowingProgress,
-} from "../../redux/Selectors/users-selectors";
+} from "../../redux/selectors/users-selectors";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import {
   follow,
@@ -22,7 +22,7 @@ import {
   getUsers,
 } from "../../redux/users-reducer";
 import { Loader } from "../common/type";
-import { User } from "./User";
+import { User } from "./user";
 
 const Pagination = styled(BasePagination)`
   margin-bottom: 20px;

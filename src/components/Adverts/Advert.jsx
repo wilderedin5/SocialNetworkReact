@@ -1,8 +1,8 @@
 import React from "react";
 import { v4 } from "uuid";
-import Form from "./Form";
-import { Comments } from "./Comments";
-import { Content } from "./Content";
+import Form from "./form";
+import { Comments } from "./comments";
+import { Content } from "./content";
 
 export const Advert = ({ contentProps, id, commentProps, addComment }) => {
   const handleSubmit = ({ text, author }) => {

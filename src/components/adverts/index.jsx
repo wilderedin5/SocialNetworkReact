@@ -8,7 +8,7 @@ import {
   addComment,
 } from "../../redux/adverts-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { Advert } from "./Advert";
+import { Advert } from "./advert";
 
 const Adverts = ({ adverts, match, deleteComment, setLike, addComment }) =>
   adverts.map(

@@ -4,11 +4,11 @@ import { compose } from "redux";
 import { withRouter, NavLink } from "react-router-dom";
 import { Menu } from "antd";
 import { setMark } from "../../redux/news-reducer";
-import { getMarks } from "../../redux/Selectors/news-selectors";
+import { getMarks } from "../../redux/selectors/news-selectors";
 import { getFriends } from "../../redux/sidebar-reducer";
-import { Adverts } from "./Adverts";
-import { Friends } from "./Friends";
-import { Marks } from "./Marks";
+import { Adverts } from "./adverts";
+import { Friends } from "./friends";
+import { Marks } from "./marks";
 
 const MenuItem = ({ to, ...props }) => {
   const url = `/${to.toLowerCase()}`;

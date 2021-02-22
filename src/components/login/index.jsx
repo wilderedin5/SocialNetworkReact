@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import styled from "@emotion/styled";
 import { Redirect } from "react-router-dom";
 import { login } from "../../redux/auth-reducer";
-import { Info } from "./Info";
-import Form from "./Form";
+import { Info } from "./info";
+import Form from "./form";
 
 const Container = styled.div`
   margin-top: 50px;

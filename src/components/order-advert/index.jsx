@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { addAdvert, deleteAdvert } from "../../redux/adverts-reducer";
-import { Advert } from "./Advert";
-import Form from "./Form";
+import { Advert } from "./advert";
+import Form from "./form";
 
 const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
   const handleSubmit = ({ title, text, img }) => {
