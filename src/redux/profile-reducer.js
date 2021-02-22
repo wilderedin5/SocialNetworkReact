@@ -116,14 +116,12 @@ export const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: state.posts.map((post) => {
-          if (post.id === action.postId) {
-            if (post.hasLike === true) {
-              return { ...post, hasLike: false, likeCount: --post.likeCount };
-            } else if (post.hasLike === false || post.hasLike === null) {
-              return { ...post, hasLike: true, likeCount: ++post.likeCount };
-            }
-          }
-          return post;
+          return post.id === action.postId
+            ? {
+                ...post,
+                likeCount: action.hasLike ? --post.likeCount : ++post.likeCount,
+              }
+            : post;
         }),
       };
     default:
@@ -156,9 +154,10 @@ export const setPhotoSuccess = (photo) => ({
   photo,
 });
 
-export const setLike = (postId) => ({
+export const changeLikeCount = (postId, hasLike) => ({
   type: TOGGLE_LIKE_POST,
   postId,
+  hasLike,
 });
 
 export const getProfile = (userId) => async (dispatch) => {

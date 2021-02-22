@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import LikeIcon from "../../assets/image/like.svg";
 import NoImg from "../../assets/image/NoImg.jpg";
@@ -30,12 +30,7 @@ const Icon = styled.img`
   width: 12px;
   height: 12px;
   margin-right: 5px;
-
-  ${(p) =>
-    p.hasLike &&
-    `
-    transform: rotate(180deg);  
-  `}
+  transform: ${(p) => p.hasLike && `rotate(180deg)`};
 `;
 
 const ToolsContainer = styled.div`
@@ -58,13 +53,37 @@ const Tools = ({ likeCount, onLike, onRemove, hasLike }) => (
   </ToolsContainer>
 );
 
-export const Comment = ({ avatar, author, text, className, ...props }) => (
-  <Container className={className}>
-    <Avatar src={avatar || NoImg} />
-    <Content>
-      <Name>{author}</Name>
-      <div>{text}</div>
-      <Tools {...props} />
-    </Content>
-  </Container>
-);
+export const Comment = ({
+  avatar,
+  author,
+  text,
+  changeLikeCount,
+  onRemove,
+  likeCount,
+  className,
+}) => {
+  const [hasLike, setHasLike] = useState(false);
+
+  const handleCommentLike = () => {
+    setHasLike(!hasLike);
+    changeLikeCount(hasLike);
+  };
+
+  const toolsProps = {
+    hasLike,
+    onLike: handleCommentLike,
+    likeCount,
+    onRemove,
+  };
+
+  return (
+    <Container className={className}>
+      <Avatar src={avatar || NoImg} />
+      <Content>
+        <Name>{author}</Name>
+        {text}
+        <Tools {...toolsProps} />
+      </Content>
+    </Container>
+  );
+};

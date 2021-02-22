@@ -165,7 +165,7 @@ export const deleteComment = (advertId, commentId) => ({
   commentId,
 });
 
-export const setLike = (advertId, commentId, hasLike) => ({
+export const changeLikeCount = (advertId, commentId, hasLike) => ({
   type: TOGGLE_LIKE_COMMENT_FROM_ADVERT,
   advertId,
   commentId,

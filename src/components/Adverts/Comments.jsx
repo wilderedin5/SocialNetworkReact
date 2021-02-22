@@ -1,14 +1,19 @@
 import React from "react";
-import { Comment } from "./comment";
+import styled from "@emotion/styled";
+import { Comment as BaseComment } from "../common/comment";
 
-export const Comments = ({ comments, id, setLike, deleteComment }) => (
+const StyledComment = styled(BaseComment)`
+  margin-bottom: 10px;
+`;
+
+export const Comments = ({ comments, id, changeLikeCount, deleteComment }) => (
   <div>
     {comments.map((comment) => (
-      <Comment
+      <StyledComment
         key={comment.text}
-        {...comment}
-        setLike={(hasLike) => setLike(id, comment.id, hasLike)}
+        changeLikeCount={(hasLike) => changeLikeCount(id, comment.id, hasLike)}
         onRemove={() => deleteComment(id, comment.id)}
+        {...comment}
       />
     ))}
   </div>
