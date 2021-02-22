@@ -12,7 +12,7 @@ import Adverts from "./components/Adverts/Adverts";
 import { Footer } from "./components/Footer/Footer";
 import style from "./App.module.scss";
 import Header from "./components/Header/Header";
-const Profile = React.lazy(() => import("./components/Profile/Profile"));
+const Profile = React.lazy(() => import("./components/profile"));
 const Dialogs = React.lazy(() => import("./components/Dialogs/Dialogs"));
 const Users = React.lazy(() => import("./components/Users/Users"));
 const News = React.lazy(() => import("./components/News/News"));

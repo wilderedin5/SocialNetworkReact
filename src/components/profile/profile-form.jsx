@@ -10,7 +10,7 @@ const Label = styled.label`
 
 const StyledButton = styled(Button)`
   position: absolute;
-  top: 10px;
+  top: 0;
   right: 0;
 `;
 
@@ -18,11 +18,7 @@ const ProfileForm = ({ handleSubmit, profile }) => (
   <form onSubmit={handleSubmit}>
     <Label>
       Looking for a job:
-      <Field
-        name="lookingForAJob"
-        placeholder="Looking for a job:"
-        type="checkbox"
-      />
+      <Field name="lookingForAJob" type="checkbox" />
     </Label>
 
     <Field name="fullName" placeholder="Name" />

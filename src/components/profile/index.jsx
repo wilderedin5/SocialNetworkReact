@@ -10,8 +10,8 @@ import {
   editProfile,
 } from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { Info } from "./Info";
-import Posts from "./Posts";
+import { Info } from "./profile-info";
+import Posts from "./posts";
 
 const Profile = ({
   profile,

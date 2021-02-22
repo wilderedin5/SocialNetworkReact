@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Button } from "../common/type";
-import { Status } from "./Status";
-import ProfileForm from "./ProfileForm";
+import { Status } from "./profile-status";
+import ProfileForm from "./profile-form";
 import { ProfileAvatar } from "./profile-avatar";
 
 const Container = styled.div`
@@ -10,7 +10,6 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 224px auto;
   grid-column-gap: 20px;
-  border-bottom: 1px dashed #fff;
 `;
 
 const Name = styled.div`
