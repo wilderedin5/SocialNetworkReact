@@ -4,7 +4,7 @@ import { Button } from "../common/type";
 import { Note } from "../common/type";
 
 const Container = styled.div`
-  border: 1px solid rgb(45, 80, 165);
+  border: 1px solid #2d50a5;
   padding: 10px 5px;
   border-radius: 10px;
   margin-bottom: 10px;

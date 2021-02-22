@@ -7,7 +7,7 @@ export const Textarea = styled.textarea`
   height: 200px;
   margin-bottom: 10px;
   border-radius: 10px;
-  border: 1px solid rgb(45, 80, 165);
+  border: 1px solid #2d50a5;
   padding: 10px;
   outline: none;
   resize: none;
@@ -18,7 +18,7 @@ export const Input = styled.input`
   padding: 5px 10px;
   margin-bottom: 10px;
   border-radius: 5px;
-  border: 1px solid rgb(45, 80, 165);
+  border: 1px solid #2d50a5;
   outline: none;
 `;
 

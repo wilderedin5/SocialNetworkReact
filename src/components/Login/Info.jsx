@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const Container = styled.div`
-  border: 1px solid rgb(45, 80, 165);
+  border: 1px solid #2d50a5;
   max-width: 300px;
   margin: 0 auto;
   padding: 10px;

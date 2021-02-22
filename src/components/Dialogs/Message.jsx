@@ -3,28 +3,19 @@ import styled from "@emotion/styled";
 import { Button } from "../common/type";
 
 const Container = styled.div`
-  position: relative;
-  margin-bottom: 25px;
-  border: 1px solid
-    ${(p) => (p.outMe ? " rgb(45, 80, 165)" : "rgb(20, 199, 35)")};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  border: 1px solid ${(p) => (p.outMe ? " #2D50A5" : "#14C723")};
   border-radius: 10px;
-  padding: 10px 15px;
-  font-weight: 700;
-  color: ${(p) => (p.outMe ? "#000" : "rgb(20, 199, 35)")};
+  color: ${(p) => (p.outMe ? "#000" : "#14C723")};
 `;
 
-const StyledButton = styled(Button)`
-  position: absolute;
-  bottom: 50%;
-  transform: translateY(50%);
-  right: 5px;
-`;
-
-export const Message = ({ outMe, message, deleteMessage }) => (
+export const Message = ({ outMe, message, onRemove }) => (
   <Container outMe={outMe}>
     {message}
-    {outMe && (
-      <StyledButton onClick={deleteMessage}>Remove message</StyledButton>
-    )}
+    {outMe && <Button onClick={onRemove}>Remove message</Button>}
   </Container>
 );

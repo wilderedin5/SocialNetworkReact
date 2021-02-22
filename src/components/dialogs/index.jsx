@@ -9,9 +9,9 @@ import {
   eraseDialog,
 } from "../../redux/dialogs-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import Form from "./Form";
-import { Dialog } from "./Dialog";
-import { Message } from "./Message";
+import Form from "./form";
+import { Dialog } from "./dialog";
+import { Message } from "./message";
 
 const DialogsList = styled.div`
   display: flex;
@@ -27,6 +27,7 @@ const Dialogs = ({
   eraseDialog,
 }) => {
   const userId = +match.params.userId || 1;
+  const messages = dialogs[userId - 1].messages;
 
   const handleSubmit = ({ message }) => {
     addMessage(message, userId);
@@ -39,12 +40,8 @@ const Dialogs = ({
           <Dialog key={d.id} {...d} />
         ))}
       </DialogsList>
-      {dialogs[userId - 1].messages.map(({ id, ...m }) => (
-        <Message
-          key={id}
-          deleteMessage={() => deleteMessage(id, userId)}
-          {...m}
-        />
+      {messages.map(({ id, ...m }) => (
+        <Message key={id} onRemove={() => deleteMessage(id, userId)} {...m} />
       ))}
       <Form eraseDialog={() => eraseDialog(userId)} onSubmit={handleSubmit} />
     </div>

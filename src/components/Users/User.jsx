@@ -7,7 +7,7 @@ import { Button } from "../common/type";
 
 const Container = styled.div`
   position: relative;
-  border: 1px solid rgb(45, 80, 165);
+  border: 1px solid #2d50a5;
   padding: 10px;
 `;
 
