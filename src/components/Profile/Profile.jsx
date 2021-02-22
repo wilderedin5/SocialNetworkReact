@@ -13,21 +13,30 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { Info } from "./Info";
 import Posts from "./Posts";
 
-const Profile = (props) => {
-  const userId = props.match.params.userId || props.authorizedUserId;
+const Profile = ({
+  profile,
+  match,
+  getProfile,
+  getStatus,
+  authorizedUserId,
+  ...rest
+}) => {
+  const userId = match.params.userId || authorizedUserId;
 
   const editProfile = () => {
-    props.getProfile(userId);
-    props.getStatus(userId);
+    getProfile(userId);
+    getStatus(userId);
   };
 
   useEffect(() => {
     editProfile();
-  }, [props.match.params.userId]);
+  }, [match.params.userId]);
 
   return (
     <div>
-      <Info isOwner={!props.match.params.userId} {...props} />
+      {profile && (
+        <Info isOwner={!match.params.userId} profile={profile} {...rest} />
+      )}
       <Posts />
     </div>
   );
