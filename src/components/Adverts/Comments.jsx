@@ -6,13 +6,13 @@ const StyledComment = styled(BaseComment)`
   margin-bottom: 10px;
 `;
 
-export const Comments = ({ comments, id, changeLikeCount, deleteComment }) => (
+export const Comments = ({ comments, id, changeLikeCount, onManage }) => (
   <div>
     {comments.map((comment) => (
       <StyledComment
         key={comment.text}
         changeLikeCount={(hasLike) => changeLikeCount(id, comment.id, hasLike)}
-        onRemove={() => deleteComment(id, comment.id)}
+        onRemove={() => onManage(id, comment.id)}
         {...comment}
       />
     ))}

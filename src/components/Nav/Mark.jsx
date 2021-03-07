@@ -2,7 +2,6 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Card as BaseCard } from "antd";
 import { NavLink } from "react-router-dom";
-import { Button } from "../common/type";
 
 const Close = styled.div`
   cursor: pointer;
@@ -13,14 +12,13 @@ const Close = styled.div`
 `;
 
 const Card = styled(BaseCard)`
-  display: flex;
-  flex-flow: column;
-  font-size: 10px;
-  text-align: justify;
-
   & + & {
     margin-top: 5px;
   }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  display: block;
 `;
 
 export const Mark = ({ theme, onRemove, id, text }) => (
@@ -30,8 +28,6 @@ export const Mark = ({ theme, onRemove, id, text }) => (
     extra={<Close onClick={onRemove}>&#9932;</Close>}
   >
     {text.substring(0, 100)}
-    <NavLink to={`/news/${id}`}>
-      <Button>Open news</Button>
-    </NavLink>
+    <StyledNavLink to={`/news/${id}`}>Open news</StyledNavLink>
   </Card>
 );

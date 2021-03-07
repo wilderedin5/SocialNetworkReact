@@ -13,5 +13,5 @@ const Form = ({ handleSubmit }) => (
 );
 
 export default reduxForm({
-  form: "AdvertForm",
+  form: "OrderAdvertForm",
 })(Form);

@@ -1,7 +1,5 @@
-const DELETE_COMMENT_FROM_ADVERT = "adverts-reducer/DELETE_COMMENT_FROM_ADVERT";
-const TOGGLE_LIKE_COMMENT_FROM_ADVERT =
-  "adverts-reducer/TOGGLE_LIKE_COMMENT_FROM_ADVERT";
-const ADD_COMMENT_TO_ADVERT = "adverts-reducer/ADD_COMMENT_TO_ADVERT";
+const MANAGE_COMMENT = "adverts-reducer/MANAGE_COMMENT";
+const TOGGLE_LIKE = "adverts-reducer/TOGGLE_LIKE";
 const MANAGE_ADVERT = "advert-reducer/MANAGE_ADVERT";
 
 let initialState = {
@@ -102,21 +100,25 @@ let initialState = {
 
 export const advertsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DELETE_COMMENT_FROM_ADVERT:
+    case MANAGE_COMMENT:
       return {
         ...state,
         adverts: state.adverts.map((advert) => {
           return advert.id === action.advertId
             ? {
                 ...advert,
-                comments: advert.comments.filter(
-                  (comment) => comment.id !== action.commentId
-                ),
+                comments: advert.comments.some(
+                  ({ id }) => id === action.commentId
+                )
+                  ? advert.comments.filter(
+                      (comment) => comment.id !== action.commentId
+                    )
+                  : [...advert.comments, action.comment],
               }
             : advert;
         }),
       };
-    case TOGGLE_LIKE_COMMENT_FROM_ADVERT:
+    case TOGGLE_LIKE:
       return {
         ...state,
         adverts: state.adverts.map((advert) => {
@@ -135,15 +137,6 @@ export const advertsReducer = (state = initialState, action) => {
           return advert;
         }),
       };
-    case ADD_COMMENT_TO_ADVERT:
-      return {
-        ...state,
-        adverts: state.adverts.map((advert) => {
-          return advert.id === action.advertId
-            ? { ...advert, comments: [...advert.comments, action.comment] }
-            : advert;
-        }),
-      };
     case MANAGE_ADVERT:
       return {
         ...state,
@@ -156,23 +149,18 @@ export const advertsReducer = (state = initialState, action) => {
   }
 };
 
-export const deleteComment = (advertId, commentId) => ({
-  type: DELETE_COMMENT_FROM_ADVERT,
-  advertId,
-  commentId,
-});
-
 export const changeLikeCount = (advertId, commentId, hasLike) => ({
-  type: TOGGLE_LIKE_COMMENT_FROM_ADVERT,
+  type: TOGGLE_LIKE,
   advertId,
   commentId,
   hasLike,
 });
 
-export const addComment = (advertId, id, text, author) => ({
-  type: ADD_COMMENT_TO_ADVERT,
+export const manageComment = (advertId, commentId, comment) => ({
+  type: MANAGE_COMMENT,
   advertId,
-  comment: { id, text, author, likeCount: 0 },
+  commentId,
+  comment,
 });
 
 export const manageAdvert = (id, advert) => ({

@@ -9,15 +9,16 @@ const StyledContent = styled(Content)`
   margin-bottom: 10px;
 `;
 
-export const Advert = ({ contentProps, id, commentProps, addComment }) => {
+export const Advert = ({ contentProps, id, commentProps, onManage }) => {
   const handleSubmit = ({ text, author }) => {
-    addComment(id, v4(), text, author);
+    const messageId = v4();
+    onManage(id, messageId, { id: messageId, text, author, likeCount: 0 });
   };
 
   return (
     <div>
       <StyledContent {...contentProps} />
-      <Comments {...commentProps} id={id} />
+      <Comments {...commentProps} onManage={onManage} id={id} />
       <Form onSubmit={handleSubmit} />
     </div>
   );
