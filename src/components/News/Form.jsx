@@ -3,19 +3,13 @@ import { reduxForm } from "redux-form";
 import { Field } from "../../hoc/form-elements";
 import { Button } from "../common/type";
 
-const Form = ({ handleSubmit, error, className }) => (
+const Form = ({ handleSubmit, className }) => (
   <form onSubmit={handleSubmit} className={className}>
-    <Field
-      component="textarea"
-      name="text"
-      placeholder="Type your text"
-      maxLength="1000"
-    />
-    <Field name="author" placeholder="Author" />
-    <Field name="theme" placeholder="Theme" />
-    <Field name="category" placeholder="Category" />
+    <Field placeholder="Type your text" name="text" component="textarea" />
+    <Field placeholder="Author" name="author" />
+    <Field placeholder="Theme" name="theme" />
+    <Field placeholder="Category" name="category" />
     <Button>Add news</Button>
-    <div>{error}</div>
   </form>
 );
 

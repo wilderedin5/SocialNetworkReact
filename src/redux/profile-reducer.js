@@ -1,7 +1,6 @@
 import { usersAPI, profileAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
-const ADD_POST = "profile-reducer/ADD-POST";
-const DELETE_POST = "profile-reducer/DELETE_POST";
+const MANAGE_POST = "profile-reducer/MANAGE_POST";
 const SET_USERS_PROFILE = "profile-reducer/SET_USERS_PROFILE";
 const SET_STATUS = "profile-reducer/SET_STATUS";
 const UPDATE_PHOTO = "profile-reducer/UPDATE_PHOTO";
@@ -87,10 +86,12 @@ let initialState = {
 
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case MANAGE_POST:
       return {
         ...state,
-        posts: [...state.posts, action.newPost],
+        posts: state.posts.some(({ id }) => id === action.id)
+          ? state.posts.filter(({ id }) => id !== action.id)
+          : [...state.posts, action.post],
       };
     case SET_USERS_PROFILE:
       return {
@@ -106,11 +107,6 @@ export const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: { ...state.profile, photos: action.photo },
-      };
-    case DELETE_POST:
-      return {
-        ...state,
-        posts: state.posts.filter((post) => post.id !== action.postId),
       };
     case TOGGLE_LIKE_POST:
       return {
@@ -129,14 +125,10 @@ export const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = (id, text, likeCount, hasLike, author) => ({
-  type: ADD_POST,
-  newPost: { id, text, likeCount, hasLike, author },
-});
-
-export const deletePost = (postId) => ({
-  type: DELETE_POST,
-  postId,
+export const managePost = (id, post) => ({
+  type: MANAGE_POST,
+  post,
+  id,
 });
 
 export const setUsersProfile = (profile) => ({

@@ -3,11 +3,8 @@ import styled from "@emotion/styled";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
-import {
-  addMessage,
-  deleteMessage,
-  eraseDialog,
-} from "../../redux/dialogs-reducer";
+import { v4 } from "uuid";
+import { manageDialog, eraseDialog } from "../../redux/dialogs-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import Form from "./form";
 import { Dialog } from "./dialog";
@@ -19,18 +16,13 @@ const DialogsList = styled.div`
   margin-bottom: 20px;
 `;
 
-const Dialogs = ({
-  match,
-  addMessage,
-  dialogs,
-  deleteMessage,
-  eraseDialog,
-}) => {
+const Dialogs = ({ match, manageDialog, dialogs, eraseDialog }) => {
   const userId = +match.params.userId || 1;
   const messages = dialogs[userId - 1].messages;
 
   const handleSubmit = ({ message }) => {
-    addMessage(message, userId);
+    const id = v4();
+    manageDialog(userId, null, { id, message, isMy: true });
   };
 
   const handleErase = () => {
@@ -45,7 +37,7 @@ const Dialogs = ({
         ))}
       </DialogsList>
       {messages.map(({ id, ...m }) => (
-        <Message key={id} onRemove={() => deleteMessage(id, userId)} {...m} />
+        <Message key={id} onRemove={() => manageDialog(userId, id)} {...m} />
       ))}
       <Form onErase={handleErase} onSubmit={handleSubmit} />
     </div>
@@ -58,8 +50,7 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   connect(mapStateToProps, {
-    addMessage,
-    deleteMessage,
+    manageDialog,
     eraseDialog,
   }),
   withAuthRedirect,

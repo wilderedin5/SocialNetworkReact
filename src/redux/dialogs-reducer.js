@@ -1,6 +1,4 @@
-import { v4 } from "uuid";
-const ADD_MESSAGE = "dialogs-reducer/ADD-MESSAGE";
-const DELETE_MESSAGE = "dialogs-reducer/DELETE_MESSAGE";
+const MANAGE_DIALOG = "dialogs-reducer/MANAGE_DIALOG";
 const ERASE_DIALOG = "dialogs-reducer/ERASE_DIALOG";
 
 let initialState = {
@@ -79,31 +77,20 @@ let initialState = {
 
 export const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_MESSAGE:
-      let newMessage = {
-        id: v4(),
-        message: action.text,
-        isMy: true,
-      };
+    case MANAGE_DIALOG:
       return {
         ...state,
         dialogs: state.dialogs.map((dialog) => {
-          return dialog.id === action.userId
-            ? { ...dialog, messages: [...dialog.messages, newMessage] }
+          return dialog.id === action.dialogId
+            ? {
+                ...dialog,
+                messages: dialog.messages.some(
+                  ({ id }) => id === action.messageId
+                )
+                  ? dialog.messages.filter(({ id }) => id !== action.messageId)
+                  : [...dialog.messages, action.message],
+              }
             : dialog;
-        }),
-      };
-    case DELETE_MESSAGE:
-      return {
-        ...state,
-        dialogs: state.dialogs.map((dialog) => {
-          if (dialog.id === action.userId) {
-            let messages = dialog.messages.filter(
-              ({ id }) => id !== action.messageId
-            );
-            return { ...dialog, messages };
-          }
-          return dialog;
         }),
       };
     case ERASE_DIALOG:
@@ -120,21 +107,14 @@ export const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = (text, userId) => ({
-  type: ADD_MESSAGE,
-  text,
-  userId,
-});
-
-export const deleteMessage = (messageId, userId) => ({
-  type: DELETE_MESSAGE,
+export const manageDialog = (dialogId, messageId, message) => ({
+  type: MANAGE_DIALOG,
+  message,
+  dialogId,
   messageId,
-  userId,
 });
 
 export const eraseDialog = (userId) => ({
   type: ERASE_DIALOG,
   userId,
 });
-
-export default { addMessage, deleteMessage, eraseDialog };

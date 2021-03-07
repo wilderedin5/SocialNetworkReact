@@ -2,18 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { addAdvert, deleteAdvert } from "../../redux/adverts-reducer";
+import { manageAdvert } from "../../redux/adverts-reducer";
 import { Advert } from "./advert";
 import Form from "./form";
 
-const OrderAdvert = ({ addAdvert, adverts, deleteAdvert }) => {
+const OrderAdvert = ({ manageAdvert, adverts }) => {
   const handleSubmit = ({ title, text, img }) => {
-    addAdvert(adverts.length + 1, false, 0, title, text, img);
+    const id = adverts.length + 1;
+    manageAdvert(id, {
+      id,
+      liked: false,
+      likeCount: 0,
+      title,
+      text,
+      img,
+      comments: [],
+    });
   };
+
   return (
     <div>
       {adverts.map(({ id, ...advert }) => (
-        <Advert key={id} deleteAdvert={() => deleteAdvert(id)} {...advert} />
+        <Advert key={id} onDelete={() => manageAdvert(id)} {...advert} />
       ))}
       <Form onSubmit={handleSubmit} />
     </div>
@@ -25,6 +35,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { addAdvert, deleteAdvert }),
+  connect(mapStateToProps, { manageAdvert }),
   withAuthRedirect
 )(OrderAdvert);

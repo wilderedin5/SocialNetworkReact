@@ -2,8 +2,7 @@ const DELETE_COMMENT_FROM_ADVERT = "adverts-reducer/DELETE_COMMENT_FROM_ADVERT";
 const TOGGLE_LIKE_COMMENT_FROM_ADVERT =
   "adverts-reducer/TOGGLE_LIKE_COMMENT_FROM_ADVERT";
 const ADD_COMMENT_TO_ADVERT = "adverts-reducer/ADD_COMMENT_TO_ADVERT";
-const ADD_ADVERT = "advert-reducer/ADD_ADVERT";
-const DELETE_ADVERT = "advert-reducer/DELETE_ADVERT";
+const MANAGE_ADVERT = "advert-reducer/MANAGE_ADVERT";
 
 let initialState = {
   adverts: [
@@ -107,13 +106,14 @@ export const advertsReducer = (state = initialState, action) => {
       return {
         ...state,
         adverts: state.adverts.map((advert) => {
-          if (advert.id === action.advertId) {
-            const comments = advert.comments.filter(
-              (comment) => comment.id !== action.commentId
-            );
-            return { ...advert, comments };
-          }
-          return advert;
+          return advert.id === action.advertId
+            ? {
+                ...advert,
+                comments: advert.comments.filter(
+                  (comment) => comment.id !== action.commentId
+                ),
+              }
+            : advert;
         }),
       };
     case TOGGLE_LIKE_COMMENT_FROM_ADVERT:
@@ -144,15 +144,12 @@ export const advertsReducer = (state = initialState, action) => {
             : advert;
         }),
       };
-    case ADD_ADVERT:
+    case MANAGE_ADVERT:
       return {
         ...state,
-        adverts: [...state.adverts, action.advert],
-      };
-    case DELETE_ADVERT:
-      return {
-        ...state,
-        adverts: state.adverts.filter(({ id }) => id !== action.advertId),
+        adverts: state.adverts.some(({ id }) => id === action.id)
+          ? state.adverts.filter(({ id }) => id !== action.id)
+          : [...state.adverts, action.advert],
       };
     default:
       return state;
@@ -178,12 +175,8 @@ export const addComment = (advertId, id, text, author) => ({
   comment: { id, text, author, likeCount: 0 },
 });
 
-export const addAdvert = (id, liked, likeCount, title, text, img) => ({
-  type: ADD_ADVERT,
-  advert: { id, liked, likeCount, title, text, img, comments: [] },
-});
-
-export const deleteAdvert = (advertId) => ({
-  type: DELETE_ADVERT,
-  advertId,
+export const manageAdvert = (id, advert) => ({
+  type: MANAGE_ADVERT,
+  advert,
+  id,
 });

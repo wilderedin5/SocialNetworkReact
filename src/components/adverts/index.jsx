@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   deleteComment,
   changeLikeCount,
@@ -10,16 +10,12 @@ import {
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { Advert } from "./advert";
 
-const Adverts = ({
-  adverts,
-  match,
-  deleteComment,
-  changeLikeCount,
-  addComment,
-}) =>
-  adverts.map(
+const Adverts = ({ adverts, deleteComment, changeLikeCount, addComment }) => {
+  const { advertId } = useParams();
+
+  return adverts.map(
     ({ id, img, title, text, comments }) =>
-      id === +match.params.advertId && (
+      id === +advertId && (
         <Advert
           key={title}
           addComment={addComment}
@@ -29,13 +25,12 @@ const Adverts = ({
         />
       )
   );
-
+};
 const mapStateToProps = (state) => ({
   adverts: state.adverts.adverts,
 });
 
 export default compose(
   withAuthRedirect,
-  withRouter,
   connect(mapStateToProps, { deleteComment, changeLikeCount, addComment })
 )(Adverts);

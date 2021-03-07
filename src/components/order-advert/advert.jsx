@@ -10,10 +10,10 @@ const Container = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Advert = ({ title, text, deleteAdvert }) => (
+export const Advert = ({ title, text, onDelete }) => (
   <Container>
     <Note label="Title" value={title} />
     <Note label="Text advert" value={text} />
-    <Button onClick={deleteAdvert}>Remove advert</Button>
+    <Button onClick={onDelete}>Remove advert</Button>
   </Container>
 );

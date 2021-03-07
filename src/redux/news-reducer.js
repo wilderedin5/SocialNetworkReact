@@ -1,6 +1,4 @@
-import { v4 } from "uuid";
-const DELETE_NEWS = "news-reducer/DELETE_NEWS";
-const ADD_NEW_NEWS = "news-reducer/ADD_NEW_NEWS";
+const MANAGE_NEWS = "news-reducer/ADD_NEW_NEWS";
 const TOGGLE_SET_TO_MARKS = "news-reducer/TOGGLE_SET_TO_MARKS";
 
 let initialState = {
@@ -60,15 +58,12 @@ let initialState = {
 
 export const newsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DELETE_NEWS:
+    case MANAGE_NEWS:
       return {
         ...state,
-        news: state.news.filter((news) => news.id !== action.newsId),
-      };
-    case ADD_NEW_NEWS:
-      return {
-        ...state,
-        news: [...state.news, action.newNews],
+        news: state.news.some(({ id }) => id === action.id)
+          ? state.news.filter(({ id }) => id !== action.id)
+          : [...state.news, action.news],
       };
     case TOGGLE_SET_TO_MARKS:
       return {
@@ -84,14 +79,10 @@ export const newsReducer = (state = initialState, action) => {
   }
 };
 
-export const deleteNews = (newsId) => ({
-  type: DELETE_NEWS,
-  newsId,
-});
-
-export const addNews = (text, theme, author, category) => ({
-  type: ADD_NEW_NEWS,
-  newNews: { id: v4(), text, theme, author, category },
+export const manageNews = (id, news) => ({
+  type: MANAGE_NEWS,
+  news,
+  id,
 });
 
 export const setMark = (newsId, marked) => ({

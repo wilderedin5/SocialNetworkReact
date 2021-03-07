@@ -5,8 +5,8 @@ import { Button } from "../common/type";
 
 const Form = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
-    <Field component="textarea" name="text" placeholder="Message" />
-    <Field name="author" placeholder="Author" maxLength="60" />
+    <Field placeholder="Message" name="text" component="textarea" />
+    <Field placeholder="Author" name="author" maxLength="60" />
     <Button>Send</Button>
   </form>
 );

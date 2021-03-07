@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import styled from "@emotion/styled";
+import { v4 } from "uuid";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { deleteNews, addNews, setMark } from "../../redux/news-reducer";
+import { manageNews, setMark } from "../../redux/news-reducer";
 import { Article } from "./article";
 import Form from "./form";
-import styled from "@emotion/styled";
 
 const StyledArticle = styled(Article)`
   & + & {
@@ -18,25 +19,27 @@ const StyledForm = styled(Form)`
   margin-top: 10px;
 `;
 
-const News = ({ addNews, news, setMark, deleteNews, match }) => {
-  const newsId = match.params.newsId;
-  const formattedNews = newsId
-    ? news.filter((news) => newsId === String(news.id))
-    : news;
+const News = ({ news, setMark, manageNews }) => {
+  const { newsId } = useParams();
+
+  const formatNews = news.filter(({ id }) =>
+    newsId ? newsId === String(id) : true
+  );
 
   const handleSubmit = ({ text, theme, author, category }) => {
-    addNews(text, theme, author, category);
+    const id = v4();
+    manageNews(id, { id, text, theme, author, category });
   };
 
   return (
     <div>
-      {formattedNews.map((news) => (
+      {formatNews.map((news) => (
         <StyledArticle
           key={news.id}
-          onDelete={() => deleteNews(news.id)}
+          onDelete={() => manageNews(news.id)}
           onMark={() => setMark(news.id, !news.isMarked)}
           isOpened={newsId}
-          {...news}
+          news={news}
         />
       ))}
       {!newsId && <StyledForm onSubmit={handleSubmit} />}
@@ -49,7 +52,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  withRouter,
   withAuthRedirect,
-  connect(mapStateToProps, { deleteNews, addNews, setMark })
+  connect(mapStateToProps, { manageNews, setMark })
 )(News);

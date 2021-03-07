@@ -16,31 +16,25 @@ const Tools = styled.div`
   margin-top: 10px;
 `;
 
-export const Article = ({
-  isOpened,
-  theme,
-  author,
-  date,
-  category,
-  isMarked,
-  onDelete,
-  id,
-  onMark,
-  className,
-}) => (
-  <Container className={className}>
-    <Note label="Theme" value={theme} />
-    <Note label="Author" value={author} />
-    <Note label="Date" value={date} />
-    <Note label="Category" value={category} />
-    <Tools>
-      <Button onClick={onMark}>
-        {isMarked ? "Remove mark" : "Add to mark"}
-      </Button>
-      <Button onClick={onDelete}>Remove news</Button>
-      <NavLink to={`/news/${!isOpened && id}`}>
-        <Button>{isOpened ? "Return to news page" : "Go to this news"}</Button>
-      </NavLink>
-    </Tools>
-  </Container>
-);
+export const Article = ({ news, onMark, onDelete, isOpened, className }) => {
+  const { theme, author, date, category, isMarked, id } = news;
+  return (
+    <Container className={className}>
+      <Note label="Theme" value={theme} />
+      <Note label="Author" value={author} />
+      <Note label="Date" value={date} />
+      <Note label="Category" value={category} />
+      <Tools>
+        <Button onClick={onMark}>
+          {isMarked ? "Remove mark" : "Add to mark"}
+        </Button>
+        <Button onClick={onDelete}>Remove news</Button>
+        <NavLink to={`/news/${isOpened ? "" : id}`}>
+          <Button>
+            {isOpened ? "Return to news page" : "Go to this news"}
+          </Button>
+        </NavLink>
+      </Tools>
+    </Container>
+  );
+};
